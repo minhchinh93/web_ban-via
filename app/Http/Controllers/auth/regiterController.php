@@ -15,6 +15,7 @@ class regiterController extends Controller
         return view('client.auth.Register');
     }
     public function postList(Request $request){
+
         $data=[
             'name'=> $request->name,
             'email'=> $request->email,

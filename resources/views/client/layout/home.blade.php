@@ -53,60 +53,19 @@
 
 
               <div class="row mt">
+
+
+                @foreach ($shows as $show )
                 <div class="col-lg-4 col-md-4 col-sm-4 mb">
                     <div class="product-panel-2 pn">
-                        <div class="badge badge-hot">HOT</div>
-                        <img src="https://genk.mediacdn.vn/thumb_w/640/2019/1/24/lien-quan-mobile-tong-hop-10-tuong-va-skin-duoc-ve-lai-trong-phien-ban-tet-2019-10-15483179526811938550743.jpg" width="150px" alt="via việt cổ">
-                        <h5 class="mt">Flat Pack Heritage</h5>
-                        <h6>TOTAL SALES: 1388</h6>
-                        <button class="btn btn-small btn-theme04">FULL REPORT</button>
+                        <div class="badge badge-hot">{{ count($show->products) }}</div>
+                        <img src="{{asset('/storage/'.$show->image)}}" width="150px" alt="via việt cổ">
+                        <h5 class="mt">{{ $show->name }}</h5>
+                        <h6>GIÁ: {{ $show->price }} VNĐ</h6>
+                        <button class="btn btn-small btn-theme04"><a style="color:white" href="{{ route('dasboa',[$show->id])}}">MUA HÀNG</a> </button>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 mb">
-                    <div class="product-panel-2 pn">
-                        <div class="badge badge-hot">HOT</div>
-                        <img src="https://genk.mediacdn.vn/2019/1/24/lien-quan-mobile-tong-hop-10-tuong-va-skin-duoc-ve-lai-trong-phien-ban-tet-2019-1-154831795260977012219.jpg" width="200" alt="">
-                        <h5 class="mt">Flat Pack Heritage</h5>
-                        <h6>TOTAL SALES: 1388</h6>
-                        <button class="btn btn-small btn-theme04">FULL REPORT</button>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 mb">
-                    <div class="product-panel-2 pn">
-                        <div class="badge badge-hot">HOT</div>
-                        <img src="https://genk.mediacdn.vn/thumb_w/640/2019/1/24/lien-quan-mobile-tong-hop-10-tuong-va-skin-duoc-ve-lai-trong-phien-ban-tet-2019-5-15483179526371225203435.jpg" width="200" alt="">
-                        <h5 class="mt">Flat Pack Heritage</h5>
-                        <h6>TOTAL SALES: 1388</h6>
-                        <button class="btn btn-small btn-theme04">FULL REPORT</button>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 mb">
-                    <div class="product-panel-2 pn">
-                        <div class="badge badge-hot">HOT</div>
-                        <img src="https://genk.mediacdn.vn/thumb_w/640/2019/1/24/lien-quan-mobile-tong-hop-10-tuong-va-skin-duoc-ve-lai-trong-phien-ban-tet-2019-5-15483179526371225203435.jpg" width="200" alt="">
-                        <h5 class="mt">Flat Pack Heritage</h5>
-                        <h6>TOTAL SALES: 1388</h6>
-                        <button class="btn btn-small btn-theme04">FULL REPORT</button>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 mb">
-                    <div class="product-panel-2 pn">
-                        <div class="badge badge-hot">HOT</div>
-                        <img src="https://genk.mediacdn.vn/thumb_w/640/2019/1/24/lien-quan-mobile-tong-hop-10-tuong-va-skin-duoc-ve-lai-trong-phien-ban-tet-2019-5-15483179526371225203435.jpg" width="200" alt="">
-                        <h5 class="mt">Flat Pack Heritage</h5>
-                        <h6>TOTAL SALES: 1388</h6>
-                        <button class="btn btn-small btn-theme04">FULL REPORT</button>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 mb">
-                    <div class="product-panel-2 pn">
-                        <div class="badge badge-hot">HOT</div>
-                        <img src="https://genk.mediacdn.vn/thumb_w/640/2019/1/24/lien-quan-mobile-tong-hop-10-tuong-va-skin-duoc-ve-lai-trong-phien-ban-tet-2019-5-15483179526371225203435.jpg" width="200" alt="">
-                        <h5 class="mt">Flat Pack Heritage</h5>
-                        <h6>TOTAL SALES: 1388</h6>
-                        <button class="btn btn-small btn-theme04">FULL REPORT</button>
-                    </div>
-                </div>
+                @endforeach
             </div><!-- /row -->
 
 

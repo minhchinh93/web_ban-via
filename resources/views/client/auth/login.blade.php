@@ -35,8 +35,8 @@
 
           </div>
         </form>
-        <form class="form-login" action="{{ route('auth.login') }}" method="post">
-            @csrf
+
+
             <!-- Modal -->
             <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
                 <div class="modal-dialog">
@@ -47,7 +47,7 @@
                         </div>
                         <div class="modal-body">
                             <p>Enter your e-mail address below to reset your password.</p>
-                            <input type="text" name="Email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+                            <input type="text" name="dfhfh" placeholder="fghgh" autocomplete="off" class="form-control placeholder-no-fix">
 
                         </div>
                         <div class="modal-footer">
@@ -59,7 +59,7 @@
             </div>
             <!-- modal -->
 
-        </form>
+    
 
     </div>
 </div>

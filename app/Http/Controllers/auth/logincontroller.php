@@ -17,12 +17,12 @@ class logincontroller extends Controller
 
     public function login(Request $request){
 
-        
-        if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->route('showdasboa');
-        } else{
+        // dd($request->all());
 
-            return redirect()->back()->with('erros', 'Login failed!');
+        if (Auth::attempt($request->only('email', 'password'))) {
+            return 'ok';
+        } else{
+            return 'no';
         }
     }
 

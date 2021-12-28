@@ -26,14 +26,16 @@ use App\Http\Middleware\checkAdmin;
 */
 
 Route::get('/', function () {
-    return view('client.layout.home');
+    return view('client.dasboa.index');
 });
 
 
 
 Route::get('home',[HomeController::class,'home'])->name('home');
+Route::get('dasboa/{id}',[HomeController::class,'dasboa'])->name('dasboa');
 Route::get('AccountHistory',[HomeController::class,'AccountHistory'])->name('AccountHistory');
 Route::get('RechargeHistory',[HomeController::class,'RechargeHistory'])->name('RechargeHistory');
+Route::post('postcheckout',[HomeController::class,'postcheckout'])->name('postcheckout');
 
 //============Auth==========//
 
@@ -163,6 +165,6 @@ Route::prefix('client')->group(function () {
     //show checkout
     Route::get('checkout',[HomeController::class,'checkout'])->name('checkout');
     //show checkout
-    Route::post('postcheckout',[HomeController::class,'postcheckout'])->name('postcheckout');
+    // Route::post('postcheckout',[HomeController::class,'postcheckout'])->name('postcheckout');
 
 });
