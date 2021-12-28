@@ -13,10 +13,11 @@ class CreateBillsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('bills');
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_customer');
-            $table->foreign('id_customer')->references('id')->on('customers')->onDelete('cascade');
+            $table->unsignedBigInteger('id_User');
+            $table->foreign('id_User')->references('id')->on('users')->onDelete('cascade');
             $table->string('date_order');
             $table->double('total',12,2);
             $table->string('payment');

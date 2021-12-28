@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     //
 
-    public function showList(Request $request){
+    public function showUser(Request $request){
         $keyword = $request->keyword;
         $shows=  User::where('name', 'like', "%{$keyword}%")->withTrashed()->paginate(10);
         if($shows->total()>0){
@@ -19,7 +19,7 @@ class UserController extends Controller
             $activeruser = User::where('deleted_at',null)->count();
             return view('admin.users.index',['shows'=>$shows,'index'=>$count,'trackuser'=>$trackuser,'activeruser'=>$activeruser])->with('success',"tim thay '.$total.' ban ghi");
         }else{
-            return redirect()->route('showUser')->with('erros','khong tim thay ban ghi');
+            return redirect()->back()->with('erros','khong tim thay ban ghi');
         }
         }
 

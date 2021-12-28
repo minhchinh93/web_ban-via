@@ -11,31 +11,35 @@ use App\Models\bill;
 use App\Models\bill_detaill;
 use App\Models\type_product;
 use Gloudemans\Shoppingcart\Facades\cart;
+use App\Jobs\oldJob;
+use App\Models\User;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
     //
 
     public function home(Request $request) {
-        $slide =slide::all();
-        $keyword = '';
-        if($request->keyword){
-            $keyword = $request->keyword;
-            $shows=  Product::where('name','like', "%{$keyword}%")
-            ->orwhere('promotion_price','like', "%{$keyword}%")
-            ->get();
-            return view('clients.show.timkiem',['shows'=>$shows,]);
-        }
+        // $slide =slide::all();
+        // $keyword = '';
+        // if($request->keyword){
+        //     $keyword = $request->keyword;
+        //     $shows=  Product::where('name','like', "%{$keyword}%")
+        //     ->orwhere('promotion_price','like', "%{$keyword}%")
+        //     ->get();
+        //     return view('clients.show.timkiem',['shows'=>$shows,]);
+        // }
 
-            $newproducts=product::where('new',1)->get();
-            $newproduct=product::where('new',1)->paginate(4);
-            $topproducts=product::where('promotion_price','<>',0)->get();
-            $topproduct=product::where('promotion_price','<>',0)->paginate(8);
-            return view('clients.home',['slides'=>$slide,'newproducts'=>$newproduct,
-            'topproducts'=>$topproduct,
-            'totalnewproducts'=>$newproducts,
-            'totaltopproducts'=>$topproducts,
-        ]);
+        //     $newproducts=product::where('new',1)->get();
+        //     $newproduct=product::where('new',1)->paginate(4);
+        //     $topproducts=product::where('promotion_price','<>',0)->get();
+        //     $topproduct=product::where('promotion_price','<>',0)->paginate(8);
+        //     return view('clients.home',['slides'=>$slide,'newproducts'=>$newproduct,
+        //     'topproducts'=>$topproduct,
+        //     'totalnewproducts'=>$newproducts,
+        //     'totaltopproducts'=>$topproducts,
+        // ]);
+        return view('client.dasboa.index');
 
 
         // $shows=  product::where('name','like', "%{$keyword}%");
@@ -43,6 +47,12 @@ class HomeController extends Controller
 
 
 }
+    public function AccountHistory(){
+        return view('client.AccountHistory.index');
+    }
+    public function RechargeHistory(){
+        return view('client.RechargeHistory.index');
+    }
     public function product_type($id_type){
 
         $product= product::where('id_type',$id_type)->paginate(6);
@@ -132,6 +142,19 @@ class HomeController extends Controller
             'unit_price'=>$bill_detaill->price,
         ]);
     }
+    $email= $request->email;
+    $input= [
+        'name'=>$request->name,
+        'email'=>$request->email,
+        'address'=>$request->address,
+        'phone'=>$request->phone,
+        'payment'=>$request->payment_method,
+        'carts'=>Cart::content(),
+        'total'=>Cart::subtotal('0'),
+        'date_order'=>$b->date_order,
+    ];
+    $emailJob = (new oldJob( $email, $input))->delay(Carbon::now()->addMinutes(5));
+    dispatch($emailJob);
            Cart::destroy();
            return redirect()->back()->with('messeger','đã bạn đã đặt hàng thành công');
        }

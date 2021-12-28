@@ -219,7 +219,7 @@
                       <a 	class="{{ (request()->is('admin/showList/User')) ? 'active' : 'sub-menu' }}"
                         href="{{ route('showUser') }}" >
                           <i class="fa fa-desktop"></i>
-                          <span>USER</span>
+                          <span>via đã mua</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="general.html">General</a></li>
@@ -229,7 +229,7 @@
                   <li class="sub-menu">
                       <a class="{{ (request()->is('admin/categoriesList')) ? 'active' : 'sub-menu' }}" href="{{ route('categoriesList') }}" >
                           <i class="fa fa-cogs"></i>
-                          <span>Category</span>
+                          <span>Nạp tiền, Lịch sử nạp tiền</span>
                       </a>
                       <ul  class="sub">
                           <li><a  href="calendar.html">Calendar</a></li>
@@ -239,7 +239,7 @@
                   <li class="sub-menu">
                       <a class="{{ (request()->is('admin/ProductList')) ? 'active' : 'sub-menu' }}" href="{{ route('ProductList') }}" >
                           <i class="fa fa-book"></i>
-                          <span>Product</span>
+                          <span>Tool FB</span>
                       </a>
                   </li>
               </ul>

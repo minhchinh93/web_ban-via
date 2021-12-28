@@ -12,12 +12,6 @@
                 <form class="form-horizontal style-form"  method="post" action="{{ route('postProduct') }}" enctype='multipart/form-data'>
                     @csrf
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="name" >
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">danh muc</label>
                         <div class="col-sm-10">
                             <select name="id_type"  class="form-control">
@@ -27,40 +21,20 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">description</label>
+                        <label class="col-sm-2 col-sm-2 control-label">Định dạng</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="description" >
+                            <select class="col-lg-4 form-control "  id="cars" name="action">
+                                <option value="type-1">ID|password|2fa|mail|MailPass</option>
+                                <option value="type-2">ID|password|2fa</option>
+                              </select> <br /><br /><br />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Unit_price</label>
+                        <label class="col-sm-2 col-sm-2 control-label">input</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="Unit_price" >
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">promotion_price</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="promotion_price" >
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">new</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="new" >
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">unit</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="unit" >
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">image</label>
-                        <div class="col-sm-10">
-                            <input type="file" class="form-control" name="image" >
+                            <textarea type="text" class="form-control" name="textarea" ></textarea>
                         </div>
                     </div>
                     <div class="form-group">

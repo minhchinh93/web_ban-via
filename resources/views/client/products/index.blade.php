@@ -39,14 +39,15 @@
                 <thead>
                 <tr>
                     <th><input type="checkbox" name="checkall" value=""></th>
-                    <th> stt </th>
-                    <th> IdFB </th>
-                    <th><i class="fa fa-bullhorn"></i> password</th>
+                    <th>ID</th>
+                    <th><i class="fa fa-bullhorn"></i> Name</th>
                     <th><i class="fa fa-bullhorn"></i> danh mục</th>
-                    <th><i class="fa fa-bullhorn"></i> email</th>
-                    <th><i class="fa fa-bullhorn"></i> passmail</th>
-                    <th><i class="fa fa-bullhorn"></i> 2fa</th>
-                    <th><i class="fa fa-bullhorn"></i> giá </th>
+                    <th><i class="fa fa-bullhorn"></i> description</th>
+                    <th><i class="fa fa-bullhorn"></i> image</th>
+                    <th><i class="fa fa-bullhorn"></i> Unit_price</th>
+                    <th><i class="fa fa-bullhorn"></i> promotion_price</th>
+                    <th><i class="fa fa-bullhorn"></i> unit</th>
+                    <th><i class="fa fa-bullhorn"></i> new</th>
                     <th><i class=" fa fa-edit"></i> Status</th>
                     <th></th>
                 </tr>
@@ -60,15 +61,16 @@
                     $i++
                     @endphp
                 <tr>
-                    <td ><input type="checkbox" name="checkbox[]"  value="{{ $show->id ??null}}"></td>
+                    <td ><input type="checkbox" name="checkbox[]"  value="{{ $show->id }}"></td>
                     <td>{{ $i }}</td>
-                    <td class="hidden-phone">{{ $show->IdFB ??null}}</td>
-                    <td class="hidden-phone">{{ $show->pasword ??null}}</td>
-                    <td class="hidden-phone">{{ $show->category->name ??null}}</td>
-                    <td class="hidden-phone" >{{ $show->email ??null}}</td>
-                    <td class="hidden-phone"> {{ $show->passmail ??null }}</td>
-                    <td class="hidden-phone">{{ $show->fa ??null }}</td>
-                    <td class="hidden-phone">{{ $show->category->price ??null}}</td>
+                    <td class="hidden-phone">{{ $show->name }}</td>
+                    <td class="hidden-phone">{{ $show->category->name }}</td>
+                    <td class="hidden-phone" style="width: 400px;">{{ $show->description }}</td>
+                    <td><img src="{{asset('/storage/images/'.$show->image)}}" style="width: 100px;" ></td>
+                    <td class="hidden-phone">{{ $show->Unit_price }}</td>
+                    <td class="hidden-phone">{{ $show->promotion_price }}</td>
+                    <td class="hidden-phone">{{ $show->unit }}</td>
+                    <td class="hidden-phone">{{ $show->new }}</td>
                     <td>
                         @if (  $show->deleted_at ==  null)
                         <span class="label label-info label-mini">active</span></td>
@@ -77,18 +79,18 @@
                         @endif
                     <td>
                             <span class="btn btn-primary btn-xs">
-                                <a class=" w-75 " style="color:white" href="{{ route('updatetemplateProduct',[$show->id??null]) }}"><i class="fa fa-pencil"></i></a>
+                                <a class=" w-75 " style="color:white" href="{{ route('updatetemplateProduct',[$show->id]) }}"><i class="fa fa-pencil"></i></a>
                               </a>
                              </span>
                              @if ( $show->deleted_at != null)
                              <span class="btn btn-primary btn-xs">
-                             <a style="color:white" href="{{ route('restoreProduct',[$show->id??null]) }}">
+                             <a style="color:white" href="{{ route('restoreProduct',[$show->id]) }}">
                                   <i class="fa fa-trash-o "></i>
                                </a>
                             </span>
                             @endif
                             <span class="btn btn-danger btn-xs">
-                                <a style="color:white" href="{{ route('deleteProduct',[$show->id??null]) }}"> <i class="fa fa-trash-o "></i></a>
+                                <a style="color:white" href="{{ route('deleteProduct',[$show->id]) }}"> <i class="fa fa-trash-o "></i></a>
                             </span>
                     </td>
                 </tr>

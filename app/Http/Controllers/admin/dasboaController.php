@@ -24,15 +24,15 @@ class dasboaController extends Controller
         $totalATM = bill::where('payment','ATM')->count();
 
              $tables =  bill::join('bill_detaills', 'bill_detaills.id_bill', '=', 'bills.id')
-                ->join('customers', 'bills.id_customer', '=', 'customers.id')
+                ->join('customers', 'bills.id_User', '=', 'users.id')
                 ->select(DB::raw('SUM(bill_detaills.quantity) as "so_luong",
-                customers.name as "khach_hang",
+                users.name as "khach_hang",
                 bills.total,bills.date_order,
                 bills.payment,
-                customers.id,
-                customers.address,
-                customers.phone,
-                customers.note'
+                users.id,
+                users.address,
+                users.phone,
+                users.note'
                 ))
                 ->groupBy('bills.id')
                 ->get();
@@ -50,16 +50,16 @@ class dasboaController extends Controller
         $customer = customer::find($id);
         $chitiet=  bill::join('bill_detaills', 'bill_detaills.id_bill', '=', 'bills.id')
         ->join('products', 'bill_detaills.id_product', '=', 'products.id')
-        ->join('customers', 'bills.id_customer', '=', 'customers.id')
+        ->join('users', 'bills.id_User', '=', 'users.id')
         ->select(DB::raw('bill_detaills.quantity,
         bills.date_order,
-        customers.name as "name",
+        users.name as "name",
         products.name as "name_product",
         bills.total,
         bill_detaills.unit_price,
         products.image
         '))
-        ->where('customers.id',$id)
+        ->where('users.id',$id)
         ->get();
 
         return view('admin/dasboa/chitiet',[

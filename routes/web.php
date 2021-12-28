@@ -26,9 +26,14 @@ use App\Http\Middleware\checkAdmin;
 */
 
 Route::get('/', function () {
-    return view('clients.auth.login');
+    return view('client.layout.home');
 });
 
+
+
+Route::get('home',[HomeController::class,'home'])->name('home');
+Route::get('AccountHistory',[HomeController::class,'AccountHistory'])->name('AccountHistory');
+Route::get('RechargeHistory',[HomeController::class,'RechargeHistory'])->name('RechargeHistory');
 
 //============Auth==========//
 
@@ -58,19 +63,19 @@ Route::prefix('auth')->group(function () {
 
 
 });
-
+//middleware('checkAdmin')->
 //============ ADMIN  ====================//
-Route::middleware('checkAdmin')->prefix('admin')->group(function () {
+Route::prefix('admin')->group(function () {
     //=======dasboa=========//
     //show dasboa
-    Route::get('showList/dasboa',[dasboaController::class,'showdasboa'])->name('showdasboa');
+    Route::get('showdasboa',[dasboaController::class,'showdasboa'])->name('showdasboa');
     // chi tiêt hóa dơn user
     Route::get('showList/chitiet/{id}',[dasboaController::class,'chitiet'])->name('chitiet');
 
 
 
      //show user
-     Route::get('showList/User',[UserController::class,'showList'])->name('showUser');
+     Route::get('showUser',[UserController::class,'showUser'])->name('showUser');
     // edit user
     Route::get('editList/user/{id}',[UserController::class,'editList'])->name('editUser');
     Route::post('update/show/{id}',[UserController::class,'updatesuser'])->name('updatesuser');
@@ -110,6 +115,9 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
         // thực hiện tác vụ
         Route::get('categoryaction',[typeProductController::class,'action'])->name('categoryaction');
 
+        Route::get('categoriesDetail/{id}',[typeProductController::class,'categoriesDetail'])->name('categoriesDetail');
+
+
 
         //=====khoi product===========//
         Route::get('ProductList',[productController::class,'ProductList'])->name('ProductList');
@@ -139,7 +147,7 @@ Route::prefix('client')->group(function () {
 
 
     //show home
-    Route::get('home',[HomeController::class,'home'])->name('home');
+
     //show product_type
     Route::get('product_type/{id_type}',[HomeController::class,'product_type'])->name('product_type');
     //show product

@@ -23,12 +23,6 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">price</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="price" value="{{ $shows->price }}">
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">image</label>
                         <div class="col-sm-10">
                             <input type="file" class="form-control" name="image" value="{{ $shows->image }}"> <br />

@@ -42,7 +42,8 @@
                     <th>ID</th>
                     <th><i class="fa fa-bullhorn"></i> Name</th>
                     <th><i class="fa fa-bullhorn"></i> Description</th>
-                    <th class="hidden-phone"><i class="fa fa-question-circle"></i> Image</th>
+                    <th class="hidden-phone"><i class="fa fa-question-circle"></i> price</th>
+                    <th class="hidden-phone"><i class="fa fa-question-circle"></i> số lượng</th>
                     <th><i class=" fa fa-edit"></i> Status</th>
                     <th></th>
                 </tr>
@@ -59,7 +60,9 @@
                     <td ><input type="checkbox" name="checkbox[]"  value="{{ $show->id }}"></td>
                     <td>{{ $i }}</td>
                     <td class="hidden-phone">{{ $show->name }}</td>
-                    <td class="hidden-phone" style="width: 400px;">{{ $show->description }}</td>
+                    <td class="hidden-phone" ">{{ $show->description }}</td>
+                    <td class="hidden-phone" ">{{ $show->price }}</td>
+                    <td class="hidden-phone" ">{{count( $show->products )}}</td>
                     <td><img src="{{asset('/storage/'.$show->image)}}" style="width: 100px;" ></td>
                     <td>
                         @if (  $show->deleted_at ==  null)
@@ -67,7 +70,9 @@
                         @else
                         <span class="label label-danger">disabled</span>
                         @endif
-                    <td>
+                    <td>    <span class="btn btn-success btn-xs" alt="chi tiết">
+                        <a class=" w-75 " style="color:white" href="{{ route('categoriesDetail',[$show->id]) }}"><i class="fa fa-pencil" alt="chi tiết"></i></a>
+                          </span>
                             <span class="btn btn-primary btn-xs">
                                 <a class=" w-75 " style="color:white" href="{{ route('updatetemplateCategory',[$show->id]) }}"><i class="fa fa-pencil"></i></a>
                               </a>

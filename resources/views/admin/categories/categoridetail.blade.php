@@ -55,20 +55,20 @@
                     @php
                     $i=0
                     @endphp
-                    @foreach ($shows as $show )
+                    @foreach ($shows->products as $show )
                     @php
                     $i++
                     @endphp
                 <tr>
-                    <td ><input type="checkbox" name="checkbox[]"  value="{{ $show->id ??null}}"></td>
+                    <td ><input type="checkbox" name="checkbox[]"  value="{{ $show->products->id ??null}}"></td>
                     <td>{{ $i }}</td>
-                    <td class="hidden-phone">{{ $show->IdFB ??null}}</td>
-                    <td class="hidden-phone">{{ $show->pasword ??null}}</td>
-                    <td class="hidden-phone">{{ $show->category->name ??null}}</td>
-                    <td class="hidden-phone" >{{ $show->email ??null}}</td>
-                    <td class="hidden-phone"> {{ $show->passmail ??null }}</td>
-                    <td class="hidden-phone">{{ $show->fa ??null }}</td>
-                    <td class="hidden-phone">{{ $show->category->price ??null}}</td>
+                    <td class="hidden-phone">{{ $show->products->IdFB ??null}}</td>
+                    <td class="hidden-phone">{{ $show->products->pasword ??null}}</td>
+                    <td class="hidden-phone">{{ $show->products->category->name ??null}}</td>
+                    <td class="hidden-phone" >{{ $show->products->email ??null}}</td>
+                    <td class="hidden-phone"> {{ $show->products->passmail ??null }}</td>
+                    <td class="hidden-phone">{{ $show->products->fa ??null }}</td>
+                    <td class="hidden-phone">{{ $show->price ??null}}</td>
                     <td>
                         @if (  $show->deleted_at ==  null)
                         <span class="label label-info label-mini">active</span></td>

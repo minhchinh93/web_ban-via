@@ -15,15 +15,15 @@ class CreateProductsTable extends Migration
     {
             Schema::create('products', function (Blueprint $table) {
                 $table->id();
-                $table->string('name');
+                $table->string('IdFB')->nullable();
                 $table->unsignedBigInteger('id_type');
                 $table->foreign('id_type')->references('id')->on('type_products')->onDelete('cascade');
-                $table->longText('description');
-                $table->float('Unit_price');
-                $table->float('promotion_price');
-                $table->string('image');
-                $table->string('unit');
-                $table->string('new');
+                $table->longText('pasword')->nullable();
+                $table->string('email')->nullable();
+                $table->string('passmail')->nullable();
+                $table->string('fa')->nullable();
+                $table->string('status')->default('live')->nullable();
+                $table->string('new')->nullable();
                 $table->timestamps();
                 $table->softDeletes(); // add
 

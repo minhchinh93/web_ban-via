@@ -14,11 +14,13 @@ class productController extends Controller
 
     public function ProductList(Request $request){
         $keyword = $request->keyword;
-        $shows=  Product::where('name','like', "%{$keyword}%")->withTrashed()->paginate(10);
         $count= Product::withTrashed()->count();
+
     if($count==0){
+        $shows=  Product::withTrashed()->paginate(10);
         return view('admin.products.index',['shows'=>$shows]);
     }else{
+        $shows=  Product::where('IdFB','like', "%{$keyword}%")->withTrashed()->paginate(10);
         if($shows->total()>0){
         $count= Product::withTrashed()->count();
         $trackuser= Product::onlyTrashed()->count();
@@ -35,11 +37,36 @@ class productController extends Controller
          return view('admin.products.add',['shows'=>$shows,'categories'=>$category]);
      }
     public function postProduct(Request $request){
-        dd($request->all());
-       $image= $request->file('image')->store('images');
-        Product::create(array_merge($request->only('name','id_type','description','Unit_price','promotion_price','new','unit'),['image'=> $image]));
+        $inputs=  preg_split('/\r\n|\r|\n/', $request->textarea);
+
+
+        foreach ($inputs as $input) {
+
+            $textarea =explode("|", $input);
+            if ($request->action=="type-1") {
+                $data=[
+                'IdFB'=>$textarea[0],
+                'pasword'=>$textarea[1],
+                'email'=>$textarea[2],
+                'passmail'=>$textarea[3],
+                'fa'=>$textarea[4],
+                'id_type'=> $request->id_type
+            ];
+            }else{
+                $data=[
+                    'IdFB'=>$textarea[0],
+                    'pasword'=>$textarea[1],
+                    'fa'=>$textarea[2],
+                    'id_type'=> $request->id_type
+                ];
+            }
+
+            Product::create($data);
+        };
+
+
         return redirect()->route('ProductList')->with('success', 'bạn da them danh muc thanh cong');
-    }
+}
     public function updateProduct(Request $request, $id){
         $image="";
         if($request->image){
