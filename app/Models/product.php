@@ -2,24 +2,35 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\type_product;
-use App\Models\bill_detaill;
 
 class product extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = [];
 
-    public function category(){
-        return $this->belongsTo(type_product::class,'id_type', 'id');
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'User_id', 'id');
+
+    }
+    public function type_product()
+    {
+        return $this->belongsTo(type_product::class, 'id_type', 'id');
 
     }
 
-    public function bill_detail(){
-    	return $this->hasMany(bill_detaill::class,'id_product','id');
+    public function product_details()
+    {
+        return $this->hasMany(ProductDetails::class, 'product_id', 'id');
     }
+    public function ProductPngDetails()
+    {
+        return $this->hasMany(ProductPngDetails::class, 'product_id', 'id');
+    }
+
 }

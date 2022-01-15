@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
@@ -42,7 +43,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>DASHGUM FREE</b></a>
+            <a href="{{ route('home') }}" class="logo"><b>AUTOCOM</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -187,9 +188,9 @@
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
                     @if(Auth::check())
-                    <li><a class="logout" href="{{ route('logout') }}">Logout</a></li>
+                    <li><a class="logout" href="{{ route('logout') }}">ĐĂNG XUẤT</a></li>
                     @else
-                    <li><a class="logout" href="{{ route('login') }}">Đăng Nhập</a></li>
+                    <li><a class="logout" href="{{ route('login') }}">ĐĂNG NHẬP</a></li>
                     @endif
             	</ul>
             </div>
@@ -205,41 +206,47 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 
-              	  <p class="centered"><a href="profile.html"><img src="{{ asset('admin/img/ui-sam.jpg') }}" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Marcel Newman</h5>
-
+              	  <p class="centered"><a href="#"><img src="{{ asset('admin/img/ui-sam.jpg') }}" class="img-circle" width="60"></a></p>
+                   @if(Auth::check())
+              	  <h5 class="centered">Chào mừng {{ Auth::user()->name }}</h5>
+                @else
+                <h5 class="centered">AUTOCOM</h5>
+                @endif
                   <li class="mt">
-                      <a class="{{ (request()->is('admin/showList/dasboa')) ? 'active' : 'sub-menu' }}" href="{{ route('showdasboa') }}">
+                      <a class="{{ (request()->is('/home')) ? 'active' : 'sub-menu' }}" href="{{ route('showdasboa') }}">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
                   </li>
+                     @if (Auth::user()->role==2)
+                     <li class="sub-menu">
+                        <a 	class="{{ (request()->is('/home')) ? 'active' : 'sub-menu' }}"
+                          href="{{ route('home') }}" >
+                            <i class="fa fa-desktop"></i>
+                            <span>Chỉ dành cho Idea</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a  href="general.html">General</a></li>
 
-                  <li class="sub-menu">
-                      <a 	class="{{ (request()->is('admin/showList/User')) ? 'active' : 'sub-menu' }}"
-                        href="{{ route('showUser') }}" >
-                          <i class="fa fa-desktop"></i>
-                          <span>via đã mua</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="general.html">General</a></li>
+                        </ul>
+                    </li>
+                     @endif
+                     @if (Auth::user()->role==1)
+                     <li class="sub-menu">
+                        <a class="{{ (request()->is('/Dashboard')) ? 'active' : 'sub-menu' }}" href="{{ route('Dashboard') }}" >
+                            <i class="fa fa-cogs"></i>
+                            <span>Chỉ dành cho Designer</span>
+                        </a>
+                        <ul  class="sub">
+                            <li><a  href="calendar.html">Calendar</a></li>
 
-                      </ul>
-                  </li>
+                        </ul>
+                    </li>
+                     @endif
                   <li class="sub-menu">
-                      <a class="{{ (request()->is('admin/categoriesList')) ? 'active' : 'sub-menu' }}" href="{{ route('categoriesList') }}" >
-                          <i class="fa fa-cogs"></i>
-                          <span>Nạp tiền, Lịch sử nạp tiền</span>
-                      </a>
-                      <ul  class="sub">
-                          <li><a  href="calendar.html">Calendar</a></li>
-
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a class="{{ (request()->is('admin/ProductList')) ? 'active' : 'sub-menu' }}" href="{{ route('ProductList') }}" >
+                      <a class="{{ (request()->is('/showTool')) ? 'active' : 'sub-menu' }}" href="{{ route('showtool') }}" >
                           <i class="fa fa-book"></i>
-                          <span>Tool FB</span>
+                          <span>Tool </span>
                       </a>
                   </li>
               </ul>
@@ -345,7 +352,8 @@
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     </script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
     @stack('scripts')
   </body>
 </html>

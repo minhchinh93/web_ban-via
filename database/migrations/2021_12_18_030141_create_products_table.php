@@ -13,21 +13,25 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-            Schema::create('products', function (Blueprint $table) {
-                $table->id();
-                $table->string('IdFB')->nullable();
-                $table->unsignedBigInteger('id_type');
-                $table->foreign('id_type')->references('id')->on('type_products')->onDelete('cascade');
-                $table->longText('pasword')->nullable();
-                $table->string('email')->nullable();
-                $table->string('passmail')->nullable();
-                $table->string('fa')->nullable();
-                $table->string('status')->default('live')->nullable();
-                $table->string('new')->nullable();
-                $table->timestamps();
-                $table->softDeletes(); // add
+        Schema::dropIfExists('products');
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('id_type');
+            $table->foreign('id_type')->references('id')->on('type_products');
+            $table->unsignedBigInteger('User_id');
+            $table->foreign('User_id')->references('id')->on('users');
+            $table->unsignedBigInteger('id_idea')->nullable();
+            $table->foreign('id_idea')->references('id')->on('users');
+            $table->string('image')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('ImagePNG')->nullable();
+            $table->string('status')->default(1)->nullable();
+            $table->boolean('action')->default(1)->nullable();
+            $table->string('note')->default(1)->nullable();
+            $table->timestamps();
+            $table->softDeletes(); // add
 
-            });
+        });
 
     }
 

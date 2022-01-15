@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypeProductsTable extends Migration
+class AddViewsToTypeProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateTypeProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_products', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
-            $table->softDeletes(); // add
+        Schema::table('type_products', function (Blueprint $table) {
+            //
+            $table->string('Views')->default(1)->nullable();
         });
     }
 
@@ -28,7 +26,9 @@ class CreateTypeProductsTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('type_products');
-        Schema::drop('type_products');
+        Schema::table('type_products', function (Blueprint $table) {
+            //
+            $table->dropColumn('Views');
+        });
     }
 }

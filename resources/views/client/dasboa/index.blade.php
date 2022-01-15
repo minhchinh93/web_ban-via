@@ -5,160 +5,160 @@
 
 <section id="main-content">
     <section class="wrapper">
-        <div class="row">
-                <div class="row mtbox">
-                    <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
-                        <div class="box1">
-                            <span class="li_heart"></span>
-                            <h3>933</h3>
-                        </div>
-                            <p>933 People liked your page the last 24hs. Whoohoo!</p>
-                    </div>
-                    <div class="col-md-2 col-sm-2 box0">
-                        <div class="box1">
-                            <span class="li_cloud"></span>
-                            <h3>+48</h3>
-                        </div>
-                            <p>48 New files were added in your cloud storage.</p>
-                    </div>
-                    <div class="col-md-2 col-sm-2 box0">
-                        <div class="box1">
-                            <span class="li_stack"></span>
-                            <h3>23</h3>
-                        </div>
-                            <p>You have 23 unread messages in your inbox.</p>
-                    </div>
-                    <div class="col-md-2 col-sm-2 box0">
-                        <div class="box1">
-                            <span class="li_news"></span>
-                            <h3>+10</h3>
-                        </div>
-                            <p>More than 10 news were added in your reader.</p>
-                    </div>
-                    <div class="col-md-2 col-sm-2 box0">
-                        <div class="box1">
-                            <span class="li_data"></span>
-                            <h3>OK!</h3>
-                        </div>
-                            <p>Your server is working perfectly. Relax & enjoy.</p>
-                    </div>
+        <div class="row mt">
+            <div class="col-md-12">
+                <div class="content-panel">
+                    <h4><i class="fa fa-angle-right"></i>Nhận việc</h4><hr><table class="table table-striped table-advance table-hover">
+                        <p style="margin-left: 2%;" class="category"><a style="color: rgb(13, 182, 36)" href="{{ route('complete') }}">Hoàn thành ({{ $totalDone ?? null}}) </a>
+                            | <a  style="color: rgb(79, 76, 230)" href="{{ route('replay') }}">làm lại ({{ $totalPending ?? null}})</a>
+                            | <a style="color:orange" href="{{ route('NotSeen') }}">chưa nhận ({{ $totalNotSeen ?? null}})</a>
+                            | <a style="color:red" href="{{ route('prioritize') }}">ưu tiên ({{ $totalprioritize ?? null}})</a></p>
 
-                </div><!-- /row mt -->
-
-
-
-
-
-              <div class="row mt">
-                <div class="col-md-12">
-                    <div class="content-panel">
-                        <h4><i class="fa fa-angle-right"></i> Advanced Table</h4><hr><table class="table table-striped table-advance table-hover">
-
-
-                            <thead>
+                        <thead>
+                        <tr>
+                            <th><i class="fa fa-bullhorn"></i> người giao designer</th>
+                            <th><i class="fa fa-bullhorn"></i> loại SP</th>
+                            <th class="hidden-phone"><i class="fa fa-question-circle"></i> Mô tả</th>
+                            <th><i class="fa fa-bookmark"></i> hình ảnh</th>
+                            <th><i class=" fa fa-edit"></i> PNG</th>
+                            <th><i class=" fa fa-edit"></i> status</th>
+                            <th><i class=" fa fa-edit"></i> hành động</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($reports as  $report)
                             <tr>
-                                <th><input type="checkbox"  name="checkbox" ></th>
-                                <th><i class="fa fa-bullhorn"></i> Loại via</th>
-                                <th><i class="fa fa-bullhorn"></i> ngày lập</th>
-                                <th class="hidden-phone"><i class="fa fa-question-circle"></i> 2FA</th>
-                                <th><i class="fa fa-bookmark"></i> change info</th>
-                                <th><i class="fa fa-bookmark"></i> số lượng</th>
-                                <th><i class="fa fa-bookmark"></i> đơn giá</th>
-                                <th><i class="fa fa-bookmark"></i> tổng tiền</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <form method="post" action="{{ route('postcheckout') }}">
-                                    @csrf
-                                @foreach ( $carts as $cart )
-                                <th><input type="checkbox"  name="checkbox" ></th>
-                                <td class="hidden-phone" name="name" value="{{ $cart->id}}">{{ $cart->name }}</td>
-                                <td> 2018 </td>
-                                <td><a href="basic_table.html#">DSFD|SFDF|DSFD|****</a></td>
-                                <td class="hidden-phone">CÓ</td>
-                                <td>
-                                    <input class="minus is-form" type="button" value="-">
-                                    <input aria-label="quantity" class="input-qty " max="10" min="1" name="qty" type="number" value="1" readonly>
-                                    <input class="plus is-form" type="button" value="+">
+                                <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
+                                <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}</a></td>
+                                <td class="hidden-phone">{!!  $report->description ?? null !!}
+                                    <form class="form-inline" action="{{ route('componentDesigner',[$report->id]) }}" method="post">
+                                        @csrf
+                                         {{-- <input type="hidden" name="_token" value="7dGnLGxMMAmFtuyXszFeLyDNQ3XNu1GxyYOkRDUQ"> --}}
+                                          <div class="form-group">
+                                                  <input type="text" class="form-control" id="exampleInputEmail2" name="comment" placeholder="comment">
+                                              </div>
+                                              <button type="submit" class="btn btn-theme">gửi</button>
+                                          </form>
                                 </td>
-                                <td><input style="font-size:10px" class="label label-info label-mini" id='price' name="price" value="{{ $cart->price }}" >{{ $cart->price }}</input> Ucoi</td>
-                                <td><span style="font-size:12px" class="label label-warning label-mini" id='total' name="total"  >{{ $cart->price }}</span> Ucoi</td>
-                                <td>
-                                    <button class="btn btn-success btn-xs" type="submit"><i class="fa fa-shopping-cart"></i></i></button>
+                                <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->image)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                    {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
+                                       xem ảnh
+                                      </span> --}}
                                 </td>
-                                @endforeach
-                                </form>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div><!-- /content-panel -->
-                </div><!-- /col-md-12 -->
-            </div><!-- /row -->
-            </div><!-- /col-lg-9 END SECTION MIDDLE -->
+                                {{-- @php
+                                $i++
+                                @endphp --}}
+                                <div class="modal fade" id="a{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <section id="main-content">
+                                        <section class="wrapper">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
 
-
-<!-- **********************************************************************************************************************************************************
-
-
-            <div class="row mt">
-                <div class="col-md-12">
-                    <div class="content-panel">
-                        <h4><i class="fa fa-angle-right"></i> Advanced Table</h4><hr><table class="table table-striped table-advance table-hover">
-
-
-                            <thead>
-                            <tr>
-                                <th><input type="checkbox"  name="checkbox" ></th>
-                                <th><i class="fa fa-bullhorn"></i> Loại via</th>
-                                <th><i class="fa fa-bullhorn"></i> quốc gia</th>
-                                <th><i class="fa fa-bullhorn"></i> ngày lập</th>
-                                <th class="hidden-phone"><i class="fa fa-question-circle"></i> 2FA</th>
-                                <th><i class="fa fa-bookmark"></i> bạn bè</th>
-                                <th><i class="fa fa-bookmark"></i> change info</th>
-                                <th><i class="fa fa-bookmark"></i> backup</th>
-                                <th><i class="fa fa-bookmark"></i> số lượng</th>
-                                <th><i class="fa fa-bookmark"></i> tổng tiền</th>
-                                <th><i class=" fa fa-edit"></i> Status</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th><input type="checkbox"  name="checkbox" ></th>
-                                <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                <td>12000.00$ </td>
-                                <td><a href="basic_table.html#">Company Ltd</a></td>
-                                <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                <td>12000.00$ </td>
-                                <td>12000.00$ </td>
-                                <td>12000.00$ </td>
-                                <td>
-                                    <input class="minus is-form" type="button" value="-">
-                                    <input aria-label="quantity" class="input-qty" max="50" min="1" name="" type="number" value="1">
-                                    <input class="plus is-form" type="button" value="+">
+                                          @foreach ($report->product_details as $rep)
+                                          <div class="project-wrapper">
+                                            <div class="project">
+                                                <div class="photo-wrapper">
+                                                    <div class="photo">
+                                                        <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImageDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImageDetail)}}"  width="100%"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                          @endforeach
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </section>
+                                </section>
+                                  </div>
+                                  <td data-toggle="modal" data-target="#b{{$report->id}}">
+                                    @if ($report->ImagePNG)
+                                    <img src="{{asset('/storage/'.$report->ImagePNG)}}" style="border-radius: 5%;width: 150px; height :150px"  >
+                                    @endif
+                                    {{-- <span type="button" class="label label-success" data-toggle="modal" data-target="#b{{$report->id}}">
+                                        xem anh designer
+                                      </span> --}}
                                 </td>
-                                <td><span class="label label-info label-mini">12000.00$</span></td>
+                                <div class="modal fade" id="b{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <section id="main-content">
+                                        <section class="wrapper">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+
+                                          @foreach ($report->ProductPngDetails as $rep)
+                                          <div class="project-wrapper">
+                                            <div class="project">
+                                                <div class="photo-wrapper">
+                                                    <div class="photo">
+                                                        <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                          @endforeach
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </section>
+                                </section>
+                                  </div>
+                                @if ($report->status == 1)
+                                <td><span class="label label-warning label-mini"><a target="_blank" style="color:white" href="{{route('accept',[$report->id])}}">chưa nhận</a></span></td>
+                                @elseif ( $report->status == 2)
+                                <td><span class="label label-info label-mini">đã nhận</span></td>
+                                @elseif ( $report->status == 3)
+                                <td><span class="label label-info label-mini">chờ duyệt</span></td>
+                                @elseif ( $report->status == 4)
+                                <td><span class="label label-warning label-mini"><a target="_blank" style="color:white" href="{{route('accept',[$report->id])}}">Làm lại</a></span></td>
+                                @else
+                                <td><span class="label label-success label-mini">hoàn thành</span></td>
+                                @endif
+
                                 <td>
-                                    <button class="btn btn-success btn-xs"><i class="fa fa-shopping-cart"></i></i></button>
-                                    {{-- <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button> --}}
+                                    <span class="btn btn-primary btn-xs">
+                                        <a class=" w-75 " style="color:white; border-radius: 3%;" href="{{ route('Detail',[$report->id]) }}"><i class="fa fa-pencil"></i></a>
+                                      </a>
+                                     </span>
+                                     @if($report->action== 2 &&  $report->status != 5)
+                                     <td><span class="label label-danger label-mini">ưu tiên</span></td>
+                                     @endif
+
                                 </td>
                             </tr>
-                            </tbody>
-                        </table>
-                    </div><!-- /content-panel -->
-                </div><!-- /col-md-12 -->
-            </div><!-- /row -->
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-primary"><a style="color:white" href="{{ route('Dashboard') }}">refresh trang</a></button>
 
-
-  </section><!-- --/wrapper ---->
+                </div><!-- /content-panel -->
+            </div><!-- /col-md-12 -->
+        </div>
+    </section>
 </section>
+
 @endsection
 
-@push('scripts')
-<script>
+@push('scripts') --}}
+ <script>
     //<![CDATA[
     $('input.input-qty').each(function() {
       var $this = $(this),
@@ -184,6 +184,6 @@
     })
 
 
-    //]]>
+
 </script>
 @endpush

@@ -57,7 +57,13 @@
                     <td>{{ $i }}</td>
                     <td class="hidden-phone">{{ $show->name?? null }}</td>
                     <td class="hidden-phone">{{ $show->email ?? null}}</td>
-                    <td>{{ $show->role ==1 ? 'editer' : 'admin' }}</td>
+                    @if($show->role ==1)
+                    <td><span class="label label-info label-mini">DESIGNER</span></td>
+                    @elseif ($show->role ==2)
+                    <td><span class="label label-warning label-mini">IDEA</span></td>
+                    @else
+                    <td><span class="label label-success label-mini">ADMIN</span></td>
+                    @endif
                     <td>
                         @if (  $show->deleted_at ==  null)
                         <span class="label label-info label-mini">active</span></td>

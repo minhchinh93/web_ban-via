@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class checkAdmin
+class CheckDesinger
 {
     /**
      * Handle an incoming request.
@@ -19,14 +19,12 @@ class checkAdmin
     {
 
         if (Auth::check()) {
-            if (Auth::user()->role == 3) {
+            if (Auth::user()->role == 1) {
                 return $next($request);
             } else {
-
                 return redirect()->route('login');
             }
         } else {
-
             return redirect()->route('login');
         }
     }

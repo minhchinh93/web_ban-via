@@ -19,9 +19,8 @@ class CreateBillsTable extends Migration
             $table->unsignedBigInteger('id_User');
             $table->foreign('id_User')->references('id')->on('users')->onDelete('cascade');
             $table->string('date_order');
-            $table->double('total',12,2);
+            $table->double('total', 12, 2);
             $table->string('payment');
-            $table->string('note');
             $table->timestamps();
         });
     }

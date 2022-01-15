@@ -13,7 +13,7 @@
               <br>
               <input type="text" class="form-control" placeholder="email" name="email">
               <br>
-              <input type="password" class="form-control" placeholder="Password" name="Password">
+              <input type="password" class="form-control" placeholder="Password" name="password">
               <br>
               <input type="password" class="form-control" placeholder="nhập lại password" name="re-password">
               <label class="checkbox">
