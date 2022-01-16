@@ -44,7 +44,7 @@
                            <option value="{{ $designer->id }}">{{  $designer->name }}</option>
                            @endforeach
                          </select> <br><br><br>
-                         <select class="col-lg-4 form-control " id="cars" name="User_id">
+                         <select class="col-lg-4 form-control " id="cars" name="Size">
                             <option>chọn size</option>
                             @foreach ($designers as $designer)
                             <option value="{{ $designer->id }}">{{  $designer->name }}</option>
