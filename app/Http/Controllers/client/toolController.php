@@ -18,4 +18,5 @@ class toolController extends Controller
         type_product::create($request->only('name'));
         return redirect()->route('home');
     }
+
 }
