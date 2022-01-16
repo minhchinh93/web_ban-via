@@ -20,12 +20,18 @@ class DesignerController extends Controller
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->count();
-        if ($report[0]) {
-            $id = $report[0]->id_idea;
-            $name = User::find($id)->name;
+        if ($report) {
+            foreach ($report as $rep) {
+                $userIdeas[] = User::where('id', $rep->id_idea)->get();
+            }
+            foreach ($userIdeas as $userIdea) {
+                $name[] = $userIdea;
+            }
+
         } else {
             $name = "";
         }
+        // dd($name[1][0]->name);
         return view('client.dasboa.index',
             ['reports' => $report,
                 'totalPending' => $totalPending,

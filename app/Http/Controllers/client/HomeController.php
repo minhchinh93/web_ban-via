@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\ProductDetails;
 use App\Models\type_product;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -17,11 +18,23 @@ class HomeController extends Controller
 
     public function home(Request $request)
     {
-
+        Carbon::setLocale('vi');
         $designer = User::get()->where('role', 1);
         $type_product = type_product::get();
+        $keyword = $request->keyword;
         // dd($type_product[1]);
-        $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->paginate(5);
+        $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
+            ->Where('title', 'like', "%{$keyword}%")
+            ->orWhere('description', 'like', "%{$keyword}%")
+            ->orWhere('updated_at', 'like', "%{$keyword}%")
+            ->paginate(5);
+        foreach ($report as $billdd) {
+            $dt[] = Carbon::create($billdd->created_at);
+        }
+        foreach ($dt as $key) {
+            $now = Carbon::now();
+            $time[] = $key->diffForHumans($now);
+        }
         // dd($report[0]->type_product);
         $totalDone = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 3)->count();
@@ -33,6 +46,7 @@ class HomeController extends Controller
                 'totalPending' => $totalPending,
                 'totalNotReceived' => $totalNotReceived,
                 'type_products' => $type_product,
+                'times' => $time,
             ]);
     }
     public function done(Request $request)

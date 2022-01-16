@@ -44,9 +44,10 @@ Route::middleware('CheckDesinger')->group(function () {
 
 });
 Route::middleware('CheckIdea')->group(function () {
-    Route::get('/chinh', function () {
-        return view('client.test');
-    });
+
+    // Route::get('/chinh', function () {
+    //     return view('client.test');
+    // });
     Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('done', [HomeController::class, 'done'])->name('done');
     Route::get('Pending', [HomeController::class, 'Pending'])->name('Pending');
@@ -69,6 +70,8 @@ Route::middleware('CheckIdea')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('showTool', [toolController::class, 'showTool'])->name('showtool');
     Route::post('postTypeProduct', [toolController::class, 'postTypeProduct'])->name('postTypeProduct');
+
+    Route::get('/carbon', [toolController::class, 'carbon'])->name('carbon');
 
 });
 // Route::get('home', [HomeController::class, 'home'])->name('home');

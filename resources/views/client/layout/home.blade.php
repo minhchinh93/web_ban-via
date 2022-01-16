@@ -8,7 +8,7 @@
 
         <div class="col-lg-12">
             <div class="form-panel">
-                  <h4 class="mb"><i class="fa fa-angle-right"></i>    Giao Việc</h4>
+                  <h4 class="mb"><i class="fa fa-angle-right"></i>Giao Việc</h4>
                 <form class="form-horizontal style-form"action="{{ route('addIdea') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -30,7 +30,7 @@
                             <span class="help-block">kèm theo hình ảnh để designer được rõ hơn</span>
                         </div>
                     </div>
-                    <div class="form-panel">
+
                         <select class="col-lg-4 form-control " name="type_id">
                             <option>Chọn Loai SP</option>
                             @foreach ($type_products as $type_product)
@@ -44,8 +44,12 @@
                            <option value="{{ $designer->id }}">{{  $designer->name }}</option>
                            @endforeach
                          </select> <br><br><br>
-                       </div><!-- /form-panel -->
-
+                         <select class="col-lg-4 form-control " id="cars" name="User_id">
+                            <option>chọn size</option>
+                            @foreach ($designers as $designer)
+                            <option value="{{ $designer->id }}">{{  $designer->name }}</option>
+                            @endforeach
+                          </select><br><br>
                       <hr>
                       <button type="submit" class="btn btn-success">  giao viec</button>
                 </form>
@@ -55,10 +59,41 @@
                 <div class="col-md-12">
                     <div class="content-panel">
                         <h4><i class="fa fa-angle-right"></i>  Bảng Báo Cáo</h4>
-                        <p style="margin-left: 2%;" class="category"><a style="color: gray" href="{{ route('done') }}"> Hoàn thành ({{ $totalDone ?? null}}) </a> | <a  style="color: rgb(13, 182, 36)" href="{{ route('Pending') }}">chờ duyệt ({{ $totalPending ?? null}})</a> | <a style="color:red" href="{{ route('NotReceived') }}">chưa nhận ({{ $totalNotReceived ?? null}})</a></p>
-                        <button style="margin-left: 85%;" type="button" class="btn btn-primary"><a style="color:white" href="{{ route('home') }}">refresh trang</a></button>
+                        <div class="col-lg-4">
+                            <p style="margin-left: 2%;" class="category"><a style="color: gray" href="{{ route('done') }}"> Hoàn thành ({{ $totalDone ?? null}}) </a> | <a  style="color: rgb(13, 182, 36)" href="{{ route('Pending') }}">chờ duyệt ({{ $totalPending ?? null}})</a> | <a style="color:red" href="{{ route('NotReceived') }}">chưa nhận ({{ $totalNotReceived ?? null}})</a></p>
+                        </div><!-- /col-lg-12 -->
+                        <div class="col-lg-7">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form action="#" class="form-inline"role="form">
+                                        <select class="form-control "  id="cars" name="action">
+                                            <option>Tìm Kiếm loại</option>
+                                            @foreach ($type_products as $type_product)
+                                            <option value="{{$type_product->id}}">{{  $type_product->name }}</option>
+                                            @endforeach
+                                          </select>
+                                          <button type="submit" class="btn btn-theme ">tim kiem </button>
+                                    </form>
+                                </div>
+                                <div class="col-lg-6">
+                                    <form class="form-inline" role="form">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputEmail2">tim kiem</label>
+                                            <input type="text" class="form-control" name="keyword" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword }}" placeholder="tim kiem">
+                                        </div>
+                                        <button type="submit" class="btn btn-theme">tim kiem</button>
+                                    </form>
+                                </div>
+                            </div>
 
-                        <hr><table class="table table-striped table-advance table-hover">
+
+            </div><!-- /col-lg-12 -->
+            <div class="col-lg-1">
+                    <button  type="button" class="btn btn-primary"><a style="color:white" href="{{ route('home') }}">refresh trang</a></button>
+                </div><!-- /col-lg-12 -->
+
+                        <hr>
+                        <table class="table table-striped table-advance table-hover">
                             <thead>
                             <tr>
                                 <th><i class="fa fa-bullhorn"></i> tên designer</th>
@@ -73,6 +108,9 @@
                                 <th></th>
                             </tr>
                             </thead>
+                            @php
+                              $i=0
+                            @endphp
                             <tbody>
                                 @foreach ($reports as  $report)
                                 <tr>
@@ -88,7 +126,7 @@
                                             <button type="submit" class="btn btn-theme">gửi</button>
                                         </form>
                                     </td>
-                                    <td><a href="basic_table.html#">{{ $report->created_at ?? null }}</a></td>
+                                    <td><a href="basic_table.html#">{{ $times[$i++] ?? null }}</a></td>
                                     <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->image)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
                                         {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
                                            xem ảnh
