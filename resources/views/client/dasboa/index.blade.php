@@ -29,7 +29,7 @@
                         <tbody>
                             @foreach ($reports as  $report)
                             <tr>
-                                <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
+                                <td><a href="basic_table.html#">{{ $name ?? null }}</a></td>
                                 <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}</a></td>
                                 <td class="hidden-phone">{!!  $report->description ?? null !!}
                                     <form class="form-inline" action="{{ route('componentDesigner',[$report->id]) }}" method="post">

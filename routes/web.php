@@ -47,7 +47,7 @@ Route::middleware('CheckIdea')->group(function () {
     Route::get('/chinh', function () {
         return view('client.test');
     });
-    Route::get('home', [HomeController::class, 'home'])->name('home');
+    Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('done', [HomeController::class, 'done'])->name('done');
     Route::get('Pending', [HomeController::class, 'Pending'])->name('Pending');
     Route::get('NotReceived', [HomeController::class, 'NotReceived'])->name('NotReceived');
@@ -62,7 +62,7 @@ Route::middleware('CheckIdea')->group(function () {
     Route::get('important/{id}', [HomeController::class, 'important'])->name('important');
     // Route::get('showimage/{id}', [HomeController::class, 'showimage'])->name('showimage');
     Route::post('showimage', [HomeController::class, 'showimage'])->name('showimage');
-    Route::post('component/{id}', [HomeController::class, 'component'])->name('component');
+    Route::post('comment/{id}', [HomeController::class, 'comment'])->name('comment');
 
 });
 

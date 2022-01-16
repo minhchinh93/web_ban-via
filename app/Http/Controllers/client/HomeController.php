@@ -83,6 +83,7 @@ class HomeController extends Controller
             'id_idea' => Auth::user()->id,
             'image' => $request->file('image')[0]->store('images'),
             'description' => $request->description,
+            'title' => $request->title,
         ];
         $productDtail = Product::create($data);
         foreach ($request->file('image') as $image) {
@@ -170,7 +171,7 @@ class HomeController extends Controller
         // }
         return redirect()->route('home');
     }
-    public function component(Request $request, $id)
+    public function comment(Request $request, $id)
     {
         $approval = $request->comment;
         $ids = Product::find($id);

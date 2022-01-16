@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Tiêu Đề</label>
                         <div class="col-sm-10">
-                            <input type="text" name="tital" class="form-control">
+                            <input type="text" name="title" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
@@ -63,7 +63,9 @@
                             <tr>
                                 <th><i class="fa fa-bullhorn"></i> tên designer</th>
                                 <th><i class="fa fa-bullhorn"></i> Loại Sản Phẩm</th>
+                                <th><i class="fa fa-bullhorn"></i> Tiêu Đễ`</th>
                                 <th class="hidden-phone"><i class="fa fa-question-circle"></i> Mô tả</th>
+                                <th class="hidden-phone"><i class="fa fa-question-circle"></i>Time</th>
                                 <th><i class="fa fa-bookmark"></i> hình ảnh</th>
                                 <th><i class=" fa fa-edit"></i> PNG</th>
                                 <th><i class=" fa fa-edit"></i> status</th>
@@ -76,15 +78,17 @@
                                 <tr>
                                     <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
                                     <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}</a></td>
+                                    <td><a href="basic_table.html#">{{ $report->title ?? null }}</a></td>
                                     <td class="hidden-phone">{!!  $report->description ?? null !!}
-                                        <form class="form-inline" action="{{ route('component',[$report->id]) }}" method="post">
+                                        <form class="form-inline" action="{{ route('comment',[$report->id]) }}" method="post">
                                       @csrf
-                                            <input type="hidden" name="_token" value="7dGnLGxMMAmFtuyXszFeLyDNQ3XNu1GxyYOkRDUQ">                    <div class="form-group">
+                                          <div class="form-group">
                                                 <input type="text" class="form-control" id="exampleInputEmail2" name="comment" placeholder="comment">
                                             </div>
                                             <button type="submit" class="btn btn-theme">gửi</button>
                                         </form>
                                     </td>
+                                    <td><a href="basic_table.html#">{{ $report->created_at ?? null }}</a></td>
                                     <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->image)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
                                         {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
                                            xem ảnh
