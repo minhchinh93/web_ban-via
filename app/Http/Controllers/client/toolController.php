@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\size;
 use App\Models\type_product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,8 +17,23 @@ class toolController extends Controller
     }
     public function postTypeProduct(Request $request)
     {
-        type_product::create($request->only('name'));
+
+        // $inputs = preg_split('/\r\n|\r|\n/', );
+
+        $type = type_product::create($request->only('name'));
+
+        $inputs = explode("|", $request->size);
+        $i = 0;
+        foreach ($inputs as $input) {
+            size::create([
+                'id_types' => $type->id,
+                'name' => $inputs[$i++],
+
+            ]);
+        }
+
         return redirect()->route('home');
+
     }
 
     public function carbon()

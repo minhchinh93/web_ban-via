@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\mocupProduct;
 use App\Models\Product;
 use App\Models\ProductPngDetails;
 use App\Models\User;
@@ -20,7 +21,7 @@ class DesignerController extends Controller
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->count();
-        if ($report) {
+        if ($report->total() > 0) {
             foreach ($report as $rep) {
                 $userIdeas[] = User::where('id', $rep->id_idea)->get();
             }
@@ -113,7 +114,16 @@ class DesignerController extends Controller
             'status' => 3,
             'description' => $description . "</br> <b style= 'color:blue'>" . $name . "</b>:" . $approval,
         ]);
+        mocupProduct::where('product_id', $id)->delete();
+        foreach ($request->file('mocup') as $mocup) {
 
+            $mocup = [
+                'product_id' => $id,
+                'mocup' => $mocup->store('images'),
+            ];
+            mocupProduct::create($mocup);
+        }
+        ProductPngDetails::where('product_id', $id)->delete();
         foreach ($request->file('ImagePNG') as $image) {
             $dataImage = [
                 'product_id' => $id,

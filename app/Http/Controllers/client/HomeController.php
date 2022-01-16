@@ -5,6 +5,7 @@ namespace App\Http\Controllers\client;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductDetails;
+use App\Models\size;
 use App\Models\type_product;
 use App\Models\User;
 use Carbon\Carbon;
@@ -21,19 +22,25 @@ class HomeController extends Controller
         Carbon::setLocale('vi');
         $designer = User::get()->where('role', 1);
         $type_product = type_product::get();
+        $size = size::get();
         $keyword = $request->keyword;
-        // dd($type_product[1]);
+        // dd($size[1]);
         $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
             ->Where('title', 'like', "%{$keyword}%")
             ->orWhere('description', 'like', "%{$keyword}%")
             ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->paginate(5);
-        foreach ($report as $billdd) {
-            $dt[] = Carbon::create($billdd->created_at);
-        }
-        foreach ($dt as $key) {
-            $now = Carbon::now();
-            $time[] = $key->diffForHumans($now);
+        if ($report->total() != 0) {
+            foreach ($report as $billdd) {
+                $dt[] = Carbon::create($billdd->created_at);
+            }
+
+            foreach ($dt as $key) {
+                $now = Carbon::now();
+                $time[] = $key->diffForHumans($now);
+            }
+        } else {
+            $time = '';
         }
         // dd($report[0]->type_product);
         $totalDone = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->count();
@@ -47,6 +54,7 @@ class HomeController extends Controller
                 'totalNotReceived' => $totalNotReceived,
                 'type_products' => $type_product,
                 'times' => $time,
+                'sizes' => $size,
             ]);
     }
     public function done(Request $request)
@@ -98,6 +106,7 @@ class HomeController extends Controller
             'image' => $request->file('image')[0]->store('images'),
             'description' => $request->description,
             'title' => $request->title,
+            'size_id' => $request->size,
         ];
         $productDtail = Product::create($data);
         foreach ($request->file('image') as $image) {
@@ -156,11 +165,14 @@ class HomeController extends Controller
         $type_product = type_product::get();
         $designer = User::get()->where('role', 1);
         $show = Product::find($id);
+        $size = size::get();
+
         return view('client.dasboa.edit',
             [
                 'type_products' => $type_product,
                 'designers' => $designer,
                 'show' => $show,
+                'sizes' => $size,
             ]);
 
     }
@@ -173,7 +185,8 @@ class HomeController extends Controller
             'User_id' => $request->User_id,
             'id_idea' => Auth::user()->id,
             // 'image' => $request->file('image')[0]->store('images'),
-            'description' => $request->description,
+            'title' => $request->title,
+            'size_id' => $request->size,
         ];
         Product::where('id', $id)->update($data);
         // foreach ($request->file('image') as $image) {

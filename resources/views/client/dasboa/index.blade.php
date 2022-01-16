@@ -19,8 +19,9 @@
                             <th><i class="fa fa-bullhorn"></i> người giao designer</th>
                             <th><i class="fa fa-bullhorn"></i> loại SP</th>
                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> Mô tả</th>
-                            <th><i class="fa fa-bookmark"></i> hình ảnh</th>
+                            <th><i class="fa fa-bookmark"></i> Idea</th>
                             <th><i class=" fa fa-edit"></i> PNG</th>
+                            <th><i class=" fa fa-edit"></i> Mocup</th>
                             <th><i class=" fa fa-edit"></i> status</th>
                             <th><i class=" fa fa-edit"></i> hành động</th>
                             <th></th>
@@ -110,6 +111,46 @@
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                          @endforeach
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </section>
+                                </section>
+                                  </div>
+                                  <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                    {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
+                                       xem ảnh
+                                      </span> --}}
+                                </td>
+                                {{-- @php
+                                $i++
+                                @endphp --}}
+                                <div class="modal fade" id="c{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <section id="main-content">
+                                        <section class="wrapper">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLongTitle">Moccup</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+
+                                          @foreach ($report->mocups as $rep)
+                                          <div class="project-wrapper">
+                                            <div class="project">
+                                                <div class="photo-wrapper">
+                                                    <div class="photo">
+                                                        <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
                                                     </div>
                                                 </div>
                                             </div>

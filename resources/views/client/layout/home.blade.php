@@ -31,6 +31,13 @@
                         </div>
                     </div>
 
+                    <select class="col-lg-4 form-control " id="cars" name="User_id">
+                        <option>Chọn Designer</option>
+                        @foreach ($designers as $designer)
+                        <option value="{{ $designer->id }}">{{  $designer->name }}</option>
+                        @endforeach
+                      </select> <br><br><br>
+
                         <select class="col-lg-4 form-control " name="type_id">
                             <option>Chọn Loai SP</option>
                             @foreach ($type_products as $type_product)
@@ -38,16 +45,10 @@
                             @endforeach
                           </select> <br><br><br>
 
-                       <select class="col-lg-4 form-control " id="cars" name="User_id">
-                           <option>Chọn Designer</option>
-                           @foreach ($designers as $designer)
-                           <option value="{{ $designer->id }}">{{  $designer->name }}</option>
-                           @endforeach
-                         </select> <br><br><br>
-                         <select class="col-lg-4 form-control " id="cars" name="Size">
+                         <select class="col-lg-4 form-control " id="cars" name="size">
                             <option>chọn size</option>
-                            @foreach ($designers as $designer)
-                            <option value="{{ $designer->id }}">{{  $designer->name }}</option>
+                            @foreach ($sizes as $size)
+                            <option value="{{ $size->id }}">{{  $size->name }}</option>
                             @endforeach
                           </select><br><br>
                       <hr>
@@ -97,7 +98,7 @@
                             <thead>
                             <tr>
                                 <th><i class="fa fa-bullhorn"></i> tên designer</th>
-                                <th><i class="fa fa-bullhorn"></i> Loại Sản Phẩm</th>
+                                <th><i class="fa fa-bullhorn"></i> Loại Sản Phẩm(size)</th>
                                 <th><i class="fa fa-bullhorn"></i> Tiêu Đễ`</th>
                                 <th class="hidden-phone"><i class="fa fa-question-circle"></i> Mô tả</th>
                                 <th class="hidden-phone"><i class="fa fa-question-circle"></i>Time</th>
@@ -115,8 +116,8 @@
                                 @foreach ($reports as  $report)
                                 <tr>
                                     <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
-                                    <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}</a></td>
-                                    <td><a href="basic_table.html#">{{ $report->title ?? null }}</a></td>
+                                    <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
+                                    <td><b>{{ $report->title ?? null }}</b></td>
                                     <td class="hidden-phone">{!!  $report->description ?? null !!}
                                         <form class="form-inline" action="{{ route('comment',[$report->id]) }}" method="post">
                                       @csrf
@@ -127,7 +128,7 @@
                                         </form>
                                     </td>
                                     <td><a href="basic_table.html#">{{ $times[$i++] ?? null }}</a></td>
-                                    <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->image)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                    <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
                                         {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
                                            xem ảnh
                                           </span> --}}
@@ -169,7 +170,7 @@
                                       </div>
                                     <td data-toggle="modal" data-target="#b{{$report->id}}">
                                         @if ($report->ImagePNG)
-                                        <img src="{{asset('/storage/'.$report->ImagePNG ) ?? null }}" style="border-radius: 5%;width: 150px; height :150px"  >
+                                        <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail ) ?? null }}" style="border-radius: 5%;width: 150px; height :150px"  >
                                         @endif
                                         {{-- <span type="button" class="label label-success" data-toggle="modal" data-target="#b{{$report->id}}">
                                             xem anh designer
@@ -193,6 +194,46 @@
                                                     <div class="photo-wrapper">
                                                         <div class="photo">
                                                             <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                              @endforeach
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                              <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </section>
+                                    </section>
+                                      </div>
+                                      <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                        {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
+                                           xem ảnh
+                                          </span> --}}
+                                    </td>
+                                    {{-- @php
+                                    $i++
+                                    @endphp --}}
+                                    <div class="modal fade" id="c{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <section id="main-content">
+                                            <section class="wrapper">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+
+                                              @foreach ($report->mocups as $rep)
+                                              <div class="project-wrapper">
+                                                <div class="project">
+                                                    <div class="photo-wrapper">
+                                                        <div class="photo">
+                                                            <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
                                                         </div>
                                                     </div>
                                                 </div>

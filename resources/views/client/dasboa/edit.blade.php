@@ -13,9 +13,9 @@
                 <form class="form-horizontal style-form"action="{{ route('Edit',[$show->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">mo ta</label>
+                        <label class="col-sm-2 col-sm-2 control-label">Tiêu Đề</label>
                         <div class="col-sm-10">
-                            <input type="text" name="description" class="form-control" value="{{$show->description}}">
+                            <input type="text" name="title" class="form-control" value="{{$show->title}}">
                         </div>
                     </div>
                     {{-- <div class="form-group">
@@ -26,21 +26,28 @@
                             <span class="help-block">phai chon lai anh</span>
                         </div>
                     </div> --}}
-                    <div class="form-panel">
+                    <label class="col-sm-2 col-sm-2 control-label">chon designer</label>
+                    <select class="col-lg-4 form-control " id="cars" name="User_id">
+                        <option value="{{$show->user->id}}">{{ $show->user->name }}</option>
+                        @foreach ($designers as $designer)
+                        <option value="{{ $designer->id }}">{{  $designer->name }}</option>
+                        @endforeach
+                      </select> <br>
+                    <label class="col-sm-2 col-sm-2 control-label">chon loai Sp</label>
                         <select class="col-lg-4 form-control " name="type_id">
                             <option value="{{$show->type_product->id}}">{{ $show->type_product->name }}</option>
                             @foreach ($type_products as $type_product)
                             <option value="{{$type_product->id}}">{{  $type_product->name }}</option>
                             @endforeach
-                          </select> <br><br><br>
-
-                       <select class="col-lg-4 form-control " id="cars" name="User_id">
-                           <option value="{{$show->user->id}}">{{ $show->user->name }}</option>
-                           @foreach ($designers as $designer)
-                           <option value="{{ $designer->id }}">{{  $designer->name }}</option>
-                           @endforeach
-                         </select> <br><br><br>
-                       </div><!-- /form-panel -->
+                          </select> <br>
+                         <label class="col-sm-2 col-sm-2 control-label">chon size</label>
+                         <select class="col-lg-4 form-control " id="cars" name="size">
+                            <option value="{{$show->size->id}}">{{ $show->size->name }}</option>
+                            @foreach ($sizes as $size)
+                            <option value="{{ $size->id }}">{{  $size->name }}</option>
+                            @endforeach
+                          </select><br><br>
+                      <!-- /form-panel -->
 
                       <hr>
                       <button type="submit" class="btn btn-success"> Sửa giao việc</button>

@@ -18,6 +18,11 @@ class product extends Model
         return $this->belongsTo(User::class, 'User_id', 'id');
 
     }
+    public function size()
+    {
+        return $this->belongsTo(size::class, 'size_id', 'id');
+
+    }
     public function type_product()
     {
         return $this->belongsTo(type_product::class, 'id_type', 'id');
@@ -31,6 +36,10 @@ class product extends Model
     public function ProductPngDetails()
     {
         return $this->hasMany(ProductPngDetails::class, 'product_id', 'id');
+    }
+    public function mocups()
+    {
+        return $this->hasMany(mocupProduct::class, 'product_id', 'id');
     }
 
 }
