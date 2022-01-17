@@ -22,6 +22,22 @@
         </div><!-- /col-lg-12 -->
         <div class="col-lg-4">
             <div class="form-panel">
+                <span class="">Tìm Nhân Viên</span>
+           <form action="{{ route('findUser') }}" class="form-inline col-lg-4 " method="get" role="form">
+        @csrf
+        <select class="col-lg-4 form-control "  id="cars" name="role">
+            <option >chon</option>
+            <option value="1">Designer</option>
+            <option value="2">Idea </option>
+            <option value="3">admin</option>
+          </select> <br /><br /><br />
+          <button type="submit" class="btn btn-theme mt-1">Submit</button>
+        </div><!-- /form-panel -->
+    </div><!-- /col-lg-12 -->
+        <div class="col-lg-4">
+            <div class="form-panel">
+                <span class="">Action</span>
+
     <form action="{{ route('action') }}" class="form-inline col-lg-4 " role="form">
         <select class="col-lg-4 form-control "  id="cars" name="action">
             <option >chon</option>
@@ -32,6 +48,7 @@
           <button type="submit" class="btn btn-theme mt-1">Submit</button>
         </div><!-- /form-panel -->
     </div><!-- /col-lg-12 -->
+
 </div>
                 <thead>
                 <tr>

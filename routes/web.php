@@ -140,6 +140,8 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     // action tổng hợp trong uer
     Route::get('action', [UserController::class, 'action'])->name('action');
 
+    Route::get('findUser', [UserController::class, 'findUser'])->name('findUser');
+
     //=========khoi categoru============//
     //show list ctegori
     Route::get('categoriesList', [typeProductController::class, 'categoriesList'])->name('categoriesList');

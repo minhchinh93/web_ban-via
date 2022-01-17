@@ -27,6 +27,23 @@ class UserController extends Controller
             return redirect()->back()->with('erros', 'khong tim thay ban ghi');
         }
     }
+    public function findUser(Request $request)
+    {
+        $keyword = $request->keyword;
+        $shows = User::where('role', $request->role)->where('name', 'like', "%{$keyword}%")->withTrashed()->paginate(10);
+        if ($shows->total() > 0) {
+            $total = $shows->total();
+            $count = User::withTrashed()->count();
+            $trackuser = User::onlyTrashed()->count();
+            $activeruser = User::where('deleted_at', null)->count();
+            return view('admin.users.index', ['shows' => $shows,
+                'index' => $count,
+                'trackuser' => $trackuser,
+                'activeruser' => $activeruser])->with('success', "tim thay '.$total.' ban ghi");
+        } else {
+            return redirect()->back()->with('erros', 'khong tim thay ban ghi');
+        }
+    }
 
     public function addList(Request $request)
     {

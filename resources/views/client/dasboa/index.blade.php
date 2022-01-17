@@ -38,7 +38,7 @@
                                 <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}({{ $report->size->name ?? null  }})</a></td>
                                 <td class="hidden-phone">{!!  $report->title ?? null !!}
                                 <td class="hidden-phone">{!!  $report->created_at ?? null !!}
-                                <td class="hidden-phone">{!!  $report->description ?? null !!}
+                                <td class="hidden-phone" >{!!  $report->description ?? null !!}
                                     <form class="form-inline" action="{{ route('componentDesigner',[$report->id]) }}" method="post">
                                         @csrf
                                          {{-- <input type="hidden" name="_token" value="7dGnLGxMMAmFtuyXszFeLyDNQ3XNu1GxyYOkRDUQ"> --}}
@@ -247,6 +247,7 @@
                 </div><!-- /content-panel -->
             </div><!-- /col-md-12 -->
         </div>
+        {{ $reports->links() }}
     </section>
 </section>
 
