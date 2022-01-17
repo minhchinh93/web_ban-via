@@ -18,37 +18,43 @@
                             <input type="text" name="title" class="form-control" value="{{$show->title}}">
                         </div>
                     </div>
-                    {{-- <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Hình Ảnh Kèm Theo</label>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Image</label>
                         <div class="col-sm-10">
-                            <input name="image[]"  type="file" multiple >
-                            <img src="{{asset('/storage/'.$show->image)}}" alt="Italian Trulli" width= 200px>
-                            <span class="help-block">phai chon lai anh</span>
+                            <input name="image[]"  type="file" multiple required>
+                            <span class="help-block">kèm theo Image để Designer được rõ hơn</span>
                         </div>
-                    </div> --}}
-                    <label class="col-sm-2 col-sm-2 control-label">chon designer</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                    <label class="col-sm-4 control-label">chon designer</label>
                     <select class="col-lg-4 form-control " id="cars" name="User_id">
                         <option value="{{$show->user->id}}">{{ $show->user->name }}</option>
                         @foreach ($designers as $designer)
                         <option value="{{ $designer->id }}">{{  $designer->name }}</option>
                         @endforeach
                       </select> <br>
-                    <label class="col-sm-2 col-sm-2 control-label">chon loai Sp</label>
+                    </div>
+                    <div class="col-lg-4">
+                    <label class="col-sm-4 control-label">chon loai Sp</label>
                         <select class="col-lg-4 form-control " name="type_id">
                             <option value="{{$show->type_product->id}}">{{ $show->type_product->name }}</option>
                             @foreach ($type_products as $type_product)
                             <option value="{{$type_product->id}}">{{  $type_product->name }}</option>
                             @endforeach
                           </select> <br>
-                         <label class="col-sm-2 col-sm-2 control-label">chon size</label>
+                        </div>
+                     <div class="col-lg-4">
+                         <label class="col-sm-4 control-label">chon size</label><br/>
                          <select class="col-lg-4 form-control " id="cars" name="size">
-                            <option value="{{$show->size->id}}">{{ $show->size->name }}</option>
+                            <option >Không Size</option>
                             @foreach ($sizes as $size)
                             <option value="{{ $size->id }}">{{  $size->name }}</option>
                             @endforeach
-                          </select><br><br>
+                          </select> <br><br>
                       <!-- /form-panel -->
-
+                    </div>
+                </div>
                       <hr>
                       <button type="submit" class="btn btn-success"> Sửa giao việc</button>
                 </form>

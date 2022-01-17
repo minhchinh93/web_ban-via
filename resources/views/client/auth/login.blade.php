@@ -4,11 +4,19 @@
 @section ('content')
 <div id="login-page">
     <div class="container">
-
         <form class="form-login" action="{{ route('auth.login') }}" method="post">
             @csrf
           <h2 class="form-login-heading">sign in now</h2>
           <div class="login-wrap">
+            @if (session('success'))
+            <div class="alert alert-success " role="alert">
+                    {{  session('success') }}
+            </div>
+            @elseif (session('erros'))
+            <div class="alert alert-danger " role="alert">
+                {{ session('erros') }}
+           </div>
+            @endif
               <input type="email" class="form-control" placeholder="User ID" name="email" autofocus>
               <br>
               <input type="password" class="form-control" placeholder="Password" name="password" autofocus>
@@ -47,7 +55,7 @@
                         </div>
                         <div class="modal-body">
                             <p>Enter your e-mail address below to reset your password.</p>
-                            <input type="text" name="dfhfh" placeholder="fghgh" autocomplete="off" class="form-control placeholder-no-fix">
+                            <input type="text" name="email1" placeholder="email" autocomplete="off" class="form-control placeholder-no-fix">
 
                         </div>
                         <div class="modal-footer">
@@ -59,7 +67,7 @@
             </div>
             <!-- modal -->
 
-    
+
 
     </div>
 </div>

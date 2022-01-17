@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class size extends Model
 {
     use HasFactory;
+    public $table = "sizes";
     protected $guarded = [];
     public function product()
     {

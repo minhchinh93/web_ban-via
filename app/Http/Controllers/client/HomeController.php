@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Redirect;
 class HomeController extends Controller
 {
     //
-
     public function home(Request $request)
     {
         Carbon::setLocale('vi');
@@ -27,8 +26,8 @@ class HomeController extends Controller
         // dd($size[1]);
         $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
             ->Where('title', 'like', "%{$keyword}%")
-            ->orWhere('description', 'like', "%{$keyword}%")
-            ->orWhere('updated_at', 'like', "%{$keyword}%")
+        // ->Where('description', 'like', "%{$keyword}%")
+        // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->paginate(5);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
@@ -130,7 +129,6 @@ class HomeController extends Controller
                 'totalPending' => $totalPending,
                 'type_products' => $type_product,
                 'sizes' => $size,
-
             ]);
     }
     public function NotReceived(Request $request)
@@ -152,16 +150,22 @@ class HomeController extends Controller
 
     public function addIdea(Request $request)
     {
+        if ($request->size != "Không size") {
+            $size = $request->size;
+        } else {
+            $size = null;
+        }
         $data = [
             'id_type' => $request->type_id,
             'User_id' => $request->User_id,
             'id_idea' => Auth::user()->id,
-            'size_id' => $request->size,
+            'size_id' => $size,
             'image' => $request->file('image')[0]->store('images'),
             'description' => $request->description,
             'title' => $request->title,
 
         ];
+
         $productDtail = Product::create($data);
         foreach ($request->file('image') as $image) {
             $dataImage = [
@@ -232,7 +236,11 @@ class HomeController extends Controller
     }
     public function Edit(Request $request, $id)
     {
-        // dd($request->all());
+        if ($request->size != "Không Size") {
+            $size = $request->size;
+        } else {
+            $size = null;
+        }
 
         $data = [
             'id_type' => $request->type_id,
@@ -240,16 +248,17 @@ class HomeController extends Controller
             'id_idea' => Auth::user()->id,
             // 'image' => $request->file('image')[0]->store('images'),
             'title' => $request->title,
-            'size_id' => $request->size,
+            'size_id' => $size,
         ];
         Product::where('id', $id)->update($data);
-        // foreach ($request->file('image') as $image) {
-        //     $dataImage = [
-        //         'product_id' => $id,
-        //         'ImageDetail' => $image->store('images'),
-        //     ];
-        //     ProductDetails::where('product_id', $id)->update($dataImage);
-        // }
+        ProductDetails::where('product_id', $id)->delete();
+        foreach ($request->file('image') as $image) {
+            $dataImage = [
+                'product_id' => $id,
+                'ImageDetail' => $image->store('images'),
+            ];
+            ProductDetails::create($dataImage);
+        }
         return redirect()->route('home');
     }
     public function comment(Request $request, $id)

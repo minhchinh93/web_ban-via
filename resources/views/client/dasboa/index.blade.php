@@ -16,14 +16,15 @@
 
                         <thead>
                         <tr>
-                            <th><i class="fa fa-bullhorn"></i> người giao designer</th>
-                            <th><i class="fa fa-bullhorn"></i> loại SP</th>
-                            <th class="hidden-phone"><i class="fa fa-question-circle"></i> Mô tả</th>
-                            <th><i class="fa fa-bookmark"></i> Idea</th>
+                            <th><i class="fa fa-bullhorn"></i>Idea</th>
+                            <th><i class="fa fa-bullhorn"></i> categories(size)</th>
+                            <th><i class="fa fa-bullhorn"></i> Title</th>
+                            <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description </th>
+                            <th><i class="fa fa-bookmark"></i> Idea </th>
+                            <th><i class=" fa fa-edit"></i> Mockup </th>
                             <th><i class=" fa fa-edit"></i> PNG</th>
-                            <th><i class=" fa fa-edit"></i> Mocup</th>
                             <th><i class=" fa fa-edit"></i> status</th>
-                            <th><i class=" fa fa-edit"></i> hành động</th>
+                            <th><i class=" fa fa-edit"></i> Action</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -34,7 +35,9 @@
                             @foreach ($reports as  $report)
                             <tr>
                                 <td><a href="basic_table.html#">{{$name[$i++][0]->name?? null }}</a></td>
-                                <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}</a></td>
+                                <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}({{ $report->size->name ?? null  }})</a></td>
+                                <td class="hidden-phone">{!!  $report->title ?? null !!}
+                                <td class="hidden-phone">{!!  $report->created_at ?? null !!}
                                 <td class="hidden-phone">{!!  $report->description ?? null !!}
                                     <form class="form-inline" action="{{ route('componentDesigner',[$report->id]) }}" method="post">
                                         @csrf
@@ -78,47 +81,6 @@
                                           @endforeach
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </section>
-                                </section>
-                                  </div>
-                                  <td data-toggle="modal" data-target="#b{{$report->id}}">
-                                    @if ($report->ImagePNG)
-                                    <img src="{{asset('/storage/'.$report->ImagePNG)}}" style="border-radius: 5%;width: 150px; height :150px"  >
-                                    @endif
-                                    {{-- <span type="button" class="label label-success" data-toggle="modal" data-target="#b{{$report->id}}">
-                                        xem anh designer
-                                      </span> --}}
-                                </td>
-                                <div class="modal fade" id="b{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <section id="main-content">
-                                        <section class="wrapper">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
-
-                                          @foreach ($report->ProductPngDetails as $rep)
-                                          <div class="project-wrapper">
-                                            <div class="project">
-                                                <div class="photo-wrapper">
-                                                    <div class="photo">
-                                                        <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                          @endforeach
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary">Save changes</button>
                                         </div>
                                       </div>
                                     </div>
@@ -162,7 +124,88 @@
                                           @endforeach
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </section>
+                                </section>
+                                  </div>
+                                  <td data-toggle="modal" data-target="#b{{$report->id}}">
+                                    @if ($report->ImagePNG)
+                                    <img src="{{asset('/storage/'.$report->ImagePNG)}}" style="border-radius: 5%;width: 150px; height :150px"  >
+                                    @endif
+                                    {{-- <span type="button" class="label label-success" data-toggle="modal" data-target="#b{{$report->id}}">
+                                        xem anh designer
+                                      </span> --}}
+                                </td>
+                                <div class="modal fade" id="b{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <section id="main-content">
+                                        <section class="wrapper">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+
+                                          @foreach ($report->ProductPngDetails as $rep)
+                                          <div class="project-wrapper">
+                                            <div class="project">
+                                                <div class="photo-wrapper">
+                                                    <div class="photo">
+                                                        <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                          @endforeach
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </section>
+                                </section>
+                                  </div>
+                                  @if (count($report->mocups)!=0)
+                                  <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                    @else
+                                  <td> </td>
+                                   @endif
+                                    {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
+                                       xem ảnh
+                                      </span> --}}
+                                </td>
+                                {{-- @php
+                                $i++
+                                @endphp --}}
+                                <div class="modal fade" id="c{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <section id="main-content">
+                                        <section class="wrapper">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLongTitle">Moccup</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+
+                                          @foreach ($report->mocups as $rep)
+                                          <div class="project-wrapper">
+                                            <div class="project">
+                                                <div class="photo-wrapper">
+                                                    <div class="photo">
+                                                        <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                          @endforeach
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                       </div>
                                     </div>
@@ -170,21 +213,25 @@
                                 </section>
                                   </div>
                                 @if ($report->status == 1)
-                                <td><span class="label label-warning label-mini"><a target="_blank" style="color:white" href="{{route('accept',[$report->id])}}">chưa nhận</a></span></td>
+                                <td><span class="label label-warning label-mini"><a style="color:white" href="{{route('accept',[$report->id])}}">Nhận việc</a></span></td>
                                 @elseif ( $report->status == 2)
                                 <td><span class="label label-info label-mini">đã nhận</span></td>
                                 @elseif ( $report->status == 3)
                                 <td><span class="label label-info label-mini">chờ duyệt</span></td>
                                 @elseif ( $report->status == 4)
-                                <td><span class="label label-warning label-mini"><a target="_blank" style="color:white" href="{{route('accept',[$report->id])}}">Làm lại</a></span></td>
+                                <td><span class="label label-warning label-mini">Làm lại</span></td>
                                 @else
                                 <td><span class="label label-success label-mini">hoàn thành</span></td>
                                 @endif
 
                                 <td>
                                     <span class="btn btn-primary btn-xs">
+                                        @if ($report->status != 1)
                                         <a class=" w-75 " style="color:white; border-radius: 3%;" href="{{ route('Detail',[$report->id]) }}"><i class="fa fa-pencil"></i></a>
                                       </a>
+                                      @else
+                                       <i class="fa fa-pencil"></i>
+                                      @endif
                                      </span>
                                      @if($report->action== 2 &&  $report->status != 5)
                                      <td><span class="label label-danger label-mini">ưu tiên</span></td>

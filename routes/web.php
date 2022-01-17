@@ -101,6 +101,8 @@ Route::prefix('auth')->group(function () {
     //mail
     Route::get('/senmail/{remember_token}', [cfController::class, 'update'])->name('senmail');
 
+    Route::get('alert', [cfController::class, 'alert'])->name('alert');
+
     Route::get('/email', [resetpassController::class, 'forgotpass'])->name('forgotpass');
 
     Route::post('/chekcmail', [resetpassController::class, 'checkmail'])->name('checkmail');

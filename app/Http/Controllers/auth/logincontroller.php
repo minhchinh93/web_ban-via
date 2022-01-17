@@ -28,7 +28,7 @@ class logincontroller extends Controller
             }
 
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('erros', 'đăng nhập không thành công !');
         }
     }
 

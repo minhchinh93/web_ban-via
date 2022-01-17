@@ -9,20 +9,28 @@
             @csrf
           <h2 class="form-login-heading">Register in now</h2>
           <div class="login-wrap">
-              <input type="text" class="form-control" placeholder="User ID" name="name" autofocus>
+              <input type="text" class="form-control" placeholder="name" name="name" required autofocus>
+              <span style="color:red" class="error">{{ $errors->first('name') }}</span>
               <br>
-              <input type="text" class="form-control" placeholder="email" name="email">
+              <input type="text" class="form-control" placeholder="email" name="email" required>
+              <span style="color:red" class="error">{{ $errors->first('email') }}</span>
               <br>
-              <input type="password" class="form-control" placeholder="Password" name="password">
+              <select class="form-control "  id="cars" name="role" required>
+                <option >Chọn Quyền</option>
+                <option value="1">designer</option>
+                <option value="2">idea</option>
+              </select>   <br>
+              <input type="password" class="form-control" placeholder="Password" name="password" required>
+              <span style="color:red" class="error">{{ $errors->first('Password') }}</span>
               <br>
-              <input type="password" class="form-control" placeholder="nhập lại password" name="re-password">
+              <input type="password" class="form-control" placeholder="nhập lại password" name="password_confirmation" required>
+              <span style="color:red" class="error">{{ $errors->first('Password') }}</span>
               <label class="checkbox">
                   <span class="pull-right">
-                      <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
-
+                      <a data-toggle="modal" href="#"> Forgot Password?</a>
                   </span>
               </label>
-              <button class="btn btn-theme btn-block"  type="submit"><i class="fa fa-lock"></i> Đăng Ký</button>
+              <button  class="btn btn-theme btn-block"  type="submit"><i class="fa fa-lock"></i> Đăng Ký</button>
               <hr>
 
               <div class="login-social-link centered">

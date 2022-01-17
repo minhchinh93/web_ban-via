@@ -137,7 +137,7 @@ class DesignerController extends Controller
     {
         Product::where('id', $id)->update(['status' => 2]);
         $image = Product::find($id);
-        return Redirect::to('/storage/' . $image->image);
+        return redirect()->route('Dashboard');
     }
     public function componentDesigner(Request $request, $id)
     {

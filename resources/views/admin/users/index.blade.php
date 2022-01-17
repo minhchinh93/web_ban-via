@@ -95,6 +95,7 @@
     </form>
             </table>
         </div><!-- /content-panel -->
+        {{ $shows->links() }}
     </div><!-- /col-md-12 -->
     </div>
   </section><!-- --/wrapper ---->

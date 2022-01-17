@@ -23,18 +23,18 @@
                             <input type="email" class="form-control" name="email" value="{{ $shows->email }}">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">password</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" name="password" value="{{ $shows->password }}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">role</label>
+
+                        {{-- <label class="col-sm-2 col-sm-2 control-label">role</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="role" value="{{ $shows->role }}">
-                        </div>
-                    </div>
+                        </div> --}}
+                        <select class="form-control "  id="cars" name="role" >>
+                            <option value="{{ $shows->role }}">{{ $shows->role==1 ? 'designer' : 'idea' }}</option>
+                            <option value="1">designer</option>
+                            <option value="3">admin</option>
+                            <option value="2">idea</option>
+                          </select><br/><br/>
+
                     <div class="form-group">
                         <div class="col-sm-10">
                             <button type="submit" class="btn btn-success">submit</button>
