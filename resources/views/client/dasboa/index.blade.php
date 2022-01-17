@@ -125,7 +125,11 @@
                                 </section>
                                 </section>
                                   </div>
+                                  @if (count($report->mocups)!=0)
                                   <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                    @else
+                                  <td> </td>
+                                   @endif
                                     {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
                                        xem ảnh
                                       </span> --}}

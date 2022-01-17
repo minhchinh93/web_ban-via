@@ -66,14 +66,15 @@
                         <div class="col-lg-7">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form action="#" class="form-inline"role="form">
-                                        <select class="form-control "  id="cars" name="action">
+                                    <form action="{{ route('find') }}" class="form-inline"role="form" method="get">
+                                      @csrf
+                                        <select class="form-control "  id="cars" name="type" >>
                                             <option>Tìm Kiếm loại</option>
                                             @foreach ($type_products as $type_product)
                                             <option value="{{$type_product->id}}">{{  $type_product->name }}</option>
                                             @endforeach
                                           </select>
-                                          <button type="submit" class="btn btn-theme ">tim kiem </button>
+                                          <button type="submit" class="btn btn-theme ">tim kiem SP </button>
                                     </form>
                                 </div>
                                 <div class="col-lg-6">
@@ -102,9 +103,9 @@
                                 <th><i class="fa fa-bullhorn"></i> Tiêu Đễ`</th>
                                 <th class="hidden-phone"><i class="fa fa-question-circle"></i> Mô tả</th>
                                 <th class="hidden-phone"><i class="fa fa-question-circle"></i>Time</th>
-                                <th><i class="fa fa-bookmark"></i> hình ảnh</th>
+                                <th><i class="fa fa-bookmark"></i> hình ảnh Idea</th>
                                 <th><i class=" fa fa-edit"></i> PNG</th>
-                                <th><i class=" fa fa-edit"></i> status</th>
+                                <th><i class=" fa fa-edit"></i> mocup</th>
                                 <th><i class=" fa fa-edit"></i> hành động</th>
                                 <th></th>
                             </tr>
@@ -208,7 +209,12 @@
                                     </section>
                                     </section>
                                       </div>
+
+                                      @if (count($report->mocups)!=0)
                                       <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                        @else
+                                      <td> </td>
+                                       @endif
                                         {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
                                            xem ảnh
                                           </span> --}}

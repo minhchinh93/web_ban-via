@@ -64,6 +64,7 @@ Route::middleware('CheckIdea')->group(function () {
     // Route::get('showimage/{id}', [HomeController::class, 'showimage'])->name('showimage');
     Route::post('showimage', [HomeController::class, 'showimage'])->name('showimage');
     Route::post('comment/{id}', [HomeController::class, 'comment'])->name('comment');
+    Route::get('find', [HomeController::class, 'find'])->name('find');
 
 });
 

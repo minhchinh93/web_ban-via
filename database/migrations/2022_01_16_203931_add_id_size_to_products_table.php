@@ -15,7 +15,7 @@ class AddIdSizeToProductsTable extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             //
-            // $table->unsignedBigInteger('size_id')->nullable();
+            $table->unsignedBigInteger('size_id')->after('id_idea')->nullable();
 
         });
     }
@@ -28,6 +28,7 @@ class AddIdSizeToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
+            // $table->unsignedBigInteger('size_id')->nullable();
             //
         });
     }

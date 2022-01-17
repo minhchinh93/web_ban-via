@@ -41,6 +41,49 @@ class HomeController extends Controller
             }
         } else {
             $time = '';
+
+        }
+        // dd($report[0]->mocups);
+        // dd(count($report[0]->mocups));
+
+        $totalDone = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->count();
+        $totalPending = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 3)->count();
+        $totalNotReceived = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 1)->count();
+        return view('client.layout.home',
+            ['designers' => $designer,
+                'reports' => $report,
+                'totalDone' => $totalDone,
+                'totalPending' => $totalPending,
+                'totalNotReceived' => $totalNotReceived,
+                'type_products' => $type_product,
+                'times' => $time,
+                'sizes' => $size,
+            ]);
+    }
+    public function find(Request $request)
+    {
+        // dd($request->type);
+        Carbon::setLocale('vi');
+        $designer = User::get()->where('role', 1);
+        $type_product = type_product::get();
+        $size = size::get();
+        $keyword = $request->keyword;
+        // dd($size[1]);
+        $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
+            ->Where('id_type', $request->type)
+            ->paginate(5);
+        // dd($report);
+        if ($report->total() != 0) {
+            foreach ($report as $billdd) {
+                $dt[] = Carbon::create($billdd->created_at);
+            }
+
+            foreach ($dt as $key) {
+                $now = Carbon::now();
+                $time[] = $key->diffForHumans($now);
+            }
+        } else {
+            $time = '';
         }
         // dd($report[0]->type_product);
         $totalDone = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->count();
@@ -60,6 +103,8 @@ class HomeController extends Controller
     public function done(Request $request)
     {
         $type_product = type_product::get();
+        $size = size::get();
+
         $designer = User::get()->where('role', 1);
         $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->paginate(5);
         $totalDone = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->count();
@@ -68,10 +113,13 @@ class HomeController extends Controller
                 'reports' => $report,
                 'totalDone' => $totalDone,
                 'type_products' => $type_product,
+                'sizes' => $size,
+
             ]);
     }
     public function Pending(Request $request)
     {
+        $size = size::get();
         $type_product = type_product::get();
         $designer = User::get()->where('role', 1);
         $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 3)->paginate(5);
@@ -81,10 +129,13 @@ class HomeController extends Controller
                 'reports' => $report,
                 'totalPending' => $totalPending,
                 'type_products' => $type_product,
+                'sizes' => $size,
+
             ]);
     }
     public function NotReceived(Request $request)
     {
+        $size = size::get();
         $type_product = type_product::get();
         $designer = User::get()->where('role', 1);
         $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 1)->paginate(5);
@@ -94,6 +145,8 @@ class HomeController extends Controller
                 'reports' => $report,
                 'totalNotReceived' => $totalNotReceived,
                 'type_products' => $type_product,
+                'sizes' => $size,
+
             ]);
     }
 
@@ -103,10 +156,11 @@ class HomeController extends Controller
             'id_type' => $request->type_id,
             'User_id' => $request->User_id,
             'id_idea' => Auth::user()->id,
+            'size_id' => $request->size,
             'image' => $request->file('image')[0]->store('images'),
             'description' => $request->description,
             'title' => $request->title,
-            'size_id' => $request->size,
+
         ];
         $productDtail = Product::create($data);
         foreach ($request->file('image') as $image) {
