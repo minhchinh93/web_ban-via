@@ -34,6 +34,8 @@
             <div class="col-lg-4">
                 <label class="">Designer:</label>
                     <select class="col-lg-4 form-control " id="cars" name="User_id" >
+                        <option>Chon</option>
+
                         @foreach ($designers as $designer)
                         <option value="{{ $designer->id }}" >{{  $designer->name }}</option>
                         @endforeach
@@ -41,7 +43,8 @@
                     </div>
                      <div class="col-lg-4">
                          <label class="">Chọn Loai SP :</label>
-                        <select class="col-lg-4 form-control " name="type_id">
+                        <select class="col-lg-4 form-control " name="type_id" id= "loaiSP">
+                            <option>Chon</option>
                             @foreach ($type_products as $type_product)
                             <option value="{{$type_product->id}}" >{{  $type_product->name }}</option>
                             @endforeach
@@ -49,7 +52,7 @@
                      </div>
                      <div class="col-lg-4">
                         <label class="">Size :</label>
-                         <select class="col-lg-4 form-control " id="cars" name="size">
+                         <select class="col-lg-4 form-control " name="size" id="size">
                             <option>Không size</option>
                             @foreach ($sizes as $size)
                             <option value="{{ $size->id }}">{{  $size->name }}</option>
@@ -316,7 +319,17 @@
 <script>
 
 
+$(document).ready(function(){
 
+  $("#loaiSP").change(function(){
+    var loaiSP = $(this).val();
+    // alert(loaiSP);
+    $.get("ajax/"+loaiSP, function(data){
+        // console.log(data);
+      $("#size").html(data);
+    });
+  });
+});
 
 
 

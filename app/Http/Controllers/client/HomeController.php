@@ -150,7 +150,7 @@ class HomeController extends Controller
 
     public function addIdea(Request $request)
     {
-        if ($request->size != "Không size") {
+        if ($request->size != "") {
             $size = $request->size;
         } else {
             $size = null;
@@ -236,7 +236,7 @@ class HomeController extends Controller
     }
     public function Edit(Request $request, $id)
     {
-        if ($request->size != "Không Size") {
+        if ($request->size != "") {
             $size = $request->size;
         } else {
             $size = null;
@@ -270,6 +270,27 @@ class HomeController extends Controller
         $name = User::find($idr)->name;
         Product::where('id', $id)->update(['description' => $description . "</br> <b style= 'color:black'> " . $name . "</b>:" . $approval]);
         return redirect()->route('home');
+
+    }
+
+    public function ajax($id)
+    {
+        $sizes = size::where('id_types', $id)->get();
+        // dd($sizes);
+        foreach ($sizes as $size) {
+            echo "<option value='" . $size->id . "'>" . $size->name . "</option>";
+
+        }
+
+    }
+    public function EditShowajax($id)
+    {
+        $sizes = size::where('id_types', $id)->get();
+        // dd($sizes);
+        foreach ($sizes as $size) {
+            echo "<option value='" . $size->id . "'>" . $size->name . "</option>";
+
+        }
 
     }
 }

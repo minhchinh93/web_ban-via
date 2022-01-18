@@ -66,6 +66,9 @@ Route::middleware('CheckIdea')->group(function () {
     Route::post('comment/{id}', [HomeController::class, 'comment'])->name('comment');
     Route::get('find', [HomeController::class, 'find'])->name('find');
 
+    Route::get('ajax/{id}', [HomeController::class, 'ajax'])->name('ajax');
+    Route::get('EditShow/ajax/{id}', [HomeController::class, 'EditShowajax'])->name('EditShowajax');
+
 });
 
 Route::middleware('auth')->group(function () {

@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Tiêu Đề</label>
                         <div class="col-sm-10">
-                            <input type="text" name="title" class="form-control" value="{{$show->title}}">
+                            <input type="text" name="title" class="form-control" value="{{$show->title}}" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-lg-4">
                     <label class="col-sm-4 control-label">chon loai Sp</label>
-                        <select class="col-lg-4 form-control " name="type_id">
+                        <select class="col-lg-4 form-control " name="type_id" id="loaiSP">
                             <option value="{{$show->type_product->id}}">{{ $show->type_product->name }}</option>
                             @foreach ($type_products as $type_product)
                             <option value="{{$type_product->id}}">{{  $type_product->name }}</option>
@@ -46,8 +46,9 @@
                         </div>
                      <div class="col-lg-4">
                          <label class="col-sm-4 control-label">chon size</label><br/>
-                         <select class="col-lg-4 form-control " id="cars" name="size">
-                            <option >Không Size</option>
+                         <select class="col-lg-4 form-control " id="size" name="size">
+                            <option value="{{$show->size->id}}">{{ $show->size->name }}</option>
+
                             @foreach ($sizes as $size)
                             <option value="{{ $size->id }}">{{  $size->name }}</option>
                             @endforeach
@@ -65,3 +66,23 @@
 </section>
 
 @endsection
+
+
+@push('scripts') --}}
+<script>
+
+
+$(document).ready(function(){
+
+  $("#loaiSP").change(function(){
+    var loaiSP = $(this).val();
+    $.get("ajax/"+loaiSP, function(data){
+      $("#size").html(data);
+    });
+  });
+});
+
+
+
+</script>
+@endpush

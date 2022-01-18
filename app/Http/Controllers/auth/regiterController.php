@@ -34,6 +34,6 @@ class regiterController extends Controller
         $emailJob = (new NewJob($request->email, $input))->delay(Carbon::now()->addMinutes(5));
         dispatch($emailJob);
         User::create($data);
-        return redirect()->route('alert')->with('success', 'Bạn đăng ký thanh công, kiểm tra mail để verry tài khoản');
+        return redirect()->route('login')->with('success', 'Bạn đăng ký thanh công, kiểm tra mail để verry tài khoản');
     }
 }

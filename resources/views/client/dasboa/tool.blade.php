@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label class="sr-only" for="exampleInputEmail2">ten loai sp</label>
                         <input type="text" class="form-control" id="exampleInputEmail2" name="name" placeholder="ten loai sp">
-                        <label class="sr-only" for="exampleInputEmail3">Size cách nhau | </label>
+                        <label class="sr-only" for="exampleInputEmail3">Size cách nhau |(Không size)</label>
                         <input type="text" class="form-control" id="exampleInputEmail3" name="size" placeholder="Size cách nhau '|'">
                     </div>
                     <button type="submit" class="btn btn-theme">tao</button>
