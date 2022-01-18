@@ -170,49 +170,7 @@
                                 </section>
                                 </section>
                                   </div>
-                                  @if (count($report->mocups)!=0)
-                                  <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
-                                    @else
-                                  <td> </td>
-                                   @endif
-                                    {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
-                                       xem ảnh
-                                      </span> --}}
-                                </td>
-                                {{-- @php
-                                $i++
-                                @endphp --}}
-                                <div class="modal fade" id="c{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <section id="main-content">
-                                        <section class="wrapper">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLongTitle">Moccup</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
 
-                                          @foreach ($report->mocups as $rep)
-                                          <div class="project-wrapper">
-                                            <div class="project">
-                                                <div class="photo-wrapper">
-                                                    <div class="photo">
-                                                        <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                          @endforeach
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </section>
-                                </section>
-                                  </div>
                                 @if ($report->status == 1)
                                 <td><span class="label label-warning label-mini"><a style="color:white" href="{{route('accept',[$report->id])}}">Nhận việc</a></span></td>
                                 @elseif ( $report->status == 2)
