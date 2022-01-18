@@ -42,7 +42,7 @@
                       </select> <br><br><br>
                     </div>
                      <div class="col-lg-4">
-                         <label class="">Chọn Loai SP :</label>
+                         <label class="">Category :</label>
                         <select class="col-lg-4 form-control " name="type_id" id= "loaiSP">
                             <option>Chon</option>
                             @foreach ($type_products as $type_product)
