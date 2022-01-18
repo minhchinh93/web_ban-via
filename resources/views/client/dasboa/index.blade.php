@@ -19,6 +19,7 @@
                             <th><i class="fa fa-bullhorn"></i>Idea</th>
                             <th><i class="fa fa-bullhorn"></i> categories(size)</th>
                             <th><i class="fa fa-bullhorn"></i> Title</th>
+                            <th><i class="fa fa-bullhorn"></i> time</th>
                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description </th>
                             <th><i class="fa fa-bookmark"></i> Idea </th>
                             <th><i class=" fa fa-edit"></i> Mockup </th>
