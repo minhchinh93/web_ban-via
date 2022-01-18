@@ -32,9 +32,7 @@
            <div class="row">
             <div class="col-lg-4">
                 <label class="">Designer:</label>
-                    <select class="col-lg-4 form-control " id="cars" name="User_id" >
-                        <option>Chon</option>
-
+                    <select class="col-lg-4 form-control " id="cars" name="User_id" required>
                         @foreach ($designers as $designer)
                         <option value="{{ $designer->id }}" >{{  $designer->name }}</option>
                         @endforeach
@@ -42,7 +40,7 @@
                     </div>
                      <div class="col-lg-4">
                          <label class="">Category :</label>
-                        <select class="col-lg-4 form-control " name="type_id" id= "loaiSP">
+                        <select class="col-lg-4 form-control " name="type_id" id= "loaiSP" required>
                             <option>Chon</option>
                             @foreach ($type_products as $type_product)
                             <option value="{{$type_product->id}}" >{{  $type_product->name }}</option>
@@ -51,7 +49,7 @@
                      </div>
                      <div class="col-lg-4">
                         <label class="">Size :</label>
-                         <select class="col-lg-4 form-control " name="size" id="size">
+                         <select class="col-lg-4 form-control " name="size" id="size" required>
                             <option>Không size</option>
                             @foreach ($sizes as $size)
                             <option value="{{ $size->id }}">{{  $size->name }}</option>
