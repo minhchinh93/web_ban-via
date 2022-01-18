@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Jobs\NewJob;
 use App\Models\User;
-use Carbon\Carbon;
 
 class regiterController extends Controller
 {
@@ -31,9 +30,9 @@ class regiterController extends Controller
         ];
 
         // send mail queue job
-        $emailJob = (new NewJob($request->email, $input))->delay(Carbon::now()->addMinutes(5));
+        $emailJob = (new NewJob($request->email, $input))->delay(now()->addSecond(2));
         dispatch($emailJob);
         User::create($data);
-        return redirect()->route('login')->with('success', 'Bạn đăng ký thanh công, kiểm tra mail để verry tài khoản');
+        return redirect()->route('alert')->with('success', 'Bạn đăng ký thanh công, kiểm tra mail để verry tài khoản');
     }
 }
