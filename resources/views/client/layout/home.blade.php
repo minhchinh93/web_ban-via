@@ -20,8 +20,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Description</label>
                         <div class="col-sm-10">
-                            <input type="text" name="description" class="form-control" required>
-                        </div>
+                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="5"></textarea>                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Image</label>
