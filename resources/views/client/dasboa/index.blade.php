@@ -125,7 +125,7 @@
                                         </div>
                                           @endforeach
                                         <div class="modal-footer">
-                                            <form class="form-inline" action="{{ route('mocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                            <form class="form-inline" action="{{ route('addmocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <input name="image[]"  type="file" multiple required>
                                               <button type="submit" class="btn btn-primary" >Add Image Idea</button>
@@ -170,7 +170,7 @@
                                         </div>
                                           @endforeach
                                         <div class="modal-footer">
-                                            <form class="form-inline" action="{{ route('addImage',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                            <form class="form-inline" action="{{ route('addPngDetails',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <input name="image[]"  type="file" multiple required>
                                               <button type="submit" class="btn btn-primary" >Add Image Idea</button>

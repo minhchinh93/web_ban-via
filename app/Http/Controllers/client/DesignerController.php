@@ -154,27 +154,27 @@ class DesignerController extends Controller
     {
 
         ProductPngDetails::where('id', $id)->delete();
-        return redirect()->route('home');
+        return redirect()->route('Dashboard');
 
     }
     public function deletemocups($id)
     {
 
         mocupProduct::where('id', $id)->delete();
-        return redirect()->route('home');
+        return redirect()->route('Dashboard');
 
     }
     public function addPngDetails(Request $request, $id)
     {
-
+        // dd($request->file('image'));
         foreach ($request->file('image') as $image) {
             $dataImage = [
                 'product_id' => $id,
-                'ImageDetail' => $image->store('images'),
+                'ImagePngDetail' => $image->store('images'),
             ];
             ProductPngDetails::where('id', $id)->create($dataImage);
         }
-        return redirect()->route('home');
+        return redirect()->route('Dashboard');
 
     }
     public function addmocups(Request $request, $id)
@@ -183,11 +183,11 @@ class DesignerController extends Controller
         foreach ($request->file('image') as $image) {
             $dataImage = [
                 'product_id' => $id,
-                'ImageDetail' => $image->store('images'),
+                'mocup' => $image->store('images'),
             ];
             mocupProduct::where('id', $id)->create($dataImage);
         }
-        return redirect()->route('home');
+        return redirect()->route('Dashboard');
 
     }
 }

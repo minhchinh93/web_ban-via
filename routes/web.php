@@ -42,6 +42,12 @@ Route::middleware('CheckDesinger')->group(function () {
     Route::get('prioritize', [DesignerController::class, 'prioritize'])->name('prioritize');
     Route::post('componentDesigner/{id}', [DesignerController::class, 'componentDesigner'])->name('componentDesigner');
 
+    Route::get('deleteProductPngDetails/{id}', [DesignerController::class, 'deleteProductPngDetails'])->name('deleteProductPngDetails');
+    Route::post('addPngDetails/{id}', [DesignerController::class, 'addPngDetails'])->name('addPngDetails');
+
+    Route::get('deletemocups/{id}', [DesignerController::class, 'deletemocups'])->name('deletemocups');
+    Route::post('addmocups/{id}', [DesignerController::class, 'addmocups'])->name('addmocups');
+
 });
 Route::middleware('CheckIdea')->group(function () {
 
