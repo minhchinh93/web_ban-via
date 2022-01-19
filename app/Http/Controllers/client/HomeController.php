@@ -155,25 +155,43 @@ class HomeController extends Controller
         } else {
             $size = null;
         }
-        $data = [
-            'id_type' => $request->type_id,
-            'User_id' => $request->User_id,
-            'id_idea' => Auth::user()->id,
-            'size_id' => $size,
-            'image' => $request->file('image')[0]->store('images'),
-            'description' => $request->description,
-            'title' => $request->title,
+        $images = "";
+        if ($request->image) {
+            $images = $request->file('image');
+            $data = [
+                'id_type' => $request->type_id,
+                'User_id' => $request->User_id,
+                'id_idea' => Auth::user()->id,
+                'size_id' => $size,
+                'image' => $images[0]->store('images'),
+                'description' => $request->description,
+                'title' => $request->title,
 
-        ];
-
-        $productDtail = Product::create($data);
-        foreach ($request->file('image') as $image) {
-            $dataImage = [
-                'product_id' => $productDtail->id,
-                'ImageDetail' => $image->store('images'),
             ];
-            ProductDetails::create($dataImage);
+
+            $productDtail = Product::create($data);
+            foreach ($request->file('image') as $image) {
+                $dataImage = [
+                    'product_id' => $productDtail->id,
+                    'ImageDetail' => $image->store('images'),
+                ];
+                ProductDetails::create($dataImage);
+            }
+        } else {
+            $data = [
+                'id_type' => $request->type_id,
+                'User_id' => $request->User_id,
+                'id_idea' => Auth::user()->id,
+                'size_id' => $size,
+                // 'image' => $images[0]->store('images'),
+                'description' => $request->description,
+                'title' => $request->title,
+
+            ];
+
+            $productDtail = Product::create($data);
         }
+
         return redirect()->route('home');
     }
     public function success($id)
