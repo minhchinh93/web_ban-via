@@ -89,10 +89,22 @@
                                 </section>
                                   </div>
                                   @if (count($report->mocups)!=0)
-                                  <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
-                                    @else
-                                  <td> </td>
-                                   @endif
+                                  <td data-toggle="modal" data-target="#c{{$report->id}}">
+                                  <img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                </td>
+                                   @else
+                                   <td>
+                                   <form class="form-inline" action="{{ route('addmocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <input name="image[]"  type="file" multiple required><br>
+                                  <button type="submit" class="btn btn-primary" >Add </button><br>
+                                </form>
+                                @endif
+                            </td>
+                              {{-- <td> <span class="label label-info label-mini">chờ duyệt</span></td> --}}
+
+
+
                                     {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
                                        xem ảnh
                                       </span> --}}
@@ -137,10 +149,20 @@
                                 </section>
                                 </section>
                                   </div>
-                                  <td data-toggle="modal" data-target="#b{{$report->id}}">
-                                    @if ($report->ImagePNG)
-                                    <img src="{{asset('/storage/'.$report->ImagePNG)}}" style="border-radius: 5%;width: 150px; height :150px"  >
-                                    @endif
+
+                                    @if (count($report->ProductPngDetails)!=0)
+                                    <td data-toggle="modal" data-target="#b{{$report->id}}">
+                                    <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="border-radius: 5%;width: 150px; height :150px"  >
+                                    <td>
+                                    @else
+                                    <td>
+                                    <form class="form-inline" action="{{ route('addPngDetails',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <input name="image[]"  type="file" multiple required><br>
+                                      <button type="submit" class="btn btn-primary" >Add</button><br>
+                                    </form>
+                                  </td>
+                                  @endif
                                     {{-- <span type="button" class="label label-success" data-toggle="modal" data-target="#b{{$report->id}}">
                                         xem anh designer
                                       </span> --}}
