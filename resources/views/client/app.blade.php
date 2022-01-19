@@ -29,7 +29,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://cdn.tiny.cloud/1/12vp009v5nh1rflklv0sdlip08as1stk97nghvwq7xztbobv/tinymce/4/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/dcsnatacsvrpksxw5w1o45zs2pgilzbcboykxsj0ytoy8oxi/tinymce/4/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
        var editor_config = {
     path_absolute : "",
