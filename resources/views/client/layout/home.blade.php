@@ -138,7 +138,7 @@
                                     @if ($report->image)
                                     <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
                                       @endif
-                                      <td></td>
+                                      <td data-toggle="modal" data-target="#a{{$report->id}}"></td>
                                         {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
                                            xem ảnh
                                           </span> --}}

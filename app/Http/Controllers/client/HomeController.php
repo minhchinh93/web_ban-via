@@ -259,23 +259,36 @@ class HomeController extends Controller
         } else {
             $size = null;
         }
-
-        $data = [
-            'id_type' => $request->type_id,
-            'User_id' => $request->User_id,
-            'id_idea' => Auth::user()->id,
-            // 'image' => $request->file('image')[0]->store('images'),
-            'title' => $request->title,
-            'size_id' => $size,
-        ];
-        Product::where('id', $id)->update($data);
-        ProductDetails::where('product_id', $id)->delete();
-        foreach ($request->file('image') as $image) {
-            $dataImage = [
-                'product_id' => $id,
-                'ImageDetail' => $image->store('images'),
+        $images = "";
+        if ($request->image) {
+            $images = $request->file('image');
+            $data = [
+                'id_type' => $request->type_id,
+                'User_id' => $request->User_id,
+                'id_idea' => Auth::user()->id,
+                'image' => $request->file('image')[0]->store('images'),
+                'title' => $request->title,
+                'size_id' => $size,
             ];
-            ProductDetails::create($dataImage);
+            Product::where('id', $id)->update($data);
+            ProductDetails::where('product_id', $id)->delete();
+            foreach ($request->file('image') as $image) {
+                $dataImage = [
+                    'product_id' => $id,
+                    'ImageDetail' => $image->store('images'),
+                ];
+                ProductDetails::create($dataImage);
+            }
+        } else {
+            $data = [
+                'id_type' => $request->type_id,
+                'User_id' => $request->User_id,
+                'id_idea' => Auth::user()->id,
+                // 'image' => $request->file('image')[0]->store('images'),
+                'title' => $request->title,
+                'size_id' => $size,
+            ];
+            Product::where('id', $id)->update($data);
         }
         return redirect()->route('home');
     }

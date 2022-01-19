@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Image</label>
                         <div class="col-sm-10">
-                            <input name="image[]"  type="file" multiple required>
+                            <input name="image[]"  type="file" multiple >
                             <span class="help-block">kèm theo Image để Designer được rõ hơn</span>
                         </div>
                     </div>
