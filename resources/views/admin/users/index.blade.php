@@ -32,6 +32,7 @@
             <option value="3">admin</option>
           </select> <br /><br /><br />
           <button type="submit" class="btn btn-theme mt-1">Submit</button>
+           </form>
         </div><!-- /form-panel -->
     </div><!-- /col-lg-12 -->
         <div class="col-lg-4">

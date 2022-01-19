@@ -138,7 +138,7 @@
                                     @if ($report->image)
                                     <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
                                       @endif
-                                      <td data-toggle="modal" data-target="#a{{$report->id}}"></td>
+                                    <td data-toggle="modal" data-target="#a{{$report->id}}"></td>
                                         {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
                                            xem ảnh
                                           </span> --}}
@@ -161,7 +161,7 @@
                                               <div class="project-wrapper">
                                                 <div class="project">
                                                     <a href="{{ route('deleteImage',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
-                                                    <div class="photo-wrapper">
+                                                    <div class="photo-wrapper"> 
                                                         <div class="photo">
                                                             <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImageDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImageDetail)}}"  width="100%"></a>
                                                         </div>

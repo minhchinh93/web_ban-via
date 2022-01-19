@@ -150,4 +150,44 @@ class DesignerController extends Controller
         return redirect()->route('Dashboard');
 
     }
+    public function deleteProductPngDetails($id)
+    {
+
+        ProductPngDetails::where('id', $id)->delete();
+        return redirect()->route('home');
+
+    }
+    public function deletemocups($id)
+    {
+
+        mocupProduct::where('id', $id)->delete();
+        return redirect()->route('home');
+
+    }
+    public function addPngDetails(Request $request, $id)
+    {
+
+        foreach ($request->file('image') as $image) {
+            $dataImage = [
+                'product_id' => $id,
+                'ImageDetail' => $image->store('images'),
+            ];
+            ProductPngDetails::where('id', $id)->create($dataImage);
+        }
+        return redirect()->route('home');
+
+    }
+    public function addmocups(Request $request, $id)
+    {
+
+        foreach ($request->file('image') as $image) {
+            $dataImage = [
+                'product_id' => $id,
+                'ImageDetail' => $image->store('images'),
+            ];
+            mocupProduct::where('id', $id)->create($dataImage);
+        }
+        return redirect()->route('home');
+
+    }
 }

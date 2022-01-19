@@ -64,10 +64,7 @@ class UserController extends Controller
 
         $data = [
             'name' => $request->name,
-            'email' => $request->email,
             'role' => $request->role,
-            'password' => bcrypt($request->password),
-
         ];
         User::where('id', $id)->update($data);
         return redirect()->route('showUser')->with('success', 'bạn da them danh muc thanh cong');

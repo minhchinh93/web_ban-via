@@ -115,6 +115,7 @@
                                           @foreach ($report->mocups as $rep)
                                           <div class="project-wrapper">
                                             <div class="project">
+                                                <a href="{{ route('deletemocups',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
@@ -124,6 +125,11 @@
                                         </div>
                                           @endforeach
                                         <div class="modal-footer">
+                                            <form class="form-inline" action="{{ route('mocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                <input name="image[]"  type="file" multiple required>
+                                              <button type="submit" class="btn btn-primary" >Add Image Idea</button>
+                                            </form>
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                       </div>
@@ -154,6 +160,7 @@
                                           @foreach ($report->ProductPngDetails as $rep)
                                           <div class="project-wrapper">
                                             <div class="project">
+                                                <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
@@ -163,6 +170,11 @@
                                         </div>
                                           @endforeach
                                         <div class="modal-footer">
+                                            <form class="form-inline" action="{{ route('addImage',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                <input name="image[]"  type="file" multiple required>
+                                              <button type="submit" class="btn btn-primary" >Add Image Idea</button>
+                                            </form>
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                       </div>
