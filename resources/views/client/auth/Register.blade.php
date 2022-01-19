@@ -16,7 +16,6 @@
               <span style="color:red" class="error">{{ $errors->first('email') }}</span>
               <br>
               <select class="form-control "  id="cars" name="role" required>
-                <option >Chọn Quyền</option>
                 <option value="1">designer</option>
                 <option value="2">idea</option>
               </select>   <br>
