@@ -135,17 +135,12 @@
                                         </form>
                                     </td>
                                     <td><a href="basic_table.html#">{{ $times[$i++] ?? null }}</a></td>
-                                    @if ($report->image)
+                                    @if(count($report->product_details)!=0)
                                     <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
-                                      @endif
+                                      @else
                                     <td data-toggle="modal" data-target="#a{{$report->id}}"></td>
-                                        {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
-                                           xem ảnh
-                                          </span> --}}
+                                    @endif
                                     </td>
-                                    {{-- @php
-                                    $i++
-                                    @endphp --}}
                                     <div class="modal fade" id="a{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <section id="main-content">
                                             <section class="wrapper">
@@ -161,7 +156,7 @@
                                               <div class="project-wrapper">
                                                 <div class="project">
                                                     <a href="{{ route('deleteImage',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
-                                                    <div class="photo-wrapper"> 
+                                                    <div class="photo-wrapper">
                                                         <div class="photo">
                                                             <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImageDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImageDetail)}}"  width="100%"></a>
                                                         </div>
@@ -183,17 +178,10 @@
                                     </section>
                                       </div>
                                       @if (count($report->mocups)!=0)
-                                      <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                      <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" ></td>
                                         @else
-                                      <td> </td>
+                                        <td data-toggle="modal" data-target="#c{{$report->id}}"></td>
                                        @endif
-                                        {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
-                                           xem ảnh
-                                          </span> --}}
-                                    </td>
-                                    {{-- @php
-                                    $i++
-                                    @endphp --}}
                                     <div class="modal fade" id="c{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <section id="main-content">
                                             <section class="wrapper">
@@ -226,7 +214,7 @@
                                     </section>
                                       </div>
                                     <td data-toggle="modal" data-target="#b{{$report->id}}">
-                                        @if ($report->ImagePNG)
+                                        @if (count($report->ProductPngDetails)!=0)
                                         <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail ) ?? null }}" style="border-radius: 5%;width: 150px; height :150px"  >
                                         @endif
                                         {{-- <span type="button" class="label label-success" data-toggle="modal" data-target="#b{{$report->id}}">

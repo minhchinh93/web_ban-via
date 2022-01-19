@@ -188,7 +188,7 @@ class DesignerController extends Controller
             ];
             mocupProduct::where('id', $id)->create($dataImage);
         }
-        Product::where('id', $id)->update(['status' => 2]);
+        Product::where('id', $id)->update(['status' => 3]);
         return redirect()->route('Dashboard');
 
     }
