@@ -89,10 +89,8 @@
                                 </section>
                                   </div>
                                   @if (count($report->mocups)!=0)
-                                  <td data-toggle="modal" data-target="#c{{$report->id}}">
-                                  <img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
-                                </td>
-                                   @else
+                                  <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                  @else
                                    <td>
                                    <form class="form-inline" action="{{ route('addmocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                     @csrf
@@ -101,17 +99,6 @@
                                 </form>
                                 @endif
                             </td>
-                              {{-- <td> <span class="label label-info label-mini">chờ duyệt</span></td> --}}
-
-
-
-                                    {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
-                                       xem ảnh
-                                      </span> --}}
-                                </td>
-                                {{-- @php
-                                $i++
-                                @endphp --}}
                                 <div class="modal fade" id="c{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <section id="main-content">
                                         <section class="wrapper">
@@ -153,7 +140,7 @@
                                     @if (count($report->ProductPngDetails)!=0)
                                     <td data-toggle="modal" data-target="#b{{$report->id}}">
                                     <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="border-radius: 5%;width: 150px; height :150px"  >
-                                    <td>
+                                </td>
                                     @else
                                     <td>
                                     <form class="form-inline" action="{{ route('addPngDetails',[$report->id]) }}" method="post" enctype="multipart/form-data">
@@ -161,12 +148,9 @@
                                         <input name="image[]"  type="file" multiple required><br>
                                       <button type="submit" class="btn btn-primary" >Add</button><br>
                                     </form>
-                                  </td>
-                                  @endif
-                                    {{-- <span type="button" class="label label-success" data-toggle="modal" data-target="#b{{$report->id}}">
-                                        xem anh designer
-                                      </span> --}}
                                 </td>
+                                  @endif
+
                                 <div class="modal fade" id="b{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <section id="main-content">
                                         <section class="wrapper">
