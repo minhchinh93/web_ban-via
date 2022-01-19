@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Description</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="5"></textarea>                        </div>
+                            <textarea class="form-control conten" name="description" id="exampleFormControlTextarea1" rows="5"></textarea>                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Image</label>
@@ -154,10 +154,10 @@
                                                 <span aria-hidden="true">&times;</span>
                                               </button>
                                             </div>
-
                                               @foreach ($report->product_details as $rep)
                                               <div class="project-wrapper">
                                                 <div class="project">
+                                                    <a href="{{ route('deleteImage',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
                                                     <div class="photo-wrapper">
                                                         <div class="photo">
                                                             <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImageDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImageDetail)}}"  width="100%"></a>
@@ -167,7 +167,12 @@
                                             </div>
                                               @endforeach
                                             <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                              <form class="form-inline" action="{{ route('addImage',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                <input name="image[]"  type="file" multiple required>
+                                              <button type="submit" class="btn btn-primary" >Add Image Idea</button>
+                                            </form>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                             </div>
                                           </div>
                                         </div>
@@ -250,6 +255,7 @@
                                               @endforeach
                                             <div class="modal-footer">
                                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
                                             </div>
                                           </div>
                                         </div>

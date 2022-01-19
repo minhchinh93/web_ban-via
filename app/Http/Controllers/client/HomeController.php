@@ -293,4 +293,25 @@ class HomeController extends Controller
         }
 
     }
+
+    public function deleteImage($id)
+    {
+
+        ProductDetails::where('id', $id)->delete();
+        return redirect()->route('home');
+
+    }
+    public function addImage(Request $request, $id)
+    {
+
+        foreach ($request->file('image') as $image) {
+            $dataImage = [
+                'product_id' => $id,
+                'ImageDetail' => $image->store('images'),
+            ];
+            ProductDetails::where('id', $id)->create($dataImage);
+        }
+        return redirect()->route('home');
+
+    }
 }

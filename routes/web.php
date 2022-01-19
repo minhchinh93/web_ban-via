@@ -69,6 +69,9 @@ Route::middleware('CheckIdea')->group(function () {
     Route::get('ajax/{id}', [HomeController::class, 'ajax'])->name('ajax');
     Route::get('EditShow/ajax/{id}', [HomeController::class, 'EditShowajax'])->name('EditShowajax');
 
+    Route::get('deleteImage/{id}', [HomeController::class, 'deleteImage'])->name('deleteImage');
+    Route::post('addImage/{id}', [HomeController::class, 'addImage'])->name('addImage');
+
 });
 
 Route::middleware('auth')->group(function () {
