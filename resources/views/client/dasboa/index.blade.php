@@ -49,10 +49,10 @@
                                               <button type="submit" class="btn btn-theme">gửi</button>
                                           </form>
                                 </td>
-                                <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->image)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
-                                    {{-- <span type="button" class="label label-success" value="{{ $report->id }}" data-toggle="modal" data-target="#a{{$report->id}}">
-                                       xem ảnh
-                                      </span> --}}
+                                <td data-toggle="modal" data-target="#a{{$report->id}}">
+                                    @if ($report->image)
+                                    <img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                      @endif
                                 </td>
                                 {{-- @php
                                 $i++
