@@ -125,7 +125,7 @@
                                     <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
                                     <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
                                     <td><b>{{ $report->title ?? null }}</b></td>
-                                    <td class="hidden-phone">{!!  $report->description ?? null !!}
+                                    <td class="hidden-phone" style=" word-wrap: break-word">{!!  $report->description ?? null !!}
                                         <form class="form-inline" action="{{ route('comment',[$report->id]) }}" method="post">
                                       @csrf
                                           <div class="form-group">
@@ -268,11 +268,11 @@
                                     @endif
                                     <td>
                                         <span class="btn btn-success btn-xs" alt="chi tiết">
-                                            @if( $report->status == 3)
+                                            {{-- @if( $report->status == 3) --}}
                                             <a class=" w-75 " style="color:white" href="{{ route('success',[$report->id]) }}"><i class="fa fa-check" alt="chi tiết"></i></a>
-                                            @else
+                                            {{-- @else
                                             <i class="fa fa-check" alt="chi tiết"></i>
-                                            @endif
+                                            @endif --}}
                                               </span>
                                               <span class="btn btn-primary btn-xs">
                                                 @if( $report->status == 3)
