@@ -174,7 +174,7 @@ class DesignerController extends Controller
             ];
             ProductPngDetails::where('id', $id)->create($dataImage);
         }
-        Product::where('id', $id)->update(['status' => 2]);
+        Product::where('id', $id)->update(['status' => 3]);
         return redirect()->route('Dashboard');
 
     }
