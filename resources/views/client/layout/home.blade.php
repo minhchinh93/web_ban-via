@@ -124,8 +124,11 @@
                                 <tr>
                                     <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
                                     <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
-                                    <td><b>{{ $report->title ?? null }}</b></td>
-                                    <td class="hidden-phone" style=" word-wrap: break-word">{!!  $report->description ?? null !!}
+                                    <td  style=" max-width: 200px;"><b>{{ $report->title ?? null }}</b></td>
+                                    <td class="hidden-phone" style=" max-width: 400px;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                   word-wrap: break-word;">{!!  $report->description ?? null !!}
                                         <form class="form-inline" action="{{ route('comment',[$report->id]) }}" method="post">
                                       @csrf
                                           <div class="form-group">

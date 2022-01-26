@@ -37,9 +37,13 @@
                             <tr>
                                 <td><a href="basic_table.html#">{{$name[$i++][0]->name?? null }}</a></td>
                                 <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}({{ $report->size->name ?? null  }})</a></td>
-                                <td class="hidden-phone">{!!  $report->title ?? null !!}
+                                <td class="hidden-phone"  style=" max-width: 200px;">{!!  $report->title ?? null !!}
                                 <td class="hidden-phone">{!!  $report->created_at ?? null !!}
-                                <td class="hidden-phone" >{!!  $report->description ?? null !!}
+                                <td class="hidden-phone"
+                                style=" max-width: 400px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                               word-wrap: break-word;">{!!  $report->description ?? null !!}
                                     <form class="form-inline" action="{{ route('componentDesigner',[$report->id]) }}" method="post">
                                         @csrf
                                          {{-- <input type="hidden" name="_token" value="7dGnLGxMMAmFtuyXszFeLyDNQ3XNu1GxyYOkRDUQ"> --}}
