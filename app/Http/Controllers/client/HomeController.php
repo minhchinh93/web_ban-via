@@ -151,6 +151,7 @@ class HomeController extends Controller
 
     public function addIdea(Request $request)
     {
+
         if ($request->size != "") {
             $size = $request->size;
         } else {
@@ -159,6 +160,11 @@ class HomeController extends Controller
         $images = "";
         if ($request->image) {
             $images = $request->file('image');
+            // if ($request->type_id == "chon") {
+            //     dd('ok');
+            //     $id_type = 0;
+            // }
+            // $id_type = $request->type_id;
             $data = [
                 'id_type' => $request->type_id,
                 'User_id' => $request->User_id,
@@ -345,5 +351,10 @@ class HomeController extends Controller
         }
         return redirect()->route('home');
 
+    }
+
+    public function dasboa()
+    {
+        return view('client.idea.index');
     }
 }

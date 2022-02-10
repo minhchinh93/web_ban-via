@@ -55,6 +55,8 @@ Route::middleware('CheckIdea')->group(function () {
     //     return view('client.test');
     // });
     Route::get('/', [HomeController::class, 'home'])->name('home');
+    Route::get('dasboa', [HomeController::class, 'dasboa'])->name('dasboa');
+
     Route::get('done', [HomeController::class, 'done'])->name('done');
     Route::get('Pending', [HomeController::class, 'Pending'])->name('Pending');
     Route::get('NotReceived', [HomeController::class, 'NotReceived'])->name('NotReceived');

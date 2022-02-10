@@ -254,7 +254,7 @@
                 <h5 class="centered">AUTOCOM</h5>
                 @endif
                   <li class="mt">
-                      <a class="{{ (request()->is('/home')) ? 'active' : 'sub-menu' }}" href="{{ route('showdasboa') }}">
+                      <a class="{{ (request()->is('/dasboa')) ? 'active' : 'sub-menu' }}" href="{{ route('dasboa') }}">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
