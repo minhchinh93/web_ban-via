@@ -7,7 +7,8 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>DASHGUM - Bootstrap Admin Template</title>
+    <title>MEDIA - System Mr.Hải</title>
+    <link rel="icon" href="{{ asset('admin/img/Logo.png') }}" type="image/icon type">
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('admin/css/bootstrap.css')}}" rel="stylesheet">
@@ -47,4 +48,3 @@
 
   </body>
 </html>
- 
