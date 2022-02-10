@@ -61,54 +61,37 @@
                         </tr>
                         </thead>
                         <tbody>
+                            @foreach ($shows as $show)
                         <tr>
-                            <td><a href="basic_table.html#">Company Ltd</a></td>
-                            <td class="hidden-phone">Lorem Ipsum dolor</td>
+                            <td><a href="basic_table.html#">{{ $show->user->name?? null }}</a></td>
+                            @if($show->user->role ==1)
+                            <td><span class="label label-info label-mini">DESIGNER</span></td>
+                            @elseif ($show->user->role ==2)
+                            <td><span class="label label-warning label-mini">IDEA</span></td>
+                            @else
+                            <td><span class="label label-success label-mini">ADMIN</span></td>
+                            @endif
+                             <td>{{$show->id_idea}} </td>
                             <td>12000.00$ </td>
-                            <td>12000.00$ </td>
-                            <td><span class="label label-info label-mini">Due</span></td>
                             <td>
-                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                @if (  $show->deleted_at ==  null)
+                                <span class="label label-info label-mini">active</span></td>
+                                @else
+                                <span class="label label-danger">disabled</span>
+                                @endif
+                            </td>
+                            <td>
+                                <span class="btn btn-success btn-xs">
+                                    <a style="color:white" href="{{ route('DetailMember',[$show->id]) }}">
+                                     Detail
+                                  </a>
+                                 </span>
+                                {{-- <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button> --}}
+                                {{-- <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button> --}}
                             </td>
                         </tr>
-                        <tr>
-                            <td><a href="basic_table.html#">Company Ltd</a></td>
-                            <td class="hidden-phone">Lorem Ipsum dolor</td>
-                            <td>12000.00$ </td>
-                            <td>12000.00$ </td>
-                            <td><span class="label label-info label-mini">Due</span></td>
-                            <td>
-                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="basic_table.html#">Company Ltd</a></td>
-                            <td class="hidden-phone">Lorem Ipsum dolor</td>
-                            <td>12000.00$ </td>
-                            <td>12000.00$ </td>
-                            <td><span class="label label-info label-mini">Due</span></td>
-                            <td>
-                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="basic_table.html#">Company Ltd</a></td>
-                            <td class="hidden-phone">Lorem Ipsum dolor</td>
-                            <td>12000.00$ </td>
-                            <td>12000.00$ </td>
-                            <td><span class="label label-info label-mini">Due</span></td>
-                            <td>
-                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                            </td>
-                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div><!-- /content-panel -->

@@ -13,7 +13,7 @@ class UserController extends Controller
     public function showUser(Request $request)
     {
         $keyword = $request->keyword;
-        $shows = User::where('name', 'like', "%{$keyword}%")->withTrashed()->paginate(10);
+        $shows = User::where('name', 'like', "%{$keyword}%")->withTrashed()->paginate(40);
         if ($shows->total() > 0) {
             $total = $shows->total();
             $count = User::withTrashed()->count();

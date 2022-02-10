@@ -134,7 +134,7 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     //show dasboa
     Route::get('showdasboa', [dasboaController::class, 'showdasboa'])->name('showdasboa');
     // chi tiêt hóa dơn user
-    Route::get('showList/chitiet/{id}', [dasboaController::class, 'chitiet'])->name('chitiet');
+    Route::get('DetailMember/{id}', [dasboaController::class, 'DetailMember'])->name('DetailMember');
 
     //show user
     Route::get('showUser', [UserController::class, 'showUser'])->name('showUser');
