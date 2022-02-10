@@ -44,63 +44,76 @@
                 <a style="color:red" href="#"><p>see more !</p></a>
             </div>
         </div>
-                {{-- <div class="col-md-12">
-                    <div class="content-panel">
-                        <h4><i class="fa fa-angle-right"></i> Advanced Table</h4><hr><table class="table table-striped table-advance table-hover">
+        <div class="row mt">
+            <div class="col-md-12">
+                <div class="content-panel">
+                    <h4><i class="fa fa-angle-right"></i> MEMBER MANAGER </h4><hr><table class="table table-striped table-advance table-hover">
 
 
-                            <thead>
-
-                            <tr>
-                                <th><i class="fa fa-bullhorn"></i> stt</th>
-                                <th class="hidden-phone"><i class="fa fa-question-circle"></i> khách hàng</th>
-                                <th><i class=" fa fa-edit"></i> số lượng</th>
-                                <th><i class=" fa fa-edit"></i>thời gian </th>
-                                <th><i class=" fa fa-edit"></i> giá trị</th>
-                                <th><i class="fa fa-bullhorn"></i> địa chỉ</th>
-                                <th><i class="fa fa-bullhorn"></i> lưu ý</th>
-                                <th><i class="fa fa-bullhorn"></i> sô điệnt hoại khách hang</th>
-                                <th><i class=" fa fa-edit"></i> trạng thái</th>
-                                <th><i class=" fa fa-edit"></i> chi tiết</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                                @php
-                                    $t=0;
-                                @endphp
-
-                                @foreach ($tables as $table)
-                                    @php
-                                    $t+=1;
-                                @endphp
-                                <tr>
-                                    <td><a href="basic_table.html#">{{ $t }}</a></td>
-                                    <td class="hidden-phone">{{ $table->khach_hang }}</td>
-                                    <td class="hidden-phone">{{ $table->so_luong }}</td>
-                                    <td class="hidden-phone">{{ $table->date_order }}</td>
-                                    <td>{{ $table->total }}</td>
-                                    <td> {{ $table->address }}</td>
-                                    <td> {{ $table->note }}</td>
-                                    <td> {{ $table->phone }}</td>
-                                    @if( $table->payment == 'COD')
-                                    <td><span class="label label-info label-mini">COD</span></td>
-                                    @else
-                                    <td> <span class="label label-warning label-mini">ATM</span></td>
-                                    @endif
-                                    <td>
-                                        <span class="btn btn-success btn-xs">
-                                            <a class=" w-75 " style="color:white" href="{{ route('chitiet',[$table->id]) }}"><i class="fa fa-pencil"></i></a>
-                                          </span>
-                                    </td>
-                                </tr>
-                                @endforeach
-
-                            </tbody>
-                        </table>
-                    </div><!-- /content-panel -->
-                </div><!-- /col-md-12 --> --}}
+                        <thead>
+                        <tr>
+                            <th><i class="fa fa-bullhorn"></i> NAME</th>
+                            <th class="hidden-phone"><i class="fa fa-question-circle"></i> ROLE</th>
+                            <th><i class="fa fa-bookmark"></i> PRODUCT/DAY</th>
+                            <th><i class="fa fa-bookmark"></i> TOTAL PRODUCT</th>
+                            <th><i class=" fa fa-edit"></i> Status</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><a href="basic_table.html#">Company Ltd</a></td>
+                            <td class="hidden-phone">Lorem Ipsum dolor</td>
+                            <td>12000.00$ </td>
+                            <td>12000.00$ </td>
+                            <td><span class="label label-info label-mini">Due</span></td>
+                            <td>
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="basic_table.html#">Company Ltd</a></td>
+                            <td class="hidden-phone">Lorem Ipsum dolor</td>
+                            <td>12000.00$ </td>
+                            <td>12000.00$ </td>
+                            <td><span class="label label-info label-mini">Due</span></td>
+                            <td>
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="basic_table.html#">Company Ltd</a></td>
+                            <td class="hidden-phone">Lorem Ipsum dolor</td>
+                            <td>12000.00$ </td>
+                            <td>12000.00$ </td>
+                            <td><span class="label label-info label-mini">Due</span></td>
+                            <td>
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="basic_table.html#">Company Ltd</a></td>
+                            <td class="hidden-phone">Lorem Ipsum dolor</td>
+                            <td>12000.00$ </td>
+                            <td>12000.00$ </td>
+                            <td><span class="label label-info label-mini">Due</span></td>
+                            <td>
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /content-panel -->
+            </div><!-- /col-md-12 -->
+        </div>
 
   </section><!-- --/wrapper ---->
 </section>

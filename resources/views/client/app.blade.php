@@ -7,9 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
-    <title>DASHGUM - FREE Bootstrap Admin Template</title>
-
+    {{-- <link rel="shortcut icon" href="blob:https://web.telegram.org/d54200bf-9471-486d-8945-0913f944ae09" /> --}}
+    <title>MEDIA - system Mr.Hải</title>
+    <link rel="icon" href="{{ asset('admin/img/Logo.png') }}" type="image/icon type">
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('admin/css/bootstrap.css') }}" rel="stylesheet">
     <!--external css-->
@@ -247,7 +247,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 
-              	  <p class="centered"><a href="#"><img src="{{ asset('admin/img/ui-sam.jpg') }}" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="#"><img src="{{ asset('admin/img/Logo.png') }}" class="img-circle" width="60"></a></p>
                    @if(Auth::check())
               	  <h5 class="centered">Chào mừng {{ Auth::user()->name }}</h5>
                 @else
