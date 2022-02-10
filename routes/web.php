@@ -47,6 +47,7 @@ Route::middleware('CheckDesinger')->group(function () {
 
     Route::get('deletemocups/{id}', [DesignerController::class, 'deletemocups'])->name('deletemocups');
     Route::post('addmocups/{id}', [DesignerController::class, 'addmocups'])->name('addmocups');
+    Route::post('deleteMocupAll/{id}', [DesignerController::class, 'deleteMocupAll'])->name('deleteMocupAll');
 
 });
 Route::middleware('CheckIdea')->group(function () {

@@ -1,54 +1,50 @@
 @extends('admin.app')
-
-
 @section ('content')
-
 <section id="main-content">
     <section class="wrapper">
         <div class="row mtbox">
             <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                 <div class="box1">
                     <span class="li_heart"></span>
-                    <h5>lượng khách hàng đã mua hàng</h5>
-                    <h3>{{ $totalcustomer }}</h3>
+                    <h5>IDEA OF THE DAY : {{ 100 }} </h5>
+                    <h4>IDEA SUCCESS : {{ 1000 }}</h4>
                 </div>
-                    <p>{{ $totalcustomer }} người đã đăng ký !</p>
+                <a style="color:red" href="#"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1">
                     <span class="li_cloud"></span>
-                    <h5>doanh số thu về</h5>
-                    <h3>{{ number_format($totalbill, 0) }} vnđ</h3>
+                    <h5>DESIGNER OF THE DAY: {{ 100 }}</h5>
+                    <h4>DESIGNER SUCCESS : {{ 1000 }}</h4>
                 </div>
-                    <p>thu về  vnđ.</p>
+                <a style="color:red" href="#"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1">
                     <span class="li_stack"></span>
-                    <h5>số lượng sản phẩm đã bán ra</h5>
-                    <h3>{{ $totalbill_detaill }}</h3>
+                    <h5>MEMBER IDEA: 10 </h5>
+                    <h4>MEMBER DESIGNER: 20</h4>
                 </div>
-                    <p>đã bán được {{ $totalbill_detaill }} sản phẩm !</p>
+                <a style="color:red" href="#"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1">
                     <span class="li_news"></span>
-                    <h5>số đơn hành thanh toán AtM</h5>
-                    <h3>{{ $totalATM }}</h3>
+                    <h5>TOTAL IDEA:</h5>
+                    <h4><b>{{ null }} 1000</b></h4>
                 </div>
-                    <p>có {{ $totalATM }} thanh toán trước qua hóa đơn</p>
+                <a style="color:red" href="#"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1">
                     <span class="li_data"></span>
-                    <h5>số đơn hàng thanh toán qua COD</h5>
-                    <h3>{{ $totalCOD }}</h3>
+                    <h5> TOTAL DESIGNER:</h5>
+                    <h4><b>{{ null }} 1000</b></h4>
                 </div>
-                <p>có {{ $totalCOD }} thanh toán trước qua hóa đơn</p>
+                <a style="color:red" href="#"><p>see more !</p></a>
             </div>
-
-
-                <div class="col-md-12">
+        </div>
+                {{-- <div class="col-md-12">
                     <div class="content-panel">
                         <h4><i class="fa fa-angle-right"></i> Advanced Table</h4><hr><table class="table table-striped table-advance table-hover">
 
@@ -104,7 +100,7 @@
                             </tbody>
                         </table>
                     </div><!-- /content-panel -->
-                </div><!-- /col-md-12 -->
+                </div><!-- /col-md-12 --> --}}
 
   </section><!-- --/wrapper ---->
 </section>

@@ -192,4 +192,11 @@ class DesignerController extends Controller
         return redirect()->route('Dashboard');
 
     }
+    public function deleteMocupAll(Request $request, $id)
+    {
+        dd($id);
+        mocupProduct::where('id', $id)->delete();
+        return redirect()->route('Dashboard');
+
+    }
 }

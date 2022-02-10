@@ -173,7 +173,6 @@ class HomeController extends Controller
                 'image' => $images[0]->store('images'),
                 'description' => $request->description,
                 'title' => $request->title,
-
             ];
 
             $productDtail = Product::create($data);

@@ -109,10 +109,13 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
                                         <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLongTitle">Moccup</h5>
+                                          {{-- <h5 class="modal-title" id="exampleModalLongTitle">Moccup</h5> --}}
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
+                                          <a class=" w-75 " style="color:white" href="{{ route('deleteMocupAll',[$report->id]) }}">
+                                            <span type="button" class="btn btn-danger" data-dismiss="modal">DELETE ALL</span>
+                                        </a>
                                         </div>
 
                                           @foreach ($report->mocups as $rep)
@@ -133,7 +136,7 @@
                                                 <input name="image[]"  type="file" multiple required>
                                               <button type="submit" class="btn btn-primary" >Add Image Idea</button>
                                             </form>
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                       </div>
                                     </div>
@@ -185,6 +188,9 @@
                                                 <input name="image[]"  type="file" multiple required>
                                               <button type="submit" class="btn btn-primary" >Add Image Idea</button>
                                             </form>
+                                            <a class=" w-75 " style="color:white" href="{{ null }}">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">DELETE ALL</button>
+                                            </a>
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                       </div>
