@@ -49,11 +49,58 @@ class HomeController extends Controller
         $totalDone = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 3)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 1)->count();
+        $totalallidea = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->count();
         return view('client.layout.home',
             ['designers' => $designer,
                 'reports' => $report,
                 'totalDone' => $totalDone,
                 'totalPending' => $totalPending,
+                'totalNotReceived' => $totalNotReceived,
+                'type_products' => $type_product,
+                'totalallidea' => $totalallidea,
+                'times' => $time,
+                'sizes' => $size,
+            ]);
+    }
+    public function allidea(Request $request)
+    {
+        Carbon::setLocale('vi');
+        $designer = User::get()->where('role', 1);
+        $type_product = type_product::get();
+        $size = size::get();
+        $keyword = $request->keyword;
+        // dd($size[1]);
+        $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
+            ->Where('title', 'like', "%{$keyword}%")
+        // ->Where('description', 'like', "%{$keyword}%")
+        // ->orWhere('updated_at', 'like', "%{$keyword}%")
+            ->paginate(20);
+        if ($report->total() != 0) {
+            foreach ($report as $billdd) {
+                $dt[] = Carbon::create($billdd->created_at);
+            }
+
+            foreach ($dt as $key) {
+                $now = Carbon::now();
+                $time[] = $key->diffForHumans($now);
+            }
+        } else {
+            $time = '';
+
+        }
+        // dd($report[0]->mocups);
+        // dd(count($report[0]->mocups));
+
+        $totalDone = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->count();
+        $totalPending = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 3)->count();
+        $totalNotReceived = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 1)->count();
+        $totalallidea = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->count();
+        return view('client.layout.home',
+            ['designers' => $designer,
+                'reports' => $report,
+                'totalDone' => $totalDone,
+                'totalPending' => $totalPending,
+                'totalallidea' => $totalallidea,
                 'totalNotReceived' => $totalNotReceived,
                 'type_products' => $type_product,
                 'times' => $time,
@@ -117,6 +164,7 @@ class HomeController extends Controller
 
             ]);
     }
+
     public function Pending(Request $request)
     {
         $size = size::get();

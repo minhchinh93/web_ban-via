@@ -61,6 +61,7 @@ Route::middleware('CheckIdea')->group(function () {
 
     Route::get('done', [HomeController::class, 'done'])->name('done');
     Route::get('Pending', [HomeController::class, 'Pending'])->name('Pending');
+    Route::get('allidea', [HomeController::class, 'allidea'])->name('allidea');
     Route::get('NotReceived', [HomeController::class, 'NotReceived'])->name('NotReceived');
     Route::get('success/{id}', [HomeController::class, 'success'])->name('success');
     Route::get('warning/{id}', [HomeController::class, 'warning'])->name('warning');
