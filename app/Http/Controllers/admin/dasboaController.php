@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\mocupProduct;
+use App\Models\Product;
+use App\Models\ProductPngDetails;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class dasboaController extends Controller
@@ -11,14 +15,18 @@ class dasboaController extends Controller
     //
     public function showdasboa()
     {
-
-        // $totalbill = bill::sum('total');
-        // $totalbill_detaill = bill_detaill::sum('quantity');
-        // $totalcustomer = customer::all()->count();
-        // $totalidea = Product::where('description', '<>', null)->count();
-        // $totalDesign = Product::where('description', '<>', null)->count();
+        $dt = Carbon::now('Asia/Ho_Chi_Minh');
+        $time = $dt->toDateString();
+        $totaDay = Product::where('created_at', 'LIKE', '%' . $time . '%')->count();
+        $totaSusecDay = Product::where('created_at', 'LIKE', '%' . $time . '%')->where('status', 5)->count();
+        $totalidea = Product::where('description', '<>', null)->count();
+        $totalPNG = ProductPngDetails::all()->count();
+        $totaldayPNG = ProductPngDetails::where('created_at', 'LIKE', '%' . $time . '%')->count();
+        $totalMockup = mocupProduct::all()->count();
+        $totaldayMockup = mocupProduct::where('created_at', 'LIKE', '%' . $time . '%')->count();
+        $totalIdea = User::where('role', '<>', 2)->count();
+        $totalDesigner = User::where('role', '<>', 1)->count();
         // $totalATM = bill::where('payment', 'ATM')->count();
-
         $Idea = User::join('products', 'products.id_idea', '=', 'users.id')
             ->select(DB::raw('COUNT(products.id_idea) as "sum",
             users.name as "name",
@@ -31,16 +39,6 @@ class dasboaController extends Controller
             ->groupBy('products.id_idea')
             ->withTrashed()
             ->get();
-
-        // SELECT
-        // COUNT(product_png_details.id) as product_png_details,
-        // COUNT(mocup_products.id) as mocup_products, users.name, users.role
-        // FROM users
-        // INNER JOIN products ON products.User_id = users.id
-        // INNER JOIN product_png_details ON products.id = product_png_details.product_id
-        // INNER JOIN mocup_products ON products.id = mocup_products.product_id
-        // GROUP BY products.User_id;
-
         $designer = User::join('products', 'products.User_id', '=', 'users.id')
             ->join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
             ->join('mocup_products', 'mocup_products.product_id', '=', 'products.id')
@@ -66,36 +64,20 @@ class dasboaController extends Controller
             , [
                 'shows' => $Idea,
                 'designer' => $designer,
-                //     'totalbill_detaill' => $totalbill_detaill,
-                //     'totalcustomer' => $totalcustomer,
-                //     'totalCOD' => $totalCOD,
-                //     'totalATM' => $totalATM,
-                //     'tables' => $tables,
+                'totalDesign' => $totalPNG + $totalMockup,
+                'totalIdea' => $totalidea,
+                'totaDay' => $totaDay,
+                'totaSusecDay' => $totaSusecDay,
+                'totalDayDesigner' => $totaldayPNG + $totaldayMockup,
+                'totalIdea' => $totalIdea,
+                'totalDesigner' => $totalDesigner,
             ]
         );
     }
     public function DetailMember($id)
     {
-        // $customer = customer::find($id);
-        // $chitiet = bill::join('bill_detaills', 'bill_detaills.id_bill', '=', 'bills.id')
-        //     ->join('products', 'bill_detaills.id_product', '=', 'products.id')
-        //     ->join('users', 'bills.id_User', '=', 'users.id')
-        //     ->select(DB::raw('bill_detaills.quantity,
-        // bills.date_order,
-        // users.name as "name",
-        // products.name as "name_product",
-        // bills.total,
-        // bill_detaills.unit_price,
-        // products.image
-        // '))
-        //     ->where('users.id', $id)
-        //     ->get();
 
         return view('admin/dasboa/chitiet',
-            // [
-            //     'tables' => $chitiet,
-            //     'customer' => $customer,
-            // ]
         );
     }
 }
