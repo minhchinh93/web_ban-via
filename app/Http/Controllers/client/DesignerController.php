@@ -16,11 +16,13 @@ class DesignerController extends Controller
     //
     public function Dashboard()
     {
-        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->paginate(5);
+        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->paginate(20);
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->count();
+        $totalPendingDS = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 3)->count();
+
         if ($report->total() > 0) {
             foreach ($report as $rep) {
                 $userIdeas[] = User::where('id', $rep->id_idea)->get();
@@ -39,6 +41,7 @@ class DesignerController extends Controller
                 'totalDone' => $totalDone,
                 'totalNotSeen' => $totalNotSeen,
                 'totalprioritize' => $totalNotReceived,
+                'totalPendingDS' => $totalPendingDS,
                 'name' => $name,
             ]);
     }
@@ -48,22 +51,38 @@ class DesignerController extends Controller
         $designer = User::get()->where('role', 1);
         $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->paginate(5);
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
+        $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
+        $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
+        $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->count();
+        $totalPendingDS = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 3)->count();
 
         return view('client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
+                'totalPending' => $totalPending,
                 'totalDone' => $totalDone,
+                'totalNotSeen' => $totalNotSeen,
+                'totalprioritize' => $totalNotReceived,
+                'totalPendingDS' => $totalPendingDS,
             ]);
     }
     public function replay(Request $request)
     {
         $designer = User::get()->where('role', 1);
         $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->paginate(5);
+        $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
+        $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
+        $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->count();
+        $totalPendingDS = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 3)->count();
         return view('client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
                 'totalPending' => $totalPending,
+                'totalDone' => $totalDone,
+                'totalNotSeen' => $totalNotSeen,
+                'totalprioritize' => $totalNotReceived,
+                'totalPendingDS' => $totalPendingDS,
 
             ]);
     }
@@ -71,23 +90,56 @@ class DesignerController extends Controller
     {
         $designer = User::get()->where('role', 1);
         $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->paginate(5);
+        $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
+        $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
+        $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->count();
+        $totalPendingDS = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 3)->count();
         return view('client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
+                'totalPending' => $totalPending,
+                'totalDone' => $totalDone,
                 'totalNotSeen' => $totalNotSeen,
+                'totalprioritize' => $totalNotReceived,
+                'totalPendingDS' => $totalPendingDS,
             ]);
     }
     public function prioritize(Request $request)
     {
-
         $designer = User::get()->where('role', 1);
         $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->paginate(5);
+        $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
+        $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
+        $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->count();
+        $totalPendingDS = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 3)->count();
         return view('client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
+                'totalPending' => $totalPending,
+                'totalDone' => $totalDone,
+                'totalNotSeen' => $totalNotSeen,
                 'totalprioritize' => $totalNotReceived,
+                'totalPendingDS' => $totalPendingDS]);
+    }
+    public function PendingDS(Request $request)
+    {
+        $designer = User::get()->where('role', 1);
+        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 3)->paginate(10);
+        $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
+        $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
+        $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
+        $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->count();
+        $totalPendingDS = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 3)->count();
+        return view('client.dasboa.index',
+            ['designers' => $designer,
+                'reports' => $report,
+                'totalPending' => $totalPending,
+                'totalDone' => $totalDone,
+                'totalNotSeen' => $totalNotSeen,
+                'totalprioritize' => $totalNotReceived,
+                'totalPendingDS' => $totalPendingDS,
             ]);
     }
     public function Detail($id)
@@ -175,7 +227,7 @@ class DesignerController extends Controller
             ProductPngDetails::where('id', $id)->create($dataImage);
         }
         Product::where('id', $id)->update(['status' => 3]);
-        return redirect()->route('Dashboard');
+        return redirect()->route('PendingDS');
 
     }
     public function addmocups(Request $request, $id)
@@ -189,7 +241,7 @@ class DesignerController extends Controller
             mocupProduct::where('id', $id)->create($dataImage);
         }
         Product::where('id', $id)->update(['status' => 3]);
-        return redirect()->route('Dashboard');
+        return redirect()->route('PendingDS');
 
     }
     public function deleteMocupAll(Request $request, $id)

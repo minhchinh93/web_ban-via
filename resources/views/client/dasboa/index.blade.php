@@ -8,11 +8,13 @@
         <div class="row mt">
             <div class="col-md-12">
                 <div class="content-panel">
-                    <h4><i class="fa fa-angle-right"></i>Nhận việc</h4><hr><table class="table table-striped table-advance table-hover">
-                        <p style="margin-left: 2%;" class="category"><a style="color: rgb(13, 182, 36)" href="{{ route('complete') }}">Hoàn thành ({{ $totalDone ?? null}}) </a>
+                    <h4><i class="fa fa-angle-right"></i>Nhận việc</h4><hr>
+                    <table class="table table-striped table-advance table-hover">
+                        <h4 style="margin-left: 2%;" class="category"><a style="color: rgb(13, 182, 36)" href="{{ route('complete') }}">Hoàn thành ({{ $totalDone ?? null}}) </a>
                             | <a  style="color: rgb(79, 76, 230)" href="{{ route('replay') }}">làm lại ({{ $totalPending ?? null}})</a>
                             | <a style="color:orange" href="{{ route('NotSeen') }}">chưa nhận ({{ $totalNotSeen ?? null}})</a>
-                            | <a style="color:red" href="{{ route('prioritize') }}">ưu tiên ({{ $totalprioritize ?? null}})</a></p>
+                            | <a style="color:rgb(225, 0, 255)" href="{{ route('PendingDS') }}">Đang làm ({{ $totalPendingDS ?? null}})</a>
+                            | <a style="color:red" href="{{ route('prioritize') }}">ưu tiên ({{ $totalprioritize ?? null}})</a></h4>
 
                         <thead>
                         <tr>

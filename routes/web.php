@@ -37,6 +37,7 @@ Route::middleware('CheckDesinger')->group(function () {
     Route::post('acceptDetail/{id}', [DesignerController::class, 'acceptDetail'])->name('acceptDetail');
     Route::get('accept/{id}', [DesignerController::class, 'accept'])->name('accept');
     Route::get('complete', [DesignerController::class, 'complete'])->name('complete');
+    Route::get('PendingDS', [DesignerController::class, 'PendingDS'])->name('PendingDS');
     Route::get('replay', [DesignerController::class, 'replay'])->name('replay');
     Route::get('NotSeen', [DesignerController::class, 'NotSeen'])->name('NotSeen');
     Route::get('prioritize', [DesignerController::class, 'prioritize'])->name('prioritize');

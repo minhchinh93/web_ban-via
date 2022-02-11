@@ -29,7 +29,7 @@ class HomeController extends Controller
             ->Where('title', 'like', "%{$keyword}%")
         // ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
-            ->paginate(5);
+            ->paginate(20);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
