@@ -38,7 +38,7 @@
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1">
                     <span class="li_stack"></span>
-                    <h5>MEMBER IDEA: {{ $totalIdea }} </h5>
+                    <h5>MEMBER IDEA: {{ $totalIdeamember }} </h5>
                     <h4>MEMBER DESIGNER: {{ $totalDesigner }}</h4>
                 </div>
                 <a style="color:red" href="#"><p>see more !</p></a>

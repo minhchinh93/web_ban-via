@@ -19,12 +19,12 @@ class dasboaController extends Controller
         $time = $dt->toDateString();
         $totaDay = Product::where('created_at', 'LIKE', '%' . $time . '%')->count();
         $totaSusecDay = Product::where('created_at', 'LIKE', '%' . $time . '%')->where('status', 5)->count();
-        $totalidea = Product::where('description', '<>', null)->count();
+        $totalidea = Product::withTrashed()->count();
         $totalPNG = ProductPngDetails::all()->count();
         $totaldayPNG = ProductPngDetails::where('created_at', 'LIKE', '%' . $time . '%')->count();
         $totalMockup = mocupProduct::all()->count();
         $totaldayMockup = mocupProduct::where('created_at', 'LIKE', '%' . $time . '%')->count();
-        $totalIdea = User::where('role', '<>', 2)->count();
+        $totalIdeamember = User::where('role', '<>', 2)->count();
         $totalDesigner = User::where('role', '<>', 1)->count();
         // $totalATM = bill::where('payment', 'ATM')->count();
         $Idea = User::join('products', 'products.id_idea', '=', 'users.id')
@@ -69,7 +69,7 @@ class dasboaController extends Controller
                 'totaDay' => $totaDay,
                 'totaSusecDay' => $totaSusecDay,
                 'totalDayDesigner' => $totaldayPNG + $totaldayMockup,
-                'totalIdea' => $totalIdea,
+                'totalIdeamember' => $totalIdeamember,
                 'totalDesigner' => $totalDesigner,
             ]
         );
