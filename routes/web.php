@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\dasboaController;
 //admin
+use App\Http\Controllers\admin\DetailController;
 use App\Http\Controllers\admin\productController;
 use App\Http\Controllers\admin\typeProductController;
 use App\Http\Controllers\admin\UserController;
@@ -158,6 +159,9 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     Route::get('action', [UserController::class, 'action'])->name('action');
 
     Route::get('findUser', [UserController::class, 'findUser'])->name('findUser');
+
+    Route::get('DetailDesigner/{id}', [DetailController::class, 'DetailDesigner'])->name('DetailDesigner');
+    Route::get('DetailIdea/{id}', [DetailController::class, 'DetailIdea'])->name('DetailIdea');
 
     //=========khoi categoru============//
     //show list ctegori

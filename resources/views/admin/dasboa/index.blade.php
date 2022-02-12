@@ -83,7 +83,7 @@
                             </td>
                             <td>
                                 <span class="btn btn-success btn-xs">
-                                    <a style="color:white" href="{{ route('DetailMember',[$show->id]) }}">
+                                    <a style="color:white" href="{{ route('DetailIdea',[$show->id]) }}">
                                      Detail
                                   </a>
                                  </span>
@@ -138,7 +138,7 @@
                             </td>
                             <td>
                                 <span class="btn btn-success btn-xs">
-                                    <a style="color:white" href="{{ route('DetailMember',[$show->id]) }}">
+                                    <a style="color:white" href="{{ route('DetailDesigner',[$show->id]) }}">
                                      Detail
                                   </a>
                                  </span>

@@ -16,7 +16,6 @@
                                 <th><i class="fa fa-bullhorn"></i> giá </th>
                                 <th><i class="fa fa-bullhorn"></i> hình ảnh </th>
                                 <th><i class="fa fa-bullhorn"></i> ngày oder</th>
-
                                 <th></th>
                             </tr>
 
