@@ -19,7 +19,7 @@ class dasboaController extends Controller
         $time = $dt->toDateString();
         $totaDay = Product::where('created_at', 'LIKE', '%' . $time . '%')->count();
         $totaSusecDay = Product::where('created_at', 'LIKE', '%' . $time . '%')->where('status', 5)->count();
-        $totalidea = Product::withTrashed()->count();
+        $totalidea = Product::all()->count();
         $totalPNG = ProductPngDetails::all()->count();
         $totaldayPNG = ProductPngDetails::where('created_at', 'LIKE', '%' . $time . '%')->count();
         $totalMockup = mocupProduct::all()->count();
@@ -37,7 +37,6 @@ class dasboaController extends Controller
             '
             ))
             ->groupBy('products.id_idea')
-            ->withTrashed()
             ->get();
         $designer = User::join('products', 'products.User_id', '=', 'users.id')
             ->join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
@@ -52,7 +51,6 @@ class dasboaController extends Controller
             '
             ))
             ->groupBy('products.User_id')
-            ->withTrashed()
             ->get();
         // dd($designer);
         // $shows = User::where('name', 'like', "%{$keyword}%")->withTrashed()->paginate(10);
