@@ -67,12 +67,12 @@
                     <div class="content-panel">
                         <h4><i class="fa fa-angle-right"></i>  Bảng Báo Cáo</h4>
                         <div class="col-lg-4">
-                            <h4 style="margin-left: 2%;" class="category"><a style="color: gray" href="{{ route('done') }}"> Hoàn thành ({{ $totalDone ?? null}}) </a>
+                            <h5 style="margin-left: 2%;" class="category"><a style="color: gray" href="{{ route('done') }}"> Hoàn thành ({{ $totalDone ?? null}}) </a>
                                  | <a  style="color: rgb(13, 182, 36)" href="{{ route('Pending') }}">chờ duyệt ({{ $totalPending ?? null}})</a>
                                  | <a style="color:red" href="{{ route('NotReceived') }}">chưa nhận ({{ $totalNotReceived ?? null}})</a>
                                  | <a style="color:red" href="{{ route('allidea') }}"> tất cả ({{ $totalallidea ?? null}})</a>
 
-                                </h4>
+                                </h5>
                         </div><!-- /col-lg-12 -->
                         <div class="col-lg-7">
                             <div class="row">
