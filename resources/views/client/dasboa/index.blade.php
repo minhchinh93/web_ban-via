@@ -4,7 +4,7 @@
 @section ('content')
 
 <section id="main-content">
-    <section class="wrapper" style="color:black; font-family:Regular">
+    <section class="wrapper" style="color:#989898; font-family:Regular">
         <div class="row mt">
             <div class="col-md-12">
                 <div class="content-panel">
