@@ -1,7 +1,7 @@
 @extends('admin.app')
 @section ('content')
 <section id="main-content">
-    <section class="wrapper" style="color:black">
+    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif">
         <div class="row mtbox">
             <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                 <div class="box1">
