@@ -12,6 +12,7 @@
     <link rel="icon" href="{{ asset('admin/img/Logo.png') }}" type="image/icon type">
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('admin/css/bootstrap.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--external css-->
     <link href="{{ asset('admin/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/zabuto_calendar.css') }}">

@@ -85,7 +85,7 @@
                                             <option value="{{$type_product->id}}">{{  $type_product->name }}</option>
                                             @endforeach
                                           </select>
-                                          <button type="submit" class="btn btn-theme ">tim kiem SP </button>
+                                          <button type="submit" class="btn btn-theme "><i class="fa-solid fa-magnifying-glass"></i> </button>
                                     </form>
                                 </div>
                                 <div class="col-lg-6">
@@ -94,7 +94,7 @@
                                             <label class="sr-only" for="exampleInputEmail2">tim kiem</label>
                                             <input type="text" class="form-control" name="keyword" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword }}" placeholder="tim kiem">
                                         </div>
-                                        <button type="submit" class="btn btn-theme">tim kiem</button>
+                                        <button type="submit" class="btn btn-theme"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     </form>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                                           <div class="form-group">
                                                 <input type="text" style="border-radius: 15px;" class="form-control" id="exampleInputEmail2" name="comment" placeholder="comment">
                                             </div>
-                                            <button type="submit" style="border-radius: 10px;" class="btn btn-theme">gửi</button>
+                                            <button type="submit" style="border-radius: 10px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
                                         </form>
                                     </td>
                                     <td><a href="basic_table.html#">{{ $times[$i++] ?? null }}</a></td>

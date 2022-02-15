@@ -52,7 +52,7 @@
                                           <div class="form-group">
                                                   <input style="border-radius: 15px;"  type="text" class="form-control" id="exampleInputEmail2" name="comment" placeholder="comment">
                                               </div>
-                                              <button style="border-radius: 10px;" type="submit" class="btn btn-theme">gủi</button>
+                                              <button style="border-radius: 10px;" type="submit" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
                                           </form>
                                 </td>
                                 <td data-toggle="modal" data-target="#a{{$report->id}}">
