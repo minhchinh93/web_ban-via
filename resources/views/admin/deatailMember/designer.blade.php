@@ -3,7 +3,7 @@
 
 @section ('content')
 <section id="main-content">
-    <section class="wrapper">
+    <section class="wrapper" style="color:black">
         <div class="row mt">
             <div class="col-md-12">
                 <div class="content-panel">

@@ -1,7 +1,7 @@
 @extends('admin.app')
 @section ('content')
 <section id="main-content">
-    <section class="wrapper">
+    <section class="wrapper" style="color:black">
         <div class="row mtbox">
             <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                 <div class="box1">
@@ -98,9 +98,9 @@
                 </div><!-- /content-panel -->
             </div><!-- /col-md-12 -->
         </div>
-        <div class="row mt">
+        <div class="row mt" >
             <div class="col-md-12">
-                <div class="content-panel">
+                <div class="content-panel" >
                     <h4><i class="fa fa-angle-right"></i> DESIGNER MANAGER  </h4><hr><table class="table table-striped table-advance table-hover">
 
 

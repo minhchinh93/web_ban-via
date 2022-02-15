@@ -4,7 +4,7 @@
 @section ('content')
 <!--main content start-->
 <section id="main-content">
-    <section class="wrapper">
+    <section class="wrapper" style="color:black" >
 
         <div class="col-lg-12">
             <div class="form-panel">
