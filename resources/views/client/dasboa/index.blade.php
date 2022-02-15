@@ -7,7 +7,7 @@
     <section class="wrapper" style="color:black; font-family:Roboto,sans-serif">
         <div class="row mt">
             <div class="col-md-12">
-                <div class="content-panel">
+                <div class="content-panel" style=" border-radius: 20px;">
                     <h4><i class="fa fa-angle-right"></i>Nhận việc</h4><hr>
                     <table class="table table-striped table-advance table-hover">
                         <h5 style="margin-left: 2%;" class="category"><a style="color: rgb(13, 182, 36)" href="{{ route('complete') }}">Hoàn thành ({{ $totalDone ?? null}}) </a>
@@ -50,9 +50,9 @@
                                         @csrf
                                          {{-- <input type="hidden" name="_token" value="7dGnLGxMMAmFtuyXszFeLyDNQ3XNu1GxyYOkRDUQ"> --}}
                                           <div class="form-group">
-                                                  <input type="text" class="form-control" id="exampleInputEmail2" name="comment" placeholder="comment">
+                                                  <input style="border-radius: 15px;"  type="text" class="form-control" id="exampleInputEmail2" name="comment" placeholder="comment">
                                               </div>
-                                              <button type="submit" class="btn btn-theme">gửi</button>
+                                              <button style="border-radius: 10px;" type="submit" class="btn btn-theme">gủi</button>
                                           </form>
                                 </td>
                                 <td data-toggle="modal" data-target="#a{{$report->id}}">

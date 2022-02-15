@@ -3,11 +3,11 @@
 
 @section ('content')
 <section id="main-content">
-    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif">
+    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif; ">
 
 
-        <div class="row mt">
-            <div class="col-md-12">
+        <div class="row mt" >
+            <div class="col-md-12" >
                 <div class="content-panel">
                     <h4><i class="fa fa-angle-right"></i>  Bảng Báo Cáo</h4>
                     <div class="col-lg-4">

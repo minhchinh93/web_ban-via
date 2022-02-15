@@ -3,10 +3,10 @@
 
 @section ('content')
 <section id="main-content">
-    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif">
+    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif; ">
         <div class="row mt">
             <div class="col-md-12">
-                <div class="content-panel">
+                <div class="content-panel" >
                     <h4><i class="fa fa-angle-right"></i>Nhận việc</h4><hr>
                     <table class="table table-striped table-advance table-hover">
                         <h4 style="margin-left: 2%;" class="category"><a style="color: rgb(13, 182, 36)" href="#">Hoàn thành ({{ $totalDone ?? null}}) </a>

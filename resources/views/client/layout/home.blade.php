@@ -7,7 +7,7 @@
     <section class="wrapper" style="color:black; font-family:Roboto,sans-serif" >
 
         <div class="col-lg-12">
-            <div class="form-panel">
+            <div class="form-panel" style=" border-radius: 15px;">
                   <h4 class="mb"><i class="fa fa-angle-right"></i>Giao Việc</h4>
                 <form class="form-horizontal style-form"action="{{ route('addIdea') }}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -64,7 +64,7 @@
             </div>
             <div class="row mt">
                 <div class="col-md-12">
-                    <div class="content-panel">
+                    <div class="content-panel"  style=" border-radius: 15px;">
                         <h4><i class="fa fa-angle-right"></i>  Bảng Báo Cáo</h4>
                         <div class="col-lg-4">
                             <h5 style="margin-left: 2%;" class="category"><a style="color: gray" href="{{ route('done') }}"> Hoàn thành ({{ $totalDone ?? null}}) </a>
@@ -133,13 +133,14 @@
                                     <td class="hidden-phone" style=" max-width: 400px;
                                     overflow: hidden;
                                     text-overflow: ellipsis;
+
                                    word-wrap: break-word;">{!!  $report->description ?? null !!}
                                         <form class="form-inline" action="{{ route('comment',[$report->id]) }}" method="post">
                                       @csrf
                                           <div class="form-group">
-                                                <input type="text" class="form-control" id="exampleInputEmail2" name="comment" placeholder="comment">
+                                                <input type="text" style="border-radius: 15px;" class="form-control" id="exampleInputEmail2" name="comment" placeholder="comment">
                                             </div>
-                                            <button type="submit" class="btn btn-theme">gửi</button>
+                                            <button type="submit" style="border-radius: 10px;" class="btn btn-theme">gửi</button>
                                         </form>
                                     </td>
                                     <td><a href="basic_table.html#">{{ $times[$i++] ?? null }}</a></td>
