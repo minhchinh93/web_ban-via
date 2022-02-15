@@ -145,7 +145,7 @@
                                     </td>
                                     <td><a href="basic_table.html#">{{ $times[$i++] ?? null }}</a></td>
                                     @if(count($report->product_details)!=0)
-                                    <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                    <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px; border-radius: 5%;" >
                                       @else
                                     <td data-toggle="modal" data-target="#a{{$report->id}}"></td>
                                     @endif
@@ -187,7 +187,7 @@
                                     </section>
                                       </div>
                                       @if (count($report->mocups)!=0)
-                                      <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" ></td>
+                                      <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px;  border-radius: 5%;" ></td>
                                         @else
                                         <td data-toggle="modal" data-target="#c{{$report->id}}"></td>
                                        @endif
@@ -224,7 +224,7 @@
                                       </div>
                                     <td data-toggle="modal" data-target="#b{{$report->id}}">
                                         @if (count($report->ProductPngDetails)!=0)
-                                        <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail ) ?? null }}" style="border-radius: 5%;width: 150px; height :150px"  >
+                                        <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail ) ?? null }}" style="border-radius: 5%;width: 150px;"  >
                                         @endif
                                         {{-- <span type="button" class="label label-success" data-toggle="modal" data-target="#b{{$report->id}}">
                                             xem anh designer

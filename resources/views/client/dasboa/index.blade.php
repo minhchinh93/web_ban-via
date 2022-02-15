@@ -95,13 +95,13 @@
                                 </section>
                                   </div>
                                   @if (count($report->mocups)!=0)
-                                  <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                  <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; border-radius: 5%;" >
                                   @else
                                    <td>
                                    <form class="form-inline" action="{{ route('addmocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    <input name="image[]"  type="file" multiple required><br>
-                                  <button type="submit" class="btn btn-primary" >Add </button><br>
+                                    <input name="image[]"  type="file" multiple  required><br>
+                                  <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-square-plus"></i></button><br>
                                 </form>
                                 @endif
                             </td>
@@ -148,14 +148,14 @@
 
                                     @if (count($report->ProductPngDetails)!=0)
                                     <td data-toggle="modal" data-target="#b{{$report->id}}">
-                                    <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="border-radius: 5%;width: 150px; height :150px"  >
+                                    <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="border-radius: 5%;width: 150px;"  >
                                 </td>
                                     @else
                                     <td>
                                     <form class="form-inline" action="{{ route('addPngDetails',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <input name="image[]"  type="file" multiple required><br>
-                                      <button type="submit" class="btn btn-primary" >Add</button><br>
+                                      <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-square-plus"></i></button><br>
                                     </form>
                                 </td>
                                   @endif
