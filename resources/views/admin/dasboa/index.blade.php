@@ -15,7 +15,7 @@
                 <div class="box1" style="background-color:rgba(255, 153, 153, 0.705);  border-radius: 5%;">
                     <span class="li_cloud" style="color:rgb(55, 15, 235)"></span>
                     <h5 style="color:rgb(55, 15, 235)">DESIGNER OF THE DAY: {{ $totalDayDesigner }}</h5>
-                    <h4 style="color:rgb(55, 15, 235)">DESIGNER SUCCESS : {{ NULL }}</h4>
+                    {{-- <h4 style="color:rgb(55, 15, 235)">DESIGNER SUCCESS : {{ NULL }}</h4> --}}
                 </div>
                 <a style="color:red" href="#"><p>see more !</p></a>
             </div>
