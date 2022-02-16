@@ -20,9 +20,9 @@ class logincontroller extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
 
             if (Auth::user()->role == 1) {
-                return redirect()->route('Dashboard');
+                return redirect()->route('dasboa');
             } elseif (Auth::user()->role == 2) {
-                return redirect()->route('home');
+                return redirect()->route('dasboa');
             } else {
                 return redirect()->route('showUser');
             }

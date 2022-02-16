@@ -75,7 +75,7 @@
 
   <body>
 
-  <section id="container" >
+  <section id="container" class="sidebar-close">
       <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
       *********************************************************************************************************************************************************** -->
@@ -324,7 +324,7 @@
 
 
     <!--common script for all pages-->
-    <script src="{{ asset('admin/') }}assets/js/common-scripts.js"></script>
+    <script src="{{ asset('admin//js/common-scripts.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('admin/js/gritter/js/jquery.gritter.js') }}"></script>
     <script type="text/javascript" src="{{ asset('admin//js/gritter-conf.js') }}"></script>

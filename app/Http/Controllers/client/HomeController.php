@@ -427,6 +427,10 @@ class HomeController extends Controller
 
     public function dasboa()
     {
-        return view('client.idea.index');
+        if (Auth::check()) {
+            return view('client.idea.index');
+        } else {
+            return redirect()->route('login');
+        }
     }
 }

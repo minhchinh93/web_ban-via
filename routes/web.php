@@ -52,13 +52,15 @@ Route::middleware('CheckDesinger')->group(function () {
     Route::post('deleteMocupAll/{id}', [DesignerController::class, 'deleteMocupAll'])->name('deleteMocupAll');
 
 });
+Route::get('dasboa', [HomeController::class, 'dasboa'])->name('dasboa');
+
 Route::middleware('CheckIdea')->group(function () {
 
     // Route::get('/chinh', function () {
     //     return view('client.test');
     // });
     Route::get('/', [HomeController::class, 'home'])->name('home');
-    Route::get('dasboa', [HomeController::class, 'dasboa'])->name('dasboa');
+    // Route::get('dasboa', [HomeController::class, 'dasboa'])->name('dasboa');
 
     Route::get('done', [HomeController::class, 'done'])->name('done');
     Route::get('Pending', [HomeController::class, 'Pending'])->name('Pending');

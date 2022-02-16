@@ -251,4 +251,8 @@ class DesignerController extends Controller
         return redirect()->route('Dashboard');
 
     }
+    public function dasboa()
+    {
+        return view('client.idea.index');
+    }
 }
