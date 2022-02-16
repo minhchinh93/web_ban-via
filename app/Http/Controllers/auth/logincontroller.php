@@ -24,7 +24,7 @@ class logincontroller extends Controller
             } elseif (Auth::user()->role == 2) {
                 return redirect()->route('dasboa');
             } else {
-                return redirect()->route('showUser');
+                return redirect()->route('showdasboa');
             }
 
         } else {
