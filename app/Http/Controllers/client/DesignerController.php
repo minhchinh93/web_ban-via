@@ -206,14 +206,14 @@ class DesignerController extends Controller
     {
 
         ProductPngDetails::where('id', $id)->delete();
-        return redirect()->route('Dashboard');
+        return response()->json(null);
 
     }
     public function deletemocups($id)
     {
 
         mocupProduct::where('id', $id)->delete();
-        return redirect()->route('Dashboard');
+        return response()->json(null);
 
     }
     public function addPngDetails(Request $request, $id)

@@ -121,9 +121,10 @@
                                         </div>
 
                                           @foreach ($report->mocups as $rep)
-                                          <div class="project-wrapper">
+                                          <div class="post-content-{{ $rep->id  }}">
                                             <div class="project">
-                                                <a href="{{ route('deletemocups',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
+                                                <button onclick="deleteComment({{ $rep->id }})">xoa</button>
+                                                 {{-- <a href="{{ route('deletemocups',[$rep->id]) }}"><span onclick="deletemocups({{ $rep->id }})" class="label label-info label-mini">xoa</span></a> --}}
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
@@ -173,9 +174,10 @@
                                         </div>
 
                                           @foreach ($report->ProductPngDetails as $rep)
-                                          <div class="project-wrapper">
+                                          <div class="post-Png-{{ $rep->id  }}">
                                             <div class="project">
-                                                <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
+                                                <button onclick="deletePng({{ $rep->id }})">xoa</button>
+                                                {{-- <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
@@ -244,6 +246,49 @@
 
 @push('scripts') --}}
  <script>
+ var deletemocupApi = "/deletemocups"
+ var deletePngApi = "/deleteProductPngDetails"
+
+function deleteComment(id) {
+      var option = {
+          method: 'GET', // *GET, POST, PUT, DELETE, etc.
+          headers: {
+              'Content-Type': 'application/json'
+                  // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+      }
+      fetch(deletemocupApi + '/' + id, option)
+          .then(function(response) {
+              console.log(response);
+              return response.json();
+          })
+          .then(function() {
+                  var xoaHtml = document.querySelector('.post-content-' + id)
+                  if (xoaHtml) {
+                      xoaHtml.remove();
+              };
+          });
+  }
+  function deletePng(id) {
+      var option = {
+          method: 'GET', // *GET, POST, PUT, DELETE, etc.
+          headers: {
+              'Content-Type': 'application/json'
+                  // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+      }
+      fetch(deletemocupApi + '/' + id, option)
+          .then(function(response) {
+              console.log(response);
+              return response.json();
+          })
+          .then(function() {
+                  var xoaHtml = document.querySelector('.post-Png-' + id)
+                  if (xoaHtml) {
+                      xoaHtml.remove();
+              };
+          });
+  }
     //<![CDATA[
     $('input.input-qty').each(function() {
       var $this = $(this),
@@ -267,7 +312,6 @@
          $("#total").html(total);
       })
     })
-
 
 
 </script>
