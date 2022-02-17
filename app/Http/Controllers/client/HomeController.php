@@ -408,7 +408,7 @@ class HomeController extends Controller
     {
 
         ProductDetails::where('id', $id)->delete();
-        return redirect()->route('home');
+        return response()->json(null);
 
     }
     public function addImage(Request $request, $id)

@@ -57,7 +57,7 @@
                                 </td>
                                 <td data-toggle="modal" data-target="#a{{$report->id}}">
                                     @if  (count($report->product_details)!=0)
-                                   <img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
+                                   <img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px;  border-radius: 5%;" >
                                       @endif
                                 </td>
                                 {{-- @php

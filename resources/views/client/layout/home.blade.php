@@ -162,9 +162,10 @@
                                               </button>
                                             </div>
                                               @foreach ($report->product_details as $rep)
-                                              <div class="project-wrapper">
+                                              <div  class="post-Image-{{ $rep->id  }}">
                                                 <div class="project">
-                                                    <a href="{{ route('deleteImage',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
+                                                    <button onclick="deleteImage({{ $rep->id }})">xoa</button>
+                                                    {{-- <a href="{{ route('deleteImage',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}
                                                     <div class="photo-wrapper">
                                                         <div class="photo">
                                                             <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImageDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImageDetail)}}"  width="100%"></a>
@@ -320,8 +321,30 @@
 
 @push('scripts') --}}
 <script>
-
-
+var imageAPI='/deleteImage'
+//api xoa api
+function deleteImage(id) {
+      var option = {
+          method: 'GET', // *GET, POST, PUT, DELETE, etc.
+          headers: {
+              'Content-Type': 'application/json'
+                  // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+      }
+      alert
+      fetch(imageAPI + '/' + id, option)
+          .then(function(response) {
+              console.log(response);
+              return response.json();
+          })
+          .then(function() {
+                  var xoaHtml = document.querySelector('.post-Image-' + id)
+                  if (xoaHtml) {
+                      xoaHtml.remove();
+              };
+          });
+  }
+  //ket thuc
 $(document).ready(function(){
 
   $("#loaiSP").change(function(){
