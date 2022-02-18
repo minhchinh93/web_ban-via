@@ -36,6 +36,7 @@ class dasboaController extends Controller
             products.id_idea as "id"
             '
             ))
+            ->orderBy('sum', 'DESC')
             ->groupBy('products.id_idea')
             ->get();
         $designer = User::join('products', 'products.User_id', '=', 'users.id')
@@ -51,6 +52,7 @@ class dasboaController extends Controller
             '
             ))
             ->groupBy('products.User_id')
+            ->orderBy('mocup_products', 'DESC')
             ->get();
         // dd($designer);
         // $shows = User::where('name', 'like', "%{$keyword}%")->withTrashed()->paginate(10);
