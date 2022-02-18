@@ -208,33 +208,6 @@
                                 @else
                                 <td><span class="label label-success label-mini">hoàn thành</span></td>
                                 @endif
-                                <td>
-                                    <span class="btn btn-success btn-xs" alt="chi tiết">
-                                        {{-- @if( $report->status == 3) --}}
-                                        <a class=" w-75 " style="color:white" href="{{ route('success',[$report->id]) }}"><i class="fa fa-check" alt="chi tiết"></i></a>
-                                        {{-- @else
-                                        <i class="fa fa-check" alt="chi tiết"></i>
-                                        @endif --}}
-                                          </span>
-                                          <span class="btn btn-primary btn-xs">
-                                            @if( $report->status == 3)
-                                            <a class=" w-75 " style="color:white" href="{{ route('approvalShow',[$report->id]) }}"><i class="fa fa-pencil"></i></a>
-                                            @else
-                                            <a class=" w-75 " style="color:white" href="{{ route('EditShow',[$report->id]) }}"><i class="fa fa-pencil"></i></a>
-                                            @endif
-                                          </a>
-                                         </span>
-                                         <span class="btn btn-danger btn-xs">
-                                            <a class=" w-75 " style="color:white" href="{{ route('delete',[$report->id]) }}"><i class="fa fa-trash-o"></i></a>
-                                          </a>
-                                         </span>
-                                         @if($report->action== 1 &&  $report->status != 5)
-                                         <span class="btn btn-danger btn-xs">
-                                            <a class=" w-75 " style="color:white" href="{{ route('important',[$report->id]) }}">ưu tiên</a>
-                                          </a>
-                                         </span>
-                                         @endif
-                                </td>
                             </tr>
                             @endforeach
                         </tbody>
