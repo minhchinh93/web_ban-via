@@ -50,7 +50,8 @@ Route::middleware('CheckDesinger')->group(function () {
 
     Route::get('deletemocups/{id}', [DesignerController::class, 'deletemocups'])->name('deletemocups');
     Route::post('addmocups/{id}', [DesignerController::class, 'addmocups'])->name('addmocups');
-    Route::post('deleteMocupAll/{id}', [DesignerController::class, 'deleteMocupAll'])->name('deleteMocupAll');
+    Route::get('deleteMocupAll/{id}', [DesignerController::class, 'deleteMocupAll'])->name('deleteMocupAll');
+    Route::get('deletePngAll/{id}', [DesignerController::class, 'deletePngAll'])->name('deletePngAll');
 
 });
 Route::get('dasboa', [HomeController::class, 'dasboa'])->name('dasboa');

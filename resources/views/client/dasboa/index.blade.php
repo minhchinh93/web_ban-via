@@ -95,7 +95,10 @@
                                 </section>
                                   </div>
                                   @if (count($report->mocups)!=0)
-                                  <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; border-radius: 5%;" >
+                                  <td><img  data-toggle="modal" data-target="#c{{$report->id}}" src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; border-radius: 5%;" >
+                                    <a class=" w-75 " style="color:white" href="{{ route('deleteMocupAll',[$report->id]) }}">
+                                        <span type="button" class="btn btn-danger" data-dismiss="modal">&times;</span>
+                                    </a>
                                   @else
                                    <td>
                                    <form class="form-inline" action="{{ route('addmocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
@@ -115,11 +118,7 @@
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
-                                          <a class=" w-75 " style="color:white" href="{{ route('deleteMocupAll',[$report->id]) }}">
-                                            <span type="button" class="btn btn-danger" data-dismiss="modal">DELETE ALL</span>
-                                        </a>
                                         </div>
-
                                           @foreach ($report->mocups as $rep)
                                           <div class="post-content-{{ $rep->id  }}">
                                             <div class="project">
@@ -148,8 +147,11 @@
                                   </div>
 
                                     @if (count($report->ProductPngDetails)!=0)
-                                    <td data-toggle="modal" data-target="#b{{$report->id}}">
-                                    <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="border-radius: 5%;width: 150px;"  >
+                                    <td >
+                                    <img data-toggle="modal" data-target="#b{{$report->id}}" src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="border-radius: 5%;width: 150px;"  >
+                                    <a class=" w-75 " style="color:white" href="{{ route('deletePngAll',[$report->id]) }}">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+                                    </a>
                                 </td>
                                     @else
                                     <td>
@@ -160,7 +162,6 @@
                                     </form>
                                 </td>
                                   @endif
-
                                 <div class="modal fade" id="b{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <section id="main-content">
                                         <section class="wrapper">
@@ -192,9 +193,6 @@
                                                 <input name="image[]"  type="file" multiple required>
                                               <button type="submit" class="btn btn-primary" >Add Image Idea</button>
                                             </form>
-                                            <a class=" w-75 " style="color:white" href="{{ null }}">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">DELETE ALL</button>
-                                            </a>
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                       </div>

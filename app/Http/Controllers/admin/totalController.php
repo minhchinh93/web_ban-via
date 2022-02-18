@@ -85,7 +85,7 @@ class totalController extends Controller
             $time = '';
 
         }
-        // dd($time[0]);
+        // dd($time[4]);
         // dd(count($report[0]->mocups));
 
         $totalDone = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')->where('status', 5)->count();
