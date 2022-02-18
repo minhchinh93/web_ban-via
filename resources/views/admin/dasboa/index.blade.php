@@ -9,7 +9,7 @@
                     <h5  style="color:rgb(235, 136, 15)">IDEA OF THE DAY : {{ $totaDay }} </h5>
                     <h4  style="color:rgb(235, 136, 15)">IDEA SUCCESS : {{ $totaSusecDay }}</h4>
                 </div>
-                <a style="color:red" href="#"><p>see more !</p></a>
+                <a style="color:red" href="{{ route('totalidea') }}"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1" style="background-color:rgba(255, 153, 153, 0.705);  border-radius: 5%;">
@@ -17,7 +17,7 @@
                     <h5 style="color:rgb(55, 15, 235)">DESIGNER/DAY: {{ $totalDayDesigner }}</h5>
                     <h4 style="color:rgb(55, 15, 235)">DESIGNER SUCCESS : {{ NULL }}</h4>
                 </div>
-                <a style="color:red" href="#"><p>see more !</p></a>
+                <a style="color:red" href="{{ route('totalDesigner') }}"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1" style="background-color:rgba(30, 255, 0, 0.733);  border-radius: 5%;">

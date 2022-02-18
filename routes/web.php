@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\dasboaController;
 //admin
 use App\Http\Controllers\admin\DetailController;
 use App\Http\Controllers\admin\productController;
+use App\Http\Controllers\admin\totalController;
 use App\Http\Controllers\admin\typeProductController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\auth\cfController;
@@ -140,6 +141,10 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     Route::get('showdasboa', [dasboaController::class, 'showdasboa'])->name('showdasboa');
     // chi tiêt hóa dơn user
     Route::get('DetailMember/{id}', [dasboaController::class, 'DetailMember'])->name('DetailMember');
+
+    // show totalallidea
+    Route::get('totalidea', [totalController::class, 'totalidea'])->name('totalidea');
+    Route::get('totalDesigner', [totalController::class, 'totalDesigner'])->name('totalDesigner');
 
     //show user
     Route::get('showUser', [UserController::class, 'showUser'])->name('showUser');
