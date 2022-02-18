@@ -257,6 +257,7 @@ function deleteComment(id) {
                   // 'Content-Type': 'application/x-www-form-urlencoded',
           },
       }
+
       fetch(deletemocupApi + '/' + id, option)
           .then(function(response) {
               console.log(response);
@@ -277,9 +278,9 @@ function deleteComment(id) {
                   // 'Content-Type': 'application/x-www-form-urlencoded',
           },
       }
-      fetch(deletemocupApi + '/' + id, option)
+
+      fetch(deletePngApi + '/' + id, option)
           .then(function(response) {
-              console.log(response);
               return response.json();
           })
           .then(function() {
