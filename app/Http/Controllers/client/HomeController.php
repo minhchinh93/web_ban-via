@@ -156,11 +156,11 @@ class HomeController extends Controller
         $size = size::get();
         $keyword = $request->keyword;
         // dd($size[1]);
-        $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->paginate(20);
+        $report = Product::orderBy('updated_at', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->paginate(20);
         // dd($report);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
-                $dt[] = Carbon::create($billdd->created_at);
+                $dt[] = Carbon::create($billdd->updated_at);
             }
 
             foreach ($dt as $key) {
@@ -276,7 +276,7 @@ class HomeController extends Controller
     public function success($id)
     {
         Product::where('id', $id)->update(['status' => 5]);
-        return redirect()->route('home');
+        return redirect()->route('done');
 
     }
     public function approvalShow($id)

@@ -30,13 +30,7 @@
                                 </form>
                             </div>
                         </div>
-
-
-        </div><!-- /col-lg-12 -->
-        <div class="col-lg-1">
-                <button  type="button" class="btn btn-primary"><a style="color:white" href="{{ route('home') }}">refresh trang</a></button>
-            </div><!-- /col-lg-12 -->
-
+                   </div><!-- /col-lg-12 -->
                     <hr>
                     <table class="table table-striped table-advance table-hover">
                         <thead>
@@ -59,7 +53,7 @@
                         <tbody>
                             @foreach ($reports as  $report)
                             <tr>
-                                <td><a href="basic_table.html#">{{$name[++$i][0]->name?? null }}</a></td>
+                                <td><a href="#">{{$name[++$i][0]->name?? null }}</a></td>
                                 <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
                                 <td  style=" max-width: 200px;"><b>{{ $report->title ?? null }}</b></td>
                                 <td class="hidden-phone"
@@ -76,7 +70,7 @@
                                         <button type="submit" class="btn btn-theme">gửi</button>
                                     </form>
                                 </td>
-                                <td><a href="basic_table.html#">{{ $times[$i++] ?? null }}</a></td>
+                                <td><a href="#">{{ $times[$i++] ?? null }}</a></td>
                                 @if(count($report->product_details)!=0)
                                 <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
                                   @else
