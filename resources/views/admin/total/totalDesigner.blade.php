@@ -36,7 +36,7 @@
                             @endphp
                             @foreach ($reports as  $report)
                             <tr>
-                                <td><a href="basic_table.html#">{{$name[$i++][0]->name?? null }}</a></td>
+                                <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
                                 <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}({{ $report->size->name ?? null  }})</a></td>
                                 <td class="hidden-phone"  style=" max-width: 200px;">{!!  $report->title ?? null !!}
                                 <td class="hidden-phone">{{  $report->created_at ?? null }}

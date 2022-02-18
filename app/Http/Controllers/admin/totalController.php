@@ -34,15 +34,14 @@ class totalController extends Controller
         } else {
             $name = "";
         }
-        // dd($name[1][0]->name);
-        return view('admin.total.totalidea',
+        // dd($report[0]->User->name);
+        return view('admin.total.totalDesigner',
             ['reports' => $report,
                 'totalPending' => $totalPending,
                 'totalDone' => $totalDone,
                 'totalNotSeen' => $totalNotSeen,
                 'totalprioritize' => $totalNotReceived,
                 'totalPendingDS' => $totalPendingDS,
-                'name' => $name,
             ]);
     }
 
@@ -50,9 +49,9 @@ class totalController extends Controller
     {
 
         Carbon::setLocale('vi');
-        $e = Carbon::now('Asia/Ho_Chi_Minh');
-        $times = $e->toDateString();
-        $designer = User::get()->where('role', 1);
+        $now = Carbon::now('Asia/Ho_Chi_Minh');
+        $times = $now->toDateString();
+        $designer = User::get()->where('role', 2);
         $type_product = type_product::get();
         $size = size::get();
         $keyword = $request->keyword;
@@ -62,27 +61,38 @@ class totalController extends Controller
         // ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->paginate(20);
+        if ($report->total() > 0) {
+            foreach ($report as $rep) {
+                $userIdeas[] = User::where('id', $rep->id_idea)->get();
+            }
+            foreach ($userIdeas as $userIdea) {
+                $name[] = $userIdea;
+            }
+
+        } else {
+            $name = "";
+        }
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
             }
 
             foreach ($dt as $key) {
-                $now = Carbon::now();
+                $now = Carbon::now('Asia/Ho_Chi_Minh');
                 $time[] = $key->diffForHumans($now);
             }
         } else {
             $time = '';
 
         }
-        // dd($report[0]->mocups);
+        // dd($time[0]);
         // dd(count($report[0]->mocups));
 
         $totalDone = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')->where('status', 3)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')->where('status', 1)->count();
         $totalallidea = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')->count();
-        return view('admin.deatailMember.idea',
+        return view('admin.total.totalidea',
             ['designers' => $designer,
                 'reports' => $report,
                 'totalDone' => $totalDone,
@@ -92,6 +102,8 @@ class totalController extends Controller
                 'totalallidea' => $totalallidea,
                 'times' => $time,
                 'sizes' => $size,
+                'name' => $name,
+
             ]);
     }
 

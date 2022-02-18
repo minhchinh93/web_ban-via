@@ -54,12 +54,12 @@
                         </tr>
                         </thead>
                         @php
-                          $i=0
+                          $i=-1
                         @endphp
                         <tbody>
                             @foreach ($reports as  $report)
                             <tr>
-                                <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
+                                <td><a href="basic_table.html#">{{$name[++$i][0]->name?? null }}</a></td>
                                 <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
                                 <td  style=" max-width: 200px;"><b>{{ $report->title ?? null }}</b></td>
                                 <td class="hidden-phone"
