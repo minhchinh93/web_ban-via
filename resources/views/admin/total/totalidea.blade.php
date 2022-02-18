@@ -48,12 +48,12 @@
                         </tr>
                         </thead>
                         @php
-                          $i=-1
+                          $i=0
                         @endphp
                         <tbody>
                             @foreach ($reports as  $report)
                             <tr>
-                                <td><a href="#">{{$name[++$i][0]->name?? null }}</a></td>
+                                <td><a href="#">{{$name[$i++][0]->name?? null }}</a></td>
                                 <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
                                 <td  style=" max-width: 200px;"><b>{{ $report->title ?? null }}</b></td>
                                 <td class="hidden-phone"
@@ -70,7 +70,7 @@
                                         <button type="submit" class="btn btn-theme">gửi</button>
                                     </form>
                                 </td>
-                                <td><a href="#">{{ $times[$i++] ?? null }}</a></td>
+                                <td><a href="#">{{ $report->created_at ?? null }}</a></td>
                                 @if(count($report->product_details)!=0)
                                 <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
                                   @else
