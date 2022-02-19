@@ -4,42 +4,42 @@
     <section class="wrapper" style="color:black; font-family:Roboto,sans-serif; background: rgba(236, 240, 240, 0.644) ">
         <div class="row mtbox">
             <div class="col-md-2 col-sm-2 col-md-offset-1 box0" >
-                <div class="box1" style="background-color:rgba(156, 255, 153, 0.952); border-radius: 5%;">
-                    <span class="li_heart" style="color:rgb(235, 136, 15);"></span>
-                    <h5  style="color:rgb(235, 136, 15)">IDEA OF THE DAY : {{ $totaDay }} </h5>
-                    <h4  style="color:rgb(235, 136, 15)">IDEA SUCCESS : {{ $totaSusecDay }}</h4>
+                <div class="box1" style="background-color:#fe9e75; border-radius: 5%;">
+                    <span class="li_heart" style="color:rgb(252, 250, 247);"></span>
+                    <h5  style="color:rgb(250, 250, 250)">IDEA OF THE DAY : {{ $totaDay }} </h5>
+                    <h4  style="color:rgb(248, 245, 241)">IDEA SUCCESS : {{ $totaSusecDay }}</h4>
                 </div>
                 <a style="color:red" href="{{ route('totalidea') }}"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
-                <div class="box1" style="background-color:rgba(255, 153, 153, 0.705);  border-radius: 5%;">
-                    <span class="li_cloud" style="color:rgb(55, 15, 235)"></span>
-                    <h5 style="color:rgb(55, 15, 235)">DESIGNER/DAY: {{ $totalDayDesigner }}</h5>
-                    <h4 style="color:rgb(55, 15, 235)">DESIGNER SUCCESS : {{ NULL }}</h4>
+                <div class="box1" style="background-color:#0bd48e;  border-radius: 5%;">
+                    <span class="li_cloud" style="color:rgb(255, 255, 255)"></span>
+                    <h5 style="color:rgb(250, 250, 253)">DESIGNER/DAY: {{ $totalDayDesigner }}</h5>
+                    <h4 style="color:rgb(243, 242, 247)">DESIGNER SUCCESS : {{ NULL }}</h4>
                 </div>
                 <a style="color:red" href="{{ route('totalDesigner') }}"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
-                <div class="box1" style="background-color:rgba(30, 255, 0, 0.733);  border-radius: 5%;">
-                    <span class="li_news" style="color:rgb(245, 61, 107)"></span>
-                    <h5 style="color:rgb(245, 61, 107)">TOTAL IDEA:</h5>
-                    <h4><b style="color:rgb(245, 61, 107)">{{ $totalIdea }} </b></h4>
+                <div class="box1" style="background-color:#fe6c7d;  border-radius: 5%;">
+                    <span class="li_news" style="color:rgb(250, 245, 247)"></span>
+                    <h5 style="color:rgb(247, 245, 246)">TOTAL IDEA:</h5>
+                    <h4><b style="color:rgb(248, 245, 246)">{{ $totalIdea }} </b></h4>
+                </div>
+                <a style="color:rgb(0, 60, 255)" href="#"><p>see more !</p></a>
+            </div>
+            <div class="col-md-2 col-sm-2 box0">
+                <div class="box1" style="background-color:#01b5c1;  border-radius: 5%;">
+                    <span class="li_data" style="color:rgb(246, 242, 247)"></span>
+                    <h5 style="color:rgb(250, 248, 250)"> TOTAL DESIGNER:</h5>
+                    <h4 style="color:rgb(252, 250, 252)"><b>{{ $totalDesign }} </b></h4>
                 </div>
                 <a style="color:red" href="#"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
-                <div class="box1" style="background-color:rgb(229, 255, 85);  border-radius: 5%;">
-                    <span class="li_data" style="color:rgb(207, 0, 235)"></span>
-                    <h5 style="color:rgb(207, 0, 235)"> TOTAL DESIGNER:</h5>
-                    <h4 style="color:rgb(207, 0, 235)"><b>{{ $totalDesign }} </b></h4>
-                </div>
-                <a style="color:red" href="#"><p>see more !</p></a>
-            </div>
-            <div class="col-md-2 col-sm-2 box0">
-                <div class="box1" style="background-color:rgba(153, 226, 255, 0.705);  border-radius: 5%;">
-                    <span class="li_stack" style="color:rgb(248, 68, 62)"></span>
-                    <h5 style="color:rgb(248, 68, 62)">MEMBER IDEA: {{ $totalIdeamember }} </h5>
-                    <h4 style="color:rgb(248, 68, 62)">MEMBER DESIGNER: {{ $totalDesigner }}</h4>
+                <div class="box1" style="background-color:rgba(255, 42, 59, 0.541);  border-radius: 5%;">
+                    <span class="li_stack" style="color:rgb(252, 244, 244)"></span>
+                    <h5 style="color:rgb(255, 255, 255)">MEMBER IDEA: {{ $totalIdeamember }} </h5>
+                    <h4 style="color:rgb(253, 249, 249)">MEMBER DESIGNER: {{ $totalDesigner }}</h4>
                 </div>
                 <a style="color:red" href="#"><p>see more !</p></a>
             </div>
