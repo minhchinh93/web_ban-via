@@ -15,14 +15,15 @@ class totalController extends Controller
     //
     public function totalDesigner()
     {
+        Carbon::setLocale('vi');
         $dt = Carbon::now('Asia/Ho_Chi_Minh');
         $time = $dt->toDateString();
-        $report = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $time . '%')->paginate(20);
-        $totalPending = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $time . '%')->where('status', 4)->count();
-        $totalDone = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $time . '%')->where('status', 5)->count();
-        $totalNotSeen = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $time . '%')->where('status', 1)->count();
-        $totalNotReceived = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $time . '%')->where('action', 2)->where('status', '<>', 5)->count();
-        $totalPendingDS = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $time . '%')->where('status', 3)->count();
+        $report = Product::orderBy('updated_at', 'desc')->where('updated_at', 'LIKE', '%' . $time . '%')->paginate(20);
+        $totalPending = Product::orderBy('id', 'desc')->where('updated_at', 'LIKE', '%' . $time . '%')->where('status', 4)->count();
+        $totalDone = Product::orderBy('id', 'desc')->where('updated_at', 'LIKE', '%' . $time . '%')->where('status', 5)->count();
+        $totalNotSeen = Product::orderBy('id', 'desc')->where('updated_at', 'LIKE', '%' . $time . '%')->where('status', 1)->count();
+        $totalNotReceived = Product::orderBy('id', 'desc')->where('updated_at', 'LIKE', '%' . $time . '%')->where('action', 2)->where('status', '<>', 5)->count();
+        $totalPendingDS = Product::orderBy('id', 'desc')->where('updated_at', 'LIKE', '%' . $time . '%')->where('status', 3)->count();
         if ($report->total() > 0) {
             foreach ($report as $rep) {
                 $userIdeas[] = User::where('id', $rep->id_idea)->get();

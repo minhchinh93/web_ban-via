@@ -16,12 +16,12 @@ class DetailController extends Controller
     public function DetailDesigner($id)
     {
         // dd($id);
-        $report = Product::orderBy('id', 'desc')->where('User_id', $id)->paginate(20);
-        $totalPending = Product::orderBy('id', 'desc')->where('User_id', $id)->where('status', 4)->count();
-        $totalDone = Product::orderBy('id', 'desc')->where('User_id', $id)->where('status', 5)->count();
-        $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', $id)->where('status', 1)->count();
-        $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', $id)->where('action', 2)->where('status', '<>', 5)->count();
-        $totalPendingDS = Product::orderBy('id', 'desc')->where('User_id', $id)->where('status', 3)->count();
+        $report = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->paginate(20);
+        $totalPending = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 4)->count();
+        $totalDone = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 5)->count();
+        $totalNotSeen = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 1)->count();
+        $totalNotReceived = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('action', 2)->where('status', '<>', 5)->count();
+        $totalPendingDS = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 3)->count();
 
         if ($report->total() > 0) {
             foreach ($report as $rep) {
