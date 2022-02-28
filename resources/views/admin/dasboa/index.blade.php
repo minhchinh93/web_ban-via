@@ -131,7 +131,11 @@
                             <td><span class="label label-success label-mini">ADMIN</span></td>
                             @endif
                              <td><h4>{{$show->mocup_products ?? null }}</h4></td>
+                             @if($show->name == $pngs[$i++]->name )
                              <td><h4>{{$pngs[$i++]->product_png_details}}</h4></td>
+                             @else
+                             <td><h4>{{null}}</h4></td>
+                             @endif
                             <td>
                                 @if (  $show->deleted_at ==  null)
                                 <span class="label label-info label-mini">active</span></td>
