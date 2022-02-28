@@ -78,13 +78,11 @@ class dasboaController extends Controller
             users.role as "role",
             users.deleted_at as "deleted_at",
             products.User_id as "id"
-            '
-            ))
+            '))
             ->groupBy('products.User_id')
             ->orderBy('product_png_details', 'DESC')
             ->get();
 
-        // dd($designer);
         return view('admin/dasboa/index'
             , [
                 'shows' => $Idea,
