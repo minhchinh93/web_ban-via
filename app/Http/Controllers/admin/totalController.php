@@ -58,7 +58,8 @@ class totalController extends Controller
         $keyword = $request->keyword;
         // dd($size[1]);
         $report = Product::orderBy('id', 'desc')->where('updated_at', 'LIKE', '%' . $times . '%')
-            ->Where('title', 'like', "%{$keyword}%")
+            ->Where('Sku', 'like', "%{$keyword}%")
+
         // ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->paginate(10);
@@ -119,7 +120,8 @@ class totalController extends Controller
         $keyword = $request->keyword;
         // dd($size[1]);
         $report = Product::orderBy('updated_at', 'desc')
-            ->Where('title', 'like', "%{$keyword}%")
+            ->Where('Sku', 'like', "%{$keyword}%")
+
         // ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->paginate(10);
