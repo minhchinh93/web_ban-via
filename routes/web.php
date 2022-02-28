@@ -146,6 +146,7 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     // show totalallidea
     Route::get('totalidea', [totalController::class, 'totalidea'])->name('totalidea');
     Route::get('totalDesigner', [totalController::class, 'totalDesigner'])->name('totalDesigner');
+    Route::get('totalall', [totalController::class, 'totalall'])->name('totalall');
 
     //show user
     Route::get('showUser', [UserController::class, 'showUser'])->name('showUser');

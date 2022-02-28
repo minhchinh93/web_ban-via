@@ -57,7 +57,7 @@ class totalController extends Controller
         $size = size::get();
         $keyword = $request->keyword;
         // dd($size[1]);
-        $report = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')
+        $report = Product::orderBy('id', 'desc')->where('updated_at', 'LIKE', '%' . $times . '%')
             ->Where('title', 'like', "%{$keyword}%")
         // ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
@@ -89,10 +89,71 @@ class totalController extends Controller
         // dd($time[4]);
         // dd(count($report[0]->mocups));
 
-        $totalDone = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')->where('status', 5)->count();
-        $totalPending = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')->where('status', 3)->count();
-        $totalNotReceived = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')->where('status', 1)->count();
-        $totalallidea = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')->count();
+        $totalDone = Product::orderBy('updated_at', 'desc')->where('updated_at', 'LIKE', '%' . $times . '%')->where('status', 5)->count();
+        $totalPending = Product::orderBy('updated_at', 'desc')->where('updated_at', 'LIKE', '%' . $times . '%')->where('status', 3)->count();
+        $totalNotReceived = Product::orderBy('updated_at', 'desc')->where('updated_at', 'LIKE', '%' . $times . '%')->where('status', 1)->count();
+        $totalallidea = Product::orderBy('updated_at', 'desc')->where('updated_at', 'LIKE', '%' . $times . '%')->count();
+        return view('admin.total.totalidea',
+            ['designers' => $designer,
+                'reports' => $report,
+                'totalDone' => $totalDone,
+                'totalPending' => $totalPending,
+                'totalNotReceived' => $totalNotReceived,
+                'type_products' => $type_product,
+                'totalallidea' => $totalallidea,
+                'times' => $time,
+                'sizes' => $size,
+                'name' => $name,
+
+            ]);
+    }
+    public function totalall(Request $request)
+    {
+
+        Carbon::setLocale('vi');
+        $now = Carbon::now('Asia/Ho_Chi_Minh');
+        $times = $now->toDateString();
+        $designer = User::get()->where('role', 2);
+        $type_product = type_product::get();
+        $size = size::get();
+        $keyword = $request->keyword;
+        // dd($size[1]);
+        $report = Product::orderBy('updated_at', 'desc')
+            ->Where('title', 'like', "%{$keyword}%")
+        // ->Where('description', 'like', "%{$keyword}%")
+        // ->orWhere('updated_at', 'like', "%{$keyword}%")
+            ->paginate(10);
+        if ($report->total() > 0) {
+            foreach ($report as $rep) {
+                $userIdeas[] = User::where('id', $rep->id_idea)->get();
+            }
+            foreach ($userIdeas as $userIdea) {
+                $name[] = $userIdea;
+            }
+
+        } else {
+            $name = "";
+        }
+        if ($report->total() != 0) {
+            foreach ($report as $billdd) {
+                $dt[] = Carbon::create($billdd->created_at);
+            }
+
+            foreach ($dt as $key) {
+                $now = Carbon::now('Asia/Ho_Chi_Minh');
+                $time[] = $key->diffForHumans($now);
+            }
+        } else {
+            $time = '';
+
+        }
+        // dd($time[4]);
+        // dd(count($report[0]->mocups));
+
+        $totalDone = Product::orderBy('id', 'desc')->where('status', 5)->count();
+        $totalPending = Product::orderBy('id', 'desc')->where('status', 3)->count();
+        $totalNotReceived = Product::orderBy('id', 'desc')->where('status', 1)->count();
+        $totalallidea = Product::orderBy('id', 'desc')->count();
         return view('admin.total.totalidea',
             ['designers' => $designer,
                 'reports' => $report,

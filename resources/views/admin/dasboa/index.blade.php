@@ -25,7 +25,7 @@
                     <h5 style="color:rgb(247, 245, 246)">TOTAL IDEA:</h5>
                     <h4><b style="color:rgb(248, 245, 246)">{{ $totalIdea }} </b></h4>
                 </div>
-                <a style="color:rgb(0, 60, 255)" href="#"><p>see more !</p></a>
+                <a style="color:rgb(0, 60, 255)" href="{{ route('totalall') }}"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1" style="background-color:#01b5c1;  border-radius: 5%;">
