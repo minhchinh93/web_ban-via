@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
-use App\Models\product;
+use App\Models\Product;
 use App\Models\size;
 use App\Models\type_product;
 use Carbon\Carbon;
