@@ -70,7 +70,7 @@
                                         <button type="submit" class="btn btn-theme">gửi</button>
                                     </form>
                                 </td>
-                                <td><a href="#">{{ $report->created_at ?? null }}</a></td>
+                                <td><a href="#">{{ $report->updated_at ?? null }}</a></td>
                                 @if(count($report->product_details)!=0)
                                 <td data-toggle="modal" data-target="#a{{$report->id}}"><img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
                                   @else
