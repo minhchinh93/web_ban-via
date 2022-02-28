@@ -26,7 +26,7 @@ class HomeController extends Controller
         // dd($size[1]);
         $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
             ->Where('status', '<>', "5")
-            ->Where('title', 'like', "%{$keyword}%")
+            ->Where('Sku', 'like', "%{$keyword}%")
         // ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->paginate(10);
@@ -71,7 +71,7 @@ class HomeController extends Controller
         $keyword = $request->keyword;
         // dd($size[1]);
         $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
-            ->Where('title', 'like', "%{$keyword}%")
+            ->Where('Sku', 'like', "%{$keyword}%")
         // ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->paginate(10);
@@ -117,7 +117,7 @@ class HomeController extends Controller
         $keyword = $request->keyword;
         // dd($size[1]);
         $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
-            ->Where('title', 'like', "%{$keyword}%")
+            ->Where('Sku', 'like', "%{$keyword}%")
             ->Where('id_type', $request->type)
             ->paginate(5);
         // dd($report);
@@ -157,7 +157,8 @@ class HomeController extends Controller
         $size = size::get();
         $keyword = $request->keyword;
         // dd($size[1]);
-        $report = Product::orderBy('updated_at', 'desc')->Where('title', 'like', "%{$keyword}%")->where('id_idea', Auth::user()->id)->where('status', 5)->paginate(10);
+        $report = Product::orderBy('updated_at', 'desc')->Where('Sku', 'like', "%{$keyword}%")
+            ->where('id_idea', Auth::user()->id)->where('status', 5)->paginate(10);
         // dd($report);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
@@ -197,7 +198,8 @@ class HomeController extends Controller
         $size = size::get();
         $type_product = type_product::get();
         $designer = User::get()->where('role', 1);
-        $report = Product::orderBy('id', 'desc')->Where('title', 'like', "%{$keyword}%")->where('id_idea', Auth::user()->id)->where('status', 3)->paginate(5);
+        $report = Product::orderBy('id', 'desc')->Where('Sku', 'like', "%{$keyword}%")
+            ->where('id_idea', Auth::user()->id)->where('status', 3)->paginate(5);
         $totalPending = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 3)->count();
         return view('client.layout.home',
             ['designers' => $designer,
@@ -213,7 +215,8 @@ class HomeController extends Controller
         $size = size::get();
         $type_product = type_product::get();
         $designer = User::get()->where('role', 1);
-        $report = Product::orderBy('id', 'desc')->Where('title', 'like', "%{$keyword}%")->where('id_idea', Auth::user()->id)->where('status', 1)->paginate(5);
+        $report = Product::orderBy('id', 'desc')->Where('Sku', 'like', "%{$keyword}%")
+            ->where('id_idea', Auth::user()->id)->where('status', 1)->paginate(5);
         $totalNotReceived = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 1)->count();
         return view('client.layout.home',
             ['designers' => $designer,

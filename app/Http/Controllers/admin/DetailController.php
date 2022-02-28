@@ -56,7 +56,7 @@ class DetailController extends Controller
         $keyword = $request->keyword;
         // dd($size[1]);
         $report = Product::orderBy('id', 'desc')->where('id_idea', $id)
-            ->Where('title', 'like', "%{$keyword}%")
+            ->Where('Sku', 'like', "%{$keyword}%")
         // ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->paginate(10);
