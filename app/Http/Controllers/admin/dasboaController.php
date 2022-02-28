@@ -39,10 +39,26 @@ class dasboaController extends Controller
             ->orderBy('sum', 'DESC')
             ->groupBy('products.id_idea')
             ->get();
+        // $designer = User::join('products', 'products.User_id', '=', 'users.id')
+        //     ->join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
+        //     ->join('mocup_products', 'mocup_products.product_id', '=', 'products.id')
+        //     ->select(DB::raw('COUNT(product_png_details.id) as "product_png_details",
+        //     COUNT(mocup_products.id) as "mocup_products",
+        //     users.name as "name",
+        //     users.email as "email",
+        //     users.role as "role",
+        //     users.deleted_at as "deleted_at",
+        //     products.User_id as "id"
+        //     '
+        //     ))
+        // // ->where('created_at', 'LIKE', '%' . $time . '%')
+        //     ->groupBy('products.User_id')
+        //     ->orderBy('mocup_products', 'DESC')
+        //     ->get();
+
         $designer = User::join('products', 'products.User_id', '=', 'users.id')
-            ->join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
             ->join('mocup_products', 'mocup_products.product_id', '=', 'products.id')
-            ->select(DB::raw('COUNT(product_png_details.id) as "product_png_details",
+            ->select(DB::raw('
             COUNT(mocup_products.id) as "mocup_products",
             users.name as "name",
             users.email as "email",
@@ -54,12 +70,7 @@ class dasboaController extends Controller
             ->groupBy('products.User_id')
             ->orderBy('mocup_products', 'DESC')
             ->get();
-        // dd($designer);
-        // $shows = User::where('name', 'like', "%{$keyword}%")->withTrashed()->paginate(10);
-
-        // $shows = User::withTrashed()->paginate(100);
-        // dd($shows[4]->user->role);
-
+        // dd($mocup_products);
         return view('admin/dasboa/index'
             , [
                 'shows' => $Idea,
