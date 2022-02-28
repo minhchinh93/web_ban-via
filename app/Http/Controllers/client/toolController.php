@@ -49,7 +49,7 @@ class toolController extends Controller
     }
     public function Sku()
     {
-        foreach (product::all() as $skus) {
+        foreach (Product::all() as $skus) {
             $id = $skus->id;
             $names = $skus->type_product->name;
             $name = substr($names, 0, 3);
