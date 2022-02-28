@@ -56,7 +56,7 @@ class dasboaController extends Controller
         //     ->orderBy('mocup_products', 'DESC')
         //     ->get();
 
-        $png = User::join('products', 'products.User_id', '=', 'users.id')
+        $designer = User::join('products', 'products.User_id', '=', 'users.id')
             ->join('mocup_products', 'mocup_products.product_id', '=', 'products.id')
             ->select(DB::raw('
             COUNT(mocup_products.id) as "mocup_products",
@@ -70,7 +70,7 @@ class dasboaController extends Controller
             ->groupBy('products.User_id')
             ->orderBy('mocup_products', 'DESC')
             ->get();
-        $designer = User::join('products', 'products.User_id', '=', 'users.id')
+        $png = User::join('products', 'products.User_id', '=', 'users.id')
             ->join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
             ->select(DB::raw('COUNT(product_png_details.id) as "product_png_details",
             users.name as "name",
