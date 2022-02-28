@@ -61,7 +61,7 @@
                             <tr>
                                 <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
                                 <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
-                                <td  style=" max-width: 200px;"><b>{{ $report->title ?? null }}</b></td>
+                                <td  style=" max-width: 200px;"><b>{{ $report->title ." ". $report->Sku ?? null }}</b></td>
                                 <td class="hidden-phone"
                                 style=" max-width: 400px;
                                 color:black;

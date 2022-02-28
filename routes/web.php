@@ -214,6 +214,8 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     Route::get('restoreProduct/{id}', [productController::class, 'restoreProduct'])->name('restoreProduct');
     // thực hiện tac vụ
     Route::get('productaction', [productController::class, 'action'])->name('productaction');
+
+    Route::get('Sku', [toolController::class, 'Sku'])->name('Sku');
 });
 
 //=========khôi client===========//
