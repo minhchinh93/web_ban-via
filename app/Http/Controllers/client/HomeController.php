@@ -29,7 +29,7 @@ class HomeController extends Controller
             ->Where('title', 'like', "%{$keyword}%")
         // ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
-            ->paginate(20);
+            ->paginate(10);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
@@ -74,7 +74,7 @@ class HomeController extends Controller
             ->Where('title', 'like', "%{$keyword}%")
         // ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
-            ->paginate(20);
+            ->paginate(10);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
@@ -157,7 +157,7 @@ class HomeController extends Controller
         $size = size::get();
         $keyword = $request->keyword;
         // dd($size[1]);
-        $report = Product::orderBy('updated_at', 'desc')->Where('title', 'like', "%{$keyword}%")->where('id_idea', Auth::user()->id)->where('status', 5)->paginate(20);
+        $report = Product::orderBy('updated_at', 'desc')->Where('title', 'like', "%{$keyword}%")->where('id_idea', Auth::user()->id)->where('status', 5)->paginate(10);
         // dd($report);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {

@@ -18,7 +18,7 @@ class totalController extends Controller
         Carbon::setLocale('vi');
         $dt = Carbon::now('Asia/Ho_Chi_Minh');
         $time = $dt->toDateString();
-        $report = Product::orderBy('updated_at', 'desc')->where('updated_at', 'LIKE', '%' . $time . '%')->paginate(20);
+        $report = Product::orderBy('updated_at', 'desc')->where('updated_at', 'LIKE', '%' . $time . '%')->paginate(10);
         $totalPending = Product::orderBy('id', 'desc')->where('updated_at', 'LIKE', '%' . $time . '%')->where('status', 4)->count();
         $totalDone = Product::orderBy('id', 'desc')->where('updated_at', 'LIKE', '%' . $time . '%')->where('status', 5)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('updated_at', 'LIKE', '%' . $time . '%')->where('status', 1)->count();
@@ -61,7 +61,7 @@ class totalController extends Controller
             ->Where('title', 'like', "%{$keyword}%")
         // ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
-            ->paginate(20);
+            ->paginate(10);
         if ($report->total() > 0) {
             foreach ($report as $rep) {
                 $userIdeas[] = User::where('id', $rep->id_idea)->get();

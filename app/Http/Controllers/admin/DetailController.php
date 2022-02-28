@@ -16,7 +16,7 @@ class DetailController extends Controller
     public function DetailDesigner($id)
     {
         // dd($id);
-        $report = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->paginate(20);
+        $report = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->paginate(10);
         $totalPending = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 4)->count();
         $totalDone = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 5)->count();
         $totalNotSeen = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 1)->count();
@@ -59,7 +59,7 @@ class DetailController extends Controller
             ->Where('title', 'like', "%{$keyword}%")
         // ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
-            ->paginate(20);
+            ->paginate(10);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
