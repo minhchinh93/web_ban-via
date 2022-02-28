@@ -68,7 +68,7 @@ class dasboaController extends Controller
             '
             ))
             ->groupBy('products.User_id')
-            ->orderBy('mocup_products', 'DESC')
+            ->orderBy('products.User_id', 'DESC')
             ->get();
         $png = User::join('products', 'products.User_id', '=', 'users.id')
             ->join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
@@ -81,7 +81,7 @@ class dasboaController extends Controller
             '
             ))
             ->groupBy('products.User_id')
-            ->orderBy('product_png_details', 'DESC')
+            ->orderBy('products.User_id', 'DESC')
             ->get();
         // dd($mocup_products);
         return view('admin/dasboa/index'
