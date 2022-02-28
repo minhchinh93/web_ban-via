@@ -83,7 +83,8 @@ class dasboaController extends Controller
             ->groupBy('products.User_id')
             ->orderBy('product_png_details', 'DESC')
             ->get();
-        // dd($mocup_products);
+
+        // dd($designer);
         return view('admin/dasboa/index'
             , [
                 'shows' => $Idea,
