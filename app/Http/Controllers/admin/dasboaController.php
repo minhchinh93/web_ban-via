@@ -70,6 +70,19 @@ class dasboaController extends Controller
             ->groupBy('products.User_id')
             ->orderBy('mocup_products', 'DESC')
             ->get();
+        $png = User::join('products', 'products.User_id', '=', 'users.id')
+            ->join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
+            ->select(DB::raw('COUNT(product_png_details.id) as "product_png_details",
+            users.name as "name",
+            users.email as "email",
+            users.role as "role",
+            users.deleted_at as "deleted_at",
+            products.User_id as "id"
+            '
+            ))
+            ->groupBy('products.User_id')
+            ->orderBy('product_png_details', 'DESC')
+            ->get();
         // dd($mocup_products);
         return view('admin/dasboa/index'
             , [
@@ -82,6 +95,7 @@ class dasboaController extends Controller
                 'totalDayDesigner' => $totaldayPNG + $totaldayMockup,
                 'totalIdeamember' => $totalIdeamember,
                 'totalDesigner' => $totalDesigner,
+                'pngs' => $png,
             ]
         );
     }

@@ -116,6 +116,9 @@
                         </tr>
                         </thead>
                         <tbody>
+                            @php
+                            $i=0
+                          @endphp
                             @foreach ($designer as $show)
                         <tr>
                             <td><a href="{{ route('DetailDesigner',[$show->id]) }}">{{ $show->name?? null }}</a></td>
@@ -128,7 +131,7 @@
                             <td><span class="label label-success label-mini">ADMIN</span></td>
                             @endif
                              <td><h4>{{$show->mocup_products ?? null }}</h4></td>
-                             <td>{{null}} </td>
+                             <td><h4>{{$pngs[$i++]->product_png_details}}</h4></td>
                             <td>
                                 @if (  $show->deleted_at ==  null)
                                 <span class="label label-info label-mini">active</span></td>
