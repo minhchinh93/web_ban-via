@@ -44,6 +44,7 @@
                             <th><i class="fa fa-bullhorn"></i> Designer</th>
                             <th><i class="fa fa-bullhorn"></i> Category(size)</th>
                             <th><i class="fa fa-bullhorn"></i> Title</th>
+                            <th><i class="fa fa-bullhorn"></i> SKU</th>
                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description </th>
                             <th class="hidden-phone"><i class="fa fa-question-circle"></i>Time</th>
                             <th><i class="fa fa-bookmark"></i>Idea </th>
@@ -61,9 +62,10 @@
                             <tr>
                                 <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
                                 <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
-                                <td  style=" max-width: 200px;"><b>{{ $report->title ." ". $report->Sku ?? null }}</b></td>
+                                <td  style=" max-width:150px;"><b>{{ $report->title  ?? null }}</b></td>
+                                <td  style=" max-width: 100px;"><b>{{  $report->Sku ?? null }}</b></td>
                                 <td class="hidden-phone"
-                                style=" max-width: 400px;
+                                style=" max-width: 300px;
                                 color:black;
                                 overflow: hidden;
                                 text-overflow: ellipsis;

@@ -20,6 +20,7 @@
                             <th><i class="fa fa-bullhorn"></i>Idea</th>
                             <th><i class="fa fa-bullhorn"></i> categories(size)</th>
                             <th><i class="fa fa-bullhorn"></i> Title</th>
+                            <th><i class="fa fa-bullhorn"></i> SKU</th>
                             <th><i class="fa fa-bullhorn"></i> time</th>
                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description </th>
                             <th><i class="fa fa-bookmark"></i> Idea </th>
@@ -38,7 +39,8 @@
                             <tr>
                                 <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
                                 <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}({{ $report->size->name ?? null  }})</a></td>
-                                <td  style=" max-width: 200px;"><b>{{ $report->title ." ". $report->Sku ?? null }}</b></td>
+                                <td  style=" max-width: 200px;"><b>{{ $report->title ?? null }}</b></td>
+                                <td  style=" max-width: 100px;"><b>{{  $report->Sku ?? null }}</b></td>
                                 @if (count($report->mocups)!=0)
                                     <td class="hidden-phone">{{  $report->mocups[0]->updated_at ?? null }}
                                     @elseif(count($report->ProductPngDetails)!=0)

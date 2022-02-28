@@ -64,7 +64,7 @@
                         <tbody>
                             @foreach ($shows as $show)
                         <tr>
-                            <td><a href="basic_table.html#">{{ $show->name?? null }}</a></td>
+                            <td><a href="{{ route('DetailIdea',[$show->id]) }}">{{ $show->name?? null }}</a></td>
                             <td>{{$show->email}} </td>
                             @if($show->role ==1)
                             <td><span class="label label-info label-mini">DESIGNER</span></td>
@@ -118,7 +118,7 @@
                         <tbody>
                             @foreach ($designer as $show)
                         <tr>
-                            <td><a href="basic_table.html#">{{ $show->name?? null }}</a></td>
+                            <td><a href="{{ route('DetailDesigner',[$show->id]) }}">{{ $show->name?? null }}</a></td>
                             <td>{{ $show->email?? null }}</td>
                             @if($show->role ==1)
                             <td><span class="label label-info label-mini">DESIGNER</span></td>
