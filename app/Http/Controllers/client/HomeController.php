@@ -250,8 +250,15 @@ class HomeController extends Controller
                 'description' => $request->description,
                 'title' => $request->title,
             ];
-
+            // dd($request->id);
             $productDtail = Product::create($data);
+            $id = $productDtail->id;
+            $names = $productDtail->type_product->name;
+            $name = substr($names, 0, 3);
+            $sku = $name . $id;
+            product::where('id', $id)->update([
+                'Sku' => $sku,
+            ]);
             foreach ($request->file('image') as $image) {
                 $dataImage = [
                     'product_id' => $productDtail->id,
@@ -272,6 +279,13 @@ class HomeController extends Controller
             ];
 
             $productDtail = Product::create($data);
+            $id = $productDtail->id;
+            $names = $productDtail->type_product->name;
+            $name = substr($names, 0, 3);
+            $sku = $name . $id;
+            product::where('id', $id)->update([
+                'Sku' => $sku,
+            ]);
         }
 
         return redirect()->route('home');

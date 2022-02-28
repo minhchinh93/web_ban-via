@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\product;
 use App\Models\size;
 use App\Models\type_product;
 use Carbon\Carbon;
@@ -45,6 +46,20 @@ class toolController extends Controller
         echo $dt->subDay(1);
         // echo $dt->subDays(29);
 
+    }
+    public function Sku()
+    {
+        foreach (product::all() as $skus) {
+            $id = $skus->id;
+            $names = $skus->type_product->name;
+            $name = substr($names, 0, 3);
+            $sku = $name . $id;
+            product::where('id', $id)->update([
+                'Sku' => $sku,
+            ]);
+
+        }
+        print "ok";
     }
 
 }
