@@ -13,7 +13,7 @@
                     <div class="col-lg-4">
                         <h4 style="margin-left: 2%;" class="category"><a style="color: gray" href="#"> Hoàn thành ({{ $totalDone ?? null}}) </a>
                              | <a  style="color: rgb(13, 182, 36)" href="#">chờ duyệt ({{ $totalPending ?? null}})</a>
-                             | <a style="color:red" href="#">chưa nhận ({{ $totalNotSeen ?? null}})</a>
+                             | <a style="color:red" href="#">chưa nhận ({{ $totalNotReceived ?? null}})</a>
                              | <a style="color:red" href="#"> tất cả ({{ $totalallidea ?? null}})</a>
 
                             </h4>
