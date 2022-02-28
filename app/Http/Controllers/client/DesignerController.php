@@ -55,7 +55,17 @@ class DesignerController extends Controller
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->count();
         $totalPendingDS = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 3)->count();
+        if ($report->total() > 0) {
+            foreach ($report as $rep) {
+                $userIdeas[] = User::where('id', $rep->id_idea)->get();
+            }
+            foreach ($userIdeas as $userIdea) {
+                $name[] = $userIdea;
+            }
 
+        } else {
+            $name = "";
+        }
         return view('client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
@@ -64,6 +74,7 @@ class DesignerController extends Controller
                 'totalNotSeen' => $totalNotSeen,
                 'totalprioritize' => $totalNotReceived,
                 'totalPendingDS' => $totalPendingDS,
+                'name' => $name,
             ]);
     }
     public function replay(Request $request)
@@ -75,6 +86,17 @@ class DesignerController extends Controller
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->count();
         $totalPendingDS = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 3)->count();
+        if ($report->total() > 0) {
+            foreach ($report as $rep) {
+                $userIdeas[] = User::where('id', $rep->id_idea)->get();
+            }
+            foreach ($userIdeas as $userIdea) {
+                $name[] = $userIdea;
+            }
+
+        } else {
+            $name = "";
+        }
         return view('client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
@@ -83,6 +105,7 @@ class DesignerController extends Controller
                 'totalNotSeen' => $totalNotSeen,
                 'totalprioritize' => $totalNotReceived,
                 'totalPendingDS' => $totalPendingDS,
+                'name' => $name,
 
             ]);
     }
@@ -95,6 +118,17 @@ class DesignerController extends Controller
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->count();
         $totalPendingDS = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 3)->count();
+        if ($report->total() > 0) {
+            foreach ($report as $rep) {
+                $userIdeas[] = User::where('id', $rep->id_idea)->get();
+            }
+            foreach ($userIdeas as $userIdea) {
+                $name[] = $userIdea;
+            }
+
+        } else {
+            $name = "";
+        }
         return view('client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
@@ -103,6 +137,7 @@ class DesignerController extends Controller
                 'totalNotSeen' => $totalNotSeen,
                 'totalprioritize' => $totalNotReceived,
                 'totalPendingDS' => $totalPendingDS,
+                'name' => $name,
             ]);
     }
     public function prioritize(Request $request)
@@ -114,6 +149,17 @@ class DesignerController extends Controller
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->count();
         $totalPendingDS = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 3)->count();
+        if ($report->total() > 0) {
+            foreach ($report as $rep) {
+                $userIdeas[] = User::where('id', $rep->id_idea)->get();
+            }
+            foreach ($userIdeas as $userIdea) {
+                $name[] = $userIdea;
+            }
+
+        } else {
+            $name = "";
+        }
         return view('client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
@@ -121,7 +167,9 @@ class DesignerController extends Controller
                 'totalDone' => $totalDone,
                 'totalNotSeen' => $totalNotSeen,
                 'totalprioritize' => $totalNotReceived,
-                'totalPendingDS' => $totalPendingDS]);
+                'totalPendingDS' => $totalPendingDS,
+                'name' => $name,
+            ]);
     }
     public function PendingDS(Request $request)
     {
@@ -132,6 +180,17 @@ class DesignerController extends Controller
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->count();
         $totalPendingDS = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 3)->count();
+        if ($report->total() > 0) {
+            foreach ($report as $rep) {
+                $userIdeas[] = User::where('id', $rep->id_idea)->get();
+            }
+            foreach ($userIdeas as $userIdea) {
+                $name[] = $userIdea;
+            }
+
+        } else {
+            $name = "";
+        }
         return view('client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
@@ -140,6 +199,7 @@ class DesignerController extends Controller
                 'totalNotSeen' => $totalNotSeen,
                 'totalprioritize' => $totalNotReceived,
                 'totalPendingDS' => $totalPendingDS,
+                'name' => $name,
             ]);
     }
     public function Detail($id)
