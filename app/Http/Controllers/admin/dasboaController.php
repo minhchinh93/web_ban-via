@@ -65,7 +65,7 @@ class dasboaController extends Controller
             users.role as "role",
             users.id as "idUser",
             users.deleted_at as "deleted_at",
-            products.id as "id"
+            products.User_id as "id"
             '
             ))
             ->groupBy('products.User_id')
