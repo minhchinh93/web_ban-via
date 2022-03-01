@@ -57,7 +57,7 @@ class totalController extends Controller
         $size = size::get();
         $keyword = $request->keyword;
         // dd($size[1]);
-        $report = Product::orderBy('id', 'desc')->where('updated_at', 'LIKE', '%' . $times . '%')
+        $report = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')
             ->Where('Sku', 'like', "%{$keyword}%")
 
         // ->Where('description', 'like', "%{$keyword}%")
@@ -90,7 +90,7 @@ class totalController extends Controller
         // dd($time[4]);
         // dd(count($report[0]->mocups));
 
-        $totalDone = Product::orderBy('updated_at', 'desc')->where('updated_at', 'LIKE', '%' . $times . '%')->where('status', 5)->count();
+        $totalDone = Product::orderBy('created_at', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')->where('status', 5)->count();
         $totalPending = Product::orderBy('updated_at', 'desc')->where('updated_at', 'LIKE', '%' . $times . '%')->where('status', 3)->count();
         $totalNotReceived = Product::orderBy('updated_at', 'desc')->where('updated_at', 'LIKE', '%' . $times . '%')->where('status', 1)->count();
         $totalallidea = Product::orderBy('updated_at', 'desc')->where('updated_at', 'LIKE', '%' . $times . '%')->count();
