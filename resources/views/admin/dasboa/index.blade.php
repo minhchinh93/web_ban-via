@@ -132,7 +132,7 @@
                             @endif
                              <td><h4>{{$show->product_png_details ?? null }}</h4></td>
 
-                             <td><h4>{{ $mocup[$i++]->mocup_products  ?? null }}</h4></td>
+                             <td><h4>{{  null }}</h4></td>
 
                             <td>
                                 @if (  $show->deleted_at ==  null)
