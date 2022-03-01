@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\mocupProduct;
 use App\Models\Product;
 use App\Models\ProductPngDetails;
 use App\Models\User;
@@ -22,7 +21,7 @@ class dasboaController extends Controller
         $totalidea = Product::all()->count();
         $totalPNG = ProductPngDetails::all()->count();
         $totaldayPNG = ProductPngDetails::where('created_at', 'LIKE', '%' . $time . '%')->count();
-        $totaldayMockup = mocupProduct::where('update', 'LIKE', '%' . $time . '%')->count();
+        // $totaldayMockup = mocupProduct::where('update', 'LIKE', '%' . $time . '%')->count();
         $totalIdeamember = User::where('role', '<>', 2)->count();
         $totalDesigner = User::where('role', '<>', 1)->count();
         // $totalATM = bill::where('payment', 'ATM')->count();
