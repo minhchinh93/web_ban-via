@@ -54,11 +54,11 @@
                                 text-overflow: ellipsis;
                                word-wrap: break-word;">{!!  $report->description ?? null !!}
                                 </td>
-                                <td data-toggle="modal" data-target="#a{{$report->id}}">
+                                   <td data-toggle="modal" data-target="#a{{$report->id}}">
                                     @if  (count($report->product_details)!=0)
                                    <img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
                                    @else
-                                   <td data-toggle="modal" data-target="#c{{$report->id}}"></td>
+                                   
                                   @endif
                                 </td>
                                 {{-- @php
@@ -141,9 +141,9 @@
                                     <td data-toggle="modal" data-target="#b{{$report->id}}">
                                     <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="border-radius: 5%;width: 150px; height :150px"  >
                                 </td>
-                                @else
-                                <td data-toggle="modal" data-target="#c{{$report->id}}"></td>
-                               @endif
+                                  @else
+                                    <td data-toggle="modal" data-target="#b{{$report->id}}">
+                                   @endif
                                 <div class="modal fade" id="b{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <section id="main-content">
                                         <section class="wrapper">
