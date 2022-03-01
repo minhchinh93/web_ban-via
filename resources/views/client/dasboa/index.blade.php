@@ -79,6 +79,7 @@
 
                                           @foreach ($report->product_details as $rep)
                                           <div class="project-wrapper">
+                                            <h5>{{ $rep->ImageDetail }} </h5>
                                             <div class="project">
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
@@ -125,6 +126,7 @@
                                           <div class="post-content-{{ $rep->id  }}">
                                             <div class="project">
                                                 <button onclick="deleteComment({{ $rep->id }})">xoa</button>
+                                                <h5>{{ $rep->mocup }} </h5>
                                                  {{-- <a href="{{ route('deletemocups',[$rep->id]) }}"><span onclick="deletemocups({{ $rep->id }})" class="label label-info label-mini">xoa</span></a> --}}
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
@@ -180,6 +182,7 @@
                                           <div class="post-Png-{{ $rep->id  }}">
                                             <div class="project">
                                                 <button onclick="deletePng({{ $rep->id }})">xoa</button>
+                                                <h5> {{ $rep->ImagePngDetail}}</h5>
                                                 {{-- <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
