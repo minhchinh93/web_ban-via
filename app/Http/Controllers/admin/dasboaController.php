@@ -56,7 +56,11 @@ class dasboaController extends Controller
         //     ->groupBy('products.User_id')
         //     ->orderBy('mocup_products', 'DESC')
         //     ->get();
-        $keyword = $request->keyword;
+        if ($request->keyword) {
+            $keyword = $request->keyword;
+        } else {
+            $keyword = $yesterday;
+        }
 
         $mocup = User::join('products', 'products.User_id', '=', 'users.id')
             ->join('mocup_products', 'mocup_products.product_id', '=', 'products.id')
