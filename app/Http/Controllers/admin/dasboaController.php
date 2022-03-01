@@ -75,7 +75,6 @@ class dasboaController extends Controller
             '
             ))
             ->groupBy('products.User_id')
-        // ->orwhere('mocup_products.updated_at', 'LIKE', '%' . $yesterday . '%')
             ->where('mocup_products.updated_at', 'LIKE', '%' . $keyword . '%')
             ->orderBy('idUser', 'DESC')
             ->get();
