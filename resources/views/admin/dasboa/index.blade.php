@@ -109,8 +109,8 @@
                             <th><i class="fa fa-bullhorn"></i> NAME</th>
                             <th><i class="fa fa-bullhorn"></i> EMAIL</th>
                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> ROLE</th>
-                            <th><i class="fa fa-bookmark"></i> TOTAL MOCKUP</th>
                             <th><i class="fa fa-bookmark"></i> TOTAL PNG</th>
+                            <th><i class="fa fa-bookmark"></i> PNG/YESTERDAY</th>
                             <th><i class=" fa fa-edit"></i> Status</th>
                             <th></th>
                         </tr>
@@ -130,10 +130,10 @@
                             @else
                             <td><span class="label label-success label-mini">ADMIN</span></td>
                             @endif
-                             <td><h4>{{$show->mocup_products ?? null }}</h4></td>
+                             <td><h4>{{$show->product_png_details ?? null }}</h4></td>
 
-                             <td><h4>{{$pngs[$i++]->product_png_details}}</h4></td>
-                           
+                             <td><h4>NULL</h4></td>
+
                             <td>
                                 @if (  $show->deleted_at ==  null)
                                 <span class="label label-info label-mini">active</span></td>

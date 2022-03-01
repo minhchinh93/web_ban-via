@@ -22,8 +22,7 @@ class dasboaController extends Controller
         $totalidea = Product::all()->count();
         $totalPNG = ProductPngDetails::all()->count();
         $totaldayPNG = ProductPngDetails::where('created_at', 'LIKE', '%' . $time . '%')->count();
-        $totalMockup = mocupProduct::all()->count();
-        $totaldayMockup = mocupProduct::where('created_at', 'LIKE', '%' . $time . '%')->count();
+        $totaldayMockup = mocupProduct::where('update', 'LIKE', '%' . $time . '%')->count();
         $totalIdeamember = User::where('role', '<>', 2)->count();
         $totalDesigner = User::where('role', '<>', 1)->count();
         // $totalATM = bill::where('payment', 'ATM')->count();
@@ -56,21 +55,21 @@ class dasboaController extends Controller
         //     ->orderBy('mocup_products', 'DESC')
         //     ->get();
 
+        // $designer = User::join('products', 'products.User_id', '=', 'users.id')
+        //     ->join('mocup_products', 'mocup_products.product_id', '=', 'products.id')
+        //     ->select(DB::raw('
+        //     COUNT(mocup_products.id) as "mocup_products",
+        //     users.name as "name",
+        //     users.email as "email",
+        //     users.role as "role",
+        //     users.deleted_at as "deleted_at",
+        //     products.User_id as "id"
+        //     '
+        //     ))
+        //     ->groupBy('products.User_id')
+        //     ->orderBy('mocup_products', 'DESC')
+        //     ->get();
         $designer = User::join('products', 'products.User_id', '=', 'users.id')
-            ->join('mocup_products', 'mocup_products.product_id', '=', 'products.id')
-            ->select(DB::raw('
-            COUNT(mocup_products.id) as "mocup_products",
-            users.name as "name",
-            users.email as "email",
-            users.role as "role",
-            users.deleted_at as "deleted_at",
-            products.User_id as "id"
-            '
-            ))
-            ->groupBy('products.User_id')
-            ->orderBy('mocup_products', 'DESC')
-            ->get();
-        $png = User::join('products', 'products.User_id', '=', 'users.id')
             ->join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
             ->select(DB::raw('COUNT(product_png_details.id) as "product_png_details",
             users.name as "name",
@@ -87,14 +86,14 @@ class dasboaController extends Controller
             , [
                 'shows' => $Idea,
                 'designer' => $designer,
-                'totalDesign' => $totalPNG + $totalMockup,
+                'totalDesign' => $totalPNG,
                 'totalIdea' => $totalidea,
                 'totaDay' => $totaDay,
                 'totaSusecDay' => $totaSusecDay,
-                'totalDayDesigner' => $totaldayPNG + $totaldayMockup,
+                'totalDayDesigner' => $totaldayPNG,
                 'totalIdeamember' => $totalIdeamember,
                 'totalDesigner' => $totalDesigner,
-                'pngs' => $png,
+
             ]
         );
     }
