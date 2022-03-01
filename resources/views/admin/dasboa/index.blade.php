@@ -102,8 +102,15 @@
             <div class="col-md-12">
                 <div class="content-panel" style="border-radius: 10px;background: rgba(255, 255, 255, 0.842)">
                     <h4><i class="fa fa-angle-right"></i> DESIGNER MANAGER  </h4><hr><table class="table table-striped table-advance table-hover">
-
-
+                        <div class="col-lg-3">
+                            <form class="form-inline" role="form">
+                                <div class="form-group">
+                                    <label class="sr-only" for="exampleInputEmail2">    </label>
+                                    <input type="text" class="form-control" name="keyword" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword }}" placeholder="yyyy-mm-dd">
+                                </div>
+                                <button type="submit" class="btn btn-theme"><i class="fa-solid fa-magnifying-glass">tim kiem</i></button>
+                            </form>
+                        </div>
                         <thead>
                         <tr>
                             <th><i class="fa fa-bullhorn"></i> NAME</th>
