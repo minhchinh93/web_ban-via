@@ -15,7 +15,9 @@ class dasboaController extends Controller
     public function showdasboa()
     {
         $dt = Carbon::now('Asia/Ho_Chi_Minh');
+        $yes = Carbon::yesterday('Asia/Ho_Chi_Minh');
         $time = $dt->toDateString();
+        $yesterday = $yes->toDateString();
         $totaDay = Product::where('created_at', 'LIKE', '%' . $time . '%')->count();
         $totaSusecDay = Product::where('created_at', 'LIKE', '%' . $time . '%')->where('status', 5)->count();
         $totalidea = Product::all()->count();
@@ -78,6 +80,7 @@ class dasboaController extends Controller
             products.User_id as "id"
             '))
             ->groupBy('products.User_id')
+            ->where('product_png_details.updated_at', 'LIKE', '%' . $yesterday . '%')
             ->orderBy('product_png_details', 'DESC')
             ->get();
 
