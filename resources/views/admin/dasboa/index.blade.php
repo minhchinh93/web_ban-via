@@ -101,7 +101,7 @@
         <div class="row mt" >
             <div class="col-md-12">
                 <div class="content-panel" style="border-radius: 10px;background: rgba(255, 255, 255, 0.842)">
-                    <h4><i class="fa fa-angle-right"></i> DESIGNER MANAGER  </h4><hr><table class="table table-striped table-advance table-hover">
+                    <h4><i class="fa fa-angle-right"></i> DESIGNER MANAGER PNG </h4><hr><table class="table table-striped table-advance table-hover">
                         <div class="col-lg-3">
                             <form class="form-inline" role="form">
                                 <div class="form-group">
@@ -117,7 +117,6 @@
                             <th><i class="fa fa-bullhorn"></i> EMAIL</th>
                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> ROLE</th>
                             <th><i class="fa fa-bookmark"></i> PNG/YES</th>
-                            <th><i class="fa fa-bookmark"></i> MOCKUP/YES</th>
                             <th><i class=" fa fa-edit"></i> STATUS</th>
                             <th></th>
                         </tr>
@@ -138,9 +137,60 @@
                             <td><span class="label label-success label-mini">ADMIN</span></td>
                             @endif
                              <td><h4>{{$show->product_png_details ?? null }}</h4></td>
-
-                             <td><h4>null</h4></td>
-
+                            <td>
+                                @if (  $show->deleted_at ==  null)
+                                <span class="label label-info label-mini">active</span></td>
+                                @else
+                                <span class="label label-danger">disabled</span>
+                                @endif
+                            </td>
+                            <td>
+                                <span class="btn btn-success btn-xs">
+                                    <a style="color:white" href="{{ route('DetailDesigner',[$show->id]) }}">
+                                     Detail
+                                  </a>
+                                 </span>
+                                {{-- <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button> --}}
+                                {{-- <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button> --}}
+                            </td>
+                        </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div><!-- /content-panel -->
+            </div><!-- /col-md-12 -->
+        </div>
+        <div class="row mt" >
+            <div class="col-md-12">
+                <div class="content-panel" style="border-radius: 10px;background: rgba(255, 255, 255, 0.842)">
+                    <h4><i class="fa fa-angle-right"></i> DESIGNER MANAGER MOCKUP </h4><hr><table class="table table-striped table-advance table-hover">
+                        <thead>
+                        <tr>
+                            <th><i class="fa fa-bullhorn"></i> NAME</th>
+                            <th><i class="fa fa-bullhorn"></i> EMAIL</th>
+                            <th class="hidden-phone"><i class="fa fa-question-circle"></i> ROLE</th>
+                            <th><i class="fa fa-bookmark"></i> MOCKUP/YES</th>
+                            <th><i class=" fa fa-edit"></i> STATUS</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                            $i=0
+                          @endphp
+                            @foreach ($mocup as $show)
+                        <tr>
+                            <td><a href="{{ route('DetailDesigner',[$show->id]) }}">{{ $show->name?? null }}</a></td>
+                            <td>{{ $show->email?? null }}</td>
+                            @if($show->role ==1)
+                            <td><span class="label label-info label-mini">DESIGNER</span></td>
+                            @elseif ($show->role ==2)
+                            <td><span class="label label-warning label-mini">IDEA</span></td>
+                            @else
+                            <td><span class="label label-success label-mini">ADMIN</span></td>
+                            @endif
+                             <td><h4>{{$show->mocup_products ?? null }}</h4></td>
                             <td>
                                 @if (  $show->deleted_at ==  null)
                                 <span class="label label-info label-mini">active</span></td>
