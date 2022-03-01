@@ -39,22 +39,22 @@ class dasboaController extends Controller
             ->orderBy('sum', 'DESC')
             ->groupBy('products.id_idea')
             ->get();
-        $designer = User::join('products', 'products.User_id', '=', 'users.id')
-            ->join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
-            ->join('mocup_products', 'mocup_products.product_id', '=', 'products.id')
-            ->select(DB::raw('COUNT(product_png_details.id) as "product_png_details",
-            COUNT(mocup_products.id) as "mocup_products",
-            users.name as "name",
-            users.email as "email",
-            users.role as "role",
-            users.deleted_at as "deleted_at",
-            products.User_id as "id"
-            '
-            ))
-        // ->where('created_at', 'LIKE', '%' . $time . '%')
-            ->groupBy('products.User_id')
-            ->orderBy('mocup_products', 'DESC')
-            ->get();
+        // $designer = User::join('products', 'products.User_id', '=', 'users.id')
+        //     ->join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
+        //     ->join('mocup_products', 'mocup_products.product_id', '=', 'products.id')
+        //     ->select(DB::raw('COUNT(product_png_details.id) as "product_png_details",
+        //     COUNT(mocup_products.id) as "mocup_products",
+        //     users.name as "name",
+        //     users.email as "email",
+        //     users.role as "role",
+        //     users.deleted_at as "deleted_at",
+        //     products.User_id as "id"
+        //     '
+        //     ))
+        // // ->where('created_at', 'LIKE', '%' . $time . '%')
+        //     ->groupBy('products.User_id')
+        //     ->orderBy('mocup_products', 'DESC')
+        //     ->get();
 
         $mocup = User::join('products', 'products.User_id', '=', 'users.id')
             ->join('mocup_products', 'mocup_products.product_id', '=', 'products.id')
@@ -63,13 +63,14 @@ class dasboaController extends Controller
             users.name as "name",
             users.email as "email",
             users.role as "role",
+            users.id as "idUser",
             users.deleted_at as "deleted_at",
             products.User_id as "id"
             '
             ))
             ->groupBy('products.User_id')
             ->where('mocup_products.updated_at', 'LIKE', '%' . $yesterday . '%')
-            ->orderBy('id', 'DESC')
+            ->orderBy('idUser', 'DESC')
             ->get();
 
         $designer = User::join('products', 'products.User_id', '=', 'users.id')
@@ -78,12 +79,13 @@ class dasboaController extends Controller
             users.name as "name",
             users.email as "email",
             users.role as "role",
+            users.id as "idUser",
             users.deleted_at as "deleted_at",
             products.User_id as "id"
             '))
             ->groupBy('products.User_id')
             ->where('product_png_details.updated_at', 'LIKE', '%' . $yesterday . '%')
-            ->orderBy('id', 'DESC')
+            ->orderBy('idUser', 'DESC')
             ->get();
 
         return view('admin/dasboa/index'
