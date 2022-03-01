@@ -7,12 +7,13 @@ use App\Models\Product;
 use App\Models\ProductPngDetails;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class dasboaController extends Controller
 {
     //
-    public function showdasboa()
+    public function showdasboa(Request $request)
     {
         $dt = Carbon::now('Asia/Ho_Chi_Minh');
         $yes = Carbon::yesterday('Asia/Ho_Chi_Minh');
@@ -55,6 +56,7 @@ class dasboaController extends Controller
         //     ->groupBy('products.User_id')
         //     ->orderBy('mocup_products', 'DESC')
         //     ->get();
+        $keyword = $request->keyword;
 
         $mocup = User::join('products', 'products.User_id', '=', 'users.id')
             ->join('mocup_products', 'mocup_products.product_id', '=', 'products.id')
@@ -69,7 +71,8 @@ class dasboaController extends Controller
             '
             ))
             ->groupBy('products.User_id')
-            ->where('mocup_products.updated_at', 'LIKE', '%' . $yesterday . '%')
+        // ->orwhere('mocup_products.updated_at', 'LIKE', '%' . $yesterday . '%')
+            ->where('mocup_products.updated_at', 'LIKE', '%' . $keyword . '%')
             ->orderBy('idUser', 'DESC')
             ->get();
 
@@ -84,7 +87,7 @@ class dasboaController extends Controller
             products.User_id as "id"
             '))
             ->groupBy('products.User_id')
-            ->where('product_png_details.updated_at', 'LIKE', '%' . $yesterday . '%')
+            ->where('product_png_details.updated_at', 'LIKE', '%' . $keyword . '%')
             ->orderBy('idUser', 'DESC')
             ->get();
 
