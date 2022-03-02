@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\admin\dasboaController;
 //admin
+use App\Http\Controllers\admin\adminHomeController;
+use App\Http\Controllers\admin\dasboaController;
 use App\Http\Controllers\admin\DetailController;
 use App\Http\Controllers\admin\productController;
 use App\Http\Controllers\admin\totalController;
@@ -140,6 +141,7 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     //=======dasboa=========//
     //show dasboa
     Route::get('showdasboa', [dasboaController::class, 'showdasboa'])->name('showdasboa');
+    Route::get('AadminHome', [adminHomeController::class, 'home'])->name('AadminHome');
     // chi tiêt hóa dơn user
     Route::get('DetailMember/{id}', [dasboaController::class, 'DetailMember'])->name('DetailMember');
 
