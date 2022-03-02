@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Redirect;
 class DesignerController extends Controller
 {
     //
-    public function Dashboard()
+    public function Dashboard(Request $request)
     {
-        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->paginate(10);
+        $keyword = $request->keyword;
+        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->paginate(10);
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
@@ -47,9 +48,9 @@ class DesignerController extends Controller
     }
     public function complete(Request $request)
     {
-
+        $keyword = $request->keyword;
         $designer = User::get()->where('role', 1);
-        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->paginate(5);
+        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->where('status', 5)->paginate(5);
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
@@ -79,8 +80,9 @@ class DesignerController extends Controller
     }
     public function replay(Request $request)
     {
+        $keyword = $request->keyword;
         $designer = User::get()->where('role', 1);
-        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->paginate(5);
+        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->where('status', 4)->paginate(5);
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
@@ -111,8 +113,9 @@ class DesignerController extends Controller
     }
     public function NotSeen(Request $request)
     {
+        $keyword = $request->keyword;
         $designer = User::get()->where('role', 1);
-        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->paginate(5);
+        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->where('status', 1)->paginate(5);
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
@@ -142,8 +145,9 @@ class DesignerController extends Controller
     }
     public function prioritize(Request $request)
     {
+        $keyword = $request->keyword;
         $designer = User::get()->where('role', 1);
-        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('action', 2)->where('status', '<>', 5)->paginate(5);
+        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->where('action', 2)->where('status', '<>', 5)->paginate(5);
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
@@ -173,8 +177,9 @@ class DesignerController extends Controller
     }
     public function PendingDS(Request $request)
     {
+        $keyword = $request->keyword;
         $designer = User::get()->where('role', 1);
-        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 3)->paginate(10);
+        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->where('status', 3)->paginate(10);
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
