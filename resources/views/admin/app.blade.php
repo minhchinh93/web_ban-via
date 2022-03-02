@@ -212,9 +212,15 @@
               	  <h5 class="centered">Marcel Newman</h5>
 
                   <li class="mt">
-                      <a class="{{ (request()->is('admin/showList/dasboa')) ? 'active' : 'sub-menu' }}" href="{{ route('showdasboa') }}">
+                      <a class="{{ (request()->is('admin/AadminHome')) ? 'active' : 'sub-menu' }}" href="{{ route('AadminHome') }}">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a class="{{ (request()->is('admin/showList/dasboa')) ? 'active' : 'sub-menu' }}" href="{{ route('showdasboa') }}">
+                          <i class="fa fa-dashboard"></i>
+                          <span>statistics</span>
                       </a>
                   </li>
 

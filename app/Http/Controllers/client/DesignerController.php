@@ -16,7 +16,7 @@ class DesignerController extends Controller
     //
     public function Dashboard()
     {
-        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->paginate(20);
+        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->paginate(10);
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();

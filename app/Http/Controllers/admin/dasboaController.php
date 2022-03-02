@@ -56,7 +56,7 @@ class dasboaController extends Controller
         //     ->groupBy('products.User_id')
         //     ->orderBy('mocup_products', 'DESC')
         //     ->get();
-        if ($request->keyword) {
+        if ($request->keyword != '') {
             $keyword = $request->keyword;
         } else {
             $keyword = $yesterday;
