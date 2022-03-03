@@ -188,23 +188,23 @@
                             @else
                             <td><span class="label label-success label-mini">ADMIN</span></td>
                             @endif
-                             @if(count($mocup) > 1)
-                             @if($show->name == "Trần Huy")
+                        @if(count($designer) > 1)
+                             @if($show->name == $designer[0]->name)
                              <td><h4>{{$designer[0]->product_png_details ?? null }}</h4></td>
-                             @elseif ($show->name == "pioxhung design")
+                             @elseif ($show->name == $designer[1]->name)
                              <td><h4>{{$designer[1]->product_png_details ?? null }}</h4></td>
                              @else
                              <td><h4>0</h4></td>
                              @endif
-                             @else
-                             @if($show->name == "Trần Huy")
-                             <td><h4>{{$designer[0]->product_png_details ?? null }}</h4></td>
-                             @elseif ($show->name == "pioxhung design")
+                        @elseif(count($designer) == 1)
+                             @if($show->name == $designer[0]->name)
                              <td><h4>{{$designer[0]->product_png_details ?? null }}</h4></td>
                              @else
                              <td><h4>0</h4></td>
                              @endif
-                             @endif
+                         @else
+                         <td><h4>0</h4></td>
+                         @endif
                              <td><h4>{{$show->mocup_products ?? null }}</h4></td>
                             <td>
                                 @if (  $show->deleted_at ==  null)
