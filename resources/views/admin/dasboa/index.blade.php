@@ -117,6 +117,7 @@
                             <th><i class="fa fa-bullhorn"></i> EMAIL</th>
                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> ROLE</th>
                             <th><i class="fa fa-bookmark"></i> PNG/YES</th>
+                            <th><i class="fa fa-bookmark"></i> MOCKUP/YES</th>
                             <th><i class=" fa fa-edit"></i> STATUS</th>
                             <th></th>
                         </tr>
@@ -137,6 +138,13 @@
                             <td><span class="label label-success label-mini">ADMIN</span></td>
                             @endif
                              <td><h4>{{$show->product_png_details ?? null }}</h4></td>
+                             @if($show->name == "Trần Huy")
+                             <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
+                             @elseif ($show->name == "pioxhung design")
+                             <td><h4>{{$mocup[1]->mocup_products ?? null }}</h4></td>
+                             @else
+                             <td><h4>No Mockup</h4></td>
+                             @endif
                             <td>
                                 @if (  $show->deleted_at ==  null)
                                 <span class="label label-info label-mini">active</span></td>
