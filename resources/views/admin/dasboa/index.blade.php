@@ -126,8 +126,8 @@
                             @php
                             $i=0
                           @endphp
-                          {{-- {{count($designer)  }}
-                      @if(count($designer) != 0) --}}
+                          {{count($designer)  }}
+                      @if(count($designer) != 0)
                             @foreach ($designer as $show)
                         <tr>
                             <td><a href="{{ route('DetailDesigner',[$show->id]) }}">{{ $show->name?? null }}</a></td>
@@ -140,9 +140,9 @@
                             <td><span class="label label-success label-mini">ADMIN</span></td>
                             @endif
                              <td><h4>{{$show->product_png_details ?? null }}</h4></td>
-                             @if($show->name == $mocup[0]->name)
+                             @if($show->name == "Trần Huy")
                              <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
-                             @elseif ($show->name == $mocup[1]->name)
+                             @elseif ($show->name == "pioxhung design")
                              <td><h4>{{$mocup[1]->mocup_products ?? null }}</h4></td>
                              @else
                              <td><h4>0</h4></td>
@@ -166,8 +166,8 @@
                             </td>
                         </tr>
                         @endforeach
-                       {{-- @else --}}
-                        {{-- @foreach ($mocup as $show)
+                       @else
+                         @foreach ($mocup as $show)
                         <tr>
                             <td><a href="{{ route('DetailDesigner',[$show->id]) }}">{{ $show->name?? null }}</a></td>
                             <td>{{ $show->email?? null }}</td>
@@ -194,12 +194,12 @@
                                   </a>
                                  </span>
                                 {{-- <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button> --}}
-                                {{-- <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button> --}}
-                            {{-- </td>
+                                {{-- <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>--}}
+                                {{-- <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button> --}}
+                            </td>
                         </tr>
-                        @endforeach --}} --}}
-                        {{-- @endif --}}
+                        @endforeach
+                         @endif
                         </tbody>
                     </table>
                 </div><!-- /content-panel -->
