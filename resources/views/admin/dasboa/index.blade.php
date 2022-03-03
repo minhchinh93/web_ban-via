@@ -140,7 +140,7 @@
                              <td><h4>{{$show->product_png_details ?? null }}</h4></td>
                              @if($show->name == $mocup[0]->name)
                              <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
-                             @elseif ($show->name == $mocup[0]->name)
+                             @elseif ($show->name == $mocup[1]->name)
                              <td><h4>{{$mocup[1]->mocup_products ?? null }}</h4></td>
                              @else
                              <td><h4>0</h4></td>
