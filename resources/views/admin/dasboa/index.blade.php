@@ -126,7 +126,7 @@
                             @php
                             $i=0
                           @endphp
-                          {{count($designer)  }}
+                          
                       @if(count($designer) >= 1 && count($mocup) >= 0)
                             @foreach ($designer as $show)
                         <tr>
@@ -284,7 +284,7 @@
                     </table>
                 </div><!-- /content-panel -->
             </div><!-- /col-md-12 -->
-        </div> --}} --}}
+        </div> --}}
 
   </section><!-- --/wrapper ---->
 </section>
