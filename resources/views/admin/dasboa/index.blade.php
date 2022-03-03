@@ -178,6 +178,7 @@
                             @else
                             <td><span class="label label-success label-mini">ADMIN</span></td>
                             @endif
+                             <td><h4>0</h4></td>
                              <td><h4>{{$show->mocup_products ?? null }}</h4></td>
                             <td>
                                 @if (  $show->deleted_at ==  null)
