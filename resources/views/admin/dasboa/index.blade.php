@@ -127,7 +127,7 @@
                             $i=0
                           @endphp
                           {{count($designer)  }}
-                          @if(count($designer) > 1)
+                      @if(count($designer) != 0)
                             @foreach ($designer as $show)
                         <tr>
                             <td><a href="{{ route('DetailDesigner',[$show->id]) }}">{{ $show->name?? null }}</a></td>
@@ -140,13 +140,22 @@
                             <td><span class="label label-success label-mini">ADMIN</span></td>
                             @endif
                              <td><h4>{{$show->product_png_details ?? null }}</h4></td>
-
-                             @if($show->name == "Trần Huy" )
+                            @if(count($designer) > 1)
+                             @if($show->name == "Trần Huy")
                              <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
                              @elseif ($show->name == "pioxhung design")
                              <td><h4>{{$mocup[1]->mocup_products ?? null }}</h4></td>
                              @else
+                             <td><h4>0</h4></td>
+                             @endif
+                            @else
+                            @if($show->name == "Trần Huy")
                              <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
+                             @elseif ($show->name == "pioxhung design")
+                             <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
+                             @else
+                             <td><h4>0</h4></td>
+                             @endif
                              @endif
                             <td>
                                 @if (  $show->deleted_at ==  null)
@@ -167,46 +176,7 @@
                             </td>
                         </tr>
                         @endforeach
-                        @elseif (count($designer) == 1)
-                        @foreach ($designer as $show)
-                    <tr>
-                        <td><a href="{{ route('DetailDesigner',[$show->id]) }}">{{ $show->name?? null }}</a></td>
-                        <td>{{ $show->email?? null }}</td>
-                        @if($show->role ==1)
-                        <td><span class="label label-info label-mini">DESIGNER</span></td>
-                        @elseif ($show->role ==2)
-                        <td><span class="label label-warning label-mini">IDEA</span></td>
-                        @else
-                        <td><span class="label label-success label-mini">ADMIN</span></td>
-                        @endif
-                         <td><h4>{{$show->product_png_details ?? null }}</h4></td>
-                        @if($show->name == "Trần Huy" )
-                         <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
-                         @elseif ($show->name == "pioxhung design")
-                         <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
-                         @else
-                         <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
-                        @endif
-                        <td>
-                            @if (  $show->deleted_at ==  null)
-                            <span class="label label-info label-mini">active</span></td>
-                            @else
-                            <span class="label label-danger">disabled</span>
-                            @endif
-                        </td>
-                        <td>
-                            <span class="btn btn-success btn-xs">
-                                <a style="color:white" href="{{ route('DetailDesigner',[$show->id]) }}">
-                                 Detail
-                              </a>
-                             </span>
-                            {{-- <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button> --}}
-                            {{-- <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button> --}}
-                        </td>
-                    </tr>
-                    @endforeach
-                       @else
+                       @elseif (count($mocup) != 0)
                          @foreach ($mocup as $show)
                         <tr>
                             <td><a href="{{ route('DetailDesigner',[$show->id]) }}">{{ $show->name?? null }}</a></td>
@@ -218,7 +188,24 @@
                             @else
                             <td><span class="label label-success label-mini">ADMIN</span></td>
                             @endif
+                             <td><h4>{{$show->mocup_products ?? null }}</h4></td>
+                             @if(count($mocup) > 1)
+                             @if($show->name == "Trần Huy")
+                             <td><h4>{{$designer[0]->mocup_products ?? null }}</h4></td>
+                             @elseif ($show->name == "pioxhung design")
+                             <td><h4>{{$designer[1]->mocup_products ?? null }}</h4></td>
+                             @else
                              <td><h4>0</h4></td>
+                             @endif
+                             @else
+                             @if($show->name == "Trần Huy")
+                             <td><h4>{{$designer[0]->mocup_products ?? null }}</h4></td>
+                             @elseif ($show->name == "pioxhung design")
+                             <td><h4>{{$designer[0]->mocup_products ?? null }}</h4></td>
+                             @else
+                             <td><h4>0</h4></td>
+                             @endif
+                             @endif
                              <td><h4>{{$show->mocup_products ?? null }}</h4></td>
                             <td>
                                 @if (  $show->deleted_at ==  null)
