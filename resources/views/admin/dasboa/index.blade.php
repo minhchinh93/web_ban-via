@@ -191,17 +191,17 @@
                              <td><h4>{{$show->mocup_products ?? null }}</h4></td>
                              @if(count($mocup) > 1)
                              @if($show->name == "Trần Huy")
-                             <td><h4>{{$designer[0]->mocup_products ?? null }}</h4></td>
+                             <td><h4>{{$designer[0]->product_png_details ?? null }}</h4></td>
                              @elseif ($show->name == "pioxhung design")
-                             <td><h4>{{$designer[1]->mocup_products ?? null }}</h4></td>
+                             <td><h4>{{$designer[1]->product_png_details ?? null }}</h4></td>
                              @else
                              <td><h4>0</h4></td>
                              @endif
                              @else
                              @if($show->name == "Trần Huy")
-                             <td><h4>{{$designer[0]->mocup_products ?? null }}</h4></td>
+                             <td><h4>{{$designer[0]->product_png_details ?? null }}</h4></td>
                              @elseif ($show->name == "pioxhung design")
-                             <td><h4>{{$designer[0]->mocup_products ?? null }}</h4></td>
+                             <td><h4>{{$designer[0]->product_png_details ?? null }}</h4></td>
                              @else
                              <td><h4>0</h4></td>
                              @endif
