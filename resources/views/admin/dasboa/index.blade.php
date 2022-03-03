@@ -188,7 +188,6 @@
                             @else
                             <td><span class="label label-success label-mini">ADMIN</span></td>
                             @endif
-                             <td><h4>{{$show->mocup_products ?? null }}</h4></td>
                              @if(count($mocup) > 1)
                              @if($show->name == "Trần Huy")
                              <td><h4>{{$designer[0]->product_png_details ?? null }}</h4></td>
