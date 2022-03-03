@@ -74,7 +74,7 @@ class dasboaController extends Controller
             products.User_id as "id"
             '
             ))
-            ->groupBy('products.User_id')
+            ->groupBy('idUser')
             ->where('mocup_products.updated_at', 'LIKE', '%' . $keyword . '%')
             ->orderBy('idUser', 'DESC')
             ->get();
@@ -89,7 +89,7 @@ class dasboaController extends Controller
             users.deleted_at as "deleted_at",
             products.User_id as "id"
             '))
-            ->groupBy('products.User_id')
+            ->groupBy('idUser')
             ->where('product_png_details.updated_at', 'LIKE', '%' . $keyword . '%')
             ->orderBy('idUser', 'DESC')
             ->get();
