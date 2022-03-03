@@ -140,13 +140,23 @@
                             <td><span class="label label-success label-mini">ADMIN</span></td>
                             @endif
                              <td><h4>{{$show->product_png_details ?? null }}</h4></td>
-                             @if($show->name == "Trần Huy")
+                            @if(count($designer) > 1)
+                             @if($show->name == "Trần Huy" )
                              <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
                              @elseif ($show->name == "pioxhung design")
                              <td><h4>{{$mocup[1]->mocup_products ?? null }}</h4></td>
                              @else
                              <td><h4>0</h4></td>
                              @endif
+                            @else
+                            @if($show->name == "Trần Huy" )
+                             <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
+                             @elseif ($show->name == "pioxhung design")
+                             <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
+                             @else
+                             <td><h4>0</h4></td>
+                             @endif
+                            @endif
                             <td>
                                 @if (  $show->deleted_at ==  null)
                                 <span class="label label-info label-mini">active</span></td>
