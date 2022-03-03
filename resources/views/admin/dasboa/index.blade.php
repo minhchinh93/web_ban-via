@@ -127,7 +127,7 @@
                             $i=0
                           @endphp
                           {{count($designer)  }}
-                      @if(count($designer) != 0)
+                      @if(count($designer) > 1 && count($mocup) > 0)
                             @foreach ($designer as $show)
                         <tr>
                             <td><a href="{{ route('DetailDesigner',[$show->id]) }}">{{ $show->name?? null }}</a></td>
@@ -176,7 +176,7 @@
                             </td>
                         </tr>
                         @endforeach
-                       @elseif (count($mocup) != 0)
+                       @elseif (count($mocup) > 1 && count($designer) > 0 )
                          @foreach ($mocup as $show)
                         <tr>
                             <td><a href="{{ route('DetailDesigner',[$show->id]) }}">{{ $show->name?? null }}</a></td>
