@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\ProductPngDetails;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -58,7 +59,17 @@ class adminHomeController extends Controller
         }
         $str = implode(", ", $strs);
         // dd($str);
-        // $totalPNG = ProductPngDetails::where('created_at', 'LIKE', '%' . $timeDay . '%')->count();
+        $totalPNG = ProductPngDetails::where('created_at', '>=', $day)
+            ->groupBy('date')
+            ->orderBy('date', 'ASC')
+            ->get([
+                DB::raw('Date(created_at) as date'),
+                DB::raw('COUNT(*) as value'),
+            ]);
+        foreach ($totalPNG as $png) {
+            $strs[] = $png->value;
+        }
+        $strpng = implode(", ", $strs);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
@@ -81,7 +92,7 @@ class adminHomeController extends Controller
                 'designer' => $designer,
                 'totalidea' => $totalidea,
                 'str' => $str,
-                // 'totaSusecDay' => $totaSusecDay,
+                'strpng' => $strpng,
                 // 'totalDayDesigner' => $totaldayPNG,
                 // 'totalIdeamember' => $totalIdeamember,
                 // 'totalDesigner' => $totalDesigner,
