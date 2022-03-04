@@ -59,7 +59,7 @@
 											<p>TOP IDEA</p>
 										</div>
 										<div class="col-sm-6 col-xs-6 goright">
-											<p class="small">{{ $timess }}</p>
+											<p class="small">ngày tính:{{ $timess }}</p>
 										</div>
 									</div>
 								</div><!-- /weather-2 header -->
@@ -68,7 +68,7 @@
 								</div>
 								<div class="row data">
 									<div class="col-sm-6 col-xs-6 goleft">
-										<h4><b>MEMBER EMAI</b></h4>
+										<h4><b>MEMBER </b></h4>
 										<h6>{{ $Idea[0]->name }}</h6>
 										<h6>{{ $Idea[0]->email }}</h6>
 									</div>
@@ -88,7 +88,7 @@
 											<p>TOP MOCKUP</p>
 										</div>
 										<div class="col-sm-6 col-xs-6 goright">
-											<p class="small">{{ $timess }}</p>
+											<p class="small">ngày tính:{{ $timess }}</p>
 										</div>
 									</div>
 								</div><!-- /weather-2 header -->
@@ -97,7 +97,7 @@
 								</div>
 								<div class="row data">
 									<div class="col-sm-6 col-xs-6 goleft">
-										<h4><b>MEMBER EMAI</b></h4>
+										<h4><b>MEMBER </b></h4>
 										<h6>{{ $mocup[0]->name }}</h6>
 										<h6>{{ $mocup[0]->email }}</h6>
 									</div>
@@ -118,7 +118,7 @@
 											<p>TOP PNG</p>
 										</div>
 										<div class="col-sm-6 col-xs-6 goright">
-											<p class="small">{{ $timess }}</p>
+											<p class="small">ngày tính:{{ $timess }}</p>
 										</div>
 									</div>
 								</div><!-- /weather-2 header -->

@@ -51,6 +51,7 @@
 
                     <div class="row mt" >
                         <!-- SERVER STATUS PANELS -->
+
                         <div class="col-lg-4 col-md-4 col-sm-4 mb">
 							<div class="weather-2 pn">
 								<div class="weather-2-header">
@@ -63,12 +64,14 @@
 										</div>
 									</div>
 								</div><!-- /weather-2 header -->
+
 								<div class="row centered">
 									<img src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-cartoon-flat-man-holding-a-trophy-png-image_4486875.jpg" class="img-circle" width="80">
 								</div>
+                                @if(count($Idea)>0)
 								<div class="row data">
 									<div class="col-sm-6 col-xs-6 goleft">
-										<h4><b>MEMBER EMAI</b></h4>
+										<h4><b>MEMBER </b></h4>
 										<h6>{{ $Idea[0]->name }}</h6>
 										<h6>{{ $Idea[0]->email }}</h6>
 									</div>
@@ -78,6 +81,13 @@
 										<h5>{{ $Idea[0]->sum }}</h5>
 									</div>
 								</div>
+                                @else
+								<div class="row data">
+									<div class="col-sm-6 col-xs-6 goleft">
+										<h4><b>ngày nghỉ </b></h4>
+									</div>
+								</div>
+                                @endif
 							</div>
 						</div>
                         <!-- /col-md-4-->
@@ -95,9 +105,11 @@
 										</div>
 									</div>
 								</div><!-- /weather-2 header -->
+
 								<div class="row centered">
 									<img src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-cartoon-flat-man-holding-a-trophy-png-image_4486875.jpg" class="img-circle" width="80">
 								</div>
+                                @if(count($mocup)>0)
 								<div class="row data">
 									<div class="col-sm-6 col-xs-6 goleft">
 										<h4><b>MEMBER </b></h4>
@@ -110,6 +122,13 @@
 										<h5>{{ $mocup[0]->sum }}</h5>
 									</div>
 								</div>
+                                @else
+                                <div class="row data">
+									<div class="col-sm-6 col-xs-6 goleft">
+										<h4><b>ngày nghỉ </b></h4>
+									</div>
+								</div>
+                                @endif
 							</div>
 						</div>
                         <!-- /col-md-4 -->
@@ -129,6 +148,7 @@
 								<div class="row centered">
 									<img src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-cartoon-flat-man-holding-a-trophy-png-image_4486875.jpg" class="img-circle" width="80">
 								</div>
+                                @if(count($mocup)>0)
 								<div class="row data">
 									<div class="col-sm-6 col-xs-6 goleft">
 										<h4><b>MEMBER </b></h4>
@@ -141,6 +161,13 @@
 										<h5>{{ $designer[0]->product_png_details }}</h5>
 									</div>
 								</div>
+                                @else
+                                <div class="row data">
+									<div class="col-sm-6 col-xs-6 goleft">
+										<h4><b>ngày nghỉ </b></h4>
+									</div>
+								</div>
+                                @endif
 							</div>
 						</div>
                         <!-- /col-md-4 -->
