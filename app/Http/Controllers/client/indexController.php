@@ -34,6 +34,7 @@ class indexController extends Controller
                     ))
                     ->orderBy('sum', 'DESC')
                     ->groupBy('products.id_idea')
+                    ->where('products.created_at', 'LIKE', '%' . $timess . '%')
                     ->get();
 
                 $designer = User::join('products', 'products.User_id', '=', 'users.id')
@@ -48,6 +49,7 @@ class indexController extends Controller
                     '))
                     ->groupBy('idUser')
                     ->orderBy('idUser', 'DESC')
+                    ->where('product_png_details.created_at', 'LIKE', '%' . $timess . '%')
                     ->get();
                 $mocup = User::join('products', 'products.User_id', '=', 'users.id')
                     ->join('mocup_products', 'mocup_products.product_id', '=', 'products.id')
@@ -63,6 +65,7 @@ class indexController extends Controller
                     ))
                     ->groupBy('idUser')
                     ->orderBy('idUser', 'DESC')
+                    ->where('mocup_products.created_at', 'LIKE', '%' . $timess . '%')
                     ->get();
 
                 $day = Carbon::now()->subDay(10);
