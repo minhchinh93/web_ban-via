@@ -360,7 +360,11 @@
         });
 	</script>
 
-	<script type="application/javascript">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+    @stack('scripts')
+    <script type="application/javascript">
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
             $("#date-popover").hide();
@@ -394,8 +398,5 @@
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
-    @stack('scripts')
   </body>
 </html>

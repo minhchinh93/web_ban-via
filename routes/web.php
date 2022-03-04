@@ -15,6 +15,7 @@ use App\Http\Controllers\auth\resetpassController;
 use App\Http\Controllers\client\AccountHistoryController;
 use App\Http\Controllers\client\DesignerController;
 use App\Http\Controllers\client\HomeController;
+use App\Http\Controllers\client\indexController;
 use App\Http\Controllers\client\RechargeHistoryController;
 use App\Http\Controllers\client\toolController;
 //clients
@@ -55,7 +56,7 @@ Route::middleware('CheckDesinger')->group(function () {
     Route::get('deletePngAll/{id}', [DesignerController::class, 'deletePngAll'])->name('deletePngAll');
 
 });
-Route::get('dasboa', [HomeController::class, 'dasboa'])->name('dasboa');
+Route::get('dasboa', [indexController::class, 'dasboa'])->name('dasboa');
 
 Route::middleware('CheckIdea')->group(function () {
 
