@@ -67,9 +67,9 @@ class adminHomeController extends Controller
                 DB::raw('COUNT(*) as value'),
             ]);
         foreach ($totalPNG as $png) {
-            $strs[] = $png->value;
+            $strss[] = $png->value;
         }
-        $strpng = implode(", ", $strs);
+        $strpng = implode(", ", $strss);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
