@@ -125,8 +125,8 @@
                         <tbody>
                             @php
                             $i=0
-                          @endphp
-                          
+                            @endphp
+
                       @if(count($designer) >= 1 && count($mocup) >= 0)
                             @foreach ($designer as $show)
                         <tr>

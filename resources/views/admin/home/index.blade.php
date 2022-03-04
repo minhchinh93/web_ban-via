@@ -49,29 +49,25 @@
                     <!-- /row mt -->
 
 
-                    <div class="row mt">
+                    <div class="row mt" >
                         <!-- SERVER STATUS PANELS -->
-                        <div class="col-md-4 col-sm-4 mb">
-                            <div class="white-panel pn donut-chart">
+                        <div class="col-md-4 col-sm-4 mb" style="color:black">
+                            <div class="white-panel pn">
                                 <div class="white-header">
-                                    <h5>SERVER LOAD</h5>
+                                    <h5>TOP IDEA</h5>
                                 </div>
+                                <p><img src="https://png.pngtree.com/png-clipart/20190614/original/pngtree-celebrate-victory-victory-cartoon-winner-hand-drawn-cartoon-victory-character-png-image_3807115.jpg" class="img-circle" width="60"></p>
+                                <p><b>{{ $Idea[0]->name }}</b></p>
                                 <div class="row">
-                                    <div class="col-sm-6 col-xs-6 goleft">
-                                        <p><i class="fa fa-database"></i> 70%</p>
+                                    <div class="col-md-6">
+                                        <p class="small mt">MEMBER EMAIL</p>
+                                        <p>{{ $Idea[0]->email }}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="small mt">TOTAL SPEND</p>
+                                        <p>{{ $Idea[0]->sum }}</p>
                                     </div>
                                 </div>
-                                <canvas id="serverstatus01" height="120" width="120"></canvas>
-                                <script>
-                                    var doughnutData = [{
-                                        value: 70,
-                                        color: "#68dff0"
-                                    }, {
-                                        value: 30,
-                                        color: "#fdfdfd"
-                                    }];
-                                    var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
-                                </script>
                             </div>
                             <! --/grey-panel -->
                         </div>
@@ -79,20 +75,20 @@
 
 
                         <div class="col-md-4 col-sm-4 mb">
-                            <div class="white-panel pn">
-                                <div class="white-header">
-                                    <h5>TOP PRODUCT</h5>
+                            <!-- CALENDAR-->
+                    <div id="calendar" class="mb">
+                        <div class="panel green-panel no-margin">
+                            <div class="panel-body">
+                                <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                                    <div class="arrow"></div>
+                                    <h3 class="popover-title" style="disadding: none;"></h3>
+                                    <div id="date-popover-content" class="popover-content"></div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-6 goleft">
-                                        <p><i class="fa fa-heart"></i> 122</p>
-                                    </div>
-                                    <div class="col-sm-6 col-xs-6"></div>
-                                </div>
-                                <div class="centered">
-                                    <img src="assets/img/product.png" width="120">
-                                </div>
+                                <div id="my-calendar"></div>
                             </div>
+                        </div>
+                    </div>
+                    <!-- / calendar -->
                         </div>
                         <!-- /col-md-4 -->
 
@@ -100,18 +96,18 @@
                             <!-- WHITE PANEL - TOP USER -->
                             <div class="white-panel pn">
                                 <div class="white-header">
-                                    <h5>TOP USER</h5>
+                                    <h5>TOP DESIGNER</h5>
                                 </div>
-                                <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
-                                <p><b>Zac Snider</b></p>
+                                <p><img src="https://img.lovepik.com/original_origin_pic/18/09/11/8be2853139fd996fa25946afa7ad62be.png_wh860.png" class="img-circle" width="60"></p>
+                                <p><b>{{ $designer[0]->name }}</b></p>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p class="small mt">MEMBER SINCE</p>
-                                        <p>2012</p>
+                                        <p class="small mt">MEMBER EMAIL</p>
+                                        <p>{{ $designer[0]->email }}</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <p class="small mt">TOTAL SPEND</p>
-                                        <p>$ 47,60</p>
+                                        <p class="small mt">TOTAL PNG</p>
+                                        <p>{{ $designer[0]->product_png_details }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -125,8 +121,8 @@
 
                     <div class="row">
                         <!-- TWITTER PANEL -->
-                        <div class="col-md-4 mb">
-                            <div class="darkblue-panel pn">
+                        <div class="col-md-2 mb">
+                            {{-- <div class="darkblue-panel pn">
                                 <div class="darkblue-header">
                                     <h5>DROPBOX STATICS</h5>
                                 </div>
@@ -150,41 +146,42 @@
                                         <h5>60% Used</h5>
                                     </div>
                                 </footer>
-                            </div>
+                            </div> --}}
                             <! -- /darkblue panel -->
                         </div>
                         <!-- /col-md-4 -->
 
+                        <div class="col-md-12 col-sm-4 mb">
+                            <!-- REVENUE PANEL -->
+                            <div class="darkblue-panel pn">
+                                <div class="darkblue-header">
+                                    <h5>Statistical chart</h5>
+                                </div>
+                                <div class="chart mt">
+                                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,100]"></div>
+                                </div>
+                                <p class="mt"><b>$ 17,980</b><br/>Product</p>
+                            </div>
+                        </div>
+                        <!-- /col-md-4 -->
 
-                        <div class="col-md-4 mb">
+                        <div class="col-md-2 mb">
                             <!-- INSTAGRAM PANEL -->
-                            <div class="instagram-panel pn">
+                            {{-- <div class="instagram-panel pn">
                                 <i class="fa fa-instagram fa-4x"></i>
                                 <p>@THISISYOU<br/> 5 min. ago
                                 </p>
                                 <p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- /col-md-4 -->
 
-                        <div class="col-md-4 col-sm-4 mb">
-                            <!-- REVENUE PANEL -->
-                            <div class="darkblue-panel pn">
-                                <div class="darkblue-header">
-                                    <h5>REVENUE</h5>
-                                </div>
-                                <div class="chart mt">
-                                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655]"></div>
-                                </div>
-                                <p class="mt"><b>$ 17,980</b><br/>Month Income</p>
-                            </div>
-                        </div>
-                        <!-- /col-md-4 -->
+
 
                     </div>
                     <!-- /row -->
 
-                    <div class="row mt">
+                    {{-- <div class="row mt">
                         <!--CUSTOM CHART START -->
                         <div class="border-head">
                             <h3>VISITS</h3>
@@ -228,7 +225,7 @@
                             </div>
                         </div>
                         <!--custom chart end-->
-                    </div>
+                    </div> --}}
                     <!-- /row -->
 
                 </div>
@@ -254,7 +251,7 @@
                         <div class="details">
                             <p>
                                 <muted>{{ $time[$i++] }}</muted><br/>
-                                <a href="#"> {{  $show->User->name ?? null }}</a> gửi lên 1 Idea.<br/>
+                                <a href="#"> {{  $show->User->name ?? null }}</a> send 1 job posted.<br/>
                             </p>
                         </div>
                     </div>
