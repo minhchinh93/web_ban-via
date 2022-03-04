@@ -39,6 +39,7 @@ class dasboaController extends Controller
             ))
             ->orderBy('sum', 'DESC')
             ->groupBy('products.id_idea')
+            ->where('products.created_at', 'LIKE', '%' . $yesterday . '%')
             ->get();
         // $designer = User::join('products', 'products.User_id', '=', 'users.id')
         //     ->join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
@@ -75,8 +76,8 @@ class dasboaController extends Controller
             '
             ))
             ->groupBy('idUser')
-            ->where('mocup_products.updated_at', 'LIKE', '%' . $keyword . '%')
             ->orderBy('idUser', 'DESC')
+            ->where('mocup_products.created_at', 'LIKE', '%' . $yesterday . '%')
             ->get();
 
         $designer = User::join('products', 'products.User_id', '=', 'users.id')
@@ -90,8 +91,8 @@ class dasboaController extends Controller
             products.User_id as "id"
             '))
             ->groupBy('idUser')
-            ->where('product_png_details.updated_at', 'LIKE', '%' . $keyword . '%')
             ->orderBy('idUser', 'DESC')
+            ->where('product_png_details.created_at', 'LIKE', '%' . $yesterday . '%')
             ->get();
 
         return view('admin/dasboa/index'

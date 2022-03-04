@@ -119,7 +119,7 @@
 									<div class="col-sm-6 col-xs-6 goright">
 										<h5><i class="fa fa-sun-o fa-2x"></i></h5>
 										<h6><b>TOTAL MOCKUP</b></h6>
-										<h5>{{ $mocup[0]->sum }}</h5>
+										<h5>{{ $mocup[0]->mocup_products }}</h5>
 									</div>
 								</div>
                                 @else
