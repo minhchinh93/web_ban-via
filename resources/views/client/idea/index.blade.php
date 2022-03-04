@@ -434,7 +434,7 @@
                     </div>
                     @endforeach
                     <!-- Second Member -->
-
+                    {{ $users->links() }}
 
                     <!-- CALENDAR-->
                     <div id="calendar" class="mb">
