@@ -30,6 +30,20 @@ class adminHomeController extends Controller
             ->groupBy('products.id_idea')
             ->get();
 
+        $designer = User::join('products', 'products.User_id', '=', 'users.id')
+            ->join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
+            ->select(DB::raw('COUNT(product_png_details.id) as "product_png_details",
+            users.name as "name",
+            users.email as "email",
+            users.role as "role",
+            users.id as "idUser",
+            users.deleted_at as "deleted_at",
+            products.User_id as "id"
+            '))
+            ->groupBy('idUser')
+            ->orderBy('idUser', 'DESC')
+            ->get();
+
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
@@ -48,8 +62,8 @@ class adminHomeController extends Controller
             [
                 'shows' => $report,
                 'users' => $user,
-                // 'totalDesign' => $totalPNG,
-                // 'totalIdea' => $totalidea,
+                'Idea' => $Idea,
+                'designer' => $designer,
                 // 'totaDay' => $totaDay,
                 // 'totaSusecDay' => $totaSusecDay,
                 // 'totalDayDesigner' => $totaldayPNG,
