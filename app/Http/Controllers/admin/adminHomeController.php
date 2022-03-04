@@ -17,7 +17,7 @@ class adminHomeController extends Controller
         Carbon::setLocale('vi');
         $yes = Carbon::yesterday('Asia/Ho_Chi_Minh');
         $timess = $yes->toDateString();
-
+        $toDayDateTimeString = $yes->toFormattedDateString();
         $report = Product::orderBy('id', 'desc')
             ->paginate(5);
         $user = User::all();
@@ -117,7 +117,7 @@ class adminHomeController extends Controller
                 // 'totalIdeamember' => $totalIdeamember,
                 // 'totalDesigner' => $totalDesigner,
                 'time' => $time,
-                'timess' => $timess,
+                'timess' => $toDayDateTimeString,
 
             ]);
     }
