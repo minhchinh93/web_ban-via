@@ -44,6 +44,21 @@ class adminHomeController extends Controller
             ->orderBy('idUser', 'DESC')
             ->get();
 
+        $day = Carbon::now()->subDay(10);
+
+        $totalidea = Product::where('created_at', '>=', $day)
+            ->groupBy('date')
+            ->orderBy('date', 'ASC')
+            ->get([
+                DB::raw('Date(created_at) as date'),
+                DB::raw('COUNT(*) as value'),
+            ]);
+        foreach ($totalidea as $idea) {
+            $strs[] = $idea->value;
+        }
+        $str = implode(", ", $strs);
+        // dd($str);
+        // $totalPNG = ProductPngDetails::where('created_at', 'LIKE', '%' . $timeDay . '%')->count();
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
@@ -64,7 +79,8 @@ class adminHomeController extends Controller
                 'users' => $user,
                 'Idea' => $Idea,
                 'designer' => $designer,
-                // 'totaDay' => $totaDay,
+                'totalidea' => $totalidea,
+                'str' => $str,
                 // 'totaSusecDay' => $totaSusecDay,
                 // 'totalDayDesigner' => $totaldayPNG,
                 // 'totalIdeamember' => $totalIdeamember,
