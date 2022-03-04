@@ -51,73 +51,196 @@
 
                     <div class="row mt" >
                         <!-- SERVER STATUS PANELS -->
-                        <div class="col-md-4 col-sm-4 mb" style="color:black">
-                            <div class="white-panel pn">
-                                <div class="white-header">
-                                    <h5>TOP IDEA</h5>
-                                </div>
-                                <p><img src="https://png.pngtree.com/png-clipart/20190614/original/pngtree-celebrate-victory-victory-cartoon-winner-hand-drawn-cartoon-victory-character-png-image_3807115.jpg" class="img-circle" width="60"></p>
-                                <p><b>{{ $Idea[0]->name }}</b></p>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p class="small mt">MEMBER EMAIL</p>
-                                        <p>{{ $Idea[0]->email }}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="small mt">TOTAL IDEA</p>
-                                        <p>{{ $Idea[0]->sum }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <! --/grey-panel -->
-                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+							<div class="weather-2 pn">
+								<div class="weather-2-header">
+									<div class="row">
+										<div class="col-sm-6 col-xs-6">
+											<p>TOP IDEA</p>
+										</div>
+										<div class="col-sm-6 col-xs-6 goright">
+											<p class="small">{{ $timess }}</p>
+										</div>
+									</div>
+								</div><!-- /weather-2 header -->
+								<div class="row centered">
+									<img src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-cartoon-flat-man-holding-a-trophy-png-image_4486875.jpg" class="img-circle" width="80">
+								</div>
+								<div class="row data">
+									<div class="col-sm-6 col-xs-6 goleft">
+										<h4><b>MEMBER EMAI</b></h4>
+										<h6>{{ $Idea[0]->name }}</h6>
+										<h6>{{ $Idea[0]->email }}</h6>
+									</div>
+									<div class="col-sm-6 col-xs-6 goright">
+										<h5><i class="fa fa-sun-o fa-2x"></i></h5>
+										<h6><b>TOTAL IDEA</b></h6>
+										<h5>{{ $Idea[0]->sum }}</h5>
+									</div>
+								</div>
+							</div>
+						</div>
                         <!-- /col-md-4-->
 
 
-                        <div class="col-md-4 col-sm-4 mb">
-                            <!-- CALENDAR-->
-                    <div id="calendar" class="mb">
-                        <div class="panel green-panel no-margin">
-                            <div class="panel-body">
-                                <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                                    <div class="arrow"></div>
-                                    <h3 class="popover-title" style="disadding: none;"></h3>
-                                    <div id="date-popover-content" class="popover-content"></div>
-                                </div>
-                                <div id="my-calendar"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / calendar -->
-                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+							<div class="weather-2 pn">
+								<div class="weather-2-header">
+									<div class="row">
+										<div class="col-sm-6 col-xs-6">
+											<p>TOP MOCKUP</p>
+										</div>
+										<div class="col-sm-6 col-xs-6 goright">
+											<p class="small">{{ $timess }}</p>
+										</div>
+									</div>
+								</div><!-- /weather-2 header -->
+								<div class="row centered">
+									<img src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-cartoon-flat-man-holding-a-trophy-png-image_4486875.jpg" class="img-circle" width="80">
+								</div>
+								<div class="row data">
+									<div class="col-sm-6 col-xs-6 goleft">
+										<h4><b>MEMBER </b></h4>
+										<h6>{{ $mocup[0]->name }}</h6>
+										<h6>{{ $mocup[0]->email }}</h6>
+									</div>
+									<div class="col-sm-6 col-xs-6 goright">
+										<h5><i class="fa fa-sun-o fa-2x"></i></h5>
+										<h6><b>TOTAL MOCKUP</b></h6>
+										<h5>{{ $mocup[0]->sum }}</h5>
+									</div>
+								</div>
+							</div>
+						</div>
                         <!-- /col-md-4 -->
 
-                        <div class="col-md-4 mb">
-                            <!-- WHITE PANEL - TOP USER -->
-                            <div class="white-panel pn">
-                                <div class="white-header">
-                                    <h5>TOP DESIGNER</h5>
-                                </div>
-                                <p><img src="https://img.lovepik.com/original_origin_pic/18/09/11/8be2853139fd996fa25946afa7ad62be.png_wh860.png" class="img-circle" width="60"></p>
-                                <p><b>{{ $designer[0]->name }}</b></p>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p class="small mt">MEMBER EMAIL</p>
-                                        <p>{{ $designer[0]->email }}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="small mt">TOTAL PNG</p>
-                                        <p>{{ $designer[0]->product_png_details }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+							<div class="weather-2 pn">
+								<div class="weather-2-header">
+									<div class="row">
+										<div class="col-sm-6 col-xs-6">
+											<p>TOP PNG</p>
+										</div>
+										<div class="col-sm-6 col-xs-6 goright">
+											<p class="small">{{ $timess }}</p>
+										</div>
+									</div>
+								</div><!-- /weather-2 header -->
+								<div class="row centered">
+									<img src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-cartoon-flat-man-holding-a-trophy-png-image_4486875.jpg" class="img-circle" width="80">
+								</div>
+								<div class="row data">
+									<div class="col-sm-6 col-xs-6 goleft">
+										<h4><b>MEMBER </b></h4>
+										<h6>{{ $designer[0]->name }}</h6>
+										<h6>{{ $designer[0]->email }}</h6>
+									</div>
+									<div class="col-sm-6 col-xs-6 goright">
+										<h5><i class="fa fa-sun-o fa-2x"></i></h5>
+										<h6><b>TOTAL PNG</b></h6>
+										<h5>{{ $designer[0]->product_png_details }}</h5>
+									</div>
+								</div>
+							</div>
+						</div>
                         <!-- /col-md-4 -->
 
 
                     </div>
                     <!-- /row -->
+                    <section class="task-panel tasks-widget">
+                        <div class="panel-heading" style="background-color:#54bae6;">
+                            <div class="pull-left"><h5 style = "color:white; margin-top: 1%;" class="category""><i class="fa fa-tasks"></i> Todo List - Sortable Style</h5></div>
+                            <br>
+                         </div>
+                          <div class="panel-body">
+                              <div class="task-content">
+                                  <ul id="sortable" class="task-list ui-sortable">
+                                      <li class="list-primary">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Dashgum - Admin Panel Theme</span>
+                                              <span class="badge bg-theme">Done</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
 
+                                      <li class="list-danger">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Extensive collection of plugins</span>
+                                              <span class="badge bg-warning">Cool</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="list-success">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Free updates always, no extra fees.</span>
+                                              <span class="badge bg-success">2 Days</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="list-warning">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">More features coming soon</span>
+                                              <span class="badge bg-info">Tomorrow</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="list-info">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Hey, seriously, you should buy this Dashboard</span>
+                                              <span class="badge bg-important">Now</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
+
+                                  </ul>
+                              </div>
+                              <div class=" add-task-row">
+                                  <a class="btn btn-success btn-sm pull-left" href="todo_list.html#">Add New Tasks</a>
+                                  <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a>
+                              </div>
+                          </div>
+                      </section>
 
                     <div class="row">
                         <!-- TWITTER PANEL -->
@@ -287,7 +410,7 @@
 
 
                     <!-- CALENDAR-->
-                    <div id="calendar" class="mb">
+                    {{-- <div id="calendar" class="mb">
                         <div class="panel green-panel no-margin">
                             <div class="panel-body">
                                 <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
@@ -298,7 +421,7 @@
                                 <div id="my-calendar"></div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- / calendar -->
 
                 </div>

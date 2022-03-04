@@ -15,6 +15,9 @@ class adminHomeController extends Controller
     public function home()
     {
         Carbon::setLocale('vi');
+        $yes = Carbon::yesterday('Asia/Ho_Chi_Minh');
+        $timess = $yes->toDateString();
+
         $report = Product::orderBy('id', 'desc')
             ->paginate(5);
         $user = User::all();
@@ -29,6 +32,7 @@ class adminHomeController extends Controller
             ))
             ->orderBy('sum', 'DESC')
             ->groupBy('products.id_idea')
+        // ->where('products.created_at', 'LIKE', '%' . $timess . '%')
             ->get();
 
         $designer = User::join('products', 'products.User_id', '=', 'users.id')
@@ -43,8 +47,23 @@ class adminHomeController extends Controller
             '))
             ->groupBy('idUser')
             ->orderBy('idUser', 'DESC')
+        // ->where('product_png_details.created_at', 'LIKE', '%' . $timess . '%')
             ->get();
-
+        $mocup = User::join('products', 'products.User_id', '=', 'users.id')
+            ->join('mocup_products', 'mocup_products.product_id', '=', 'products.id')
+            ->select(DB::raw('
+            COUNT(mocup_products.id) as "mocup_products",
+            users.name as "name",
+            users.email as "email",
+            users.role as "role",
+            users.id as "idUser",
+            users.deleted_at as "deleted_at",
+            products.User_id as "id"
+            '
+            ))
+            ->groupBy('idUser')
+            ->orderBy('idUser', 'DESC')
+            ->get();
         $day = Carbon::now()->subDay(10);
 
         $totalidea = Product::where('created_at', '>=', $day)
@@ -93,10 +112,11 @@ class adminHomeController extends Controller
                 'totalidea' => $totalidea,
                 'str' => $str,
                 'strpng' => $strpng,
-                // 'totalDayDesigner' => $totaldayPNG,
+                'mocup' => $mocup,
                 // 'totalIdeamember' => $totalIdeamember,
                 // 'totalDesigner' => $totalDesigner,
                 'time' => $time,
+                'timess' => $timess,
 
             ]);
     }

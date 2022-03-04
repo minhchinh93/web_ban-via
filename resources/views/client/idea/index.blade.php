@@ -49,84 +49,197 @@
                     <!-- /row mt -->
 
 
-                    <div class="row mt">
+                    <div class="row mt" >
                         <!-- SERVER STATUS PANELS -->
-                        <div class="col-md-4 col-sm-4 mb">
-                            <div class="white-panel pn donut-chart">
-                                <div class="white-header">
-                                    <h5>SERVER LOAD</h5>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-6 goleft">
-                                        <p><i class="fa fa-database"></i> 70%</p>
-                                    </div>
-                                </div>
-                                <canvas id="serverstatus01" height="120" width="120"></canvas>
-                                <script>
-                                    var doughnutData = [{
-                                        value: 70,
-                                        color: "#68dff0"
-                                    }, {
-                                        value: 30,
-                                        color: "#fdfdfd"
-                                    }];
-                                    var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
-                                </script>
-                            </div>
-                            <! --/grey-panel -->
-                        </div>
-                        <!-- /col-md-4-->
+                        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+							<div class="weather-2 pn">
+								<div class="weather-2-header">
+									<div class="row">
+										<div class="col-sm-6 col-xs-6">
+											<p>TOP IDEA</p>
+										</div>
+										<div class="col-sm-6 col-xs-6 goright">
+											<p class="small">{{ $timess }}</p>
+										</div>
+									</div>
+								</div><!-- /weather-2 header -->
+								<div class="row centered">
+									<img src="https://img.lovepik.com/element/40116/8026.png_860.png" class="img-circle" width="80">
+								</div>
+								<div class="row data">
+									<div class="col-sm-6 col-xs-6 goleft">
+										<h4><b>MEMBER EMAI</b></h4>
+										<h6>{{ $Idea[0]->name }}</h6>
+										<h6>{{ $Idea[0]->email }}</h6>
+									</div>
+									<div class="col-sm-6 col-xs-6 goright">
+										<h5><i class="fa fa-sun-o fa-2x"></i></h5>
+										<h6><b>TOTAL IDEA</b></h6>
+										<h5>{{ $Idea[0]->sum }}</h5>
+									</div>
+								</div>
+							</div>
+						</div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+							<div class="weather-2 pn">
+								<div class="weather-2-header">
+									<div class="row">
+										<div class="col-sm-6 col-xs-6">
+											<p>TOP MOCKUP</p>
+										</div>
+										<div class="col-sm-6 col-xs-6 goright">
+											<p class="small">{{ $timess }}</p>
+										</div>
+									</div>
+								</div><!-- /weather-2 header -->
+								<div class="row centered">
+									<img src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-cartoon-flat-man-holding-a-trophy-png-image_4486875.jpg" class="img-circle" width="80">
+								</div>
+								<div class="row data">
+									<div class="col-sm-6 col-xs-6 goleft">
+										<h4><b>MEMBER EMAI</b></h4>
+										<h6>{{ $mocup[0]->name }}</h6>
+										<h6>{{ $mocup[0]->email }}</h6>
+									</div>
+									<div class="col-sm-6 col-xs-6 goright">
+										<h5><i class="fa fa-sun-o fa-2x"></i></h5>
+										<h6><b>TOTAL MOCKUP</b></h6>
+										<h5>{{ $mocup[0]->sum }}</h5>
+									</div>
+								</div>
+							</div>
+						</div>
 
-
-                        <div class="col-md-4 col-sm-4 mb">
-                            <div class="white-panel pn">
-                                <div class="white-header">
-                                    <h5>TOP PRODUCT</h5>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-6 goleft">
-                                        <p><i class="fa fa-heart"></i> 122</p>
-                                    </div>
-                                    <div class="col-sm-6 col-xs-6"></div>
-                                </div>
-                                <div class="centered">
-                                    <img src="assets/img/product.png" width="120">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /col-md-4 -->
-
-                        <div class="col-md-4 mb">
-                            <!-- WHITE PANEL - TOP USER -->
-                            <div class="white-panel pn">
-                                <div class="white-header">
-                                    <h5>TOP USER</h5>
-                                </div>
-                                <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
-                                <p><b>Zac Snider</b></p>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p class="small mt">MEMBER SINCE</p>
-                                        <p>2012</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="small mt">TOTAL SPEND</p>
-                                        <p>$ 47,60</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /col-md-4 -->
-
+                        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+							<div class="weather-2 pn">
+								<div class="weather-2-header">
+									<div class="row">
+										<div class="col-sm-6 col-xs-6">
+											<p>TOP PNG</p>
+										</div>
+										<div class="col-sm-6 col-xs-6 goright">
+											<p class="small">{{ $timess }}</p>
+										</div>
+									</div>
+								</div><!-- /weather-2 header -->
+								<div class="row centered">
+									<img src="https://e7.pngegg.com/pngimages/100/450/png-clipart-person-respect-enemy-youtube-feeling-winner-podium-business-silhouette-thumbnail.png" class="img-circle" width="80">
+								</div>
+								<div class="row data">
+									<div class="col-sm-6 col-xs-6 goleft">
+										<h4><b>MEMBER </b></h4>
+										<h6>{{ $designer[0]->name }}</h6>
+										<h6>{{ $designer[0]->email }}</h6>
+									</div>
+									<div class="col-sm-6 col-xs-6 goright">
+										<h5><i class="fa fa-sun-o fa-2x"></i></h5>
+										<h6><b>TOTAL PNG</b></h6>
+										<h5>{{ $designer[0]->product_png_details }}</h5>
+									</div>
+								</div>
+							</div>
+						</div>
 
                     </div>
                     <!-- /row -->
+                    <section class="task-panel tasks-widget">
+                        <div class="panel-heading" style="background-color:#54bae6;">
+                            <div class="pull-left"><h5 style = "color:white; margin-top: 1%;" class="category""><i class="fa fa-tasks"></i> Todo List - Notification</h5></div>
+                            <br>
+                         </div>
+                          <div class="panel-body">
+                              <div class="task-content">
+                                  <ul id="sortable" class="task-list ui-sortable">
+                                      <li class="list-primary">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Dashgum - Admin Panel Theme</span>
+                                              <span class="badge bg-theme">Done</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
 
+                                      <li class="list-danger">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Extensive collection of plugins</span>
+                                              <span class="badge bg-warning">Cool</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="list-success">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Free updates always, no extra fees.</span>
+                                              <span class="badge bg-success">2 Days</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="list-warning">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">More features coming soon</span>
+                                              <span class="badge bg-info">Tomorrow</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="list-info">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Hey, seriously, you should buy this Dashboard</span>
+                                              <span class="badge bg-important">Now</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
+
+                                  </ul>
+                              </div>
+                              <div class=" add-task-row">
+                                  <a class="btn btn-success btn-sm pull-left" href="todo_list.html#">Add New Tasks</a>
+                                  <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a>
+                              </div>
+                          </div>
+                      </section>
 
                     <div class="row">
                         <!-- TWITTER PANEL -->
-                        <div class="col-md-4 mb">
-                            <div class="darkblue-panel pn">
+                        <div class="col-md-2 mb">
+                            {{-- <div class="darkblue-panel pn">
                                 <div class="darkblue-header">
                                     <h5>DROPBOX STATICS</h5>
                                 </div>
@@ -150,41 +263,47 @@
                                         <h5>60% Used</h5>
                                     </div>
                                 </footer>
-                            </div>
+                            </div> --}}
                             <! -- /darkblue panel -->
                         </div>
                         <!-- /col-md-4 -->
 
+                        <div class="col-md-12 col-sm-4 mb">
+                            <!-- REVENUE PANEL -->
+                            <div class="darkblue-panel pn" style="height:400px">
+                                <div class="darkblue-header">
+                                    <h5>Statistical chart</h5>
+                                </div>
+                                <div class="chart mt">
+                                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[{{ $str }}]" ></div>
+                                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[{{ $strpng }}]"></div>
 
-                        <div class="col-md-4 mb">
+                                </div>
+                                {{-- <div class="chart mt">
+                                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[400,235,567,133,526,496,864,123,190,564,700]"></div>
+                                </div> --}}
+                                <p class="mt"><b>$ 17,980</b><br/>Product</p>
+                            </div>
+                        </div>
+                        <!-- /col-md-4 -->
+
+                        <div class="col-md-2 mb">
                             <!-- INSTAGRAM PANEL -->
-                            <div class="instagram-panel pn">
+                            {{-- <div class="instagram-panel pn">
                                 <i class="fa fa-instagram fa-4x"></i>
                                 <p>@THISISYOU<br/> 5 min. ago
                                 </p>
                                 <p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- /col-md-4 -->
 
-                        <div class="col-md-4 col-sm-4 mb">
-                            <!-- REVENUE PANEL -->
-                            <div class="darkblue-panel pn">
-                                <div class="darkblue-header">
-                                    <h5>REVENUE</h5>
-                                </div>
-                                <div class="chart mt">
-                                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655]"></div>
-                                </div>
-                                <p class="mt"><b>$ 17,980</b><br/>Month Income</p>
-                            </div>
-                        </div>
-                        <!-- /col-md-4 -->
+
 
                     </div>
                     <!-- /row -->
 
-                    <div class="row mt">
+                    {{-- <div class="row mt">
                         <!--CUSTOM CHART START -->
                         <div class="border-head">
                             <h3>VISITS</h3>
@@ -228,7 +347,7 @@
                             </div>
                         </div>
                         <!--custom chart end-->
-                    </div>
+                    </div> --}}
                     <!-- /row -->
 
                 </div>
@@ -242,125 +361,47 @@
                 <div class="col-lg-3 ds">
                     <!--COMPLETED ACTIONS DONUTS CHART-->
                     <h3>NOTIFICATIONS</h3>
-
+                   @php
+                       $i=0;
+                   @endphp
                     <!-- First Action -->
+                    @foreach ($shows as $show)
                     <div class="desc">
                         <div class="thumb">
                             <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
                         </div>
                         <div class="details">
                             <p>
-                                <muted>2 Minutes Ago</muted><br/>
-                                <a href="#">James Brown</a> subscribed to your newsletter.<br/>
+                                <muted>{{ $time[$i++] }}</muted><br/>
+                                <a href="#"> {{  $show->User->name ?? null }}</a> send 1 job posted.<br/>
                             </p>
                         </div>
                     </div>
-                    <!-- Second Action -->
-                    <div class="desc">
-                        <div class="thumb">
-                            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                        </div>
-                        <div class="details">
-                            <p>
-                                <muted>3 Hours Ago</muted><br/>
-                                <a href="#">Diana Kennedy</a> purchased a year subscription.<br/>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Third Action -->
-                    <div class="desc">
-                        <div class="thumb">
-                            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                        </div>
-                        <div class="details">
-                            <p>
-                                <muted>7 Hours Ago</muted><br/>
-                                <a href="#">Brandon Page</a> purchased a year subscription.<br/>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Fourth Action -->
-                    <div class="desc">
-                        <div class="thumb">
-                            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                        </div>
-                        <div class="details">
-                            <p>
-                                <muted>11 Hours Ago</muted><br/>
-                                <a href="#">Mark Twain</a> commented your post.<br/>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Fifth Action -->
-                    <div class="desc">
-                        <div class="thumb">
-                            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                        </div>
-                        <div class="details">
-                            <p>
-                                <muted>18 Hours Ago</muted><br/>
-                                <a href="#">Daniel Pratt</a> purchased a wallet in your store.<br/>
-                            </p>
-                        </div>
-                    </div>
+                    @endforeach
 
                     <!-- USERS ONLINE SECTION -->
                     <h3>TEAM MEMBERS</h3>
                     <!-- First Member -->
+                    @foreach ($users as $user)
                     <div class="desc">
                         <div class="thumb">
-                            <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
+                            <img class="img-circle" src="https://ambe.vn/wp-content/uploads/2020/08/5-buoc-xay-dung-hinh-anh-ca-nhan-noi-bat-va-chuyen-nghiep-1.jpg" width="35px" height="35px" align="">
                         </div>
                         <div class="details">
-                            <p><a href="#">DIVYA MANIAN</a><br/>
-                                <muted>Available</muted>
+                            <p><a href="#">{{ $user->name }}</a><br/>
+                                @if($user->role ==1)
+                                <muted>DESIGNER</muted>
+                                @elseif ($user->role ==2)
+                                <muted>IDEA</muted>
+                                @else
+                                <muted>ADMIN</muted>
+                                @endif
                             </p>
                         </div>
                     </div>
+                    @endforeach
                     <!-- Second Member -->
-                    <div class="desc">
-                        <div class="thumb">
-                            <img class="img-circle" src="assets/img/ui-sherman.jpg" width="35px" height="35px" align="">
-                        </div>
-                        <div class="details">
-                            <p><a href="#">DJ SHERMAN</a><br/>
-                                <muted>I am Busy</muted>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Third Member -->
-                    <div class="desc">
-                        <div class="thumb">
-                            <img class="img-circle" src="assets/img/ui-danro.jpg" width="35px" height="35px" align="">
-                        </div>
-                        <div class="details">
-                            <p><a href="#">DAN ROGERS</a><br/>
-                                <muted>Available</muted>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Fourth Member -->
-                    <div class="desc">
-                        <div class="thumb">
-                            <img class="img-circle" src="assets/img/ui-zac.jpg" width="35px" height="35px" align="">
-                        </div>
-                        <div class="details">
-                            <p><a href="#">Zac Sniders</a><br/>
-                                <muted>Available</muted>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Fifth Member -->
-                    <div class="desc">
-                        <div class="thumb">
-                            <img class="img-circle" src="assets/img/ui-sam.jpg" width="35px" height="35px" align="">
-                        </div>
-                        <div class="details">
-                            <p><a href="#">Marcel Newman</a><br/>
-                                <muted>Available</muted>
-                            </p>
-                        </div>
-                    </div>
+
 
                     <!-- CALENDAR-->
                     <div id="calendar" class="mb">
