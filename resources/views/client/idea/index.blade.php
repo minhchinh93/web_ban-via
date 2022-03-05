@@ -211,7 +211,7 @@
                             </li>
                             @else
                             @if($job->User_id == Auth::user()->id)
-                            <li class="list-primary">
+                            <li class="list-{{ $list[$i++] }}">
                                 <i class=" fa fa-ellipsis-v"></i>
                                 <div class="task-checkbox">
                                     <input type="checkbox" class="list-child" value="">
@@ -238,7 +238,7 @@
                                   </ul>
                                   {{ $jobs->links() }}
                               </div>
-                              
+
                           </div>
                       </section>
 
