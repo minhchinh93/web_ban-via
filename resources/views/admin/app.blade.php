@@ -246,7 +246,7 @@
                       </ul>
                   </li>
                   <li class="sub-menu">
-                      <a class="{{ (request()->is('admin/ProductList')) ? 'active' : 'sub-menu' }}" href="{{ route('ProductList') }}" >
+                      <a class="#" href="$" >
                           <i class="fa fa-book"></i>
                           <span>Product</span>
                       </a>
