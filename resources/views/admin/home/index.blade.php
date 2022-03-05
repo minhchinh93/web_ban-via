@@ -210,7 +210,7 @@
                                         </div>
                                     </li>
                                     @else
-                                    <li class="list-primary">
+                                    <li class="list-{{ $list[$i++] }}">
                                         <i class=" fa fa-ellipsis-v"></i>
                                         <div class="task-checkbox">
                                             <input type="checkbox" class="list-child" value="">
