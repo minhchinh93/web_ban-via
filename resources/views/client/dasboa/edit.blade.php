@@ -9,7 +9,7 @@
 
         <div class="col-lg-12">
             <div class="form-panel">
-                  <h4 class="mb"><i class="fa fa-angle-right"></i>    Giao Việc</h4>
+                  <h4 class="mb"><i class="fa fa-angle-right"></i> Chỉnh Sửa Giao Việc</h4>
                 <form class="form-horizontal style-form"action="{{ route('Edit',[$show->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -17,6 +17,11 @@
                         <div class="col-sm-10">
                             <input type="text" name="title" class="form-control" value="{{$show->title}}" required>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Description</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control conten" name="description" v id="exampleFormControlTextarea1" rows="5">{{$show->description}}</textarea>                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Image</label>

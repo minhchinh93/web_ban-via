@@ -368,6 +368,7 @@ class HomeController extends Controller
                 'image' => $request->file('image')[0]->store('images'),
                 'title' => $request->title,
                 'size_id' => $size,
+                'description' => $request->description,
             ];
             Product::where('id', $id)->update($data);
             ProductDetails::where('product_id', $id)->delete();
@@ -386,6 +387,7 @@ class HomeController extends Controller
                 // 'image' => $request->file('image')[0]->store('images'),
                 'title' => $request->title,
                 'size_id' => $size,
+                'description' => $request->description,
             ];
             Product::where('id', $id)->update($data);
         }
