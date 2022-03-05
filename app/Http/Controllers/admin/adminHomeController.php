@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductPngDetails;
+use App\Models\taskJob;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,7 @@ class adminHomeController extends Controller
         $toDayDateTimeString = $yes->toFormattedDateString();
         $report = Product::orderBy('id', 'desc')
             ->paginate(7);
-        $user = User::paginate(8);
+        $user = User::paginate(20);
         $Idea = User::join('products', 'products.id_idea', '=', 'users.id')
             ->select(DB::raw('COUNT(products.id_idea) as "sum",
         users.name as "name",
@@ -103,6 +104,11 @@ class adminHomeController extends Controller
             $time = '';
 
         }
+
+        $Jobprivate = taskJob::where('private', 2)->get();
+        $jobPublic = taskJob::where('private', 1)->get();
+        $job = taskJob::paginate(5);
+
         // dd($report);
         return view('admin/home/index',
             [
@@ -114,8 +120,9 @@ class adminHomeController extends Controller
                 'str' => $str,
                 'strpng' => $strpng,
                 'mocup' => $mocup,
-                // 'totalIdeamember' => $totalIdeamember,
-                // 'totalDesigner' => $totalDesigner,
+                'Jobprivates' => $Jobprivate,
+                'jobPublics' => $jobPublic,
+                'jobs' => $job,
                 'time' => $time,
                 'timess' => $toDayDateTimeString,
 

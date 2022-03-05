@@ -5,6 +5,7 @@ namespace App\Http\Controllers\client;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductPngDetails;
+use App\Models\taskJob;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -108,6 +109,8 @@ class indexController extends Controller
 
                 }
                 // dd($report);
+                $job = taskJob::paginate(5);
+
                 return view('client/idea/index',
                     [
                         'shows' => $report,
@@ -118,7 +121,7 @@ class indexController extends Controller
                         'str' => $str,
                         'strpng' => $strpng,
                         'mocup' => $mocup,
-                        // 'totalIdeamember' => $totalIdeamember,
+                        'jobs' => $job,
                         // 'totalDesigner' => $totalDesigner,
                         'time' => $time,
                         'timess' => $toDayDateTimeString,

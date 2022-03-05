@@ -183,23 +183,58 @@
                           <div class="panel-body">
                               <div class="task-content">
                                   <ul id="sortable" class="task-list ui-sortable">
-                                      <li class="list-primary">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-checkbox">
-                                              <input type="checkbox" class="list-child" value="">
-                                          </div>
-                                          <div class="task-title">
-                                              <span class="task-title-sp">Dashgum - Admin Panel Theme</span>
-                                              <span class="badge bg-theme">Done</span>
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
-                                              </div>
-                                          </div>
-                                      </li>
+                                        @php
+                                            $list= ['primary','danger','success','info','warning'];
+                                            $i=0
+                                        @endphp
+                                      @foreach ($jobs as $job )
+                                      @if($job->private == 1)
+                                      <li class="list-{{ $list[$i++] ?? null }}">
+                                        <i class=" fa fa-ellipsis-v"></i>
+                                        <div class="task-checkbox">
+                                            <input type="checkbox" class="list-child" value="">
+                                        </div>
+                                        <div class="task-title">
+                                            <span class="task-title-sp">{{ $job->Conten ?? null }}</span>
+                                            <span class="badge bg-info"> Public</span>
+                                            @if($job->action==2)
+                                            <span class="badge bg-important" value="{{ $job->action ?? null}}">Quan trọng</span>
+                                            @else
+                                            <span class="badge bg-warning" value="{{ $job->action ?? null}}">Chú ý</span>
+                                            @endif
+                                            <div class="pull-right hidden-phone">
+                                                <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @else
+                                    <li class="list-primary">
+                                        <i class=" fa fa-ellipsis-v"></i>
+                                        <div class="task-checkbox">
+                                            <input type="checkbox" class="list-child" value="">
+                                        </div>
+                                        <div class="task-title">
+                                            <span class="task-title-sp">{{ $job->Conten }}</span>
+                                            <span class="badge bg-info" value="">{{ $job->User_id ?? null}}</span>
+                                            @if($job->action==2)
+                                            <span class="badge bg-important" value="{{ $job->action ?? null }}">Quan trọng</span>
+                                            @else
+                                            <span class="badge bg-warning" value="{{ $job->action ?? null }}">Chú ý</span>
+                                            @endif
+                                            <div class="pull-right hidden-phone">
+                                                <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @endif
+                                      @endforeach
 
-                                      <li class="list-danger">
+
+                                      {{-- <li class="list-danger">
                                           <i class=" fa fa-ellipsis-v"></i>
                                           <div class="task-checkbox">
                                               <input type="checkbox" class="list-child" value="">
@@ -258,14 +293,80 @@
                                                   <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
                                               </div>
                                           </div>
-                                      </li>
+                                      </li> --}}
 
                                   </ul>
+                                  {{ $jobs->links() }}
                               </div>
                               <div class=" add-task-row">
-                                  <a class="btn btn-success btn-sm pull-left" href="todo_list.html#">Add New Tasks</a>
-                                  <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a>
+                                  <button type="button" class="btn btn-success btn-sm pull-left" data-toggle="modal" data-target=".bs-example-modal-lg">Add Public Tasks</button>
+                                  {{-- <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">add Private Tasks</a> --}}
+                                  <button type="button" class="btn btn-default btn-sm pull-right" data-toggle="modal" data-target="#examplechinh">Add Private Tasks</button>
+                                  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                      <div class="modal-content">
+                                        <div class="form-panel">
+                                            <h4 class="mb"><i class="fa fa-angle-right"></i> Inline Form</h4>
+                                          <form class="form-inline" role="form" method="post" action="{{ route('jobPublic') }}">
+                                            @csrf
+                                            <div class="form-group">
+                                                  <label class="sr-only" for="exampleInputEmail2">content</label>
+                                                  <input type="text" class="form-control" name="content" id="inputSuccess">
+                                                </div>
+                                              <div class="form-group">
+                                                  <label class="sr-only" for="exampleInputPassword2">notes</label>
+                                                  <input type="text" class="form-control" name="note" id="inputSuccess">
+                                                  <div class="form-group">
+                                                    <select class="form-control" name="option" aria-label="Default select example">
+                                                        <option selected value="1">trạng thái</option>
+                                                        <option value="1">Lưu ý</option>
+                                                        <option value="2">Uu tiên</option>
+                                                      </select>
+                                                    </div>
+                                                    </div>
+                                              <button type="submit" class="btn btn-theme">submit</button>
+                                          </form>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="modal fade " id="examplechinh" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                      <div class="modal-content">
+                                        <div class="form-panel">
+                                            <h4 class="mb"><i class="fa fa-angle-right"></i> Inline Form</h4>
+                                            <form class="form-inline" role="form" method="post" action="{{ route('jobPrivate') }}">
+                                                @csrf
+                                                <div class="form-group">
+                                                  <label class="sr-only" for="exampleInputEmail2">content</label>
+                                                  <input type="text" class="form-control" name="content" id="inputSuccess">                                              </div>
+                                              <div class="form-group">
+                                                  <label class="sr-only" for="exampleInputPassword2">notes</label>
+                                                  <input type="text" class="form-control" name="note" id="inputSuccess">
+                                                  <div class="form-group">
+                                                    <select class="form-control" name="option" aria-label="Default select example">
+                                                        <option selected value="1">trạng thái</option>
+                                                        <option value="1">Lưu ý</option>
+                                                        <option value="2">Uu tiên</option>
+                                                      </select>
+                                                    </div>
+                                                  <div class="form-group">
+                                                    <select class="form-control" name="User_id" aria-label="Default select example">
+                                                        <option selected>chọn người</option>
+                                                        @foreach ($users as $user)
+                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                        @endforeach
+                                                        {{ $users->links() }}
+                                                      </select>
+                                                    </div>
+                                              <button type="submit" class="btn btn-theme">submit</button>
+                                          </form>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
                               </div>
+
                           </div>
                       </section>
 

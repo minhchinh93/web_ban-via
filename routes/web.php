@@ -2,6 +2,7 @@
 
 //admin
 use App\Http\Controllers\admin\adminHomeController;
+use App\Http\Controllers\admin\craterJobController;
 use App\Http\Controllers\admin\dasboaController;
 use App\Http\Controllers\admin\DetailController;
 use App\Http\Controllers\admin\productController;
@@ -199,26 +200,22 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     Route::get('categoriesDetail/{id}', [typeProductController::class, 'categoriesDetail'])->name('categoriesDetail');
 
     //=====khoi product===========//
-    Route::get('ProductList', [productController::class, 'ProductList'])->name('ProductList');
     //show index add
-    Route::get('addProduct', [productController::class, 'addProduct'])->name('addProduct');
     // show add post
-    Route::post('postProduct', [productController::class, 'postProduct'])->name('postProduct');
     // show index update
-    Route::get('updatetemplateProduct/{id}', [productController::class, 'updatetemplateProduct'])->name('updatetemplateProduct');
-    Route::post('updateProduct/{id}', [productController::class, 'updateProduct'])->name('updateProduct');
     // delete categori
-    Route::get('deleteProduct/{id}', [productController::class, 'deleteProduct'])->name('deleteProduct');
     // show trackuser
-    Route::get('trackProduct', [productController::class, 'trackProduct'])->name('trackProduct');
     //show activeruser
-    Route::get('activerProduct', [productController::class, 'activerProduct'])->name('activerProduct');
     // khoi phuc thung rac
-    Route::get('restoreProduct/{id}', [productController::class, 'restoreProduct'])->name('restoreProduct');
     // thực hiện tac vụ
     Route::get('productaction', [productController::class, 'action'])->name('productaction');
 
-    Route::get('Sku', [toolController::class, 'Sku'])->name('Sku');
+    Route::post('jobPublic', [craterJobController::class, 'jobPublic'])->name('jobPublic');
+
+    // create job public
+    Route::post('jobPrivate', [craterJobController::class, 'jobPrivate'])->name('jobPrivate');
+    // create jobPrivate
+
 });
 
 //=========khôi client===========//
