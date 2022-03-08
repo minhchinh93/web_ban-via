@@ -63,7 +63,9 @@
                                 <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
                                 <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
                                 <td  style=" max-width:150px;"><b>{{ $report->title  ?? null }}</b></td>
-                                <td  style=" max-width: 100px;"><b>{{  $report->Sku ?? null }}</b></td>
+                                <td  style=" max-width: 100px;"><b>@foreach ($report->cornerstones as $cornerstone)
+                                    <span class="label label-info label-mini">{{ $cornerstone->name}}</span>
+                                    @endforeach</b></td>
                                 <td class="hidden-phone"
                                 style=" max-width: 300px;
                                 color:black;

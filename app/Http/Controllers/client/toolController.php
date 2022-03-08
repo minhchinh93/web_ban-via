@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\cornerstone;
 use App\Models\Product;
 use App\Models\size;
 use App\Models\type_product;
@@ -14,7 +15,13 @@ class toolController extends Controller
     //
     public function showTool()
     {
-        return view('client.dasboa.tool');
+        $show = cornerstone::all();
+        $product = Product::find(1);
+        $showList = $product->cornerstones;
+        return view('client.dasboa.tool', [
+            'shows' => $show,
+            'showLists' => $showList,
+        ]);
     }
     public function postTypeProduct(Request $request)
     {
@@ -60,6 +67,18 @@ class toolController extends Controller
 
         }
         print "ok";
+    }
+    public function cornerstone(Request $request)
+    {
+
+        cornerstone::create($request->only('name'));
+        return redirect()->route('showtool');
+    }
+    public function cornerstoneProduct(Request $request, $id)
+    {
+        $product = Product::find($id);
+        $product->cornerstones()->attach($request->cornerstone);
+        return redirect()->route('home');
     }
 
 }

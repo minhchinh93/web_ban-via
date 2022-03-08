@@ -41,5 +41,9 @@ class product extends Model
     {
         return $this->hasMany(mocupProduct::class, 'product_id', 'id');
     }
+    public function cornerstones()
+    {
+        return $this->belongsToMany(cornerstone::class, 'product_cornerstone', 'id_product', 'cornerstones_id');
+    }
 
 }

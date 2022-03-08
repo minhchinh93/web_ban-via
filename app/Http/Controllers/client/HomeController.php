@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\cornerstone;
 use App\Models\Product;
 use App\Models\ProductDetails;
 use App\Models\size;
@@ -23,12 +24,10 @@ class HomeController extends Controller
         $type_product = type_product::get();
         $size = size::get();
         $keyword = $request->keyword;
-        // dd($size[1]);
+        $showcornerstone = cornerstone::all();
         $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
             ->Where('status', '<>', "5")
             ->Where('title', 'like', "%{$keyword}%")
-        // ->Where('description', 'like', "%{$keyword}%")
-        // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->paginate(10);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
@@ -43,7 +42,8 @@ class HomeController extends Controller
             $time = '';
 
         }
-        // dd($report[0]->mocups);
+        // $showList = $report->cornerstones;
+
         // dd(count($report[0]->mocups));
 
         $totalDone = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->count();
@@ -60,6 +60,7 @@ class HomeController extends Controller
                 'totalallidea' => $totalallidea,
                 'times' => $time,
                 'sizes' => $size,
+                'showcornerstones' => $showcornerstone,
             ]);
     }
     public function allidea(Request $request)
