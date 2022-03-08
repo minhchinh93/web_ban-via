@@ -97,6 +97,9 @@ Route::middleware('auth')->group(function () {
     Route::get('showTool', [toolController::class, 'showTool'])->name('showtool');
     Route::post('postTypeProduct', [toolController::class, 'postTypeProduct'])->name('postTypeProduct');
 
+    Route::post('cornerstone', [toolController::class, 'cornerstone'])->name('cornerstone');
+
+    Route::post('cornerstoneProduct/{id}', [toolController::class, 'cornerstoneProduct'])->name('cornerstoneProduct');
     Route::get('/carbon', [toolController::class, 'carbon'])->name('carbon');
 
 });
