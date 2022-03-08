@@ -288,7 +288,7 @@
                                 {{-- <div class="chart mt">
                                     <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[400,235,567,133,526,496,864,123,190,564,700]"></div>
                                 </div> --}}
-                                <p class="mt"><b>$ 17,980</b><br/>Product</p>
+                                <p class="mt"><b>--IDEA--</b><br/>--PNG--</p>
                             </div>
                         </div>
                         <!-- /col-md-4 -->
