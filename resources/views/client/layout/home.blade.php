@@ -112,7 +112,7 @@
                                 <th><i class="fa fa-bullhorn"></i> Designer</th>
                                 <th><i class="fa fa-bullhorn"></i> Category(size)</th>
                                 <th><i class="fa fa-bullhorn"></i> Title</th>
-                                <th><i class="fa fa-bullhorn"></i> SKU</th>
+                                <th><i class="fa fa-bullhorn"></i> Cornerstones</th>
                                 <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description </th>
                                 <th class="hidden-phone"><i class="fa fa-question-circle"></i>Time</th>
                                 <th><i class="fa fa-bookmark"></i>Idea </th>

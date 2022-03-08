@@ -16,11 +16,9 @@ class toolController extends Controller
     public function showTool()
     {
         $show = cornerstone::all();
-        $product = Product::find(1);
-        $showList = $product->cornerstones;
+
         return view('client.dasboa.tool', [
             'shows' => $show,
-            'showLists' => $showList,
         ]);
     }
     public function postTypeProduct(Request $request)
