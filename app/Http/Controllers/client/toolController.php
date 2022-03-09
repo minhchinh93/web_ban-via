@@ -82,7 +82,8 @@ class toolController extends Controller
     {
         $products = Product::where('id_idea', $id)->get();
         foreach ($products as $product) {
-            $product->cornerstones()->attach(2);
+            // $product->cornerstones()->attach(2);
+            $product->cornerstones()->detach(1);
         }
 
         return redirect()->route('home');
