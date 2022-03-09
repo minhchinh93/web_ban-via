@@ -78,5 +78,14 @@ class toolController extends Controller
         $product->cornerstones()->attach($request->cornerstone);
         return redirect()->route('home');
     }
+    public function cornerstoneIdea(Request $request, $id)
+    {
+        $products = Product::where('id_idea', $id)->get();
+        foreach ($products as $product) {
+            $product->cornerstones()->attach(2);
+        }
+
+        return redirect()->route('home');
+    }
 
 }

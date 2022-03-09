@@ -100,7 +100,9 @@ Route::middleware('auth')->group(function () {
     Route::post('cornerstone', [toolController::class, 'cornerstone'])->name('cornerstone');
 
     Route::post('cornerstoneProduct/{id}', [toolController::class, 'cornerstoneProduct'])->name('cornerstoneProduct');
+
     Route::get('/carbon', [toolController::class, 'carbon'])->name('carbon');
+    Route::get('cornerstoneIdea/{id}', [toolController::class, 'cornerstoneIdea'])->name('cornerstoneIdea');
 
 });
 // Route::get('home', [HomeController::class, 'home'])->name('home');
@@ -218,9 +220,9 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     // create job public
     Route::post('jobPrivate', [craterJobController::class, 'jobPrivate'])->name('jobPrivate');
     // create jobPrivate
-        // create job public
+    // create job public
     Route::get('deletejob/{id}', [craterJobController::class, 'deletejob'])->name('deletejob');
-        // create job public
+    // create job public
     Route::get('updateJob/{id}', [craterJobController::class, 'updateJob'])->name('updateJob');
 
 });
