@@ -218,6 +218,10 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     // create job public
     Route::post('jobPrivate', [craterJobController::class, 'jobPrivate'])->name('jobPrivate');
     // create jobPrivate
+        // create job public
+    Route::get('deletejob/{id}', [craterJobController::class, 'deletejob'])->name('deletejob');
+        // create job public
+    Route::get('updateJob/{id}', [craterJobController::class, 'updateJob'])->name('updateJob');
 
 });
 

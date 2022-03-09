@@ -35,5 +35,22 @@ class craterJobController extends Controller
         taskJob::create($data);
         return redirect()->route('AadminHome');
     }
+    public function deletejob($id)
+    {
+        if (taskJob::find($id) != null) {
+            taskJob::find($id)->delete();
+            return redirect()->route('AadminHome')->with('success', 'ban da xoa thanh cong');
+        }
+        return redirect()->route('AadminHome')->with('erros', 'job đã xóa');
+    }
+    public function updateJob($id)
+    {
+      
+        if (taskJob::find($id) != null) {
+            taskJob::find($id)->update(['status'=>2]);
+            return redirect()->route('AadminHome')->with('success', 'ban da xoa thanh cong');
+        }
+        return redirect()->route('AadminHome')->with('erros', 'job đã xóa');
+    }
 
 }
