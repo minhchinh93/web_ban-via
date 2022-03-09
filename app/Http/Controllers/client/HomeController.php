@@ -122,7 +122,7 @@ class HomeController extends Controller
         $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
             ->Where('title', 'like', "%{$keyword}%")
             ->Where('id_type', $request->type)
-            ->paginate(5);
+            ->paginate(3);
         // dd($report);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
@@ -234,7 +234,6 @@ class HomeController extends Controller
                 'type_products' => $type_product,
                 'sizes' => $size,
                 'showcornerstones' => $showcornerstone,
-
 
             ]);
     }
