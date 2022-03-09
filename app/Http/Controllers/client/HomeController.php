@@ -91,7 +91,7 @@ class HomeController extends Controller
         }
         // dd($report[0]->mocups);
         // dd(count($report[0]->mocups));
-
+        $showcornerstone = cornerstone::all();
         $totalDone = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 3)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 1)->count();
@@ -106,6 +106,8 @@ class HomeController extends Controller
                 'type_products' => $type_product,
                 'times' => $time,
                 'sizes' => $size,
+                'showcornerstones' => $showcornerstone,
+
             ]);
     }
     public function find(Request $request)
@@ -134,7 +136,7 @@ class HomeController extends Controller
         } else {
             $time = '';
         }
-        // dd($report[0]->type_product);
+        $showcornerstone = cornerstone::all();
         $totalDone = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 3)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 1)->count();
@@ -147,6 +149,8 @@ class HomeController extends Controller
                 'type_products' => $type_product,
                 'times' => $time,
                 'sizes' => $size,
+                'showcornerstones' => $showcornerstone,
+
             ]);
     }
     public function done(Request $request)
@@ -157,7 +161,7 @@ class HomeController extends Controller
         $type_product = type_product::get();
         $size = size::get();
         $keyword = $request->keyword;
-        // dd($size[1]);
+        $showcornerstone = cornerstone::all();
         $report = Product::orderBy('updated_at', 'desc')->Where('title', 'like', "%{$keyword}%")
             ->where('id_idea', Auth::user()->id)->where('status', 5)->paginate(10);
         // dd($report);
@@ -173,7 +177,6 @@ class HomeController extends Controller
         } else {
             $time = '';
         }
-
         $designer = User::get()->where('role', 1);
         $totalDone = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)->where('status', 3)->count();
@@ -189,12 +192,14 @@ class HomeController extends Controller
                 'type_products' => $type_product,
                 'sizes' => $size,
                 'times' => $time,
+                'showcornerstones' => $showcornerstone,
 
             ]);
     }
 
     public function Pending(Request $request)
     {
+        $showcornerstone = cornerstone::all();
         $keyword = $request->keyword;
         $size = size::get();
         $type_product = type_product::get();
@@ -208,11 +213,14 @@ class HomeController extends Controller
                 'totalPending' => $totalPending,
                 'type_products' => $type_product,
                 'sizes' => $size,
+                'showcornerstones' => $showcornerstone,
+
             ]);
     }
     public function NotReceived(Request $request)
     {
         $keyword = $request->keyword;
+        $showcornerstone = cornerstone::all();
         $size = size::get();
         $type_product = type_product::get();
         $designer = User::get()->where('role', 1);
@@ -225,6 +233,8 @@ class HomeController extends Controller
                 'totalNotReceived' => $totalNotReceived,
                 'type_products' => $type_product,
                 'sizes' => $size,
+                'showcornerstones' => $showcornerstone,
+
 
             ]);
     }
