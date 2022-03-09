@@ -217,7 +217,7 @@
                                         </div>
                                         <div class="task-title">
                                             <span class="task-title-sp">{{ $job->Conten }}</span>
-                                            <span class="badge bg-info" value="">{{ $job->User_id ?? null}}</span>
+                                            <span class="badge bg-info" value="">{{ $job->User->name ?? null}}</span>
                                             @if($job->action==2)
                                             <span class="badge bg-important" value="{{ $job->action ?? null }}">Quan trọng</span>
                                             @else

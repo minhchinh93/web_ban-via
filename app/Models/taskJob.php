@@ -11,4 +11,9 @@ class taskJob extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'User_id', 'id');
+    }
 }
