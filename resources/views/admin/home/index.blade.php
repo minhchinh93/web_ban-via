@@ -202,10 +202,17 @@
                                             @else
                                             <span class="badge bg-warning" value="{{ $job->action ?? null}}">Chú ý</span>
                                             @endif
+                                            @if ($job->status==2)
+                                            <span class="badge bg-success" value="{{ $job->status ?? null }}">success</span>
+                                            @endif
                                             <div class="pull-right hidden-phone">
-                                                <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                <a class=" w-75 " style="color:white" href="{{ route('updateJob',[$job->id]) }}">  <button class="btn btn-success btn-xs fa fa-check"></button></button></a>
                                                 <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                                <a class=" w-75 " style="color:white" href="{{  route('deletejob',[$job->id])  }}">
+                                                    <span class="btn btn-danger btn-xs fa fa-trash-o">
+                                                       <i class="fa fa-trash-o"></i></a>
+                                                     </span>
+                                                </a>
                                             </div>
                                         </div>
                                     </li>
@@ -223,10 +230,19 @@
                                             @else
                                             <span class="badge bg-warning" value="{{ $job->action ?? null }}">Chú ý</span>
                                             @endif
+                                            @if ($job->status==2)
+                                            <span class="badge bg-success" value="{{ $job->status ?? null }}">success</span>
+                                            @endif
                                             <div class="pull-right hidden-phone">
-                                                <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                <a class=" w-75 " style="color:white" href="{{ route('updateJob',[$job->id]) }}">
+                                                    <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                </a>
                                                 <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                                <a class=" w-75 " style="color:white" href="{{  route('deletejob',[$job->id])  }}">
+                                                <span class="btn btn-danger btn-xs fa fa-trash-o">
+                                                   <i class="fa fa-trash-o"></i></a>
+                                                 </span>
+                                                </a>
                                             </div>
                                         </div>
                                     </li>
