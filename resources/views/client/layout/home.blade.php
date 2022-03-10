@@ -80,8 +80,8 @@
                                     {{-- <form action="{{ route('find') }}" class="form-inline"role="form" method="GET"> --}}
                                     <form  class="form-inline"role="form" >
                                       @csrf
-                                        <select class="form-control "  id="cars" name="type" >>
-                                            <option>Tìm Kiếm loại</option>
+                                        <select class="form-control "  id="cars" name="type" >
+                                            <option value=" ">Tìm Kiếm loại</option>
                                             @foreach ($type_products as $type_product)
                                             <option value="{{$type_product->id}}">{{  $type_product->name }}</option>
                                             @endforeach

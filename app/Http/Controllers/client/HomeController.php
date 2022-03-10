@@ -25,11 +25,20 @@ class HomeController extends Controller
         $size = size::get();
         $keyword = $request->keyword;
         $showcornerstone = cornerstone::all();
-        $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
-            ->Where('status', '<>', "5")
-            ->Where('title', 'like', "%{$keyword}%")
-            ->Where('id_type', 'like', "%{$request->type}%")
-            ->paginate(10);
+
+        if ($request->type != null) {
+            $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
+                ->Where('status', '<>', "5")
+                ->Where('id_type', 'like', "%{$request->type}%")
+                ->Where('title', 'like', "%{$keyword}%")
+                ->paginate(10000);
+        } else {
+            $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
+                ->Where('status', '<>', "5")
+                ->Where('title', 'like', "%{$keyword}%")
+                ->paginate(10);
+        }
+
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
@@ -43,6 +52,7 @@ class HomeController extends Controller
             $time = '';
 
         }
+
         // $showList = $report->cornerstones;
 
         // dd(count($report[0]->mocups));
