@@ -7,6 +7,7 @@ use App\Models\cornerstone;
 use App\Models\Product;
 use App\Models\size;
 use App\Models\type_product;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -16,9 +17,11 @@ class toolController extends Controller
     public function showTool()
     {
         $show = cornerstone::all();
+        $users = User::all();
 
         return view('client.dasboa.tool', [
             'shows' => $show,
+            'users' => $users,
         ]);
     }
     public function postTypeProduct(Request $request)
@@ -78,12 +81,20 @@ class toolController extends Controller
         $product->cornerstones()->attach($request->cornerstone);
         return redirect()->route('home');
     }
-    public function cornerstoneIdea(Request $request, $id)
+    public function cornerstoneadd(Request $request)
     {
-        $products = Product::where('id_idea', $id)->get();
+        $products = Product::where('id_idea', $request->users)->get();
         foreach ($products as $product) {
-            // $product->cornerstones()->attach(2);
-            $product->cornerstones()->detach(1);
+            $product->cornerstones()->attach($request->cornerstone);
+        }
+
+        return redirect()->route('home');
+    }
+    public function cornerstonedele(Request $request)
+    {
+        $products = Product::where('id_idea', $request->users)->get();
+        foreach ($products as $product) {
+            $product->cornerstones()->detach($request->cornerstone);
         }
 
         return redirect()->route('home');

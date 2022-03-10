@@ -39,6 +39,46 @@
                 </div><!-- /form-panel -->
             </div><!-- /col-lg-12 -->
         </div>
+        <div class="row mt">
+            <div class="col-lg-6">
+                <div class="form-panel">
+                  <h4 class="mb"><i class="fa fa-angle-right"></i> add cornerstone</h4>
+                  <form class="form-inline" action="{{ route('cornerstoneadd') }}" method="post">
+                    @csrf
+                    <select name="users" id="cars" style="border-radius: 15px;" class="form-control">
+                    @foreach ($users as $show)
+                        <option value="{{ $show->id }}">{{  $show->name }}</option>
+                    @endforeach
+                    </select>
+                    <select name="cornerstone" id="cars" style="border-radius: 15px;" class="form-control">
+                    @foreach ($shows as $showss)
+                        <option value="{{ $showss->id }}">{{  $showss->name }}</option>
+                    @endforeach
+                </select>
+                <button type="submit" style="border-radius: 10px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+                </div><!-- /form-panel -->
+            </div><!-- /col-lg-12 -->
+            <div class="col-lg-6">
+                <div class="form-panel">
+                  <h4 class="mb"><i class="fa fa-angle-right"></i> xoa cornerstone</h4>
+                  <form class="form-inline" action="{{ route('cornerstonedele') }}" method="post">
+                    @csrf
+                    <select name="users" id="cars" style="border-radius: 15px;" class="form-control">
+                    @foreach ($users as $show)
+                        <option value="{{ $show->id }}">{{  $show->name }}</option>
+                    @endforeach
+                    </select>
+                    <select name="cornerstone" id="cars" style="border-radius: 15px;" class="form-control">
+                    @foreach ($shows as $showss)
+                        <option value="{{ $showss->id }}">{{  $showss->name }}</option>
+                    @endforeach
+                </select>
+                <button type="submit" style="border-radius: 10px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+                </div><!-- /form-panel -->
+            </div><!-- /col-lg-12 -->
+        </div>
     </section>
 </section>
 
