@@ -102,7 +102,8 @@ Route::middleware('auth')->group(function () {
     Route::post('cornerstoneProduct/{id}', [toolController::class, 'cornerstoneProduct'])->name('cornerstoneProduct');
 
     Route::get('/carbon', [toolController::class, 'carbon'])->name('carbon');
-    Route::get('cornerstoneIdea/{id}', [toolController::class, 'cornerstoneIdea'])->name('cornerstoneIdea');
+    Route::post('cornerstoneadd', [toolController::class, 'cornerstoneadd'])->name('cornerstoneadd');
+    Route::post('cornerstonedele', [toolController::class, 'cornerstonedele'])->name('cornerstonedele');
 
 });
 // Route::get('home', [HomeController::class, 'home'])->name('home');
