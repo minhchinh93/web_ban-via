@@ -231,7 +231,7 @@
                 </div><!-- /content-panel -->
             </div><!-- /col-md-12 -->
         </div>
-        {{-- <div class="row mt" >
+        <div class="row mt" >
             <div class="col-md-12">
                 <div class="content-panel" style="border-radius: 10px;background: rgba(255, 255, 255, 0.842)">
                     <h4><i class="fa fa-angle-right"></i> DESIGNER MANAGER MOCKUP </h4><hr><table class="table table-striped table-advance table-hover">
@@ -277,14 +277,14 @@
                                 {{-- <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button> --}}
                                 {{-- <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
                                 <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button> --}}
-                            {{-- </td>
+                            </td>
                         </tr>
                         @endforeach
                         </tbody>
                     </table>
                 </div><!-- /content-panel -->
             </div><!-- /col-md-12 -->
-        </div> --}}
+        </div>
 
   </section><!-- --/wrapper ---->
 </section>
