@@ -81,12 +81,22 @@ class HomeController extends Controller
         $type_product = type_product::get();
         $size = size::get();
         $keyword = $request->keyword;
-        // dd($size[1]);
-        $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
-            ->Where('title', 'like', "%{$keyword}%")
-        // ->Where('description', 'like', "%{$keyword}%")
-        // ->orWhere('updated_at', 'like', "%{$keyword}%")
-            ->paginate(10);
+        // // dd($size[1]);
+        // $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
+        //     ->Where('title', 'like', "%{$keyword}%")
+        //     ->Where('id_type', 'like', "%{$request->type}%")
+        // // ->orWhere('updated_at', 'like', "%{$keyword}%")
+        //     ->paginate(10);
+        if ($request->type != null) {
+            $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
+                ->Where('id_type', 'like', "%{$request->type}%")
+                ->Where('title', 'like', "%{$keyword}%")
+                ->paginate(10000);
+        } else {
+            $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
+                ->Where('title', 'like', "%{$keyword}%")
+                ->paginate(10);
+        }
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
@@ -176,6 +186,19 @@ class HomeController extends Controller
         $report = Product::orderBy('updated_at', 'desc')->Where('title', 'like', "%{$keyword}%")
             ->where('id_idea', Auth::user()->id)->where('status', 5)->paginate(10);
         // dd($report);
+
+        if ($request->type != null) {
+            $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
+                ->where('status', 5)
+                ->Where('id_type', 'like', "%{$request->type}%")
+                ->Where('title', 'like', "%{$keyword}%")
+                ->paginate(10000);
+        } else {
+            $report = Product::orderBy('updated_at', 'desc')->Where('title', 'like', "%{$keyword}%")
+                ->where('id_idea', Auth::user()->id)
+                ->where('status', 5)
+                ->paginate(10);
+        }
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->updated_at);
