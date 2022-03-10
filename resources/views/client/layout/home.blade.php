@@ -77,7 +77,8 @@
                         <div class="col-lg-7">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form action="{{ route('find') }}" class="form-inline"role="form" method="GET">
+                                    {{-- <form action="{{ route('find') }}" class="form-inline"role="form" method="GET"> --}}
+                                    <form  class="form-inline"role="form" >
                                       @csrf
                                         <select class="form-control "  id="cars" name="type" >>
                                             <option>Tìm Kiếm loại</option>
