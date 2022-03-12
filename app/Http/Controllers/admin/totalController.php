@@ -145,7 +145,7 @@ class totalController extends Controller
 
         } else {
             $report = Product::orderBy('updated_at', 'desc')
-                ->paginate(10000);
+                ->paginate(10);
         }
 
         // foreach ($report as $rep) {
