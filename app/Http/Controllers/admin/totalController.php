@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\cornerstone;
 use App\Models\Product;
 use App\Models\size;
 use App\Models\type_product;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class totalController extends Controller
 {
@@ -59,10 +61,8 @@ class totalController extends Controller
         // dd($size[1]);
         $report = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')
             ->Where('Sku', 'like', "%{$keyword}%")
-
-        // ->Where('description', 'like', "%{$keyword}%")
-        // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->paginate(10);
+
         if ($report->total() > 0) {
             foreach ($report as $rep) {
                 $userIdeas[] = User::where('id', $rep->id_idea)->get();
@@ -113,29 +113,61 @@ class totalController extends Controller
 
         Carbon::setLocale('vi');
         $now = Carbon::now('Asia/Ho_Chi_Minh');
+        $show = cornerstone::all();
         $times = $now->toDateString();
         $designer = User::get()->where('role', 2);
         $type_product = type_product::get();
         $size = size::get();
         $keyword = $request->keyword;
-        // dd($size[1]);
-        $report = Product::orderBy('updated_at', 'desc')
-            ->Where('Sku', 'like', "%{$keyword}%")
 
-        // ->Where('description', 'like', "%{$keyword}%")
-        // ->orWhere('updated_at', 'like', "%{$keyword}%")
-            ->paginate(10);
-        if ($report->total() > 0) {
-            foreach ($report as $rep) {
-                $userIdeas[] = User::where('id', $rep->id_idea)->get();
-            }
-            foreach ($userIdeas as $userIdea) {
-                $name[] = $userIdea;
-            }
+        if ($request->cornerstone != null) {
+            $report = Product::join('product_cornerstone', 'product_cornerstone.id_product', '=', 'products.id')
+                ->select(DB::raw('
+        COUNT(product_cornerstone.cornerstones_id),
+        products.id as "id",
+        products.id_type as "id_type",
+        products.User_id as "User_id",
+        products.id_idea as "id_idea",
+        products.size_id as "size_id",
+        products.title as "title",
+        products.description as "description",
+        products.ImagePNG as "ImagePNG",
+        products.status as "status",
+        products.action as "action",
+        products.created_at as "created_at",
+        products.updated_at as "updated_at"
+        '
+                ))
+                ->groupBy('products.id')
+                ->Where('product_cornerstone.cornerstones_id', $request->cornerstone)
+            // ->Where('title', 'like', "%{$keyword}%")
+                ->paginate(10000);
 
         } else {
-            $name = "";
+            $report = Product::orderBy('updated_at', 'desc')
+                ->paginate(10000);
         }
+
+        // foreach ($report as $rep) {
+        //     foreach ($rep->cornerstones as $corner) {
+        //         $name[] = $corner->name;
+        //     }
+        // }
+
+        {
+            if ($report->total() > 0) {
+                foreach ($report as $rep) {
+                    $userIdeas[] = User::where('id', $rep->id_idea)->get();
+                }
+                foreach ($userIdeas as $userIdea) {
+                    $name[] = $userIdea;
+                }
+
+            } else {
+                $name = "";
+            }
+        }
+
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
@@ -167,6 +199,7 @@ class totalController extends Controller
                 'times' => $time,
                 'sizes' => $size,
                 'name' => $name,
+                'shows' => $show,
 
             ]);
     }
