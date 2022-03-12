@@ -18,7 +18,18 @@
 
                             </h4>
                     </div><!-- /col-lg-12 -->
-                    <div class="col-lg-7">
+                    <div class="col-lg-4">
+                        <form class="form-inline" >
+                            <select name="cornerstone" id="cars" style="border-radius: 15px;" class="form-control">
+                            @foreach ($shows as $show)
+                                <option value="{{ $show->id }}">{{  $show->name }}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="btn btn-theme"><i class="fa-solid fa-paper-plane">tim kiem</i></button>
+                    </form>
+                    </div>
+
+                    <div class="col-lg-4">
                         <div class="row">
                             <div class="col-lg-12">
                                 <form class="form-inline" role="form">
@@ -31,7 +42,8 @@
                             </div>
                         </div>
                    </div><!-- /col-lg-12 -->
-                    <hr>
+
+
                     <table class="table table-striped table-advance table-hover">
                         <thead>
                         <tr>
@@ -54,7 +66,7 @@
                         <tbody>
                             @foreach ($reports as  $report)
                             <tr>
-                                <td><a href="#">{{$name[$i++][0]->name?? null }}</a></td>
+                                <td><a href="#">{{$report->user->name ?? null }}</a></td>
                                 <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
                                 <td  style=" max-width: 200px;"><b>{{ $report->title ?? null }}</b></td>
                                 <td  style=" max-width: 100px;"><b>@foreach ($report->cornerstones as $cornerstone)

@@ -20,6 +20,7 @@ class dasboaController extends Controller
         $time = $dt->toDateString();
         $yesterday = $yes->toDateString();
         $totaDay = Product::where('created_at', 'LIKE', '%' . $time . '%')->count();
+
         $totaSusecDay = Product::where('created_at', 'LIKE', '%' . $time . '%')->where('status', 5)->count();
         $totalidea = Product::all()->count();
         $totalPNG = ProductPngDetails::all()->count();
