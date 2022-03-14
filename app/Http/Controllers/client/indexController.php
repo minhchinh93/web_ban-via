@@ -109,7 +109,7 @@ class indexController extends Controller
 
                 }
                 // dd($report);
-                $job = taskJob::paginate(5);
+                $job = taskJob::orderBy('created_at', 'DESC')->paginate(5);
 
                 return view('client/idea/index',
                     [
