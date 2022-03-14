@@ -105,9 +105,9 @@ class adminHomeController extends Controller
 
         }
 
-        $Jobprivate = taskJob::where('private', 2)->get();
-        $jobPublic = taskJob::where('private', 1)->get();
-        $job = taskJob::paginate(5);
+        $Jobprivate = taskJob::where('private', 2)->orderBy('created_at', 'DESC')->get();
+        $jobPublic = taskJob::where('private', 1)->orderBy('created_at', 'DESC')->get();
+        $job = taskJob::orderBy('created_at', 'DESC')->paginate(5);
 
         // dd($report);
         return view('admin/home/index',
