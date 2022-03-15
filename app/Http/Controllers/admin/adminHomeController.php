@@ -66,7 +66,7 @@ class adminHomeController extends Controller
             ->orderBy('idUser', 'DESC')
             ->where('mocup_products.created_at', 'LIKE', '%' . $timess . '%')
             ->get();
-        $day = Carbon::now()->subDay(10);
+        $day = Carbon::now()->subDay(7);
         // dd(count($mocup));
         $totalidea = Product::where('created_at', '>=', $day)
             ->groupBy('date')
@@ -87,6 +87,7 @@ class adminHomeController extends Controller
                 DB::raw('Date(created_at) as date'),
                 DB::raw('COUNT(*) as value'),
             ]);
+
         foreach ($totalPNG as $png) {
             $strss[] = $png->value;
         }

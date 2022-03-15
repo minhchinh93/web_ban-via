@@ -309,7 +309,7 @@
                     </div>
                     <!-- /row -->
 
-                    {{-- <div class="row mt">
+                    <div class="row mt">
                         <!--CUSTOM CHART START -->
                         <div class="border-head">
                             <h3>VISITS</h3>
@@ -353,7 +353,7 @@
                             </div>
                         </div>
                         <!--custom chart end-->
-                    </div> --}}
+                    </div>
                     <!-- /row -->
 
                 </div>
