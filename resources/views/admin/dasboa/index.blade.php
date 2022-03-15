@@ -4,16 +4,16 @@
     <section class="wrapper" style="color:black; font-family:Roboto,sans-serif; background: rgba(236, 240, 240, 0.644) ">
         <div class="row mtbox">
             <div class="col-md-2 col-sm-2 col-md-offset-1 box0" >
-                <div class="box1" style=" border-radius: 5%;
+                <div class="box1" style=" border-radius: 20px;
                 background-image: linear-gradient(90deg, #fe9e75, rgb(245, 45, 78)); ">
                     <span class="li_heart" style="color:rgb(252, 250, 247);"></span>
                     <h5  style="color:rgb(250, 250, 250)">IDEA OF THE DAY : {{ $totaDay }} </h5>
                     <h4  style="color:rgb(248, 245, 241)">IDEA SUCCESS : {{ $totaSusecDay }}</h4>
                 </div>
-                <a style="color:red" href="{{ route('totalidea') }}"><p>see more !</p></a>
+                <a style="color:red href="{{ route('totalidea') }}"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
-                <div class="box1" style="background-image: linear-gradient(90deg, #0bd48e, rgba(158, 168, 8, 0.829));  border-radius: 5%;">
+                <div class="box1" style="background-image: linear-gradient(90deg, #0bd48e, rgba(158, 168, 8, 0.829));  border-radius:20px;">
                     <span class="li_cloud" style="color:rgb(255, 255, 255)"></span>
                     <h5 style="color:rgb(250, 250, 253)">DESIGNER/DAY: {{ $totalDayDesigner }}</h5>
                     <h4 style="color:rgb(243, 242, 247)">DESIGNER SUCCESS : {{ NULL }}</h4>
@@ -21,7 +21,7 @@
                 <a style="color:red" href="{{ route('totalDesigner') }}"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
-                <div class="box1" style="background-image: linear-gradient(90deg, #fe6c7d, rgba(37, 8, 168, 0.829));  border-radius: 5%;">
+                <div class="box1" style="background-image: linear-gradient(90deg, #fe6c7d, rgba(37, 8, 168, 0.829));  border-radius: 20px;">
                     <span class="li_news" style="color:rgb(250, 245, 247)"></span>
                     <h5 style="color:rgb(247, 245, 246)">TOTAL IDEA:</h5>
                     <h4><b style="color:rgb(248, 245, 246)">{{ $totalIdea }} </b></h4>
@@ -29,7 +29,7 @@
                 <a style="color:rgb(0, 60, 255)" href="{{ route('totalall') }}"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
-                <div class="box1" style="background-image: linear-gradient(90deg, #01b5c1, rgba(194, 6, 6, 0.829));  border-radius: 5%;">
+                <div class="box1" style="background-image: linear-gradient(90deg, #01b5c1, rgba(194, 6, 6, 0.829));  border-radius: 20px;">
                     <span class="li_data" style="color:rgb(246, 242, 247)"></span>
                     <h5 style="color:rgb(250, 248, 250)"> TOTAL DESIGNER:</h5>
                     <h4 style="color:rgb(252, 250, 252)"><b>{{ $totalDesign }} </b></h4>
@@ -37,7 +37,7 @@
                 <a style="color:red" href="#"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
-                <div class="box1" style="background-image: linear-gradient(90deg, rgba(255, 42, 59, 0.541), rgba(9, 221, 236, 0.829));  border-radius: 5%;">
+                <div class="box1" style="background-image: linear-gradient(90deg, rgba(255, 42, 59, 0.541), rgba(9, 221, 236, 0.829));  border-radius: 20px;">
                     <span class="li_stack" style="color:rgb(252, 244, 244)"></span>
                     <h5 style="color:rgb(255, 255, 255)">MEMBER IDEA: {{ $totalIdeamember }} </h5>
                     <h4 style="color:rgb(253, 249, 249)">MEMBER DESIGNER: {{ $totalDesigner }}</h4>
