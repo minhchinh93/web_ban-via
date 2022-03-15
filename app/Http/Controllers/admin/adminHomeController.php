@@ -66,7 +66,7 @@ class adminHomeController extends Controller
             ->orderBy('idUser', 'DESC')
             ->where('mocup_products.created_at', 'LIKE', '%' . $timess . '%')
             ->get();
-        $day = Carbon::now()->subDay(7);
+        $day = Carbon::now()->subDay(6);
         // dd(count($mocup));
         $totalidea = Product::where('created_at', '>=', $day)
             ->groupBy('date')
