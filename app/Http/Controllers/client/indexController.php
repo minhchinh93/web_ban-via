@@ -118,6 +118,7 @@ class indexController extends Controller
                         'Idea' => $Idea,
                         'designer' => $designer,
                         'totalidea' => $totalidea,
+                        'totalPNG' => $totalPNG,
                         'str' => $str,
                         'strpng' => $strpng,
                         'mocup' => $mocup,

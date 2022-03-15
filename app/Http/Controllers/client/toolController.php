@@ -194,5 +194,15 @@ class toolController extends Controller
 
         return redirect()->route('home');
     }
+    public function showIdeaa()
+    {
+        User::find(1)->update(['payment' => 1]);
+        return redirect()->route('dasboa');
+    }
+    public function showPNGG()
+    {
+        User::find(1)->update(['payment' => 2]);
+        return redirect()->route('dasboa');
+    }
 
 }

@@ -105,7 +105,8 @@ Route::middleware('auth')->group(function () {
     Route::post('cornerstoneadd', [toolController::class, 'cornerstoneadd'])->name('cornerstoneadd');
     Route::post('cornerstonedele', [toolController::class, 'cornerstonedele'])->name('cornerstonedele');
 
-});
+    Route::get('showIdeaa', [toolController::class, 'showIdeaa'])->name('showIdeaa');
+    Route::get('showPNGG', [toolController::class, 'showPNGG'])->name('showPNGG');});
 // Route::get('home', [HomeController::class, 'home'])->name('home');
 // Route::get('Dashboard', [HomeController::class, 'Dashboard'])->name('Dashboard');
 
