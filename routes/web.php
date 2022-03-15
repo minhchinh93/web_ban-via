@@ -149,7 +149,10 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     //=======dasboa=========//
     //show dasboa
     Route::get('showdasboa', [dasboaController::class, 'showdasboa'])->name('showdasboa');
+    // phana cua adminHomeController
     Route::get('AadminHome', [adminHomeController::class, 'home'])->name('AadminHome');
+    Route::get('showIdea', [adminHomeController::class, 'showIdea'])->name('showIdea');
+    Route::get('showPNG', [adminHomeController::class, 'showPNG'])->name('showPNG');
     // chi tiêt hóa dơn user
     Route::get('DetailMember/{id}', [dasboaController::class, 'DetailMember'])->name('DetailMember');
 
