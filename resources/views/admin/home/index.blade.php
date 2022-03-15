@@ -17,7 +17,7 @@
                             <h3 style="color: #54bae6;">IDEA TABLE</h3>
                         </div>
                         <div class="custom-bar-chart" >
-                            <ul class="y-axis">
+                            <ul class="y-axis"  style="color:#f5f5f5;>
                                 <li ><span>100</span></li>
                                 <li><span>80</span></li>
                                 <li><span>60</span></li>
