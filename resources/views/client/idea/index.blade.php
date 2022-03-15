@@ -9,41 +9,51 @@
                 <div class="col-lg-9 main-chart">
 
                     <div class="row mtbox">
-                        <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
-                            <div class="box1">
-                                <span class="li_heart"></span>
-                                <h3>933</h3>
-                            </div>
-                            <p>933 People liked your page the last 24hs. Whoohoo!</p>
+                        <div class="row" style="text-align: center;">
+                            <a href="{{ route('showIdeaa') }}"><span class="label label-info">Idea</span></a>|<a  href="{{ route('showPNGG') }}"><span class="label label-warning">PNG</span></a>
                         </div>
-                        <div class="col-md-2 col-sm-2 box0">
-                            <div class="box1">
-                                <span class="li_cloud"></span>
-                                <h3>+48</h3>
-                            </div>
-                            <p>48 New files were added in your cloud storage.</p>
+                        @if($users[0]->payment==1)
+                        <div class="border-head">
+                            <h3>IDEA TABLE</h3>
                         </div>
-                        <div class="col-md-2 col-sm-2 box0">
-                            <div class="box1">
-                                <span class="li_stack"></span>
-                                <h3>23</h3>
+                        <div class="custom-bar-chart">
+                            <ul class="y-axis">
+                                <li><span>100</span></li>
+                                <li><span>80</span></li>
+                                <li><span>60</span></li>
+                                <li><span>40</span></li>
+                                <li><span>20</span></li>
+                                <li><span>0</span></li>
+                            </ul>
+                            @foreach ($totalidea as $show)
+                            <div class="bar">
+                                <div class="title">{{  $show->date }}</div>
+                                <div class="value tooltips" data-original-title="{{ $show->value }}" data-toggle="tooltip" data-placement="top">{{ $show->value }}%</div>
                             </div>
-                            <p>You have 23 unread messages in your inbox.</p>
+                            @endforeach
                         </div>
-                        <div class="col-md-2 col-sm-2 box0">
-                            <div class="box1">
-                                <span class="li_news"></span>
-                                <h3>+10</h3>
+                        <!--custom chart end-->
+                        @else
+                        <div class="border-head">
+                            <h3>PNG TABLE</h3>
+                        </div>
+                        <div class="custom-bar-chart">
+                            <ul class="y-axis">
+                                <li><span>100</span></li>
+                                <li><span>80</span></li>
+                                <li><span>60</span></li>
+                                <li><span>40</span></li>
+                                <li><span>20</span></li>
+                                <li><span>0</span></li>
+                            </ul>
+                            @foreach ($totalPNG as $show)
+                            <div class="bar">
+                                <div class="title">{{  $show->date }}</div>
+                                <div class="value tooltips" data-original-title="{{ $show->value }}" data-toggle="tooltip" data-placement="top">{{ $show->value }}%</div>
                             </div>
-                            <p>More than 10 news were added in your reader.</p>
+                            @endforeach
                         </div>
-                        <div class="col-md-2 col-sm-2 box0">
-                            <div class="box1">
-                                <span class="li_data"></span>
-                                <h3>OK!</h3>
-                            </div>
-                            <p>Your server is working perfectly. Relax & enjoy.</p>
-                        </div>
+                        @endif
 
                     </div>
                     <!-- /row mt -->
@@ -242,74 +252,10 @@
                           </div>
                       </section>
 
-                    <div class="row">
-                        <!-- TWITTER PANEL -->
-                        <div class="col-md-2 mb">
-                            {{-- <div class="darkblue-panel pn">
-                                <div class="darkblue-header">
-                                    <h5>DROPBOX STATICS</h5>
-                                </div>
-                                <canvas id="serverstatus02" height="120" width="120"></canvas>
-                                <script>
-                                    var doughnutData = [{
-                                        value: 60,
-                                        color: "#68dff0"
-                                    }, {
-                                        value: 40,
-                                        color: "#444c57"
-                                    }];
-                                    var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
-                                </script>
-                                <p>April 17, 2014</p>
-                                <footer>
-                                    <div class="pull-left">
-                                        <h5><i class="fa fa-hdd-o"></i> 17 GB</h5>
-                                    </div>
-                                    <div class="pull-right">
-                                        <h5>60% Used</h5>
-                                    </div>
-                                </footer>
-                            </div> --}}
-                            <! -- /darkblue panel -->
-                        </div>
-                        <!-- /col-md-4 -->
 
-                        <div class="col-md-12 col-sm-4 mb">
-                            <!-- REVENUE PANEL -->
-                            <div class="darkblue-panel pn" style="height:400px">
-                                <div class="darkblue-header">
-                                    <h5>Statistical chart</h5>
-                                </div>
-                                <div class="chart mt">
-                                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[{{ $str }}]" ></div>
-                                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[{{ $strpng }}]"></div>
-
-                                </div>
-                                {{-- <div class="chart mt">
-                                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[400,235,567,133,526,496,864,123,190,564,700]"></div>
-                                </div> --}}
-                                <p class="mt"><b>--IDEA--</b><br/>--PNG--</p>
-                            </div>
-                        </div>
-                        <!-- /col-md-4 -->
-
-                        <div class="col-md-2 mb">
-                            <!-- INSTAGRAM PANEL -->
-                            {{-- <div class="instagram-panel pn">
-                                <i class="fa fa-instagram fa-4x"></i>
-                                <p>@THISISYOU<br/> 5 min. ago
-                                </p>
-                                <p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>
-                            </div> --}}
-                        </div>
-                        <!-- /col-md-4 -->
-
-
-
-                    </div>
                     <!-- /row -->
 
-                    <div class="row mt">
+                    {{-- <div class="row mt">
                         <!--CUSTOM CHART START -->
                         <div class="border-head">
                             <h3>VISITS</h3>
@@ -353,7 +299,7 @@
                             </div>
                         </div>
                         <!--custom chart end-->
-                    </div>
+                    </div> --}}
                     <!-- /row -->
 
                 </div>
