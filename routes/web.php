@@ -153,7 +153,7 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     // chi tiêt hóa dơn user
     Route::get('DetailMember/{id}', [dasboaController::class, 'DetailMember'])->name('DetailMember');
 
-    // show totalallidea
+    // show php idea
     Route::get('totalidea', [totalController::class, 'totalidea'])->name('totalidea');
     Route::get('totalDesigner', [totalController::class, 'totalDesigner'])->name('totalDesigner');
     Route::get('totalall', [totalController::class, 'totalall'])->name('totalall');

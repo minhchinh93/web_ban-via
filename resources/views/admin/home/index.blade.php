@@ -453,7 +453,7 @@
                     </div>
                     <!-- /row -->
 
-                    {{-- <div class="row mt">
+
                         <!--CUSTOM CHART START -->
                         <div class="border-head">
                             <h3>VISITS</h3>
@@ -467,11 +467,13 @@
                                 <li><span>2.000</span></li>
                                 <li><span>0</span></li>
                             </ul>
+                            @foreach ($totalidea as $show)
                             <div class="bar">
-                                <div class="title">JAN</div>
-                                <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
+                                <div class="title">{{  $show->date }}</div>
+                                <div class="value tooltips" data-original-title="{{ $show->value }}" data-toggle="tooltip" data-placement="top">{{ $show->value }}%</div>
                             </div>
-                            <div class="bar ">
+                            @endforeach
+                            {{-- <div class="bar ">
                                 <div class="title">FEB</div>
                                 <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
                             </div>
@@ -494,10 +496,10 @@
                             <div class="bar">
                                 <div class="title">JUL</div>
                                 <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
-                            </div>
+                            </div> --}}
                         </div>
                         <!--custom chart end-->
-                    </div> --}}
+
                     <!-- /row -->
 
                 </div>
@@ -570,12 +572,15 @@
 
                 </div>
                 <!-- /col-lg-3 -->
+
             </div>
             <! --/row -->
+
     </section><!-- --/wrapper ---->
 </section>
 
 @endsection
+
 
 @push('scripts')
 <script src=" {{ asset('admin/js/sparkline-chart.js') }}"></script>
