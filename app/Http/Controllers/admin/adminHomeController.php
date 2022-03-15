@@ -110,7 +110,6 @@ class adminHomeController extends Controller
         $jobPublic = taskJob::where('private', 1)->orderBy('created_at', 'DESC')->get();
         $job = taskJob::orderBy('created_at', 'DESC')->paginate(5);
 
-        // dd($report);
         return view('admin/home/index',
             [
                 'shows' => $report,
@@ -118,6 +117,7 @@ class adminHomeController extends Controller
                 'Idea' => $Idea,
                 'designer' => $designer,
                 'totalidea' => $totalidea,
+                'totalPNG' => $totalPNG,
                 'str' => $str,
                 'strpng' => $strpng,
                 'mocup' => $mocup,
@@ -128,5 +128,15 @@ class adminHomeController extends Controller
                 'timess' => $toDayDateTimeString,
 
             ]);
+    }
+    public function showIdea()
+    {
+        User::find(1)->update(['payment' => 1]);
+        return redirect()->route('AadminHome');
+    }
+    public function showPNG()
+    {
+        User::find(1)->update(['payment' => 2]);
+        return redirect()->route('AadminHome');
     }
 }
