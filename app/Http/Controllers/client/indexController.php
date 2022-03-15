@@ -70,7 +70,7 @@ class indexController extends Controller
                     ->where('mocup_products.created_at', 'LIKE', '%' . $timess . '%')
                     ->get();
 
-                $day = Carbon::now()->subDay(10);
+                $day = Carbon::now()->subDay(6);
 
                 $totalidea = Product::where('created_at', '>=', $day)
                     ->groupBy('date')
