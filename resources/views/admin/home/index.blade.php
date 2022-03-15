@@ -7,18 +7,18 @@
 
             <div class="row">
                 <div class="col-lg-9 main-chart">
-
-                    <div class="row mtbox">
-                        <div class="row" style="text-align: center;">
-                            <a href="{{ route('showIdea') }}"><span class="label label-info">Idea</span></a>  <a  href="{{ route('showPNG') }}"><span class="label label-warning">PNG</span></a>
-                        </div>
+                    <br /><br /><br /><br />
+                    <div class="row" style="text-align: center;">
+                        <a href="{{ route('showIdea') }}"><span class="label label-info">Idea</span></a>  <a  href="{{ route('showPNG') }}"><span class="label label-warning">PNG</span></a>
+                    </div><br /><br /><br /><br />
+                    <div  class="row" style="background:#373a36; color:white">
                         @if($users[0]->payment==1)
                         <div class="border-head">
                             <h3 style="color: #54bae6;">IDEA TABLE</h3>
                         </div>
-                        <div class="custom-bar-chart">
+                        <div class="custom-bar-chart" >
                             <ul class="y-axis">
-                                <li><span>100</span></li>
+                                <li ><span>100</span></li>
                                 <li><span>80</span></li>
                                 <li><span>60</span></li>
                                 <li><span>40</span></li>
@@ -185,14 +185,15 @@
 
                     </div>
                     <!-- /row -->
-                    <section class="task-panel tasks-widget">
+                    <div class="row" style="background:#373a36; color:white">
+                    <section class="task-panel tasks-widget" >
                         <div class="panel-heading" style="background-color:#54bae6;">
                             <div class="pull-left"><h5 style = "color:white; margin-top: 1%;" class="category""><i class="fa fa-tasks"></i> Todo List - Sortable Style</h5></div>
                             <br>
                          </div>
-                          <div class="panel-body">
-                              <div class="task-content">
-                                  <ul id="sortable" class="task-list ui-sortable">
+                          <div class="panel-body" style="background:#373a36; color:white">
+                              <div class="task-content" >
+                                  <ul id="sortable" class="task-list ui-sortable" >
                                         @php
                                             $list= ['primary','danger','success','info','warning'];
                                             $i=0
@@ -397,7 +398,7 @@
                       </section>
 
                     <!-- /row -->
-
+                    </div>
 
                         <!--CUSTOM CHART START -->
                         {{-- <div class="row" style="text-align: center;">

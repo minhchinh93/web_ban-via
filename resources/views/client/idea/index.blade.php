@@ -3,7 +3,7 @@
 
 @section ('content')
 <section id="main-content">
-        <section class="wrapper">
+        <section class="wrapper" style="color:black; font-family:Roboto,sans-serif; background: rgba(236, 240, 240, 0.644) ">
 
             <div class="row">
                 <div class="col-lg-9 main-chart">
