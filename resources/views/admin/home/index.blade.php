@@ -17,7 +17,7 @@
                             <h3 style="color: #54bae6;">IDEA TABLE</h3>
                         </div>
                         <div class="custom-bar-chart" >
-                            <ul class="y-axis"  style="color:#f5f5f5;>
+                            <ul class="y-axis" style = "color:white;">
                                 <li ><span>100</span></li>
                                 <li><span>80</span></li>
                                 <li><span>60</span></li>
@@ -185,13 +185,13 @@
 
                     </div>
                     <!-- /row -->
-                    <div class="row" style="background:#373a36; color:white">
+                    <div class="row" >
                     <section class="task-panel tasks-widget" >
                         <div class="panel-heading" style="background-color:#54bae6;">
                             <div class="pull-left"><h5 style = "color:white; margin-top: 1%;" class="category""><i class="fa fa-tasks"></i> Todo List - Sortable Style</h5></div>
                             <br>
                          </div>
-                          <div class="panel-body" style="background:#373a36; color:white">
+                          <div class="panel-body">
                               <div class="task-content" >
                                   <ul id="sortable" class="task-list ui-sortable" >
                                         @php
