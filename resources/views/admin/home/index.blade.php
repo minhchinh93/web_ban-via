@@ -10,7 +10,7 @@
 
                     <div class="row mtbox">
                         <div class="row" style="text-align: center;">
-                            <a href="{{ route('showIdea') }}"><span class="label label-info">Idea</span></a>|<a  href="{{ route('showPNG') }}"><span class="label label-warning">PNG</span></a>
+                            <a href="{{ route('showIdea') }}"><span class="label label-info">Idea</span></a>  <a  href="{{ route('showPNG') }}"><span class="label label-warning">PNG</span></a>
                         </div>
                         @if($users[0]->payment==1)
                         <div class="border-head">
@@ -538,7 +538,7 @@
             // (string | mandatory) the heading of the notification
             title: 'Welcome to Media-Sytem MR.hai !',
             // (string | mandatory) the text inside the notification
-            text: 'Chúc bạn 1 ngày làm việc thật vui vẻ năng lư.',
+            text: 'Chúc bạn 1 ngày làm việc thật vui vẻ năng lượng.',
             // (string | optional) the image to display on the left
             image: 'http://hblmedia.online/admin/img/Logo.png',
             // (bool | optional) if you want it to fade out on its own or just sit there
