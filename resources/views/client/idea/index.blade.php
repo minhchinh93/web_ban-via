@@ -14,7 +14,7 @@
                         </div>
                         @if($users[0]->payment==1)
                         <div class="border-head">
-                            <h3>IDEA TABLE</h3>
+                            <h3 style="color: #54bae6;">IDEA TABLE</h3>
                         </div>
                         <div class="custom-bar-chart">
                             <ul class="y-axis">
@@ -35,7 +35,7 @@
                         <!--custom chart end-->
                         @else
                         <div class="border-head">
-                            <h3>PNG TABLE</h3>
+                            <h3 style="color: #ff865c;">PNG TABLE</h3>
                         </div>
                         <div class="custom-bar-chart">
                             <ul class="y-axis">
