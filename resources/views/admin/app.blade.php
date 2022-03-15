@@ -231,10 +231,6 @@
                           <i class="fa fa-desktop"></i>
                           <span>USER</span>
                       </a>
-                      <ul class="sub">
-                          <li><a  href="general.html">General</a></li>
-
-                      </ul>
                   </li>
                   <li class="sub-menu">
                       <a class="{{ (request()->is('admin/categoriesList')) ? 'active' : 'sub-menu' }}" href="{{ route('categoriesList') }}" >
