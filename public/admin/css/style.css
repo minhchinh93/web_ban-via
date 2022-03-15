@@ -971,7 +971,7 @@ ul.top-menu>li>a:focus {
 }
 
 .y-axis {
-    color: #555555;
+    color: #f5f5f5;
     position: absolute;
     text-align: left;
     width: 100%;
@@ -2397,7 +2397,7 @@ label {
 .ui-sortable>li {
     padding: 15px 0 15px 35px !important;
     position: relative;
-    background: #f5f6f8;
+    background: #373a36;
     margin-bottom: 2px;
     border-bottom: none !important;
 }
