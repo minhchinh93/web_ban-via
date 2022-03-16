@@ -1,7 +1,7 @@
 @extends('admin.app')
 @section ('content')
 <section id="main-content" >
-    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif; background: rgba(236, 240, 240, 0.644) ">
+    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif;  background-image: url('https://demoda.vn/wp-content/uploads/2022/01/background-dep-hinh-hoc-o-goc-800x500.jpg');background-size: cover;">
         <div class="row mtbox">
             <div class="col-md-2 col-sm-2 col-md-offset-1 box0" >
                 <div class="box1" style=" border-radius: 20px;
@@ -46,9 +46,9 @@
             </div>
         </div>
 
-        <div class="row mt">
+        <div class="row mt" >
             <div class="col-md-12">
-                <div class="content-panel" style="border-radius: 10px;background: rgb(248, 248, 245)">
+                <div class="content-panel" style="border-radius: 10px;background: rgba(255, 255, 255, 0.842)" >
                     <h4><i class="fa fa-angle-right"></i> IDEA MANAGER  </h4><hr><table class="table table-striped table-advance table-hover">
 
 
