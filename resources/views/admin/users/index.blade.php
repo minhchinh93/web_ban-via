@@ -1,10 +1,10 @@
 @extends('admin.app')
 @section ('content')
-<section id="main-content">
+<section id="main-content" style="color:black; font-family:Roboto,sans-serif;  background-image: url('https://allimages.sgp1.digitaloceanspaces.com/wikilaptopcom/2021/01/Background-tim-cuc-dep.png');background-size: cover;">
     <section class="wrapper">
-<div class="row mt">
-    <div class="col-md-12">
-        <div class="content-panel">
+<div class="row mt" >
+    <div class="col-md-12" >
+        <div class="content-panel" style = "background: rgba(255, 255, 255, 0.842)">
             <h4><i class="fa fa-angle-right"></i> Manager User </h4><hr><table class="table table-striped table-advance table-hover">
                 <button type="button" class="btn btn-theme02 left"><a style="color:white" href="{{ route('addUser') }}" >thêm mới</a></button>
                 <div class="row mt">

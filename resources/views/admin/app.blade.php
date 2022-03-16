@@ -40,8 +40,7 @@
       TOP BAR CONTENT & NOTIFICATIONS
       *********************************************************************************************************************************************************** -->
       <!--header start-->
-      <header class="header black-bg" style="background-color: red;
-      background-image: linear-gradient(90deg, rgb(54, 179, 70), rgb(176, 197, 59)); ">
+      <header class="header black-bg" style="background-color: #ff865c;">
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>

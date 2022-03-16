@@ -4,7 +4,7 @@
 @section ('content')
 <!--main content start-->
 <section id="main-content">
-    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif" >
+    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif; background-image: url('https://allimages.sgp1.digitaloceanspaces.com/wikilaptopcom/2021/01/Background-tim-cuc-dep.png');background-size: cover;" >
 
         <div class="col-lg-12">
             <div class="form-panel" style=" border-radius: 15px;">
@@ -20,7 +20,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Description</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control conten" name="description" id="exampleFormControlTextarea1" rows="5"></textarea>                        </div>
+                            <textarea class="form-control conten" name="description" id="exampleFormControlTextarea1" rows="5"></textarea>
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Image</label>
@@ -64,7 +65,7 @@
             </div>
             <div class="row mt">
                 <div class="col-md-12">
-                    <div class="content-panel"  style=" border-radius: 15px;">
+                    <div class="content-panel"  style=" border-radius: 15px;background: rgba(255, 255, 255, 0.842)">
                         <h4><i class="fa fa-angle-right"></i>  Bảng Báo Cáo</h4>
                         <div class="col-lg-4">
                             <h5 style="margin-left: 2%;" class="category"><a style="color: gray" href="{{ route('done') }}"> Hoàn thành ({{ $totalDone ?? null}}) </a>

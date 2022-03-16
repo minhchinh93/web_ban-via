@@ -1,7 +1,7 @@
 @extends('admin.app')
 @section ('content')
 <section id="main-content" >
-    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif;  background-image: url('https://demoda.vn/wp-content/uploads/2022/01/background-dep-hinh-hoc-o-goc-800x500.jpg');background-size: cover;">
+    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif;  background-image: url('http://www.dpicenter.edu.vn/wordpress/wp-content/uploads/14-33-458x305.jpg');background-size: cover;">
         <div class="row mtbox">
             <div class="col-md-2 col-sm-2 col-md-offset-1 box0" >
                 <div class="box1" style=" border-radius: 20px;
