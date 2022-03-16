@@ -186,7 +186,7 @@
                     </div>
                     <!-- /row -->
                     <div class="row" >
-                    <section class="task-panel tasks-widget" >
+                    <section class="task-panel tasks-widget" style="background-color:#fafeff;">
                         <div class="panel-heading" style="background-color:#54bae6;">
                             <div class="pull-left"><h5 style = "color:white; margin-top: 1%;" class="category""><i class="fa fa-tasks"></i> Todo List - Sortable Style</h5></div>
                             <br>
