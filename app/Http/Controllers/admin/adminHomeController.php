@@ -21,7 +21,7 @@ class adminHomeController extends Controller
         $toDayDateTimeString = $yes->toFormattedDateString();
         $report = Product::orderBy('id', 'desc')
             ->paginate(7);
-        $user = User::paginate(20);
+        $user = User::paginate(6);
         $Idea = User::join('products', 'products.id_idea', '=', 'users.id')
             ->select(DB::raw('COUNT(products.id_idea) as "sum",
         users.name as "name",
