@@ -107,11 +107,6 @@
                                   <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
                                   @else
                                    <td>
-                                   <form class="form-inline" action="{{ route('addmocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <input name="image[]"  type="file" multiple required><br>
-                                  <button type="submit" class="btn btn-primary" >Add </button><br>
-                                </form>
                                 @endif
                             </td>
                                 <div class="modal fade" id="c{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -161,11 +156,6 @@
                                 </td>
                                     @else
                                     <td>
-                                    <form class="form-inline" action="{{ route('addPngDetails',[$report->id]) }}" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                        <input name="image[]"  type="file" multiple required><br>
-                                      <button type="submit" class="btn btn-primary" >Add</button><br>
-                                    </form>
                                 </td>
                                   @endif
 
