@@ -3,12 +3,10 @@
 
 @section ('content')
 <section id="main-content">
-    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif; ">
-
-
+    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif; background-image: url('https://allimages.sgp1.digitaloceanspaces.com/wikilaptopcom/2021/01/Background-tim-cuc-dep.png');background-size: cover;">
         <div class="row mt" >
             <div class="col-md-12" >
-                <div class="content-panel">
+                <div class="content-panel" style = "background: rgba(255, 255, 255, 0.842)">
                     <h4><i class="fa fa-angle-right"></i>  Bảng Báo Cáo</h4>
                     <div class="col-lg-4">
                         <h4 style="margin-left: 2%;" class="category"><a style="color: gray" href="#"> Hoàn thành ({{ $totalDone ?? null}}) </a>

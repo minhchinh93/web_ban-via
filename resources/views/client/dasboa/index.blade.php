@@ -4,10 +4,10 @@
 @section ('content')
 
 <section id="main-content">
-    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif">
+    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif;background-image: url('https://allimages.sgp1.digitaloceanspaces.com/wikilaptopcom/2021/01/Background-tim-cuc-dep.png');background-size: cover;">
         <div class="row mt">
             <div class="col-md-12">
-                <div class="content-panel" style=" border-radius: 20px;">
+                <div class="content-panel" style=" border-radius: 20px;background: rgba(236, 240, 240, 0.876)">
                     <h4><i class="fa fa-angle-right"></i>Nhận việc</h4><hr>
 
                     <table class="table table-striped table-advance table-hover">

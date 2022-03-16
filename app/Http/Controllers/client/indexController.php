@@ -24,7 +24,7 @@ class indexController extends Controller
                 $toDayDateTimeString = $yes->toFormattedDateString();
                 $report = Product::orderBy('id', 'desc')
                     ->paginate(7);
-                $user = User::paginate(8);
+                $user = User::paginate(5);
                 $Idea = User::join('products', 'products.id_idea', '=', 'users.id')
                     ->select(DB::raw('COUNT(products.id_idea) as "sum",
                 users.name as "name",

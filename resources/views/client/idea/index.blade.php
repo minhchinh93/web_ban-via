@@ -3,12 +3,12 @@
 
 @section ('content')
 <section id="main-content">
-        <section class="wrapper" style="color:black; font-family:Roboto,sans-serif; background: rgba(236, 240, 240, 0.644) ">
+        <section class="wrapper" style=" background: rgba(236, 240, 240, 0.644);color:black; font-family:Roboto,sans-serif;background-image: url('https://msmobile.com.vn/upload_images/images/hinh-nen-powerpoint-mau-den-8.jpg');background-size: cover;">
 
             <div class="row">
                 <div class="col-lg-9 main-chart">
 
-                    <div class="row mtbox">
+                    <div class="row mtbox" style="background:#070706; color:white">
                         <div class="row" style="text-align: center;">
                             <a href="{{ route('showIdeaa') }}"><span class="label label-info">Idea</span></a>|<a  href="{{ route('showPNGG') }}"><span class="label label-warning">PNG</span></a>
                         </div>
@@ -185,7 +185,7 @@
 
                     </div>
                     <!-- /row -->
-                    <section class="task-panel tasks-widget">
+                    <section class="task-panel tasks-widget" style="background:#ebebe3">
                         <div class="panel-heading" style="background-color:#54bae6;">
                             <div class="pull-left"><h5 style = "color:white; margin-top: 1%;" class="category""><i class="fa fa-tasks"></i> Todo List - Notification</h5></div>
                             <br>

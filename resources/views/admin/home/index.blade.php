@@ -3,7 +3,7 @@
 
 @section ('content')
 <section id="main-content">
-        <section class="wrapper" style="color:black; font-family:Roboto,sans-serif;background-image: url('https://phunugioi.com/wp-content/uploads/2020/02/mau-background-dep.jpg');background-size: cover;">
+        <section class="wrapper" style="color:black; font-family:Roboto,sans-serif;background-image: url('https://msmobile.com.vn/upload_images/images/hinh-nen-powerpoint-mau-den-8.jpg');background-size: cover;">
 
             <div class="row">
                 <div class="col-lg-9 main-chart">
