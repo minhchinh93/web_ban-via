@@ -202,7 +202,7 @@ class toolController extends Controller
     public function showPNGG()
     {
         User::find(1)->update(['payment' => 2]);
-        return redirect() - back();
+        return redirect()->back();
     }
     public function showMockup()
     {
