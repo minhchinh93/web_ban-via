@@ -107,10 +107,11 @@ Route::middleware('auth')->group(function () {
     Route::post('cornerstonedele', [toolController::class, 'cornerstonedele'])->name('cornerstonedele');
 
     Route::get('showIdeaa', [toolController::class, 'showIdeaa'])->name('showIdeaa');
-    Route::get('showPNGG', [toolController::class, 'showPNGG'])->name('showPNGG');});
+    Route::get('showPNGG', [toolController::class, 'showPNGG'])->name('showPNGG');
+    Route::get('showMockup', [toolController::class, 'showMockup'])->name('showMockup');
 // Route::get('home', [HomeController::class, 'home'])->name('home');
-// Route::get('Dashboard', [HomeController::class, 'Dashboard'])->name('Dashboard');
-
+    // Route::get('Dashboard', [HomeController::class, 'Dashboard'])->name('Dashboard');
+});
 Route::get('detailAccountHistory/{id}', [AccountHistoryController::class, 'detailAccountHistory'])->middleware('auth')->name('detailAccountHistory');
 Route::get('RechargeHistory', [HomeController::class, 'RechargeHistory'])->name('RechargeHistory');
 Route::post('postcheckout/{id}', [HomeController::class, 'postcheckout'])->middleware('auth')->name('postcheckout');

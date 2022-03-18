@@ -197,12 +197,17 @@ class toolController extends Controller
     public function showIdeaa()
     {
         User::find(1)->update(['payment' => 1]);
-        return redirect()->route('dasboa');
+        return redirect()->back();
     }
     public function showPNGG()
     {
         User::find(1)->update(['payment' => 2]);
-        return redirect()->route('dasboa');
+        return redirect() - back();
+    }
+    public function showMockup()
+    {
+        User::find(1)->update(['payment' => 3]);
+        return redirect()->back();
     }
 
 }
