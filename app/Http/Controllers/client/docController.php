@@ -22,6 +22,20 @@ class docController extends Controller
         return view('client.document.detail', ['show' => $show]);
 
     }
+    public function deleteDoc($id)
+    {
+
+        $show = Document::find($id)->delete();
+        return redirect()->route('showDoc');
+
+    }
+    public function editDoc($id)
+    {
+
+        $show = Document::find($id);
+        return view('client.document.documentAdd');
+
+    }
     public function addlDoc()
     {
         return view('client.document.documentAdd');
