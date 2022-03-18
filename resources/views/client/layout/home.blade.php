@@ -337,7 +337,7 @@
 <!--main content end-->
 @endsection
 
-@push('scripts') --}}
+@push('scripts') 
 <script>
 var imageAPI='/deleteImage'
 //api xoa api
