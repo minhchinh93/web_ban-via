@@ -18,7 +18,11 @@
                    <a href= "{{ route('detailDoc',[$show->id]) ?? null}}"> <p>CLICK ĐỂ XEM CHI TIẾT</p></a>
                 </div>
                 <div class="centered">
-                    <h6><i class="fa fa-envelope"></i><br>{{ route('detailDoc',[$show->id]) ?? null}}</h6>
+                    <h6>
+                        <a href="{{ route('deleteDoc',[$show->id])}}" style="color:red"><i class="fa fa-trash-o"></i></a>
+                        <a href="{{ route('editDoc',[$show->id])}}"><i class="fa fa-pencil"></i></a>
+
+                        <br>{{ route('detailDoc',[$show->id]) ?? null}}</h6>
                 </div>
             </div><!-- --/content-panel ---->
         </div>

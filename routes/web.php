@@ -151,6 +151,10 @@ Route::prefix('auth')->group(function () {
 
     Route::get('addlDoc', [docController::class, 'addlDoc'])->name('addlDoc');
 
+    Route::get('deleteDoc/{id}', [docController::class, 'deleteDoc'])->name('deleteDoc');
+
+    Route::get('editDoc/{id}', [docController::class, 'editDoc'])->name('editDoc');
+
     Route::post('storeAdd', [docController::class, 'storeAdd'])->name('storeAdd');
 
 });
