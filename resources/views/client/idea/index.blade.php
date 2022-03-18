@@ -374,21 +374,6 @@
                     <!-- Second Member -->
                     {{ $users->links() }}
 
-                    <!-- CALENDAR-->
-                    <div id="calendar" class="mb">
-                        <div class="panel green-panel no-margin">
-                            <div class="panel-body">
-                                <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                                    <div class="arrow"></div>
-                                    <h3 class="popover-title" style="disadding: none;"></h3>
-                                    <div id="date-popover-content" class="popover-content"></div>
-                                </div>
-                                <div id="my-calendar"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / calendar -->
-
                 </div>
                 <!-- /col-lg-3 -->
             </div>
@@ -408,11 +393,11 @@
     $(document).ready(function() {
         var unique_id = $.gritter.add({
             // (string | mandatory) the heading of the notification
-            title: 'Welcome to Dashgum!',
+            title: 'Welcome to Media-Sytem MR.hai !',
             // (string | mandatory) the text inside the notification
-            text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Free version for <a href="http://blacktie.co" target="_blank" style="color:#ffd777">BlackTie.co</a>.',
+            text: 'Chúc bạn 1 ngày làm việc thật vui vẻ năng lượng.',
             // (string | optional) the image to display on the left
-            image: 'assets/img/ui-sam.jpg',
+            image: 'http://hblmedia.online/admin/img/Logo.png',
             // (bool | optional) if you want it to fade out on its own or just sit there
             sticky: true,
             // (int | optional) the time you want it to be alive for before fading out
