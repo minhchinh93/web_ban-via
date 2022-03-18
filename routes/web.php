@@ -15,6 +15,7 @@ use App\Http\Controllers\auth\regiterController;
 use App\Http\Controllers\auth\resetpassController;
 use App\Http\Controllers\client\AccountHistoryController;
 use App\Http\Controllers\client\DesignerController;
+use App\Http\Controllers\client\docController;
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\indexController;
 use App\Http\Controllers\client\RechargeHistoryController;
@@ -142,6 +143,15 @@ Route::prefix('auth')->group(function () {
     Route::get('/sendMailChangepass/{email}', [resetpassController::class, 'sendMailChangepass'])->name('sendMailChangepass');
 
     Route::post('/changePasss/{email}', [resetpassController::class, 'changePass'])->name('changePass');
+
+    //doccument Controller
+    Route::get('showDoc', [docController::class, 'showDoc'])->name('showDoc');
+
+    Route::get('detailDoc/{id}', [docController::class, 'detailDoc'])->name('detailDoc');
+
+    Route::get('addlDoc', [docController::class, 'addlDoc'])->name('addlDoc');
+
+    Route::post('storeAdd', [docController::class, 'storeAdd'])->name('storeAdd');
 
 });
 //middleware('checkAdmin')->
