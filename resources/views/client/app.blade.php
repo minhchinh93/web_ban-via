@@ -267,10 +267,6 @@
                             <i class="fa fa-desktop"></i>
                             <span>Chỉ dành cho Idea</span>
                         </a>
-                        <ul class="sub">
-                            <li><a  href="general.html">General</a></li>
-
-                        </ul>
                     </li>
                      @endif
                      @if (Auth::user()->role==1)
@@ -279,10 +275,6 @@
                             <i class="fa fa-cogs"></i>
                             <span>Chỉ dành cho Designer</span>
                         </a>
-                        <ul  class="sub">
-                            <li><a  href="calendar.html">Calendar</a></li>
-
-                        </ul>
                     </li>
                      @endif
                   <li class="sub-menu">
@@ -330,45 +322,12 @@
 
 
     <!--common script for all pages-->
-    <script src="{{ asset('admin//js/common-scripts.js') }}"></script>
+    <script src="{{ asset('admin/js/common-scripts.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('admin/js/gritter/js/jquery.gritter.js') }}"></script>
     <script type="text/javascript" src="{{ asset('admin//js/gritter-conf.js') }}"></script>
 
     <!--script for this page-->
-    <script src="{{ asset('admin/js/sparkline-chart.js') }}"></script>
-	<script src="{{ asset('admin/js/zabuto_calendar.js') }}"></script>
-
-	<script type="text/javascript">
-        $(document).ready(function () {
-        var unique_id = $.gritter.add({
-
-            // (string | mandatory) the heading of the notification
-            title: 'Welcome to Dashgum!',
-            // (string | mandatory) the text inside the notification
-            @if (session('success'))
-            text: '"{{  session('success') }}"',
-            @elseif (session('erros'))
-            text: '"{{  session('erros') }}"',
-            @endif
-            // (string | optional) the image to display on the left
-            image: "{{ asset('admin/img/ui-sam.jpg') }}",
-            // (bool | optional) if you want it to fade out on its own or just sit there
-            sticky: true,
-            // (int | optional) the time you want it to be alive for before fading out
-            time: '',
-            // (string | optional) the class name you want to apply to that specific message
-            class_name: 'my-sticky-class'
-
-        });
-
-        return false;
-        });
-	</script>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
     @stack('scripts')
     <script type="application/javascript">
         $(document).ready(function () {
@@ -404,5 +363,7 @@
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     </script>
+
   </body>
+
 </html>

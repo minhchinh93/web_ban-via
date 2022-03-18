@@ -4,10 +4,10 @@
 @section ('content')
 
 <section id="main-content">
-    <section class="wrapper">
+    <section class="wrapper" style=" background: rgba(236, 240, 240, 0.644);color:black; font-family:Roboto,sans-serif;background-image: url('https://msmobile.com.vn/upload_images/images/hinh-nen-powerpoint-mau-den-8.jpg');background-size: cover;">
         <div class="row mt">
             <div class="col-lg-3">
-                <div class="form-panel">
+                <div class="form-panel"  style=" border-radius: 20px;">
                   <h4 class="mb"><i class="fa fa-angle-right"></i> Category</h4>
                     <form class="form-inline"action="{{ route('postTypeProduct') }}" method="post" >
                         @csrf
@@ -22,8 +22,8 @@
                 </div><!-- /form-panel -->
             </div><!-- /col-lg-12 -->
 
-            <div class="col-lg-3">
-                <div class="form-panel">
+            <div class="col-lg-3" >
+                <div class="form-panel" style=" border-radius: 20px;">
                   <h4 class="mb"><i class="fa fa-angle-right"></i> cornerstone</h4>
                     <form class="form-inline"action="{{ route('cornerstone') }}" method="post" >
                         @csrf
@@ -39,7 +39,7 @@
             </div><!-- /col-lg-12 -->
 
             <div class="col-lg-3">
-                <div class="form-panel">
+                <div class="form-panel"  style=" border-radius: 20px;">
                   <h4 class="mb"><i class="fa fa-angle-right"></i> add cornerstone</h4>
                   <form class="form-inline" action="{{ route('cornerstoneadd') }}" method="post">
                     @csrf
@@ -58,7 +58,7 @@
                 </div><!-- /form-panel -->
             </div><!-- /col-lg-12 -->
             <div class="col-lg-3">
-                <div class="form-panel">
+                <div class="form-panel"  style=" border-radius: 20px;">
                   <h4 class="mb"><i class="fa fa-angle-right"></i> xoa cornerstone</h4>
                   <form class="form-inline" action="{{ route('cornerstonedele') }}" method="post">
                     @csrf
@@ -77,12 +77,10 @@
                 </div><!-- /form-panel -->
             </div><!-- /col-lg-12 -->
         </div>
-
-
-
+     <hr>
         <div class="row mt" >
             <div class="col-md-12" >
-                <div class="content-panel">
+                <div class="content-panel"  style=" border-radius: 20px;">
                     <h4><i class="fa fa-angle-right"></i>  Bảng Báo Cáo</h4>
                     <div class="col-lg-4">
                         <h4 style="margin-left: 2%;" class="category"><a style="color: gray" href="#"> Hoàn thành ({{ $totalDone ?? null}}) </a>
