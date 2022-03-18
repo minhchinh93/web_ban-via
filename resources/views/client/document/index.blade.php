@@ -12,7 +12,7 @@
             <div class="content-panel pn">
                 <div id="profile-01">
                     <h3>{{ $show->title ?? null}}</h3>
-                    <h6>DOCUMENT BY SYTEM mR.hAI</h6>
+                    <h6 style="color:rgb(255, 193, 111)">DOCUMENT BY SYTEM MR.HAI</h6>
                 </div>
                 <div class="profile-01 centered">
                    <a href= "{{ route('detailDoc',[$show->id]) ?? null}}"> <p>CLICK ĐỂ XEM CHI TIẾT</p></a>
