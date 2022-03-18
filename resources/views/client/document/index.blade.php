@@ -37,7 +37,7 @@
     <button type="button" class="btn btn-theme03"><i class="fa fa-heart"></i> Add Document</button>
     </a>
     <a href="{{ route('AadminHome') }}">
-        <button type="button" class="btn btn-theme02"><i class="fa fa-heart"></i> Back to admin</button>
+        <button type="button" class="btn btn-theme02"><i class="fa fa-cog"></i> Back to admin</button>
         </a>
 </div>
 </div>
