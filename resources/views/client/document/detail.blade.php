@@ -25,9 +25,9 @@
           </div>
 
     </div>
-    <div class="row mt" style="margin:auto;">
-        <div class="card" style="width: 99%;">
-            <div class="card-body">
+    <div class="row mt" style="margin:auto;height: 100%">
+        <div class="card" style="width: 99%;height: 100%;margin:auto">
+            <div class="card-body"style="width: 96%;margin:auto">
               <h2 class="card-title">{{ $show->title }}</h2>
               <p class="card-text bg-light" style="transform: rotate(0);">
                 {!! $show->description !!}
