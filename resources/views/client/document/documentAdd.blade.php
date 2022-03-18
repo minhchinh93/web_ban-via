@@ -9,7 +9,7 @@
         <div class="row mt">
             <div class="col-lg-12">
             <div class="form-panel">
-                  <h4 class="mb"><i class="fa fa-angle-right"></i> Form Elements</h4>
+                  <h4 class="mb"><i class="fa fa-angle-right"></i> Add Document</h4>
                   <form class="form-horizontal style-form"action="{{ route('storeAdd') }}" method="post"  enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -25,17 +25,17 @@
                           </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">file</label>
+                        <label class="col-sm-2 col-sm-2 control-label">FILE PDF</label>
                         <div class="col-sm-10">
                             <input name="file"  type="file" multiple >
-                            <span class="help-block">kèm theo file</span>
+                            <span class="help-block" style="color:red">kèm theo file PDF</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">video</label>
+                        <label class="col-sm-2 col-sm-2 control-label">VIDEOS</label>
                         <div class="col-sm-10">
                             <input name="video"  type="file" multiple >
-                            <span class="help-block">kèm theo video để </span>
+                            <span class="help-block" style="color:red">kèm theo video  </span>
                         </div>
                     </div>
                       <hr>
