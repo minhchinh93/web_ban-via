@@ -9,7 +9,7 @@
                 <div class="col-lg-9 main-chart">
                     <br /><br /><br /><br />
                     <div class="row" style="text-align: center;">
-                        <a href="{{ route('showIdea') }}"><span class="label label-info">Idea</span></a>  <a  href="{{ route('showPNG') }}"><span class="label label-warning">PNG</span></a>
+                        <a href="{{ route('showIdea') }}"><span class="label label-info">Idea</span></a>  <a  href="{{ route('showPNG') }}"><span class="label label-warning">PNG</span></a><a href="{{ route('showMockup') }}">  <span class="label label-success">Mockup</span></a>
                     </div><br /><br /><br /><br />
                     <div  class="row" style="background:#373a36; color:white">
                         @if($users[0]->payment==1)
@@ -33,7 +33,7 @@
                             @endforeach
                         </div>
                         <!--custom chart end-->
-                        @else
+                        @elseif($users[0]->payment==2)
                         <div class="border-head">
                             <h3 style="color: #ff865c;">PNG TABLE</h3>
                         </div>
@@ -47,6 +47,26 @@
                                 <li><span>0</span></li>
                             </ul>
                             @foreach ($totalPNG as $show)
+                            <div class="bar">
+                                <div class="title">{{  $show->date }}</div>
+                                <div class="value tooltips" data-original-title="{{ $show->value }}" data-toggle="tooltip" data-placement="top">{{ $show->value }}%</div>
+                            </div>
+                            @endforeach
+                        </div>
+                        @else
+                        <div class="border-head">
+                            <h3 style="color: #ff865c;">PNG TABLE</h3>
+                        </div>
+                        <div class="custom-bar-chart">
+                            <ul class="y-axis">
+                                <li><span>100</span></li>
+                                <li><span>80</span></li>
+                                <li><span>60</span></li>
+                                <li><span>40</span></li>
+                                <li><span>20</span></li>
+                                <li><span>0</span></li>
+                            </ul>
+                            @foreach ($totalMockup as $show)
                             <div class="bar">
                                 <div class="title">{{  $show->date }}</div>
                                 <div class="value tooltips" data-original-title="{{ $show->value }}" data-toggle="tooltip" data-placement="top">{{ $show->value }}%</div>

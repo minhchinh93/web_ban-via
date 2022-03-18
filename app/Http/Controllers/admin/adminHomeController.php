@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\mocupProduct;
 use App\Models\Product;
 use App\Models\ProductPngDetails;
 use App\Models\taskJob;
@@ -87,6 +88,13 @@ class adminHomeController extends Controller
                 DB::raw('Date(created_at) as date'),
                 DB::raw('COUNT(*) as value'),
             ]);
+        $totalMockup = mocupProduct::where('created_at', '>=', $day)
+            ->groupBy('date')
+            ->orderBy('date', 'ASC')
+            ->get([
+                DB::raw('Date(created_at) as date'),
+                DB::raw('COUNT(*) as value'),
+            ]);
 
         foreach ($totalPNG as $png) {
             $strss[] = $png->value;
@@ -118,6 +126,7 @@ class adminHomeController extends Controller
                 'designer' => $designer,
                 'totalidea' => $totalidea,
                 'totalPNG' => $totalPNG,
+                'totalMockup' => $totalMockup,
                 'str' => $str,
                 'strpng' => $strpng,
                 'mocup' => $mocup,
