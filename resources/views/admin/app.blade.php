@@ -232,21 +232,11 @@
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a class="{{ (request()->is('admin/categoriesList')) ? 'active' : 'sub-menu' }}" href="{{ route('categoriesList') }}" >
-                          <i class="fa fa-cogs"></i>
-                          <span>Category</span>
-                      </a>
-                      <ul  class="sub">
-                          <li><a  href="calendar.html">Calendar</a></li>
-
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a class="#" href="$" >
-                          <i class="fa fa-book"></i>
-                          <span>Product</span>
-                      </a>
-                  </li>
+                    <a class="{{ (request()->is('/showDoc')) ? 'active' : 'sub-menu' }}" href="{{ route('showDoc') }}" >
+                        <i class="fa fa-th"></i>
+                        <span>Document </span>
+                    </a>
+                </li>
               </ul>
               <!-- sidebar menu end-->
           </div>
