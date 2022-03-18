@@ -36,9 +36,12 @@
     <a href="{{ route('addlDoc') }}">
     <button type="button" class="btn btn-theme03"><i class="fa fa-heart"></i> Add Document</button>
     </a>
+    <a target="_blank" href="https://www.ilovepdf.com/vi/word-sang-pdf">
+        <button type="button" class="btn btn-theme"><i class="fa fa-cog"></i> Word to PDF</button>
+    </a>
     <a href="{{ route('AadminHome') }}">
-        <button type="button" class="btn btn-theme02"><i class="fa fa-cog"></i> Back to admin</button>
-        </a>
+        <button type="button" class="btn btn-theme02"><i class="fa fa-check"></i> Back to admin</button>
+    </a>
 </div>
 </div>
     </section><!-- --/wrapper ---->
