@@ -291,6 +291,12 @@
                           <span>Tool </span>
                       </a>
                   </li>
+                  <li class="sub-menu">
+                    <a class="{{ (request()->is('/showDoc')) ? 'active' : 'sub-menu' }}" href="{{ route('showDoc') }}" >
+                        <i class="fa fa-th"></i>
+                        <span>Document </span>
+                    </a>
+                </li>
               </ul>
               <!-- sidebar menu end-->
           </div>
