@@ -4,8 +4,8 @@
 @section ('content')
 
 <section id="main-content">
-    <section class="wrapper" style="color:black; font-family:Roboto,sans-serif;background-image: url('https://allimages.sgp1.digitaloceanspaces.com/wikilaptopcom/2021/01/Background-tim-cuc-dep.png');background-size: cover;">
-        <div class="row mt">
+    <section class="wrapper" data-dismiss="modal" style="color:black; font-family:Roboto,sans-serif;background-image: url('https://allimages.sgp1.digitaloceanspaces.com/wikilaptopcom/2021/01/Background-tim-cuc-dep.png');background-size: cover;">
+        <div class="row mt" >
             <div class="col-md-12">
                 <div class="content-panel" style=" border-radius: 20px;background: rgba(236, 240, 240, 0.876)">
                     <h4><i class="fa fa-angle-right"></i>Nhận việc</h4><hr>
@@ -98,8 +98,8 @@
                                           <div class="project-wrapper">
                                             <h5>{{ $rep->ImageDetail }} </h5>
                                             <div class="project">
-                                                <div class="photo-wrapper">
-                                                    <div class="photo">
+                                                <div class="photo-wrapper"  data-dismiss="modal">
+                                                    <div >
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImageDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImageDetail)}}"  width="100%"></a>
                                                     </div>
                                                 </div>
@@ -115,7 +115,7 @@
                                 </section>
                                   </div>
                                   @if (count($report->mocups)!=0)
-                                  <td><img  data-toggle="modal" data-target="#c{{$report->id}}" src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; border-radius: 5%;" >
+                                  <td ><img  data-toggle="modal" data-target="#c{{$report->id}}" src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; border-radius: 5%;" >
                                     <a class=" w-75 " style="color:white" href="{{ route('deleteMocupAll',[$report->id]) }}">
                                         <span type="button" class="btn btn-danger" data-dismiss="modal">&times;</span>
                                     </a>
@@ -128,10 +128,10 @@
                                 </form>
                                 @endif
                             </td>
-                                <div class="modal fade" id="c{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="c{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-dismiss="modal">
                                     <section id="main-content">
                                         <section class="wrapper">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-dialog modal-dialog-centered"  role="document">
                                       <div class="modal-content">
                                         <div class="modal-header">
                                             <form class="form-inline" action="{{ route('addmocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
@@ -146,12 +146,12 @@
                                         </div>
                                           @foreach ($report->mocups as $rep)
                                           <div class="post-content-{{ $rep->id  }}">
-                                            <div class="project">
+                                            <div class="project" >
                                                 <button onclick="deleteComment({{ $rep->id }})">xoa</button>
                                                 <h5>{{ $rep->mocup }} </h5>
                                                  {{-- <a href="{{ route('deletemocups',[$rep->id]) }}"><span onclick="deletemocups({{ $rep->id }})" class="label label-info label-mini">xoa</span></a> --}}
-                                                <div class="photo-wrapper">
-                                                    <div class="photo">
+                                                <div class="photo-wrapper" data-dismiss="modal">
+                                                    <div >
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
                                                     </div>
                                                 </div>
@@ -176,7 +176,7 @@
                                     <td >
                                     <img data-toggle="modal" data-target="#b{{$report->id}}" src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="border-radius: 5%;width: 150px;"  >
                                     <a class=" w-75 " style="color:white" href="{{ route('deletePngAll',[$report->id]) }}">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+                                        <button type="button" class="btn btn-danger" >&times;</button>
                                     </a>
                                 </td>
                                     @else
@@ -211,8 +211,8 @@
                                                 <button onclick="deletePng({{ $rep->id }})">xoa</button>
                                                 <h5> {{ $rep->ImagePngDetail}}</h5>
                                                 {{-- <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}
-                                                <div class="photo-wrapper">
-                                                    <div class="photo">
+                                                <div class="photo-wrapper" data-dismiss="modal">
+                                                    <div>
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
                                                     </div>
                                                 </div>
