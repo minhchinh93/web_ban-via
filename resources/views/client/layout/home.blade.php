@@ -172,6 +172,11 @@
                                           <div class="modal-content">
                                             <div class="modal-header">
                                               <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                              <form class="form-inline" action="{{ route('addImage',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                <input name="image[]"  type="file" multiple required>
+                                              <button type="submit" class="btn btn-primary" >Add Image Idea</button>
+                                            </form>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                               </button>
@@ -337,7 +342,7 @@
 <!--main content end-->
 @endsection
 
-@push('scripts') 
+@push('scripts')
 <script>
 var imageAPI='/deleteImage'
 //api xoa api

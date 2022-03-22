@@ -55,7 +55,7 @@
                         </div>
                         @else
                         <div class="border-head">
-                            <h3 style="color: #ff865c;">PNG TABLE</h3>
+                            <h3 style="color: #abff5c;">MOCKUP TABLE</h3>
                         </div>
                         <div class="custom-bar-chart">
                             <ul class="y-axis">

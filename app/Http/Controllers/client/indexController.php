@@ -19,6 +19,7 @@ class indexController extends Controller
     {
         if (Auth::check()) {
             {
+
                 Carbon::setLocale('vi');
                 $yes = Carbon::yesterday('Asia/Ho_Chi_Minh');
                 $timess = $yes->toDateString();
@@ -80,11 +81,11 @@ class indexController extends Controller
                         DB::raw('Date(created_at) as date'),
                         DB::raw('COUNT(*) as value'),
                     ]);
-                foreach ($totalidea as $idea) {
-                    $strs[] = $idea->value;
-                }
-                $str = implode(", ", $strs);
-                // dd($str);
+                // foreach ($totalidea as $idea) {
+                //     $strs[] = $idea->value;
+                // }
+                // $str = implode(", ", $strs);
+                // // dd($str);
                 $totalPNG = ProductPngDetails::where('created_at', '>=', $day)
                     ->groupBy('date')
                     ->orderBy('date', 'ASC')
@@ -99,10 +100,7 @@ class indexController extends Controller
                         DB::raw('Date(created_at) as date'),
                         DB::raw('COUNT(*) as value'),
                     ]);
-                foreach ($totalPNG as $png) {
-                    $strss[] = $png->value;
-                }
-                $strpng = implode(", ", $strss);
+
                 if ($report->total() != 0) {
                     foreach ($report as $billdd) {
                         $dt[] = Carbon::create($billdd->created_at);
@@ -128,8 +126,8 @@ class indexController extends Controller
                         'totalidea' => $totalidea,
                         'totalPNG' => $totalPNG,
                         'totalMockup' => $totalMockup,
-                        'str' => $str,
-                        'strpng' => $strpng,
+                        // 'str' => $str,
+                        // 'strpng' => $strpng,
                         'mocup' => $mocup,
                         'jobs' => $job,
                         // 'totalDesigner' => $totalDesigner,

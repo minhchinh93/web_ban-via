@@ -76,10 +76,10 @@ class adminHomeController extends Controller
                 DB::raw('Date(created_at) as date'),
                 DB::raw('COUNT(*) as value'),
             ]);
-        foreach ($totalidea as $idea) {
-            $strs[] = $idea->value;
-        }
-        $str = implode(", ", $strs);
+        // foreach ($totalidea as $idea) {
+        //     $strs[] = $idea->value;
+        // }
+        // $str = implode(", ", $strs);
         // dd($str);
         $totalPNG = ProductPngDetails::where('created_at', '>=', $day)
             ->groupBy('date')
@@ -96,10 +96,10 @@ class adminHomeController extends Controller
                 DB::raw('COUNT(*) as value'),
             ]);
 
-        foreach ($totalPNG as $png) {
-            $strss[] = $png->value;
-        }
-        $strpng = implode(", ", $strss);
+        // foreach ($totalPNG as $png) {
+        //     $strss[] = $png->value;
+        // }
+        // $strpng = implode(", ", $strss);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
@@ -127,8 +127,8 @@ class adminHomeController extends Controller
                 'totalidea' => $totalidea,
                 'totalPNG' => $totalPNG,
                 'totalMockup' => $totalMockup,
-                'str' => $str,
-                'strpng' => $strpng,
+                // 'str' => $str,
+                // 'strpng' => $strpng,
                 'mocup' => $mocup,
                 'Jobprivates' => $Jobprivate,
                 'jobPublics' => $jobPublic,

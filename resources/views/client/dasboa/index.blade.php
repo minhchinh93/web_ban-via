@@ -134,6 +134,11 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
                                         <div class="modal-header">
+                                            <form class="form-inline" action="{{ route('addmocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                <input name="image[]"  type="file" multiple required>
+                                              <button type="submit" class="btn btn-primary" >Add Image Moccup</button>
+                                            </form>
                                           {{-- <h5 class="modal-title" id="exampleModalLongTitle">Moccup</h5> --}}
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -157,7 +162,7 @@
                                             <form class="form-inline" action="{{ route('addmocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <input name="image[]"  type="file" multiple required>
-                                              <button type="submit" class="btn btn-primary" >Add Image Idea</button>
+                                              <button type="submit" class="btn btn-primary" >Add Image Moccup</button>
                                             </form>
                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
@@ -190,6 +195,11 @@
                                       <div class="modal-content">
                                         <div class="modal-header">
                                           <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                          <form class="form-inline" action="{{ route('addPngDetails',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <input name="image[]"  type="file" multiple required>
+                                          <button type="submit" class="btn btn-primary" >Add Image PNG</button>
+                                        </form>
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
@@ -213,7 +223,7 @@
                                             <form class="form-inline" action="{{ route('addPngDetails',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <input name="image[]"  type="file" multiple required>
-                                              <button type="submit" class="btn btn-primary" >Add Image Idea</button>
+                                              <button type="submit" class="btn btn-primary" >Add Image PNG</button>
                                             </form>
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
