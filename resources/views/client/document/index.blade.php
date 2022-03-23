@@ -31,11 +31,22 @@
                 @endif
                 </div>
                 <div class="centered">
-                    <h6 style="color:rgb(253, 144, 1)">DOCUMENT BY SYTEM MR.HAI
-                        {{-- <a href="{{ route('deleteDoc',[$show->id])}}" style="color:red"><i class="fa fa-trash-o"></i></a>
-                        <a href="{{ route('editDoc',[$show->id])}}"><i class="fa fa-pencil"></i></a> --}}
-
-                        <br></h6>
+                    @if(Auth::user()->role == 3)
+                    @foreach ($show->user as $users)
+                    <span class="label label-info label-mini">{{ $users->name}}</span>
+                    @endforeach
+                        <form class="form-inline" action="{{ route('documentAddUser',[$show->id]) ?? null  }}" method="post">
+                            @csrf
+                            <select name="doccument" id="cars" style="border-radius: 15px;" class="form-control">
+                            @foreach ($user as $show)
+                                <option value="{{ $show->id }}">{{  $show->name }}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" style="border-radius: 10px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                    @else
+                    <h6 style="color: rgb(50, 2, 128)">CỐ GẮNG HỌC HÀNH- TƯƠNG LAI SÁNG LẠNG</h6>
+                    @endif
 
                 </div>
             </div><!-- --/content-panel ---->

@@ -9,4 +9,9 @@ class Document extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function user()
+    {
+        return $this->belongsToMany(User::class, 'user_doccument','document_id', 'User_id' );
+    }
+
 }
