@@ -29,6 +29,7 @@ class AddStatusToDocumentsTable extends Migration
     {
         Schema::table('documents', function (Blueprint $table) {
             //
+
         });
     }
 }

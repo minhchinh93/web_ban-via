@@ -49,5 +49,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Product::class, 'User_id', 'id');
     }
+    public function document()
+    {
+        return $this->belongsToMany(Document::class, 'user_doccument', 'User_id', 'document_id');
+    }
 
 }
