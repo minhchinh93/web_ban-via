@@ -138,7 +138,9 @@
 								<div class="row centered">
 									<img src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-cartoon-flat-man-holding-a-trophy-png-image_4486875.jpg" class="img-circle" width="80">
 								</div>
+
                                 @if(count($mocup)>0)
+
 								<div class="row data">
 									<div class="col-sm-6 col-xs-6 goleft">
 										<h4><b>MEMBER </b></h4>
@@ -152,12 +154,14 @@
 									</div>
 								</div>
                                 @else
+
                                 <div class="row data">
 									<div class="col-sm-6 col-xs-6 goleft">
 										<h4><b>ngày nghỉ </b></h4>
 									</div>
 								</div>
                                 @endif
+
 							</div>
 						</div>
                         <!-- /col-md-4 -->
@@ -177,7 +181,7 @@
 								<div class="row centered">
 									<img src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-cartoon-flat-man-holding-a-trophy-png-image_4486875.jpg" class="img-circle" width="80">
 								</div>
-                                @if(count($mocup)>0)
+                                @if(count($designer)>0)
 								<div class="row data">
 									<div class="col-sm-6 col-xs-6 goleft">
 										<h4><b>MEMBER </b></h4>
