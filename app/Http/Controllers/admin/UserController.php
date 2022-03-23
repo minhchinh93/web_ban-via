@@ -13,7 +13,7 @@ class UserController extends Controller
     public function showUser(Request $request)
     {
         $keyword = $request->keyword;
-        $shows = User::where('name', 'like', "%{$keyword}%")->withTrashed()->paginate(40);
+        $shows = User::where('name', 'like', "%{$keyword}%")->paginate(40);
         if ($shows->total() > 0) {
             $total = $shows->total();
             $count = User::withTrashed()->count();
@@ -30,7 +30,7 @@ class UserController extends Controller
     public function findUser(Request $request)
     {
         $keyword = $request->keyword;
-        $shows = User::where('role', $request->role)->where('name', 'like', "%{$keyword}%")->withTrashed()->paginate(10);
+        $shows = User::where('role', $request->role)->where('name', 'like', "%{$keyword}%")->paginate(40);
         if ($shows->total() > 0) {
             $total = $shows->total();
             $count = User::withTrashed()->count();
@@ -88,7 +88,7 @@ class UserController extends Controller
     }
     public function activeruser()
     {
-        $shows = User::where('deleted_at', null)->paginate(10);
+        $shows = User::where('deleted_at', null)->paginate(40);
         $count = User::withTrashed()->count();
         $trackuser = User::onlyTrashed()->count();
         $activeruser = User::where('deleted_at', null)->count();
