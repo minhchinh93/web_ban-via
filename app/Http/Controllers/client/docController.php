@@ -36,6 +36,13 @@ class docController extends Controller
         return view('client.document.documentAdd');
 
     }
+    public function accset($id)
+    {
+
+        $show = Document::find($id)->update(['action' => 2]);
+        return redirect()->route('showDoc');
+
+    }
     public function addlDoc()
     {
         return view('client.document.documentAdd');
