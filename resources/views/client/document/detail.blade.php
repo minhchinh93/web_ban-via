@@ -14,7 +14,17 @@ user-select: none!important;"
 >
     <section class="wrapper" style=" background: rgba(236, 240, 240, 0.644);color:black; font-family:Roboto,sans-serif;background-image: url('https://msmobile.com.vn/upload_images/images/hinh-nen-powerpoint-mau-den-8.jpg');background-size: cover;">
         <div class="row mt">
-        <div class="col-lg-2 col-md-2 col-sm-2 mb" ></div>
+        <div class="col-lg-2 col-md-2 col-sm-2 mb" >
+            @if(Auth::user()->role == 3)
+                 @if($show->action==1)
+                <a href="{{ route('accset',[$show->id])}}">
+                    <button type="button" class="btn btn-theme04"><i class="fa fa-check"></i> chưa duyệt </button>
+                </a>
+                @else
+                    <button type="button" class="btn btn-theme02"><i class="fa fa-heart"></i> đã duyệt </button>
+                @endif
+            @endif
+        </div>
         <div class="col-lg-8 col-md-8 col-sm-8 mb">
             @if($show->video)
             <video width="100%" controls controlsList="nodownload">
@@ -24,7 +34,13 @@ user-select: none!important;"
           @else
           @endif
         </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 mb"></div>
+        <div class="col-lg-2 col-md-2 col-sm-2 mb">
+            @if(Auth::user()->role == 3)
+            <a href="{{ route('deleteDoc',[$show->id])}}">
+                <button type="button" class="btn btn-theme04"><i class="fa fa-trash-o"></i> Xóa </button>
+            </a>
+            @endif
+        </div>
     </div>
     @if($show->file)
     <div oncontextmenu="return false" class="row mt" style="margin:auto;" >

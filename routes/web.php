@@ -158,6 +158,8 @@ Route::prefix('auth')->group(function () {
 
     Route::post('storeAdd', [docController::class, 'storeAdd'])->name('storeAdd');
 
+    Route::get('accset/{id}', [docController::class, 'accset'])->middleware('checkAdmin')->name('accset');
+
 });
 //middleware('checkAdmin')->
 //============ ADMIN  ====================//

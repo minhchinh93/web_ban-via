@@ -11,18 +11,32 @@
         <div class="col-lg-4 col-md-4 col-sm-4 mb">
             <div class="content-panel pn">
                 <div id="profile-01">
+                    @if($show->action==1)
+                    <button type="button" class="btn btn-theme04"><i class="fa fa-cog"></i> Chưa duyệt</button>
+                    @else
+                    <button type="button" class="btn btn-theme"><i class="fa fa-heart"></i> Đã duyệt</button>
+                    @endif
                     <h3>{{ $show->title ?? null}}</h3>
-                    <h6 style="color:rgb(255, 193, 111)">DOCUMENT BY SYTEM MR.HAI</h6>
+                    {{-- <h6 style="color:rgb(255, 193, 111)">DOCUMENT BY SYTEM MR.HAI</h6> --}}
                 </div>
                 <div class="profile-01 centered">
+                @if($show->action==1)
+                 @if(Auth::user()->role == 3)
                    <a href= "{{ route('detailDoc',[$show->id]) ?? null}}"> <p>CLICK ĐỂ XEM CHI TIẾT</p></a>
+                 @else
+                   <a href= "#"> <p>CHƯA DUYỆT</p></a>
+                 @endif
+                @else
+                  <a href= "{{ route('detailDoc',[$show->id]) ?? null}}"> <p>CLICK ĐỂ XEM CHI TIẾT</p></a>
+                @endif
                 </div>
                 <div class="centered">
-                    <h6>
-                        <a href="{{ route('deleteDoc',[$show->id])}}" style="color:red"><i class="fa fa-trash-o"></i></a>
-                        <a href="{{ route('editDoc',[$show->id])}}"><i class="fa fa-pencil"></i></a>
+                    <h6 style="color:rgb(253, 144, 1)">DOCUMENT BY SYTEM MR.HAI
+                        {{-- <a href="{{ route('deleteDoc',[$show->id])}}" style="color:red"><i class="fa fa-trash-o"></i></a>
+                        <a href="{{ route('editDoc',[$show->id])}}"><i class="fa fa-pencil"></i></a> --}}
 
-                        <br>{{ route('detailDoc',[$show->id]) ?? null}}</h6>
+                        <br></h6>
+
                 </div>
             </div><!-- --/content-panel ---->
         </div>
