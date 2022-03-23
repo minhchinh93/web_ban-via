@@ -187,8 +187,8 @@
                                                     <button onclick="deleteImage({{ $rep->id }})">xoa</button>
                                                     <h5> {{$rep->ImageDetail}} </h5>
                                                     {{-- <a href="{{ route('deleteImage',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}
-                                                    <div class="photo-wrapper" data-dismiss="modal">
-                                                        <div >
+                                                    <div class="photo-wrapper" >
+                                                        <div class="photo">
                                                             <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImageDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImageDetail)}}"  width="100%"></a>
                                                         </div>
                                                     </div>
@@ -229,8 +229,8 @@
                                               <div class="project-wrapper">
                                                 <h5>{{ $rep->mocup }} </h5>
                                                 <div class="project">
-                                                    <div class="photo-wrapper" data-dismiss="modal">
-                                                        <div >
+                                                    <div class="photo-wrapper">
+                                                        <div class="photo">
                                                             <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
                                                         </div>
                                                     </div>
@@ -269,8 +269,8 @@
                                               <div class="project-wrapper">
                                                 <h5>{{ $rep->ImagePngDetail }} </h5>
                                                 <div class="project">
-                                                    <div class="photo-wrapper" data-dismiss="modal">
-                                                        <div >
+                                                    <div class="photo-wrapper">
+                                                        <div class="photo">
                                                             <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
                                                         </div>
                                                     </div>
