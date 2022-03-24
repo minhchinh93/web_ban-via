@@ -18,7 +18,7 @@
 
                             </h4>
                     </div><!-- /col-lg-12 -->
-                    <div class="col-lg-4">
+                    {{-- <div class="col-lg-4">
                         <form class="form-inline" >
                             <select name="cornerstone" id="cars" style="border-radius: 15px;" class="form-control">
                             @foreach ($shows as $show)
@@ -27,7 +27,7 @@
                         </select>
                         <button type="submit" class="btn btn-theme"><i class="fa-solid fa-paper-plane">tim kiem</i></button>
                     </form>
-                    </div>
+                    </div> --}}
 
                     <div class="col-lg-4">
                         <div class="row">

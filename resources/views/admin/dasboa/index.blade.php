@@ -10,7 +10,7 @@
                     <h5  style="color:rgb(250, 250, 250)">IDEA OF THE DAY : {{ $totaDay }} </h5>
                     <h4  style="color:rgb(248, 245, 241)">IDEA SUCCESS : {{ $totaSusecDay }}</h4>
                 </div>
-                <a style="color:red href="{{ route('totalidea') }}"><p>see more !</p></a>
+                <a style="color:red" href="{{ route('totalidea') }}"><p>see more !</p></a> 
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1" style="background-image: linear-gradient(90deg, #0bd48e, rgba(158, 168, 8, 0.829));  border-radius:20px;">
