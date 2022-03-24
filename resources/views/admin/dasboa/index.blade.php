@@ -246,11 +246,11 @@
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody>
+                        {{-- <tbody>
                             @php
                             $i=0
                           @endphp
-                            @foreach ($mocup as $show)
+                            @foreach ($Ideatable as $show)
                         <tr>
                             <td><a href="{{ route('DetailDesigner',[$show->id]) }}">{{ $show->name?? null }}</a></td>
                             <td>{{ $show->email?? null }}</td>
@@ -281,7 +281,7 @@
                             </td>
                         </tr>
                         @endforeach
-                        </tbody>
+                        </tbody> --}}
                     </table>
                 </div><!-- /content-panel -->
             </div><!-- /col-md-12 -->
