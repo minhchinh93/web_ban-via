@@ -284,11 +284,14 @@ class DesignerController extends Controller
     public function addPngDetails(Request $request, $id)
     {
 
-        // dd($request->file('image'))->store('images');
-        foreach ($request->file('image') as $image) {
+        // dd($request->file('image'));
+        $file = $request->file('image');
+
+        foreach ($file as $image) {
+            $filename = $image->getClientOriginalName();
             $dataImage = [
                 'product_id' => $id,
-                'ImagePngDetail' => $image->store('images'),
+                'ImagePngDetail' => $image->storeAs('images', time() . $filename),
             ];
             ProductPngDetails::where('id', $id)->create($dataImage);
         }
@@ -298,11 +301,13 @@ class DesignerController extends Controller
     }
     public function addmocups(Request $request, $id)
     {
+        $file = $request->file('image');
 
         foreach ($request->file('image') as $image) {
+            $filename = $image->getClientOriginalName();
             $dataImage = [
                 'product_id' => $id,
-                'mocup' => $image->store('images'),
+                'mocup' => $image->storeAs('images', time() . $filename),
             ];
             mocupProduct::where('id', $id)->create($dataImage);
         }
