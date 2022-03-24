@@ -57,10 +57,12 @@ class dasboaController extends Controller
         //     ->groupBy('products.User_id')
         //     ->orderBy('mocup_products', 'DESC')
         //     ->get();
-        if ($request->keyword != '') {
-            $keyword = $request->keyword;
+        if ($request->keyword1 != '') {
+            $keyword1 = $request->keyword1;
+            $keyword2 = $request->keyword2;
         } else {
-            $keyword = $yesterday;
+            $keyword1 = $time;
+            $keyword2 = $time;
         }
 
         $mocup = User::join('products', 'products.User_id', '=', 'users.id')
@@ -76,7 +78,7 @@ class dasboaController extends Controller
             '
             ))
             ->groupBy('idUser')
-            ->where('mocup_products.updated_at', 'LIKE', '%' . $keyword . '%')
+            ->whereBetween('mocup_products.updated_at', [$keyword1 . ' 00:00:00', $keyword2 . ' 23:59:59'])
             ->orderBy('idUser', 'DESC')
             ->get();
 
@@ -91,7 +93,7 @@ class dasboaController extends Controller
             products.User_id as "id"
             '))
             ->groupBy('idUser')
-            ->where('product_png_details.updated_at', 'LIKE', '%' . $keyword . '%')
+            ->whereBetween('product_png_details.updated_at', [$keyword1 . ' 00:00:00', $keyword2 . ' 23:59:59'])
             ->orderBy('idUser', 'DESC')
             ->get();
 
