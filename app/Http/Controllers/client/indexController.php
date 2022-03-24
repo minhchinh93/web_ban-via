@@ -126,7 +126,7 @@ class indexController extends Controller
                     $keyword1 = $request->keyword1;
                     $keyword2 = $request->keyword2;
                 } else {
-                    $keyword1 = $time;
+                    $keyword1 = $timess;
                     $keyword2 = $time;
                 }
                 $Ideatable = User::join('products', 'products.id_idea', '=', 'users.id')
