@@ -412,7 +412,8 @@
                         <div class="details">
                             <p>
                                 <muted>{{ $time[$i++] }}</muted><br/>
-                                <a href="#"> {{  $show->User->name ?? null }}</a> send 1 job posted.<br/>
+                                <a href="#"> {{  $show->User->name ?? null }}</a>
+                                1 new job posted.<br/>
                             </p>
                         </div>
                     </div>
