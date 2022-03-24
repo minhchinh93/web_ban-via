@@ -109,10 +109,10 @@ class indexController extends Controller
 
                     foreach ($dt as $key) {
                         $now = Carbon::now();
-                        $time[] = $key->diffForHumans($now);
+                        $updated_at[] = $key->diffForHumans($now);
                     }
                 } else {
-                    $time = '';
+                    $updated_at = '';
 
                 }
                 // dd($report);
@@ -159,7 +159,7 @@ class indexController extends Controller
                         'mocup' => $mocup,
                         'jobs' => $job,
                         // 'totalDesigner' => $totalDesigner,
-                        'time' => $time,
+                        'time' => $updated_at,
                         'timess' => $toDayDateTimeString,
                         'Ideatable' => $Ideatable,
                         'keyword1' => $keyword1,
