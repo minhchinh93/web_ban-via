@@ -162,6 +162,8 @@ class indexController extends Controller
                         'time' => $time,
                         'timess' => $toDayDateTimeString,
                         'Ideatable' => $Ideatable,
+                        'keyword1' => $keyword1,
+                        'keyword2' => $keyword2,
 
                     ]);
             }

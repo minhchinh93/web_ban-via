@@ -324,7 +324,7 @@
                                         </td>
                                         <td>
                                             <span class="btn btn-success btn-xs">
-                                                <a style="color:white" href="#">
+                                                <a style="color:white" href="{{ route('showdetail',[$keyword1,$keyword2]) }}">
                                                  Detail
                                               </a>
                                              </span>

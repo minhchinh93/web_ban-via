@@ -15,6 +15,7 @@ use App\Http\Controllers\auth\regiterController;
 use App\Http\Controllers\auth\resetpassController;
 use App\Http\Controllers\client\AccountHistoryController;
 use App\Http\Controllers\client\DesignerController;
+use App\Http\Controllers\client\detailIdeaController;
 use App\Http\Controllers\client\docController;
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\indexController;
@@ -91,6 +92,8 @@ Route::middleware('CheckIdea')->group(function () {
 
     Route::get('deleteImage/{id}', [HomeController::class, 'deleteImage'])->name('deleteImage');
     Route::post('addImage/{id}', [HomeController::class, 'addImage'])->name('addImage');
+
+    Route::get('showdetail/{key1}/{key2}', [detailIdeaController::class, 'showdetail'])->name('showdetail');
 
 });
 
