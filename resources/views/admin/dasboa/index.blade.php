@@ -107,9 +107,10 @@
                             <form class="form-inline" role="form">
                                 <div class="form-group">
                                     <label class="sr-only" for="exampleInputEmail2">    </label>
-                                    <input type="text" class="form-control" name="keyword" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword }}" placeholder="yyyy-mm-dd">
+                                    <input type="text" class="form-control" name="keyword1" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword1 }}" placeholder="yyyy-mm-dd">
+                                    <input type="text" class="form-control" name="keyword2" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword2 }}" placeholder="yyyy-mm-dd">
+                                    <button type="submit" class="btn btn-theme"><i class="fa-solid fa-magnifying-glass">tim kiem</i></button>
                                 </div>
-                                <button type="submit" class="btn btn-theme"><i class="fa-solid fa-magnifying-glass">tim kiem</i></button>
                             </form>
                         </div>
                         <thead>
@@ -246,11 +247,11 @@
                             <th></th>
                         </tr>
                         </thead>
-                        {{-- <tbody>
+                        <tbody>
                             @php
                             $i=0
                           @endphp
-                            @foreach ($Ideatable as $show)
+                            @foreach ($mocup as $show)
                         <tr>
                             <td><a href="{{ route('DetailDesigner',[$show->id]) }}">{{ $show->name?? null }}</a></td>
                             <td>{{ $show->email?? null }}</td>
@@ -281,7 +282,7 @@
                             </td>
                         </tr>
                         @endforeach
-                        </tbody> --}}
+                        </tbody>
                     </table>
                 </div><!-- /content-panel -->
             </div><!-- /col-md-12 -->
