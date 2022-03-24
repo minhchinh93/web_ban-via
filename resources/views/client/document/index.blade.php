@@ -64,9 +64,11 @@
     <a target="_blank" href="https://www.ilovepdf.com/vi/word-sang-pdf">
         <button type="button" class="btn btn-theme"><i class="fa fa-cog"></i> Word to PDF</button>
     </a>
+    @if(Auth::user()->role == 3)
     <a href="{{ route('AadminHome') }}">
         <button type="button" class="btn btn-theme02"><i class="fa fa-check"></i> Back to admin</button>
     </a>
+    @endif
 </div>
 </div>
     </section><!-- --/wrapper ---->
