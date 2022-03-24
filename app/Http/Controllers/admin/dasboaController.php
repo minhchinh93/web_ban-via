@@ -26,8 +26,8 @@ class dasboaController extends Controller
         $totalPNG = ProductPngDetails::all()->count();
         $totaldayPNG = ProductPngDetails::where('created_at', 'LIKE', '%' . $time . '%')->count();
         // $totaldayMockup = mocupProduct::where('update', 'LIKE', '%' . $time . '%')->count();
-        $totalIdeamember = User::where('role', '<>', 2)->count();
-        $totalDesigner = User::where('role', '<>', 1)->count();
+        $totalIdeamember = User::where('role', 2)->count();
+        $totalDesigner = User::where('role', 1)->count();
         // $totalATM = bill::where('payment', 'ATM')->count();
         $Idea = User::join('products', 'products.id_idea', '=', 'users.id')
             ->select(DB::raw('COUNT(products.id_idea) as "sum",
