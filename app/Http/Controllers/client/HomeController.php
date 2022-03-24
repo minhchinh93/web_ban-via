@@ -25,7 +25,6 @@ class HomeController extends Controller
         $size = size::get();
         $keyword = $request->keyword;
         $showcornerstone = cornerstone::all();
-
         if ($request->type != null) {
             $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
                 ->Where('status', '<>', "5")

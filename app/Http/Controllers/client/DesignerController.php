@@ -283,7 +283,8 @@ class DesignerController extends Controller
     }
     public function addPngDetails(Request $request, $id)
     {
-        // dd($request->file('image'));
+
+        // dd($request->file('image'))->store('images');
         foreach ($request->file('image') as $image) {
             $dataImage = [
                 'product_id' => $id,
