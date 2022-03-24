@@ -43,13 +43,17 @@ documents.status as "status"
     {
 
         $show = Document::find($id);
+
         return view('client.document.detail', ['show' => $show]);
 
     }
     public function deleteDoc($id)
     {
-
-        $show = Document::find($id)->delete();
+        $products = Document::where('id', $id)->get();
+        foreach ($products as $product) {
+            $product->user()->detach();
+        }
+        Document::find($id)->delete();
         return redirect()->route('showDoc');
 
     }
@@ -90,7 +94,7 @@ documents.status as "status"
             'video' => $video,
         ];
         $a = Document::create($data);
-        $a->user()->sync([1, 49, Auth::id()]);
+        $a->user()->sync([13, Auth::id()]);
         return redirect()->route('showDoc');
 
     }
