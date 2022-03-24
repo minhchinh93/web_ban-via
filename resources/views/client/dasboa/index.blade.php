@@ -34,14 +34,12 @@
                             <th><i class="fa fa-bullhorn"></i>Idea</th>
                             <th><i class="fa fa-bullhorn"></i> categories(size)</th>
                             <th><i class="fa fa-bullhorn"></i> Title</th>
-                            <th><i class="fa fa-bullhorn"></i> Cornerstones</th>
                             <th><i class="fa fa-bullhorn"></i> time</th>
                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description </th>
                             <th><i class="fa fa-bookmark"></i> Idea </th>
                             <th><i class=" fa fa-edit"></i> Mockup </th>
                             <th><i class=" fa fa-edit"></i> PNG</th>
                             <th><i class=" fa fa-edit"></i> status</th>
-                            <th><i class=" fa fa-edit"></i> Action</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -54,11 +52,6 @@
                                 <td><a href="basic_table.html#">{{$name[$i++][0]->name?? null }}</a></td>
                                 <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}({{ $report->size->name ?? null  }})</a></td>
                                 <td  style=" max-width: 200px;"><b>{{ $report->title ." ". $report->Sku ?? null }}</b></td>
-                                <td  style=" max-width: 200px;"><b>
-                                    @foreach ($report->cornerstones as $cornerstone)
-                                    <span class="label label-info label-mini">{{ $cornerstone->name}}</span>
-                                    @endforeach
-                                    </b></td>
                                 <td class="hidden-phone">{!!  $report->created_at ?? null !!}
                                 <td class="hidden-phone"
                                 style=" max-width: 400px;
@@ -244,21 +237,6 @@
                                 @else
                                 <td><span class="label label-success label-mini">hoàn thành</span></td>
                                 @endif
-
-                                <td>
-                                    <span class="btn btn-primary btn-xs">
-                                        @if ($report->status != 1)
-                                        <a class=" w-75 " style="color:white; border-radius: 3%;" href="{{ route('Detail',[$report->id]) }}"><i class="fa fa-pencil"></i></a>
-                                      </a>
-                                      @else
-                                       <i class="fa fa-pencil"></i>
-                                      @endif
-                                     </span>
-                                     @if($report->action== 2 &&  $report->status != 5)
-                                     <td><span class="label label-danger label-mini">ưu tiên</span></td>
-                                     @endif
-
-                                </td>
                             </tr>
                             @endforeach
                         </tbody>
