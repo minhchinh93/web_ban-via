@@ -9,13 +9,14 @@ use App\Models\ProductPngDetails;
 use App\Models\taskJob;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class indexController extends Controller
 {
     //
-    public function dasboa()
+    public function dasboa(Request $request)
     {
         if (Auth::check()) {
             {
@@ -116,6 +117,33 @@ class indexController extends Controller
                 }
                 // dd($report);
                 $job = taskJob::orderBy('created_at', 'DESC')->paginate(5);
+                $dt = Carbon::now('Asia/Ho_Chi_Minh');
+                $yes = Carbon::yesterday('Asia/Ho_Chi_Minh');
+                $time = $dt->toDateString();
+                $yesterday = $yes->toDateString();
+
+                if ($request->keyword1 != '') {
+                    $keyword1 = $request->keyword1;
+                    $keyword2 = $request->keyword2;
+                } else {
+                    $keyword1 = $time;
+                    $keyword2 = $time;
+                }
+                $Ideatable = User::join('products', 'products.id_idea', '=', 'users.id')
+                    ->select(DB::raw('COUNT(products.id_idea) as "sum",
+                users.name as "name",
+                users.email as "email",
+                users.role as "role",
+                users.deleted_at as "deleted_at",
+                products.id_idea as "id"
+                '
+
+                    ))
+                    ->orderBy('sum', 'DESC')
+                    ->groupBy('products.id_idea')
+                    ->where('products.id_idea', Auth::id())
+                    ->whereBetween('products.updated_at', [$keyword1 . ' 00:00:00', $keyword2 . ' 23:59:59'])
+                    ->get();
 
                 return view('client/idea/index',
                     [
@@ -133,6 +161,7 @@ class indexController extends Controller
                         // 'totalDesigner' => $totalDesigner,
                         'time' => $time,
                         'timess' => $toDayDateTimeString,
+                        'Ideatable' => $Ideatable,
 
                     ]);
             }
