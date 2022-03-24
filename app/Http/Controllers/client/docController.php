@@ -94,7 +94,7 @@ documents.status as "status"
             'video' => $video,
         ];
         $a = Document::create($data);
-        $a->user()->sync([13, Auth::id()]);
+        $a->user()->sync([1, 49, Auth::id()]);
         return redirect()->route('showDoc');
 
     }
