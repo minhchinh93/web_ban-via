@@ -10,7 +10,7 @@
                     <h5  style="color:rgb(250, 250, 250)">IDEA OF THE DAY : {{ $totaDay }} </h5>
                     <h4  style="color:rgb(248, 245, 241)">IDEA SUCCESS : {{ $totaSusecDay }}</h4>
                 </div>
-                <a style="color:red" href="{{ route('totalidea') }}"><p>see more !</p></a> 
+                <a style="color:red" href="{{ route('totalidea') }}"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1" style="background-image: linear-gradient(90deg, #0bd48e, rgba(158, 168, 8, 0.829));  border-radius:20px;">
@@ -34,7 +34,7 @@
                     <h5 style="color:rgb(250, 248, 250)"> TOTAL DESIGNER:</h5>
                     <h4 style="color:rgb(252, 250, 252)"><b>{{ $totalDesign }} </b></h4>
                 </div>
-                <a style="color:red" href="#"><p>see more !</p></a>
+                {{-- <a style="color:red" href="#"><p>see more !</p></a> --}}
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1" style="background-image: linear-gradient(90deg, rgba(255, 42, 59, 0.541), rgba(9, 221, 236, 0.829));  border-radius: 20px;">
@@ -42,7 +42,7 @@
                     <h5 style="color:rgb(255, 255, 255)">MEMBER IDEA: {{ $totalIdeamember }} </h5>
                     <h4 style="color:rgb(253, 249, 249)">MEMBER DESIGNER: {{ $totalDesigner }}</h4>
                 </div>
-                <a style="color:red" href="#"><p>see more !</p></a>
+                <a style="color:red" href="{{ route('showUser') }}"><p>see more !</p></a>
             </div>
         </div>
 
