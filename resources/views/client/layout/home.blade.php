@@ -170,12 +170,12 @@
                                             <section class="wrapper">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                           <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                            <div class="modal-header" style="display: block">
+                                              {{-- <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5> --}}
                                               <form class="form-inline" action="{{ route('addImage',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                                 @csrf
-                                                <input name="image[]"  type="file" multiple required>
-                                              <button type="submit" class="btn btn-primary" >Add Image Idea</button>
+                                                <input name="image[]" class="form-control" type="file" multiple required>
+                                                <button type="submit" style="border-radius: 10px;background: rgb(228, 250, 106);color:red" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
                                             </form>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
