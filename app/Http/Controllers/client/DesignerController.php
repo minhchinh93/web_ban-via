@@ -288,10 +288,11 @@ class DesignerController extends Controller
         $file = $request->file('image');
 
         foreach ($file as $image) {
-            $filename = $image->getClientOriginalName();
+            $str = $image->getClientOriginalName();
+            $filename = str_replace(' ', '-', $str);
             $dataImage = [
                 'product_id' => $id,
-                'ImagePngDetail' => $image->storeAs('images', time() . $filename),
+                'ImagePngDetail' => $image->storeas('images', time() . $filename),
             ];
             ProductPngDetails::where('id', $id)->create($dataImage);
         }
@@ -304,7 +305,8 @@ class DesignerController extends Controller
         $file = $request->file('image');
 
         foreach ($request->file('image') as $image) {
-            $filename = $image->getClientOriginalName();
+            $str = $image->getClientOriginalName();
+            $filename = str_replace(' ', '-', $str);
             $dataImage = [
                 'product_id' => $id,
                 'mocup' => $image->storeAs('images', time() . $filename),
