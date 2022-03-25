@@ -413,7 +413,7 @@
                             <p>
                                 <muted>{{ $time[$i++] }}</muted><br/>
                                 <a href="#"> {{  $show->User->name ?? null }}</a>
-                                1 new job posted.<br/>
+                                received 1 idea.<br/>
                             </p>
                         </div>
                     </div>
