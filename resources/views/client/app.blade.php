@@ -289,6 +289,12 @@
                         <span>Document </span>
                     </a>
                 </li>
+                  <li class="sub-menu">
+                    <a class="{{ (request()->is('/findPNG')) ? 'active' : 'sub-menu' }}" href="{{ route('findPNG') }}" >
+                        <i class="fa fa-tasks"></i>
+                        <span>Find Sku </span>
+                    </a>
+                </li>
               </ul>
               <!-- sidebar menu end-->
           </div>

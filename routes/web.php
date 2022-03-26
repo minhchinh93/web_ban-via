@@ -21,6 +21,7 @@ use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\indexController;
 use App\Http\Controllers\client\RechargeHistoryController;
 use App\Http\Controllers\client\toolController;
+use App\Http\Controllers\client\finePngController;
 //clients
 use Illuminate\Support\Facades\Route;
 
@@ -94,6 +95,9 @@ Route::middleware('CheckIdea')->group(function () {
     Route::post('addImage/{id}', [HomeController::class, 'addImage'])->name('addImage');
 
     Route::get('showdetail/{key1}/{key2}', [detailIdeaController::class, 'showdetail'])->name('showdetail');
+
+    // find PNG
+    Route::get('findPNG', [finePngController::class, 'findPNG'])->name('findPNG');
 
 });
 
