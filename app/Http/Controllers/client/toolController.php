@@ -5,12 +5,14 @@ namespace App\Http\Controllers\client;
 use App\Http\Controllers\Controller;
 use App\Models\cornerstone;
 use App\Models\Product;
+use App\Models\ProductPngDetails;
 use App\Models\size;
 use App\Models\type_product;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class toolController extends Controller
 {
@@ -152,12 +154,13 @@ class toolController extends Controller
     }
     public function Sku()
     {
-        foreach (Product::all() as $skus) {
+
+        foreach (ProductPngDetails::all() as $skus) {
             $id = $skus->id;
-            $names = $skus->type_product->name;
-            $name = substr($names, 0, 3);
-            $sku = $name . $id;
-            product::where('id', $id)->update([
+            $name = strtoupper(Str::random(4));
+            $sku = $name . "-" . $id;
+
+            ProductPngDetails::where('id', $id)->update([
                 'Sku' => $sku,
             ]);
 
