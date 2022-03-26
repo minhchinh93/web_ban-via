@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class DesignerController extends Controller
 {
@@ -246,7 +247,15 @@ class DesignerController extends Controller
                 'product_id' => $id,
                 'ImagePngDetail' => $image->store('images'),
             ];
-            ProductPngDetails::create($dataImage);
+
+            $datapng = ProductPngDetails::create($dataImage);
+            $id = $datapng->id;
+            $name = strtoupper(Str::random(4));
+            $sku = $name . "-" . $id;
+
+            ProductPngDetails::where('id', $id)->update([
+                'Sku' => $sku,
+            ]);
         }
         return redirect()->route('Dashboard');
     }
@@ -294,7 +303,15 @@ class DesignerController extends Controller
                 'product_id' => $id,
                 'ImagePngDetail' => $image->storeas('images', time() . $filename),
             ];
-            ProductPngDetails::where('id', $id)->create($dataImage);
+            $datapng = ProductPngDetails::where('id', $id)->create($dataImage);
+            $idPNG = $datapng->id;
+            $name = strtoupper(Str::random(4));
+            $sku = $name . "-" . $idPNG;
+
+            ProductPngDetails::where('id', $idPNG)->update([
+                'Sku' => $sku,
+            ]);
+
         }
         Product::where('id', $id)->update(['status' => 3]);
         return redirect()->route('PendingDS');

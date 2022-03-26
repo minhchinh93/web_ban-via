@@ -200,9 +200,12 @@
 
                                           @foreach ($report->ProductPngDetails as $rep)
                                           <div class="post-Png-{{ $rep->id  }}">
-                                            <div class="project">
-                                                <button onclick="deletePng({{ $rep->id }})">xoa</button>
-                                                <h5> {{ $rep->ImagePngDetail}}</h5>
+                                            <div class="project " >
+                                                <div style="display: flex;flex-direction: space-between;">
+                                                <button class="label label-danger label-mini" onclick="deletePng({{ $rep->id }})">xoa</button>
+                                                <span class="label label-info label-mini"><h5>{{ $rep->Sku}}</h5></span>
+                                                </div>
+                                                <h5> <a href="#">{{$rep->ImagePngDetail}}</a></h5>
                                                 {{-- <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}
                                                 <div class="photo-wrapper" data-dismiss="modal">
                                                     <div>

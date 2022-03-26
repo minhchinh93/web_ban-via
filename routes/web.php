@@ -112,7 +112,7 @@ Route::middleware('auth')->group(function () {
     Route::get('showIdeaa', [toolController::class, 'showIdeaa'])->name('showIdeaa');
     Route::get('showPNGG', [toolController::class, 'showPNGG'])->name('showPNGG');
     Route::get('showMockup', [toolController::class, 'showMockup'])->name('showMockup');
-// Route::get('home', [HomeController::class, 'home'])->name('home');
+    Route::get('Sku', [toolController::class, 'Sku'])->name('Sku');
     // Route::get('Dashboard', [HomeController::class, 'Dashboard'])->name('Dashboard');
 });
 Route::get('detailAccountHistory/{id}', [AccountHistoryController::class, 'detailAccountHistory'])->middleware('auth')->name('detailAccountHistory');
