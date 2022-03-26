@@ -267,7 +267,10 @@
 
                                               @foreach ($report->ProductPngDetails as $rep)
                                               <div class="project-wrapper">
-                                                <h5>{{ $rep->ImagePngDetail }} </h5>
+                                                <div style="display: flex;flex-direction: space-between;">
+                                                    <span style="margin-right:5px" class="label label-info label-mini"><h5>{{ $rep->Sku}}</h5></span>
+                                                    <h5> <a href="#">{{$rep->ImagePngDetail}}</a></h5>
+                                                    </div>
                                                 <div class="project">
                                                     <div class="photo-wrapper">
                                                         <div class="photo">
