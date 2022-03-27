@@ -28,7 +28,7 @@
     </div>
     <div class="row mt">
         @foreach($shows as $show)
-        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+        <div class="col-lg-3 col-md-3 col-sm-3 mb">
             <div class="content-panel pn "  style="display: flex;flex-direction: space-between;">
                 <div class="media"  style="margin-right:20px">
                     <img src="{{asset('/storage/'.$show->ImagePngDetail)}}" alt="..." width="200px" class="img-thumbnail">
@@ -36,13 +36,13 @@
                 <div class="media-body">
                       <h3 class="mt-0">Idea: {{ $show->name}}</h3><hr>
                       <h4>Title: {{ $show->title}}</h4><hr>
-
                 </div>
                 </div>
             </div><!-- --/panel ---->
         </div>
         @endforeach
     </div>
+    {{ $shows->links() }}
 </section>
 </section>
 

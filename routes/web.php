@@ -17,11 +17,11 @@ use App\Http\Controllers\client\AccountHistoryController;
 use App\Http\Controllers\client\DesignerController;
 use App\Http\Controllers\client\detailIdeaController;
 use App\Http\Controllers\client\docController;
+use App\Http\Controllers\client\finePngController;
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\indexController;
 use App\Http\Controllers\client\RechargeHistoryController;
 use App\Http\Controllers\client\toolController;
-use App\Http\Controllers\client\finePngController;
 //clients
 use Illuminate\Support\Facades\Route;
 
@@ -97,7 +97,6 @@ Route::middleware('CheckIdea')->group(function () {
     Route::get('showdetail/{key1}/{key2}', [detailIdeaController::class, 'showdetail'])->name('showdetail');
 
     // find PNG
-    Route::get('findPNG', [finePngController::class, 'findPNG'])->name('findPNG');
 
 });
 
@@ -118,6 +117,8 @@ Route::middleware('auth')->group(function () {
     Route::get('showMockup', [toolController::class, 'showMockup'])->name('showMockup');
     Route::get('Sku', [toolController::class, 'Sku'])->name('Sku');
     // Route::get('Dashboard', [HomeController::class, 'Dashboard'])->name('Dashboard');
+    Route::get('findPNG', [finePngController::class, 'findPNG'])->name('findPNG');
+
 });
 Route::get('detailAccountHistory/{id}', [AccountHistoryController::class, 'detailAccountHistory'])->middleware('auth')->name('detailAccountHistory');
 Route::get('RechargeHistory', [HomeController::class, 'RechargeHistory'])->name('RechargeHistory');
