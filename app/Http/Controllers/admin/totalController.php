@@ -147,7 +147,7 @@ class totalController extends Controller
         } else {
             $report = Product::orderBy('updated_at', 'desc')
                 ->Where('title', 'like', "%{$keyword}%")
-                ->paginate(10);
+                ->paginate(100);
         }
 
         // foreach ($report as $rep) {
