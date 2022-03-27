@@ -6,7 +6,7 @@
     <section class="wrapper" style="color:black; font-family:Roboto,sans-serif; background-image: url('https://allimages.sgp1.digitaloceanspaces.com/wikilaptopcom/2021/01/Background-tim-cuc-dep.png');background-size: cover;" >
 
     <div class="row mt">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             {{-- <form action="{{ route('find') }}" class="form-inline"role="form" method="GET"> --}}
             <form  class="form-inline"role="form" >
               @csrf
@@ -16,7 +16,7 @@
                   <button type="submit" class="btn btn-theme "><i class="fa-solid fa-magnifying-glass"></i> </button>
             </form>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <form class="form-inline" role="form">
                 <div class="form-group">
                     <label class="sr-only" for="exampleInputEmail2">tim kiem</label>
@@ -24,6 +24,13 @@
                 </div>
                 <button type="submit" class="btn btn-theme"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
+        </div>
+        <div class="col-lg-4">
+            @if(Auth::user()->role == 3)
+            <a href="{{ route('AadminHome') }}">
+                <button type="button" class="btn btn-theme02"><i class="fa fa-check"></i> Back to admin</button>
+            </a>
+            @endif
         </div>
     </div>
     <div class="row mt">
