@@ -34,7 +34,7 @@
                     <h5 style="color:rgb(250, 248, 250)"> TOTAL DESIGNER:</h5>
                     <h4 style="color:rgb(252, 250, 252)"><b>{{ $totalDesign }} </b></h4>
                 </div>
-                {{-- <a style="color:red" href="#"><p>see more !</p></a> --}}
+                <a style="color:rgb(0, 60, 255)" href="{{ route('findPNG') }}"><p>see more !</p></a>
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1" style="background-image: linear-gradient(90deg, rgba(255, 42, 59, 0.541), rgba(9, 221, 236, 0.829));  border-radius: 20px;">
