@@ -60,7 +60,8 @@ class totalController extends Controller
         $keyword = $request->keyword;
         // dd($size[1]);
         $report = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')
-            ->Where('Sku', 'like', "%{$keyword}%")
+            ->Where('title', 'like', "%{$keyword}%")
+            ->Where('description', 'like', "%{$keyword}%")
             ->paginate(10);
 
         if ($report->total() > 0) {
@@ -140,11 +141,12 @@ class totalController extends Controller
                 ))
                 ->groupBy('products.id')
                 ->Where('product_cornerstone.cornerstones_id', $request->cornerstone)
-            // ->Where('title', 'like', "%{$keyword}%")
+                ->orWhere('title', 'like', "%{$keyword}%")
                 ->paginate(10000);
 
         } else {
             $report = Product::orderBy('updated_at', 'desc')
+                ->Where('title', 'like', "%{$keyword}%")
                 ->paginate(10);
         }
 
