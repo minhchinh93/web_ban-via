@@ -350,4 +350,10 @@ class DesignerController extends Controller
     {
         return view('client.idea.index');
     }
+    public function deleteds($id)
+    {
+        Product::where('id', $id)->delete();
+        return redirect()->route('Dashboard');
+
+    }
 }

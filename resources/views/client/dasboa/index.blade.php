@@ -32,14 +32,15 @@
                         <thead>
                         <tr>
                             <th><i class="fa fa-bullhorn"></i>Idea</th>
-                            <th><i class="fa fa-bullhorn"></i> categories(size)</th>
+                            <th><i class="fa fa-bullhorn"></i> Categories(size)</th>
                             <th><i class="fa fa-bullhorn"></i> Title</th>
-                            <th><i class="fa fa-bullhorn"></i> time</th>
+                            <th><i class="fa fa-bullhorn"></i> Time</th>
                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description </th>
                             <th><i class="fa fa-bookmark"></i> Idea </th>
                             <th><i class=" fa fa-edit"></i> Mockup </th>
                             <th><i class=" fa fa-edit"></i> PNG</th>
-                            <th><i class=" fa fa-edit"></i> status</th>
+                            <th><i class=" fa fa-edit"></i> Status</th>
+                            <th><i class=" fa fa-edit"></i> Action </th>
                             <th></th>
                         </tr>
                         </thead>
@@ -240,6 +241,11 @@
                                 @else
                                 <td><span class="label label-success label-mini">hoàn thành</span></td>
                                 @endif
+                                <td> <span class="btn btn-danger btn-xs">
+                                    <a class=" w-75 " style="color:white" href="{{ route('deleteds',[$report->id]) }}"><i class="fa fa-trash-o"></i></a>
+                                  </a>
+                                 </span></td>
+
                             </tr>
                             @endforeach
                         </tbody>
