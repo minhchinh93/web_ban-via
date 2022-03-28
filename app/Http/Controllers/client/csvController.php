@@ -16,7 +16,7 @@ class csvController extends Controller
         $show = ProductPngDetails::join('products', 'product_png_details.product_id', '=', 'products.id')
         // INNER JOIN users ON products.id_idea = users.id
             ->join('users', 'products.id_idea', '=', 'users.id')
-            ->join('Oder_details', 'oder_details.oder_sku', '=', 'product_png_details.Sku')
+            ->join('oder_details', 'oder_details.oder_sku', '=', 'product_png_details.Sku')
             ->select(DB::raw('
             users.name as "name",
             products.title as "title",
