@@ -14,6 +14,7 @@ use App\Http\Controllers\auth\logincontroller;
 use App\Http\Controllers\auth\regiterController;
 use App\Http\Controllers\auth\resetpassController;
 use App\Http\Controllers\client\AccountHistoryController;
+use App\Http\Controllers\client\csvController;
 use App\Http\Controllers\client\DesignerController;
 use App\Http\Controllers\client\detailIdeaController;
 use App\Http\Controllers\client\docController;
@@ -22,7 +23,6 @@ use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\indexController;
 use App\Http\Controllers\client\RechargeHistoryController;
 use App\Http\Controllers\client\toolController;
-use App\Http\Controllers\client\csvController;
 //clients
 use Illuminate\Support\Facades\Route;
 
@@ -125,6 +125,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('importCsv', [csvController::class, 'importCsv'])->name('importCsv');
     Route::post('postCsv', [csvController::class, 'postCsv'])->name('postCsv');
+
+    Route::get('dowloadURL/{id}', [DesignerController::class, 'dowloadURL'])->name('dowloadURL');
+
 });
 Route::get('detailAccountHistory/{id}', [AccountHistoryController::class, 'detailAccountHistory'])->middleware('auth')->name('detailAccountHistory');
 Route::get('RechargeHistory', [HomeController::class, 'RechargeHistory'])->name('RechargeHistory');
