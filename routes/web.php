@@ -59,6 +59,8 @@ Route::middleware('CheckDesinger')->group(function () {
     Route::get('deleteMocupAll/{id}', [DesignerController::class, 'deleteMocupAll'])->name('deleteMocupAll');
     Route::get('deletePngAll/{id}', [DesignerController::class, 'deletePngAll'])->name('deletePngAll');
 
+    Route::get('deleteds/{id}', [DesignerController::class, 'deleteds'])->name('deleteds');
+
 });
 Route::get('dasboa', [indexController::class, 'dasboa'])->name('dasboa');
 
