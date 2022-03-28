@@ -16,14 +16,14 @@ class csvController extends Controller
         $show = ProductPngDetails::join('products', 'product_png_details.product_id', '=', 'products.id')
         // INNER JOIN users ON products.id_idea = users.id
             ->join('users', 'products.id_idea', '=', 'users.id')
-            ->join('Oder_details', 'Oder_details.oder_sku', '=', 'product_png_details.Sku')
+            ->join('Oder_details', 'oder_details.oder_sku', '=', 'product_png_details.Sku')
             ->select(DB::raw('
             users.name as "name",
             products.title as "title",
             product_png_details.ImagePngDetail as "ImagePngDetail",
-            Oder_details.Number_Items as "Number_Items",
-            Oder_details.Order_Total as "Order_Total",
-            Oder_details.Sale_Date as "Sale_Date"
+            oder_details.Number_Items as "Number_Items",
+            oder_details.order_Total as "Order_Total",
+            oder_details.Sale_Date as "Sale_Date"
 
             '
             ))
@@ -65,7 +65,7 @@ class csvController extends Controller
 
         foreach ($importData_arr as $importData) {
             $insertData = [
-                "Number-Items" => $importData[6],
+                "Number_Items" => $importData[6],
                 "Sale_Date" => $importData[0],
                 "Order_Total" => $importData[23],
                 "Date_Shipped" => $importData[8],
