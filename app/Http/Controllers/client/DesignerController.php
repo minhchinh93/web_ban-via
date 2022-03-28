@@ -257,13 +257,13 @@ class DesignerController extends Controller
                 'Sku' => $sku,
             ]);
         }
-        return redirect()->route('Dashboard');
+        return redirect()->back();
     }
     public function accept($id)
     {
         Product::where('id', $id)->update(['status' => 2]);
         $image = Product::find($id);
-        return redirect()->route('Dashboard');
+        return redirect()->back();
     }
     public function componentDesigner(Request $request, $id)
     {
@@ -273,7 +273,7 @@ class DesignerController extends Controller
         $name = $ids->user->name;
         Product::find($id)->update(['description' => $description . "</br> <b style= 'color:blue'>" . $name . "</b>:" . $approval,
         ]);
-        return redirect()->route('Dashboard');
+        return redirect()->back();
 
     }
     public function deleteProductPngDetails($id)
@@ -337,13 +337,13 @@ class DesignerController extends Controller
     public function deleteMocupAll(Request $request, $id)
     {
         mocupProduct::where('product_id', $id)->delete();
-        return redirect()->route('Dashboard');
+        return redirect()->back();
 
     }
     public function deletePngAll(Request $request, $id)
     {
         ProductPngDetails::where('product_id', $id)->delete();
-        return redirect()->route('Dashboard');
+        return redirect()->back();
 
     }
     public function dasboa()
@@ -353,7 +353,7 @@ class DesignerController extends Controller
     public function deleteds($id)
     {
         Product::where('id', $id)->delete();
-        return redirect()->route('Dashboard');
+        return redirect()->back();
 
     }
 }
