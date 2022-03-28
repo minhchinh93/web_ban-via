@@ -68,7 +68,7 @@
                                               <button style="border-radius: 10px;" type="submit" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
                                           </form>
                                 </td>
-                                <td data-toggle="modal" data-target="#a{{$report->id}}">
+                                <td data-toggle="modal" data-target="#a{{$report->id}}" >
                                     @if  (count($report->product_details)!=0)
                                    <img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px;  border-radius: 5%;" >
                                       @endif
@@ -109,17 +109,19 @@
                                 </section>
                                   </div>
                                   @if (count($report->mocups)!=0)
-                                  <td ><img  data-toggle="modal" data-target="#c{{$report->id}}" src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; border-radius: 5%;" >
+                                  <td style=" max-width: 250px;"><img  data-toggle="modal" data-target="#c{{$report->id}}" src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; border-radius: 5%;" >
+                                    <span class="badge bg-info">{{ count($report->mocups) }}</span>
                                     <a class=" w-75 " style="color:white" href="{{ route('deleteMocupAll',[$report->id]) }}">
                                         <span type="button" class="btn btn-danger" data-dismiss="modal">&times;</span>
                                     </a>
                                   @else
-                                   <td>
+                                   <td style=" max-width: 250px;">
                                    <form class="form-inline" action="{{ route('addmocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    <input name="image[]" class="form-control" type="file"  style="height: 100px;background:#FFE4B5" multiple  required><br>
+                                    <input name="image[]" class="form-control" type="file"  style="max-width: 200px;height: 100px;background:#FFE4B5" multiple  required><br>
                                     <button type="submit" class="btn btn-primary"><i class="fa-solid fa-square-plus"></i></button><br>
                                 </form>
+
                                 @endif
                             </td>
                                 <div class="modal fade" id="c{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-dismiss="modal">
@@ -137,6 +139,9 @@
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
+                                          <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('deletePngAll',[$report->id]) }}">
+                                            <i class="fa-solid fa-circle-down"></i>
+                                        </a>
                                         </div>
                                           @foreach ($report->mocups as $rep)
                                           <div class="post-content-{{ $rep->id  }}">
@@ -168,16 +173,17 @@
 
                                     @if (count($report->ProductPngDetails)!=0)
                                     <td >
-                                    <img data-toggle="modal" data-target="#b{{$report->id}}" src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="border-radius: 5%;width: 150px;"  >
+                                    <img  data-toggle="modal" data-target="#b{{$report->id}}" src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="border-radius: 5%;width: 150px;"  >
+                                    <span class="badge bg-info">{{ count($report->ProductPngDetails) }}</span>
                                     <a class=" w-75 " style="color:white" href="{{ route('deletePngAll',[$report->id]) }}">
                                         <button type="button" class="btn btn-danger" >&times;</button>
                                     </a>
                                 </td>
                                     @else
-                                    <td>
+                                    <td style=" max-width: 250px;">
                                     <form class="form-inline" action="{{ route('addPngDetails',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                         @csrf
-                                        <input name="image[]" class="form-control" style="height: 100px;background:#ADD8E6"  type="file" multiple required><br>
+                                        <input name="image[]" class="form-control" style=" max-width: 200px;height: 100px;background:#ADD8E6"  type="file" multiple required><br>
                                         <button type="submit" style="border-radius: 10px;background: rgb(228, 250, 106);color:red" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
                                     </form>
                                 </td>
@@ -197,6 +203,9 @@
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
+                                          <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$report->id]) }}">
+                                            <i class="fa-solid fa-circle-down"></i>
+                                        </a>
                                         </div>
 
                                           @foreach ($report->ProductPngDetails as $rep)

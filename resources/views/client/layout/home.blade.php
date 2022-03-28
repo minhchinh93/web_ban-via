@@ -209,7 +209,9 @@
                                     </section>
                                       </div>
                                       @if (count($report->mocups)!=0)
-                                      <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px;  border-radius: 5%;" ></td>
+                                      <td data-toggle="modal" data-target="#c{{$report->id}}">
+                                         <span class="badge bg-info">{{ count($report->mocups) }}</span>
+                                        <img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px;  border-radius: 5%;" ></td>
                                         @else
                                         <td data-toggle="modal" data-target="#c{{$report->id}}"></td>
                                        @endif
@@ -247,6 +249,7 @@
                                       </div>
                                     <td data-toggle="modal" data-target="#b{{$report->id}}">
                                         @if (count($report->ProductPngDetails)!=0)
+                                        <span class="badge bg-info">{{ count($report->ProductPngDetails) }}</span>
                                         <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail ) ?? null }}" style="border-radius: 5%;width: 150px;"  >
                                         @endif
                                         {{-- <span type="button" class="label label-success" data-toggle="modal" data-target="#b{{$report->id}}">

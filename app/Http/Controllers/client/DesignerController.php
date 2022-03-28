@@ -7,6 +7,7 @@ use App\Models\mocupProduct;
 use App\Models\Product;
 use App\Models\ProductPngDetails;
 use App\Models\User;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -17,6 +18,7 @@ class DesignerController extends Controller
     //
     public function Dashboard(Request $request)
     {
+
         $keyword = $request->keyword;
         $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->paginate(10);
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
@@ -353,6 +355,21 @@ class DesignerController extends Controller
     public function deleteds($id)
     {
         Product::where('id', $id)->delete();
+        return redirect()->back();
+
+    }
+    public function dowloadURL(Request $request, $id)
+    {
+        $datapngs = ProductPngDetails::where('product_id', $id)->get();
+        foreach ($datapngs as $datapng) {
+            $image = $datapng->ImagePngDetail;
+            $filename = str_replace('images/', '', $image);
+            $UrlImage = url('/storage/' . $filename);
+            $tempImage = tempnam(sys_get_temp_dir(), $filename);
+            copy($UrlImage, $tempImage);
+            return response()->download($tempImage, $filename);
+
+        }
         return redirect()->back();
 
     }
