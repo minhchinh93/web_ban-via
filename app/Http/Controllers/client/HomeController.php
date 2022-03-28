@@ -334,7 +334,7 @@ class HomeController extends Controller
             ]);
         }
 
-        return redirect()->route('home');
+        return redirect()->back();
     }
     public function success($id)
     {
@@ -357,25 +357,25 @@ class HomeController extends Controller
         $idr = $ids->id_idea;
         $name = User::find($idr)->name;
         Product::where('id', $id)->update(['description' => $description . "</br> <b style= 'color:black'> " . $name . "</b>:" . $approval, 'status' => 4]);
-        return redirect()->route('home');
+        return redirect()->back();
 
     }
     public function delete($id)
     {
         Product::where('id', $id)->delete();
-        return redirect()->route('home');
+        return redirect()->back();
 
     }
     public function important($id)
     {
         Product::where('id', $id)->update(['action' => 2]);
-        return redirect()->route('home');
+        return redirect()->back();
 
     }
     public function showimage(Request $request)
     {
         dd($request->id);
-        return redirect()->route('home');
+        return redirect()->back();
 
     }
     public function EditShow($id)
@@ -434,7 +434,7 @@ class HomeController extends Controller
             ];
             Product::where('id', $id)->update($data);
         }
-        return redirect()->route('home');
+        return redirect()->back();
     }
     public function comment(Request $request, $id)
     {
@@ -444,7 +444,7 @@ class HomeController extends Controller
         $idr = $ids->id_idea;
         $name = User::find($idr)->name;
         Product::where('id', $id)->update(['description' => $description . "</br> <b style= 'color:black'> " . $name . "</b>:" . $approval]);
-        return redirect()->route('home');
+        return redirect()->back();
 
     }
 
@@ -486,7 +486,7 @@ class HomeController extends Controller
             ];
             ProductDetails::where('id', $id)->create($dataImage);
         }
-        return redirect()->route('home');
+        return redirect()->back();
 
     }
 
