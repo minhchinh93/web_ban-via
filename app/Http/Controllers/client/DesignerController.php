@@ -364,7 +364,7 @@ class DesignerController extends Controller
         foreach ($datapngs as $datapng) {
             $image = $datapng->ImagePngDetail;
             $filename = str_replace('images/', '', $image);
-            $UrlImage = url('/storage/' . $filename);
+            $UrlImage = url('/storage/' . $image);
             $tempImage = tempnam(sys_get_temp_dir(), $filename);
             copy($UrlImage, $tempImage);
             return response()->download($tempImage, $filename);
