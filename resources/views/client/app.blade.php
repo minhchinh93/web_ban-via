@@ -295,6 +295,12 @@
                         <span>Find Sku </span>
                     </a>
                 </li>
+                  <li class="sub-menu">
+                    <a class="{{ (request()->is('/importCsv')) ? 'active' : 'sub-menu' }}" href="{{ route('importCsv') }}" >
+                        <i class="fa fa-tasks"></i>
+                        <span>import CSV</span>
+                    </a>
+                </li>
               </ul>
               <!-- sidebar menu end-->
           </div>

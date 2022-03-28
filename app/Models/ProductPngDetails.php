@@ -14,4 +14,9 @@ class ProductPngDetails extends Model
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
     }
+    public function Oder_detail()
+    {
+        return $this->hasMany(Oder_detail::class, 'oder_sku', 'id');
+    }
+
 }
