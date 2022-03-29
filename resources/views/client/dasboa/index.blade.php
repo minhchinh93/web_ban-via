@@ -139,7 +139,7 @@
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
-                                          <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('deletePngAll',[$report->id]) }}">
+                                          <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$report->id]) }}">
                                             <i class="fa-solid fa-circle-down"></i>
                                         </a>
                                         </div>
