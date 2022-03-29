@@ -2,7 +2,7 @@
 
 
 @section ('content')
-
+@if(Auth::user()->role != 3)
 <section id="main-content" oncontextmenu="return false;"
 style="-moz-user-select: none !important;
 -webkit-touch-callout: none!important;
@@ -10,8 +10,10 @@ style="-moz-user-select: none !important;
 -khtml-user-select: none!important;
 -moz-user-select: none!important;
 -ms-user-select: none!important;
-user-select: none!important;"
->
+user-select: none!important;">
+@else
+<section id="main-content">
+@endif
     <section class="wrapper" style=" background: rgba(236, 240, 240, 0.644);color:black; font-family:Roboto,sans-serif;background-image: url('https://msmobile.com.vn/upload_images/images/hinh-nen-powerpoint-mau-den-8.jpg');background-size: cover;">
         <div class="row mt">
         <div class="col-lg-2 col-md-2 col-sm-2 mb" >

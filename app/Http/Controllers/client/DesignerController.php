@@ -361,16 +361,31 @@ class DesignerController extends Controller
     public function dowloadURL(Request $request, $id)
     {
         $datapngs = ProductPngDetails::where('product_id', $id)->get();
+
         foreach ($datapngs as $datapng) {
             $image = $datapng->ImagePngDetail;
             $filename = str_replace('images/', '', $image);
-            $UrlImage = url('/storage/' . $image);
+            $UrlImage = url('/storage/' . $filename);
             $tempImage = tempnam(sys_get_temp_dir(), $filename);
             copy($UrlImage, $tempImage);
             return response()->download($tempImage, $filename);
 
         }
         return redirect()->back();
+    }
+    public function dowloadMocupURL(Request $request, $id)
+    {
+        $datapngs = mocupProduct::where('product_id', $id)->get();
 
+        foreach ($datapngs as $datapng) {
+            $image = $datapng->ImagePngDetail;
+            $filename = str_replace('images/', '', $image);
+            $UrlImage = url('/storage/' . $filename);
+            $tempImage = tempnam(sys_get_temp_dir(), $filename);
+            copy($UrlImage, $tempImage);
+            return response()->download($tempImage, $filename);
+
+        }
+        return redirect()->back();
     }
 }

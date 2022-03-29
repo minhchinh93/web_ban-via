@@ -127,6 +127,7 @@ Route::middleware('auth')->group(function () {
     Route::post('postCsv', [csvController::class, 'postCsv'])->name('postCsv');
 
     Route::get('dowloadURL/{id}', [DesignerController::class, 'dowloadURL'])->name('dowloadURL');
+    Route::get('dowloadMocupURL/{id}', [DesignerController::class, 'dowloadMocupURL'])->name('dowloadMocupURL');
 
 });
 Route::get('detailAccountHistory/{id}', [AccountHistoryController::class, 'detailAccountHistory'])->middleware('auth')->name('detailAccountHistory');
