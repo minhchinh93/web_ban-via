@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class finePngController extends Controller
 {
-    //SELECT
+    // SELECT
     // users.name as "name",
     // products.title as "title",
     // product_png_details.ImagePngDetail as "ImagePngDetail"
@@ -21,11 +21,19 @@ class finePngController extends Controller
         $keyword = $request->keyword;
         $show = ProductPngDetails::join('products', 'product_png_details.product_id', '=', 'products.id')
         // INNER JOIN users ON products.id_idea = users.id
-            ->join('users', 'products.id_idea', '=', 'users.id')
+            ->join('users', 'products.User_id', '=', 'users.id')
+            ->leftJoin('oder_details', 'oder_details.oder_sku', '=', 'product_png_details.Sku')
             ->select(DB::raw('
             users.name as "name",
             products.title as "title",
-            product_png_details.ImagePngDetail as "ImagePngDetail"
+            products.id as "id",
+            product_png_details.ImagePngDetail as "ImagePngDetail",
+            product_png_details.Sku as "Sku",
+            oder_details.Number_Items as "Number_Items",
+            oder_details.order_Total as "Order_Total",
+            oder_details.Sale_Date as "Sale_Date",
+            oder_details.Date_Shipped as "Date_Shipped",
+            oder_details.saller as "saller"
             '
             ))
             ->Where('product_png_details.Sku', 'like', "%{$keyword}%")
