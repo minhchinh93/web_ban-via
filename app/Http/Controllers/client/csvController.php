@@ -29,6 +29,7 @@ class csvController extends Controller
             oder_details.saller as "saller"
             '
             ))
+            ->distinct()
         // ->groupBy('')
         // ->Where('product_png_details.Sku', 'like', "%{$keyword}%")
         // ->orWhere('title', 'like', "%{$keyword}%")
