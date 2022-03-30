@@ -32,7 +32,7 @@ class csvController extends Controller
         // ->groupBy('')
         // ->Where('product_png_details.Sku', 'like', "%{$keyword}%")
         // ->orWhere('title', 'like', "%{$keyword}%")
-            ->paginate(10);
+            ->paginate(9);
 
         return view('client.checkOder.indexOder', ['shows' => $show]);
     }
