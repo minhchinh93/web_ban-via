@@ -35,14 +35,22 @@
     </div>
     <div class="row mt">
         @foreach($shows as $show)
-        <div class="col-lg-3 col-md-3 col-sm-3 mb">
-            <div class="content-panel pn "  style="display: flex;flex-direction: space-between;">
+        <div class="col-lg-3 col-md-3 col-sm-3 mb" >
+            <div class="content-panel pn "  style="display: flex;flex-direction: space-between;border-radius: 10%; ">
                 <div class="media"  style="margin-right:20px">
-                    <img src="{{asset('/storage/'.$show->ImagePngDetail)}}" alt="..." width="200px" class="img-thumbnail">
+                    <img src="{{asset('/storage/'.$show->ImagePngDetail)}}" alt="..."style="max-width:150px;border-radius: 10px;" class="img-thumbnail">
                 </div>
                 <div class="media-body">
-                      <h3 class="mt-0">Idea: {{ $show->name}}</h3><hr>
-                      <h4>Title: {{ $show->title}}</h4><hr>
+                    <h5 class="mt-0">Designer: {{ $show->name}}</h5>
+                    <h5 class="mt-0">saller: {{ $show->saller ?? NULL}}</h5><hr>
+                    <h6>Title: {{ $show->title}}</h6>
+                    <h6>solt: {{ $show->Number_Items }} </h6>
+                    <h6>Order_Total: ${{     $show->Order_Total }}</h6>
+                    <h6>Sale_Date: {{ $show->Sale_Date }}</h6>
+                    <h6>Date_Shipped: {{ $show->Date_Shipped}}</h6>
+                    {{-- @foreach ($show->id->cornerstones as $cornerstone)
+                    <span class="label label-info label-mini">{{ $cornerstone->name}}</span>
+                    @endforeach --}}
                 </div>
                 </div>
             </div><!-- --/panel ---->
