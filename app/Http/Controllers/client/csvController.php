@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Oder_detail;
 use App\Models\ProductPngDetails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class csvController extends Controller
@@ -15,7 +16,7 @@ class csvController extends Controller
     {
         $show = ProductPngDetails::join('products', 'product_png_details.product_id', '=', 'products.id')
         // INNER JOIN users ON products.id_idea = users.id
-            ->join('users', 'products.id_idea', '=', 'users.id')
+            ->join('users', 'products.User_id', '=', 'users.id')
             ->join('oder_details', 'oder_details.oder_sku', '=', 'product_png_details.Sku')
             ->select(DB::raw('
             users.name as "name",
@@ -23,14 +24,15 @@ class csvController extends Controller
             product_png_details.ImagePngDetail as "ImagePngDetail",
             oder_details.Number_Items as "Number_Items",
             oder_details.order_Total as "Order_Total",
-            oder_details.Sale_Date as "Sale_Date"
-
+            oder_details.Sale_Date as "Sale_Date",
+            oder_details.Date_Shipped as "Date_Shipped",
+            oder_details.saller as "saller"
             '
             ))
         // ->groupBy('')
         // ->Where('product_png_details.Sku', 'like', "%{$keyword}%")
         // ->orWhere('title', 'like', "%{$keyword}%")
-            ->paginate(33);
+            ->paginate(10);
 
         return view('client.checkOder.indexOder', ['shows' => $show]);
     }
@@ -39,10 +41,6 @@ class csvController extends Controller
 
         $file = $request->file('file');
         $filename = $file->getClientOriginalName();
-        $extension = $file->getClientOriginalExtension();
-        $tempPath = $file->getRealPath();
-        $fileSize = $file->getSize();
-        $mimeType = $file->getMimeType();
         $location = 'uploads';
         $file->move($location, $filename);
         $filepath = public_path($location . "/" . $filename);
@@ -70,6 +68,7 @@ class csvController extends Controller
                 "Order_Total" => $importData[23],
                 "Date_Shipped" => $importData[8],
                 "oder_sku" => $importData[35],
+                "saller" => Auth::user()->name,
             ];
             Oder_detail::create($insertData);
         }
