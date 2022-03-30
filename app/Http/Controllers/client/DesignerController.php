@@ -358,7 +358,7 @@ class DesignerController extends Controller
         return redirect()->back();
 
     }
-    public function dowloadURL(Request $request, $id)
+    public function dowloaddURL(Request $request, $id)
     {
         $datapngs = ProductPngDetails::where('product_id', $id)->get();
 
@@ -383,7 +383,7 @@ class DesignerController extends Controller
             $UrlImage = url('/storage/' . $image);
             $tempImage = tempnam(sys_get_temp_dir(), $filename);
             copy($UrlImage, $tempImage);
-            return response()->download($tempImage, $filename);
+            return (response()->download($tempImage, $filename));
 
         }
         return redirect()->back();
