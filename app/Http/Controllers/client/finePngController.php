@@ -20,7 +20,6 @@ class finePngController extends Controller
     {
         $keyword = $request->keyword;
         $show = ProductPngDetails::join('products', 'product_png_details.product_id', '=', 'products.id')
-        // INNER JOIN users ON products.id_idea = users.id
             ->join('users', 'products.User_id', '=', 'users.id')
             ->leftJoin('oder_details', 'oder_details.oder_sku', '=', 'product_png_details.Sku')
             ->select(DB::raw('
@@ -38,7 +37,7 @@ class finePngController extends Controller
             ))
             ->Where('product_png_details.Sku', 'like', "%{$keyword}%")
             ->orWhere('title', 'like', "%{$keyword}%")
-            ->paginate(33);
+            ->paginate(32);
 
         return view('client.findPNG.indexPNG', ['shows' => $show,
         ]);

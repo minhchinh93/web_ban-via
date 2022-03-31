@@ -54,11 +54,12 @@
                 </div>
                 </div>
             </div><!-- --/panel ---->
-        </div>
+        
         @endforeach
-    </div>
-    {{ $shows->links() }}
+</div>
+
 </section>
+{{ $shows->links() }}
 </section>
 
 @endsection
