@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\cornerstone;
 use App\Models\Product;
 use App\Models\ProductDetails;
+use App\Models\ProductPngDetails;
 use App\Models\size;
 use App\Models\type_product;
 use App\Models\User;
@@ -13,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -497,5 +499,31 @@ class HomeController extends Controller
         } else {
             return redirect()->route('login');
         }
+    }
+    public function addPngDetailsIdea(Request $request, $id)
+    {
+
+        // dd($request->file('image'));
+        $file = $request->file('image');
+
+        foreach ($file as $image) {
+            $str = $image->getClientOriginalName();
+            $filename = str_replace(' ', '-', $str);
+            $dataImage = [
+                'product_id' => $id,
+                'ImagePngDetail' => $image->storeas('images', time() . $filename),
+            ];
+            $datapng = ProductPngDetails::where('id', $id)->create($dataImage);
+            $idPNG = $datapng->id;
+            $name = strtoupper(Str::random(4));
+            $sku = $name . "-" . $idPNG;
+
+            ProductPngDetails::where('id', $idPNG)->update([
+                'Sku' => $sku,
+            ]);
+        }
+        Product::where('id', $id)->update(['status' => 5]);
+        return redirect()->back();
+
     }
 }

@@ -221,7 +221,7 @@
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                           <div class="modal-content">
                                             <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                              <h5 class="modal-title" id="exampleModalLongTitle">Mockup</h5>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                               </button>
@@ -247,22 +247,29 @@
                                     </section>
                                     </section>
                                       </div>
-                                    <td data-toggle="modal" data-target="#b{{$report->id}}">
+
                                         @if (count($report->ProductPngDetails)!=0)
+                                    <td data-toggle="modal" data-target="#b{{$report->id}}">
                                         <span class="badge bg-info">{{ count($report->ProductPngDetails) }}</span>
                                         <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail ) ?? null }}" style="border-radius: 5%;width: 150px;"  >
-                                        @endif
-                                        {{-- <span type="button" class="label label-success" data-toggle="modal" data-target="#b{{$report->id}}">
-                                            xem anh designer
-                                          </span> --}}
                                     </td>
+                                        @else
+                                        <td style=" max-width: 250px;">
+                                            <form class="form-inline" action="{{ route('addPngDetailsIdea',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                             @csrf
+                                             <input name="image[]" class="form-control" type="file"  style="max-width: 200px;height: 100px;background:#FFE4B5" multiple  required><br>
+                                             <button type="submit" class="btn btn-primary"><i class="fa-solid fa-square-plus"></i></button><br>
+                                            </form>
+                                        </td>
+                                         @endif
+
                                     <div class="modal fade" id="b{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <section id="main-content">
                                             <section class="wrapper">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                           <div class="modal-content">
                                             <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                              <h5 class="modal-title" id="exampleModalLongTitle">PNG</h5>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                               </button>
