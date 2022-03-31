@@ -5,7 +5,7 @@ namespace App\Http\Controllers\client;
 use App\Http\Controllers\Controller;
 use App\Models\Oder_detail;
 use App\Models\oder_Ebay;
-use App\Models\product;
+use App\Models\Product;
 use App\Models\ProductPngDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +33,7 @@ class csvController extends Controller
             ))
             ->distinct()
             ->paginate(12);
-        $showEbay = product::join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
+        $showEbay = Product::join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
             ->join('oder__ebays', 'oder__ebays.oder_Title', '=', 'products.title')
             ->join('users', 'products.User_id', '=', 'users.id')
             ->select(DB::raw('
