@@ -76,12 +76,12 @@
                  <li class="mt">
                       <a class="{{ (request()->is('admin/AadminHome')) ? 'active' : 'sub-menu' }}" href="{{ route('AadminHome') }}">
                           <i class="fa fa-dashboard"></i>
-     
+
                       </a>
                   </li>
                   <li class="sub-menu">
                       <a class="{{ (request()->is('admin/showList/dasboa')) ? 'active' : 'sub-menu' }}" href="{{ route('showdasboa') }}">
-                          <i class="fa fa-dashboard"></i>
+                          <i class="fa fa-cogs"></i>
                       </a>
                   </li>
 
