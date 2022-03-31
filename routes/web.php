@@ -100,6 +100,7 @@ Route::middleware('CheckIdea')->group(function () {
     Route::get('showdetail/{key1}/{key2}', [detailIdeaController::class, 'showdetail'])->name('showdetail');
 
     // find PNG
+    Route::post('addPngDetailsIdea/{id}', [HomeController::class, 'addPngDetailsIdea'])->name('addPngDetailsIdea');
 
 });
 
