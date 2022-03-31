@@ -78,7 +78,7 @@
             </div><!-- /col-lg-12 -->
         </div>
      <hr>
-        <div class="row mt" >
+        {{-- <div class="row mt" >
             <div class="col-md-12" >
                 <div class="content-panel"  style=" border-radius: 20px;">
                     <h4><i class="fa fa-angle-right"></i>  Bảng Báo Cáo</h4>
@@ -255,9 +255,7 @@
                                     <span class="badge bg-info">{{ count($report->ProductPngDetails) }}</span>
                                     <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail ) ?? null }}" style="border-radius: 5%;width: 150px; height :150px"  >
                                     @endif
-                                    {{-- <span type="button" class="label label-success" data-toggle="modal" data-target="#b{{$report->id}}">
-                                        xem anh designer
-                                      </span> --}}
+
                                 </td>
                                 <div class="modal fade" id="b{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <section id="main-content">
@@ -315,7 +313,7 @@
                 </div><!-- /content-panel -->
             </div><!-- /col-md-12 -->
             {{ $reports->links() }}
-        </div>
+        </div> --}}
     </section>
 </section>
 

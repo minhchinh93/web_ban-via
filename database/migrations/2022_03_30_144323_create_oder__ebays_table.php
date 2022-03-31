@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOderDetailsTable extends Migration
+class CreateOderEbaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateOderDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('oder_details');
-        Schema::create('oder_details', function (Blueprint $table) {
+        Schema::create('oder__ebays', function (Blueprint $table) {
             $table->id();
-            $table->string('oder_sku')->nullable();
+            $table->string('oder_Title')->nullable();
             $table->string('Number_Items')->nullable();
             $table->string('Sale_Date')->nullable();
-            $table->float('Order_Total')->nullable();
+            $table->string('Order_Total')->nullable();
             $table->string('Date_Shipped')->nullable();
+            $table->string('saller')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateOderDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oder_details');
+        Schema::dropIfExists('oder__ebays');
     }
 }

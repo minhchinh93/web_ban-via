@@ -126,6 +126,10 @@ Route::middleware('auth')->group(function () {
     Route::get('importCsv', [csvController::class, 'importCsv'])->name('importCsv');
     Route::post('postCsv', [csvController::class, 'postCsv'])->name('postCsv');
 
+    Route::post('postCsvEbay', [csvController::class, 'postCsvEbay'])->name('postCsvEbay');
+
+    //download images
+
     Route::get('dowloadURL/{id}', [DesignerController::class, 'dowloadURL'])->name('dowloadURL');
     Route::get('dowloadMocupURL/{id}', [DesignerController::class, 'dowloadMocupURL'])->name('dowloadMocupURL');
 

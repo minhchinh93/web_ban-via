@@ -4,6 +4,8 @@ namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Oder_detail;
+use App\Models\oder_Ebay;
+use App\Models\product;
 use App\Models\ProductPngDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,12 +32,31 @@ class csvController extends Controller
             '
             ))
             ->distinct()
+            ->paginate(12);
+        $showEbay = product::join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
+            ->join('oder__ebays', 'oder__ebays.oder_Title', '=', 'products.title')
+            ->join('users', 'products.User_id', '=', 'users.id')
+            ->select(DB::raw('
+            users.name as "name",
+            products.title as "title",
+            product_png_details.ImagePngDetail as "ImagePngDetail",
+            oder__ebays.Number_Items as "Number_Items",
+            oder__ebays.order_Total as "Order_Total",
+            oder__ebays.Sale_Date as "Sale_Date",
+            oder__ebays.Date_Shipped as "Date_Shipped",
+            oder__ebays.saller as "saller"
+            '
+            ))
+            ->distinct()
         // ->groupBy('')
         // ->Where('product_png_details.Sku', 'like', "%{$keyword}%")
         // ->orWhere('title', 'like', "%{$keyword}%")
-            ->paginate(9);
+            ->paginate(12);
 
-        return view('client.checkOder.indexOder', ['shows' => $show]);
+        return view('client.checkOder.indexOder', [
+            'shows' => $show,
+            'showEbay' => $showEbay,
+        ]);
     }
     public function postCsv(Request $request)
     {
@@ -73,6 +94,58 @@ class csvController extends Controller
             ];
             Oder_detail::create($insertData);
         }
+        return redirect()->back();
+    }
+    public function postCsvEbay(Request $request)
+    {
+
+        $file = $request->file('file');
+        $filename = $file->getClientOriginalName();
+        $location = 'uploads';
+        $file->move($location, $filename);
+        $filepath = public_path($location . "/" . $filename);
+        // Reading file
+        $file = fopen($filepath, "r");
+
+        $filedata = fgetcsv($file, 1000, ',');
+
+        $importData_arr = [];
+        $i = 0;
+
+        while (($filedata = fgetcsv($file, 1000, ",")) !== false) {
+            $num = count($filedata);
+            for ($c = 0; $c < $num; $c++) {
+                $importData_arr[$i][] = $filedata[$c];
+            }
+            $i++;
+        }
+        fclose($file);
+
+        $v = 1;
+
+        while ($v < (count($importData_arr) - 2)) {
+            $v++;
+            $str = $importData_arr[$v][23];
+            $re = '/(.*)(\[.*\])/m';
+            preg_match($re, $str, $matches);
+
+            $Order_Total = str_replace('$', '', $importData_arr[$v][45]);
+            if (preg_match($re, $str, $matches)) {
+                $oder_Title = trim($matches[1]);
+            } else {
+                $oder_Title = null;
+            }
+            // dd($Order_Total);
+            $insertData = [
+                "Number_Items" => $importData_arr[$v][26],
+                "Sale_Date" => $importData_arr[$v][49],
+                "Order_Total" => $Order_Total,
+                "Date_Shipped" => $importData_arr[$v][50],
+                "oder_Title" => $oder_Title,
+                "saller" => Auth::user()->name,
+            ];
+            oder_Ebay::create($insertData)->toSql();
+        };
         return redirect()->back();
     }
 }
