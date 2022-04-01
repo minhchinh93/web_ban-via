@@ -79,6 +79,8 @@
                     <td><span class="label label-info label-mini">DESIGNER</span></td>
                     @elseif ($show->role ==2)
                     <td><span class="label label-warning label-mini">IDEA</span></td>
+                    @elseif ($show->role ==0)
+                    <td><span class="label label-danger label-mini">Chưa cấp quyền</span></td>
                     @else
                     <td><span class="label label-success label-mini">ADMIN</span></td>
                     @endif
