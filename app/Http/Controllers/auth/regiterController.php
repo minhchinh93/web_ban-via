@@ -20,7 +20,7 @@ class regiterController extends Controller
         $data = [
             'name' => $request->name,
             'email' => $request->email,
-            'role' => $request->role,
+            'role' => 0,
             'password' => bcrypt($request->password),
             'remember_token' => md5($request->name . time()),
         ];

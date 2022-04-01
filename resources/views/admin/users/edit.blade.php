@@ -29,10 +29,10 @@
                             <input type="text" class="form-control" name="role" value="{{ $shows->role }}">
                         </div> --}}
                         <select class="form-control "  id="cars" name="role" >>
-                            <option value="{{ $shows->role }}">{{ $shows->role==1 ? 'designer' : 'idea' }}</option>
                             <option value="1">designer</option>
                             <option value="3">admin</option>
                             <option value="2">idea</option>
+                            <option value="0">xóa quyền khỏi hệ thống</option>
                           </select><br/><br/>
 
                     <div class="form-group">

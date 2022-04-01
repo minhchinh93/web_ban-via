@@ -15,10 +15,10 @@
               <input type="text" class="form-control" placeholder="email" name="email" required>
               <span style="color:red" class="error">{{ $errors->first('email') }}</span>
               <br>
-              <select class="form-control "  id="cars" name="role" required>
+              {{-- <select class="form-control "  id="cars" name="role" required>
                 <option value="1">designer</option>
                 <option value="2">idea</option>
-              </select>   <br>
+              </select>   <br> --}}
               <input type="password" class="form-control" placeholder="Password" name="password" required>
               <span style="color:red" class="error">{{ $errors->first('Password') }}</span>
               <br>

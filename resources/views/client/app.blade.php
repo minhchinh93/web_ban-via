@@ -82,7 +82,7 @@
       <!--header start-->
       <header class="header black-bg" style="background:#d48166">
               <div class="sidebar-toggle-box">
-                <div data-placement="right" data-original-title="Toggle Navigation" ><img  src="http://hblmedia.online/admin/img/Logo.png" width="55"style="margin-top:-15px;border-radius:30%" class=" fa fa-bars tooltips"></div>
+                <div data-placement="right" > <a href="{{ route('dasboa') }}"><img  src="http://hblmedia.online/admin/img/Logo.png" width="55"style="margin-top:-15px;border-radius:30%" class=" fa fa-bars tooltips"></a></div>
             </div>
             <!--logo start-->
             <a href="{{ route('home') }}" class="logo"><b>MEDIA - System Mr.Hải</b></a>
@@ -106,17 +106,10 @@
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
       <!--sidebar start-->
+      @if(Auth::user()->role!=0)
       <aside>
           <div id="sidebar"  class="nav-collapse " style="background:#373a36;max-width:70px">
-              <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
-{{--
-              	  <p class="centered"><a href="#"><img src="{{ asset('admin/img/Logo.png') }}" class="img-circle" width="60"></a></p>
-                   @if(Auth::check())
-              	  <h5 class="centered">Chào mừng {{ Auth::user()->name }}</h5>
-                @else
-                <h5 class="centered">AUTOCOM</h5>
-                @endif --}}
                   <li class="mt">
                       <a class="{{ (request()->is('/dasboa')) ? 'active' : 'sub-menu' }}" href="{{ route('dasboa') }}">
                           <i class="fa fa-dashboard"></i>
@@ -168,6 +161,31 @@
       *********************************************************************************************************************************************************** -->
       @yield('content')
       <!--footer start-->
+      @else
+      <section id="main-content" style="margin-left: 0px;">
+        <section class="wrapper" style="min-height: 90vh;color:rgb(0, 0, 0); font-family:Roboto,sans-serif; background-image: url('https://allimages.sgp1.digitaloceanspaces.com/wikilaptopcom/2021/01/Background-tim-cuc-dep.png');background-size: cover;" >
+            <div class="row mt">
+            <div class="col-lg-12 col-md-12 col-sm-12 mb" >
+                <div class="content-panel pn">
+                    <div id="spotify" style="text-align=center">
+                        <div class="col-xs-12 col-xs-offset-12">
+                            <button class="btn btn-sm btn-clear-g">FOLLOW</button>
+                        </div>
+                        <div class="sp-title"  >
+                            <h3>BÁO CHO ADMIN ĐỂ ĐƯỢC CẤP QUYỀN VÀO HỆ THỐNG !</h3>
+                        </div>
+                        <div class="play">
+                            <i class="fa fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <p class="followers"><i class="fa fa-user"></i> MEDIA - System Mr.Hải</p>
+                </div>
+            </div>
+            </div>
+        </section>
+    </section>
+
+      @endif
       <footer class="site-footer">
           <div class="text-center">
               2014 - Alvarez.is

@@ -40,7 +40,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/chinh', function () {
     return view('client.test');
 });
-Route::middleware('CheckDesinger')->group(function () {
+Route::middleware(['CheckDesinger', 'veryMail'])->group(function () {
     Route::get('Dashboard', [DesignerController::class, 'Dashboard'])->name('Dashboard');
     Route::get('Detail/{id}', [DesignerController::class, 'Detail'])->name('Detail');
     Route::post('acceptDetail/{id}', [DesignerController::class, 'acceptDetail'])->name('acceptDetail');
@@ -65,7 +65,7 @@ Route::middleware('CheckDesinger')->group(function () {
 });
 Route::get('dasboa', [indexController::class, 'dasboa'])->name('dasboa');
 
-Route::middleware('CheckIdea')->group(function () {
+Route::middleware(['CheckIdea', 'veryMail'])->group(function () {
 
     // Route::get('/chinh', function () {
     //     return view('client.test');
@@ -104,7 +104,7 @@ Route::middleware('CheckIdea')->group(function () {
 
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'veryMail'])->group(function () {
     Route::get('showTool', [toolController::class, 'showTool'])->name('showtool');
     Route::post('postTypeProduct', [toolController::class, 'postTypeProduct'])->name('postTypeProduct');
 
@@ -188,7 +188,7 @@ Route::prefix('auth')->group(function () {
 });
 //middleware('checkAdmin')->
 //============ ADMIN  ====================//
-Route::middleware('checkAdmin')->prefix('admin')->group(function () {
+Route::middleware(['checkAdmin', 'veryMail'])->prefix('admin')->group(function () {
     //=======dasboa=========//
     //show dasboa
     Route::get('showdasboa', [dasboaController::class, 'showdasboa'])->name('showdasboa');

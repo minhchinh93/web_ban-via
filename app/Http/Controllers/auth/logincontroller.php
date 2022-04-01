@@ -19,9 +19,7 @@ class logincontroller extends Controller
 
         if (Auth::attempt($request->only('email', 'password'))) {
 
-            if (Auth::user()->role == 1) {
-                return redirect()->route('dasboa');
-            } elseif (Auth::user()->role == 2) {
+            if (Auth::user()->role == 1 or Auth::user()->role == 2 or Auth::user()->role == 0) {
                 return redirect()->route('dasboa');
             } else {
                 return redirect()->route('AadminHome');

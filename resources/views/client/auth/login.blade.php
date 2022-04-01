@@ -16,7 +16,11 @@
             <div class="alert alert-danger " role="alert">
                 {{ session('erros') }}
            </div>
-            @endif
+           @elseif (session('message'))
+           <div class="alert alert-danger " role="alert">
+               {{ session('message') }}
+          </div>
+           @endif
               <input type="email" class="form-control" placeholder="User ID" name="email" autofocus>
               <br>
               <input type="password" class="form-control" placeholder="Password" name="password" autofocus>
