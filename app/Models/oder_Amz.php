@@ -5,15 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Oder_detail extends Model
+class oder_Amz extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
-
-    public function ProductPngDetails()
-    {
-        return $this->belongsTo(ProductPngDetails::class, 'oder_sku', 'id');
-
-    }
 }

@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/zabuto_calendar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/js/gritter/css/jquery.gritter.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/lineicons/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
@@ -94,6 +96,11 @@
                   <li class="sub-menu">
                     <a class="{{ (request()->is('/showDoc')) ? 'active' : 'sub-menu' }}" href="{{ route('showDoc') }}" >
                         <i class="fa fa-th"></i>
+                    </a>
+                </li>
+                  <li class="sub-menu">
+                    <a class="{{ (request()->is('admin/OderAdmin')) ? 'active' : 'sub-menu' }}" href="{{ route('OderAdmin') }}" >
+                        <i class="fa-solid fa-money-bill-1-wave"></i>
                     </a>
                 </li>
               </ul>
