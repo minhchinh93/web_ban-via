@@ -10,18 +10,18 @@
                 <div class="box1" style=" border-radius: 20px;
                 background-image: linear-gradient(90deg, #fe9e75, rgb(245, 45, 78)); ">
                     <span class="li_heart" style="color:rgb(252, 250, 247);"></span>
-                    <h5  style="color:rgb(250, 250, 250)">TOTAL ODER  :  </h5>
-                    <h4  style="color:rgb(248, 245, 241)">TOTAL MONEY : {{ null }}</h4>
+                    <h5  style="color:rgb(250, 250, 250)">TOTAL ODER  : {{ $totalItemEsty }} </h5>
+                    <h4  style="color:rgb(248, 245, 241)">TOTAL MONEY : ${{ $totalPriceEsty }}</h4>
                 </div>
-                <a style="color:red" href="{{ route('totalidea') }}"><p>see more EBAY !</p></a>
+                <a style="color:red" href="{{ route('totalidea') }}"><p>see more ESTY !</p></a>
             </div>
             <div class="col-md-4 col-sm-4 box0">
                 <div class="box1" style="background-image: linear-gradient(90deg, #0bd48e, rgba(158, 168, 8, 0.829));  border-radius:20px;">
                     <span class="li_cloud" style="color:rgb(255, 255, 255)"></span>
-                    <h5 style="color:rgb(250, 250, 253)">TOTAL ODER  :{{ Null }}</h5>
-                    <h4 style="color:rgb(243, 242, 247)">TOTAL MONEY : {{ NULL }}</h4>
+                    <h5 style="color:rgb(250, 250, 253)">TOTAL ODER  :{{ $totalItemEBay}}</h5>
+                    <h4 style="color:rgb(243, 242, 247)">TOTAL MONEY :${{$totalPriceEBay }}</h4>
                 </div>
-                <a style="color:red" href="{{ route('totalDesigner') }}"><p>see ESTY !</p></a>
+                <a style="color:red" href="{{ route('totalDesigner') }}"><p>see EBAY !</p></a>
             </div>
             <div class="col-md-3 col-sm-3 box0">
                 <div class="box1" style="background-image: linear-gradient(90deg, #fe6c7d, rgba(37, 8, 168, 0.829));  border-radius: 20px;">
@@ -57,9 +57,9 @@
                         <h5>ESTY</h5>
                     </div>
                     <div class="chart mt">
-                        <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655,135,667,333,526,996,564,123,890,464,655,135,667,333,526,996,564,123,890,464,655,135,667,333,526,996,564,123,890,464,655]"><canvas width="358" height="75" style="display: inline-block; width: 358px; height: 75px; vertical-align: top;"></canvas></div>
+                        <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[{{ $StrsicharEsty }}]"><canvas width="358" height="75" style="display: inline-block; width: 358px; height: 75px; vertical-align: top;"></canvas></div>
                     </div>
-                    <p class="mt"><b>$ 17,980</b><br>Month Income</p>
+                    <p class="mt"><b>$ {{ $totolEsty }}</b><br>Total 30 Day</p>
                 </div>
             </div>
         <div class="col-md-4 col-sm-4 mb">
@@ -69,9 +69,9 @@
                     <h5>EBAY</h5>
                 </div>
                 <div class="chart mt">
-                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655,135,667,333,526,996,564,123,890,464,655,135,667,333,526,996,564,123,890,464,655,135,667,333,526,996,564,123,890,464,655]"><canvas width="358" height="75" style="display: inline-block; width: 358px; height: 75px; vertical-align: top;"></canvas></div>
+                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[{{ $StrsicharEbay }}]"><canvas width="358" height="75" style="display: inline-block; width: 358px; height: 75px; vertical-align: top;"></canvas></div>
                 </div>
-                <p class="mt"><b>$ 17,980</b><br>Month Income</p>
+                <p class="mt"><b>$ {{ $totolEbay }}</b><br>Total 30 Day</p>
             </div>
         </div>
         <div class="col-md-4 col-sm-4 mb">
@@ -81,7 +81,7 @@
                     <h5>AMAZON</h5>
                 </div>
                 <div class="chart mt">
-                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655]"><canvas width="358" height="75" style="display: inline-block; width: 358px; height: 75px; vertical-align: top;"></canvas></div>
+                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[0]"><canvas width="358" height="75" style="display: inline-block; width: 358px; height: 75px; vertical-align: top;"></canvas></div>
                 </div>
                 <p class="mt" ><b >$ 17,980</b><br>Month Income</p>
             </div>

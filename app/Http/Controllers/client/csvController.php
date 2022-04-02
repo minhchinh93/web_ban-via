@@ -144,7 +144,8 @@ class csvController extends Controller
                 "oder_Title" => $oder_Title,
                 "saller" => Auth::user()->name,
             ];
-            oder_Ebay::create($insertData)->toSql();
+            oder_Ebay::create($insertData);
+            oder_Ebay::where('oder_Title', null)->delete();
         };
         return redirect()->back();
     }
