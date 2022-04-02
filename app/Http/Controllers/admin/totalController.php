@@ -142,12 +142,12 @@ class totalController extends Controller
                 ->groupBy('products.id')
                 ->Where('product_cornerstone.cornerstones_id', $request->cornerstone)
                 ->orWhere('title', 'like', "%{$keyword}%")
-                ->paginate(10000);
+                ->paginate(100);
 
         } else {
             $report = Product::orderBy('updated_at', 'desc')
                 ->Where('title', 'like', "%{$keyword}%")
-                ->paginate(100);
+                ->paginate(10);
         }
 
         // foreach ($report as $rep) {

@@ -5,9 +5,9 @@ use App\Http\Controllers\admin\adminHomeController;
 use App\Http\Controllers\admin\craterJobController;
 use App\Http\Controllers\admin\dasboaController;
 use App\Http\Controllers\admin\DetailController;
+use App\Http\Controllers\admin\OderController;
 use App\Http\Controllers\admin\productController;
 use App\Http\Controllers\admin\totalController;
-use App\Http\Controllers\admin\typeProductController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\auth\cfController;
 use App\Http\Controllers\auth\logincontroller;
@@ -129,6 +129,8 @@ Route::middleware(['auth', 'veryMail'])->group(function () {
 
     Route::post('postCsvEbay', [csvController::class, 'postCsvEbay'])->name('postCsvEbay');
 
+    Route::post('postCsvAmazon', [csvController::class, 'postCsvAmazon'])->name('postCsvAmazon');
+
     //download images
 
     Route::get('dowloadURL/{id}', [DesignerController::class, 'dowloadURL'])->name('dowloadURL');
@@ -230,26 +232,26 @@ Route::middleware(['checkAdmin', 'veryMail'])->prefix('admin')->group(function (
 
     //=========khoi categoru============//
     //show list ctegori
-    Route::get('categoriesList', [typeProductController::class, 'categoriesList'])->name('categoriesList');
-    //show index add
-    Route::get('addCategory', [typeProductController::class, 'addCategory'])->name('addCategory');
-    // show add post
-    Route::post('postCategory', [typeProductController::class, 'postCategory'])->name('postCategory');
-    // show index update
-    Route::get('updatetemplateCategory/{id}', [typeProductController::class, 'updatetemplateCategory'])->name('updatetemplateCategory');
-    Route::post('updateCategory/{id}', [typeProductController::class, 'updateCategory'])->name('updateCategory');
-    // delete categori
-    Route::get('deleteCategory/{id}', [typeProductController::class, 'deleteCategory'])->name('deleteCategory');
-    // show trackuser
-    Route::get('trackCategory', [typeProductController::class, 'trackCategory'])->name('trackCategory');
-    //show activeruser
-    Route::get('activerCategory', [typeProductController::class, 'activerCategory'])->name('activerCategory');
-    // khoi phuc thung rac
-    Route::get('restoreCategory/{id}', [typeProductController::class, 'restoreCategory'])->name('restoreCategory');
-    // thực hiện tác vụ
-    Route::get('categoryaction', [typeProductController::class, 'action'])->name('categoryaction');
+    // Route::get('categoriesList', [typeProductController::class, 'categoriesList'])->name('categoriesList');
+    // //show index add
+    // Route::get('addCategory', [typeProductController::class, 'addCategory'])->name('addCategory');
+    // // show add post
+    // Route::post('postCategory', [typeProductController::class, 'postCategory'])->name('postCategory');
+    // // show index update
+    // Route::get('updatetemplateCategory/{id}', [typeProductController::class, 'updatetemplateCategory'])->name('updatetemplateCategory');
+    // Route::post('updateCategory/{id}', [typeProductController::class, 'updateCategory'])->name('updateCategory');
+    // // delete categori
+    // Route::get('deleteCategory/{id}', [typeProductController::class, 'deleteCategory'])->name('deleteCategory');
+    // // show trackuser
+    // Route::get('trackCategory', [typeProductController::class, 'trackCategory'])->name('trackCategory');
+    // //show activeruser
+    // Route::get('activerCategory', [typeProductController::class, 'activerCategory'])->name('activerCategory');
+    // // khoi phuc thung rac
+    // Route::get('restoreCategory/{id}', [typeProductController::class, 'restoreCategory'])->name('restoreCategory');
+    // // thực hiện tác vụ
+    // Route::get('categoryaction', [typeProductController::class, 'action'])->name('categoryaction');
 
-    Route::get('categoriesDetail/{id}', [typeProductController::class, 'categoriesDetail'])->name('categoriesDetail');
+    // Route::get('categoriesDetail/{id}', [typeProductController::class, 'categoriesDetail'])->name('categoriesDetail');
 
     //=====khoi product===========//
     //show index add
@@ -271,6 +273,8 @@ Route::middleware(['checkAdmin', 'veryMail'])->prefix('admin')->group(function (
     Route::get('deletejob/{id}', [craterJobController::class, 'deletejob'])->name('deletejob');
     // create job public
     Route::get('updateJob/{id}', [craterJobController::class, 'updateJob'])->name('updateJob');
+    //oder_Admin
+    Route::get('OderAdmin', [OderController::class, 'OderAdmin'])->name('OderAdmin');
 
 });
 

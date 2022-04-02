@@ -30,7 +30,19 @@
               </form>
             </div><!-- /form-panel -->
         </div><!-- /col-lg-12 -->
-        <div class="col-lg-4">
+        <div class="col-lg-3">
+            <div class="form-panel"  style=" border-radius: 20px;">
+              <h4 class="mb"><i class="fa fa-angle-right"></i> Amazon</h4>
+              <form method='post' action='{{ route('postCsvAmazon') }}' enctype='multipart/form-data' >
+                {{ csrf_field() }}
+                <div class="form-group" style="display:flex">
+                <input type='file' name='file' >
+                <input type='submit' name='submit' value='Import Ebay'>
+                </div>
+              </form>
+            </div><!-- /form-panel -->
+        </div><!-- /col-lg-12 -->
+        <div class="col-lg-3">
             @if(Auth::user()->role == 3)
             <a href="{{ route('AadminHome') }}">
                 <button type="button" class="btn btn-theme02"><i class="fa fa-check"></i> Back to admin</button>

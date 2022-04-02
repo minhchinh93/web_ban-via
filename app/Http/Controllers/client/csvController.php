@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\oder_Amz;
 use App\Models\Oder_detail;
 use App\Models\oder_Ebay;
 use App\Models\Product;
@@ -32,7 +33,7 @@ class csvController extends Controller
             '
             ))
             ->distinct()
-            ->paginate(12);
+            ->paginate(4);
         $showEbay = Product::join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
             ->join('oder__ebays', 'oder__ebays.oder_Title', '=', 'products.title')
             ->join('users', 'products.User_id', '=', 'users.id')
@@ -51,7 +52,7 @@ class csvController extends Controller
         // ->groupBy('')
         // ->Where('product_png_details.Sku', 'like', "%{$keyword}%")
         // ->orWhere('title', 'like', "%{$keyword}%")
-            ->paginate(12);
+            ->paginate(4);
 
         return view('client.checkOder.indexOder', [
             'shows' => $show,
@@ -135,7 +136,6 @@ class csvController extends Controller
             } else {
                 $oder_Title = null;
             }
-            // dd($Order_Total);
             $insertData = [
                 "Number_Items" => $importData_arr[$v][26],
                 "Sale_Date" => $importData_arr[$v][49],
@@ -146,6 +146,44 @@ class csvController extends Controller
             ];
             oder_Ebay::create($insertData)->toSql();
         };
+        return redirect()->back();
+    }
+    public function postCsvAmazon(Request $request)
+    {
+
+        $file = $request->file('file');
+        $filename = $file->getClientOriginalName();
+        $location = 'uploads';
+        $file->move($location, $filename);
+        $filepath = public_path($location . "/" . $filename);
+        // Reading file
+        $file = fopen($filepath, "r");
+
+        $filedata = fgetcsv($file, 1000, ',');
+        DD($filedata);
+        $importData_arr = [];
+        $i = 0;
+
+        while (($filedata = fgetcsv($file, 1000, ",")) !== false) {
+            $num = count($filedata);
+            for ($c = 0; $c < $num; $c++) {
+                $importData_arr[$i][] = $filedata[$c];
+            }
+            $i++;
+        }
+        fclose($file);
+
+        foreach ($importData_arr as $importData) {
+            $insertData = [
+                "Number_Items" => $importData[6],
+                "Sale_Date" => $importData[0],
+                "Order_Total" => $importData[23],
+                "Date_Shipped" => $importData[8],
+                "oder_sku" => $importData[35],
+                "saller" => Auth::user()->name,
+            ];
+            oder_Amz::create($insertData);
+        }
         return redirect()->back();
     }
 }
