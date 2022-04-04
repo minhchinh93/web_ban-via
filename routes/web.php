@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\adminHomeController;
 use App\Http\Controllers\admin\craterJobController;
 use App\Http\Controllers\admin\dasboaController;
 use App\Http\Controllers\admin\DetailController;
+use App\Http\Controllers\admin\detailOderController;
 use App\Http\Controllers\admin\OderController;
 use App\Http\Controllers\admin\productController;
 use App\Http\Controllers\admin\totalController;
@@ -275,6 +276,9 @@ Route::middleware(['checkAdmin', 'veryMail'])->prefix('admin')->group(function (
     Route::get('updateJob/{id}', [craterJobController::class, 'updateJob'])->name('updateJob');
     //oder_Admin
     Route::get('OderAdmin', [OderController::class, 'OderAdmin'])->name('OderAdmin');
+
+    Route::get('estydetail/{name}', [detailOderController::class, 'estydetail'])->name('estydetail');
+    Route::get('ebaydetail/{name}', [detailOderController::class, 'ebaydetail'])->name('ebaydetail');
 
 });
 
