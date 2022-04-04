@@ -161,9 +161,8 @@ class csvController extends Controller
         $filepath = public_path($location . "/" . $filename);
         // Reading file
         $file = fopen($filepath, "r");
-
         $filedata = fgetcsv($file, 1000, ',');
-        DD($filedata);
+
         $importData_arr = [];
         $i = 0;
 
@@ -177,16 +176,33 @@ class csvController extends Controller
         fclose($file);
 
         foreach ($importData_arr as $importData) {
-            $insertData = [
-                "Number_Items" => $importData[6],
-                "Sale_Date" => $importData[0],
-                "Order_Total" => $importData[23],
-                "Date_Shipped" => $importData[8],
-                "oder_sku" => $importData[35],
-                "saller" => Auth::user()->name,
-            ];
+            if ($importData[12] != "") {
+                $re = '/().*?(\s)/m';
+                $str = $importData[12];
+                preg_match_all($re, $str, $matches);
+                $Sale_Date = $matches[0][0];
+                $strr = $importData[3];
+                preg_match_all($re, $strr, $matchess);
+                $Date_Shipped = $matchess[0][0];
+                $insertData = [
+                    "Number_Items" => $importData[10],
+                    "Sale_Date" => $Sale_Date,
+                    "Order_Total" => $importData[11],
+                    "Date_Shipped" => $Date_Shipped,
+                    "saller" => Auth::user()->name,
+                ];
+            } else {
+                $insertData = [
+                    "Number_Items" => 0,
+                    "Sale_Date" => 0,
+                    "Order_Total" => 0,
+                    "Date_Shipped" => 0,
+                    "saller" => 0,
+                ];
+            }
             oder_Amz::create($insertData);
         }
+        // oder_Amz::where('saller', 0)->delete();
         return redirect()->back();
     }
 }

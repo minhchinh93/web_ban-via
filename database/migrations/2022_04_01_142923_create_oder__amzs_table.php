@@ -16,9 +16,9 @@ class CreateOderAmzsTable extends Migration
         Schema::create('oder__amzs', function (Blueprint $table) {
             $table->id();
             $table->string('oder_Title')->nullable();
-            $table->string('Number_Items')->nullable();
+            $table->float('Number_Items')->nullable();
             $table->string('Sale_Date')->nullable();
-            $table->string('Order_Total')->nullable();
+            $table->float('Order_Total')->nullable();
             $table->string('Date_Shipped')->nullable();
             $table->string('saller')->nullable();
             $table->timestamps();
