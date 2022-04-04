@@ -139,7 +139,7 @@ class csvController extends Controller
             $insertData = [
                 "Number_Items" => $importData_arr[$v][26],
                 "Sale_Date" => $importData_arr[$v][49],
-                "Order_Total" => $Order_Total,
+                "Order_Total" => is_numeric($Order_Total),
                 "Date_Shipped" => $importData_arr[$v][50],
                 "oder_Title" => $oder_Title,
                 "saller" => Auth::user()->name,
