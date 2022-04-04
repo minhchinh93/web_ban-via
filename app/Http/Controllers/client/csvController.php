@@ -33,6 +33,7 @@ class csvController extends Controller
             '
             ))
             ->distinct()
+            ->Where('saller', Auth::user()->name)
             ->paginate(4);
         $showEbay = Product::join('product_png_details', 'product_png_details.product_id', '=', 'products.id')
             ->join('oder__ebays', 'oder__ebays.oder_Title', '=', 'products.title')
@@ -49,6 +50,7 @@ class csvController extends Controller
             '
             ))
             ->distinct()
+            ->Where('saller', Auth::user()->name)
         // ->groupBy('')
         // ->Where('product_png_details.Sku', 'like', "%{$keyword}%")
         // ->orWhere('title', 'like', "%{$keyword}%")

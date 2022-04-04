@@ -54,7 +54,7 @@
                 <!-- REVENUE PANEL -->
                 <div class="darkblue-panel pn">
                     <div class="darkblue-header">
-                        <h5>ESTY</h5>
+                        <img src="https://s.yimg.com/ny/api/res/1.2/EW1Z5anjtiAbyW5Uj3SOQQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM1Mg--/https://s.yimg.com/uu/api/res/1.2/1ZQYMuRNeUzhz_it7cpN6g--~B/aD00MDA7dz03Mjg7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/investorplace_417/9f93c2cee41c63e47e3ecec6c5ae5275" width="40px">
                     </div>
                     <div class="chart mt">
                         <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[{{ $StrsicharEsty }}]"><canvas width="358" height="75" style="display: inline-block; width: 358px; height: 75px; vertical-align: top;"></canvas></div>
@@ -66,7 +66,7 @@
             <!-- REVENUE PANEL -->
             <div class="darkblue-panel pn">
                 <div class="darkblue-header">
-                    <h5>EBAY</h5>
+                    <td><img src="https://payload.cargocollective.com/1/3/121291/4281202/ebay%20logo%20new2_1_o.jpg" width="40px"></td>
                 </div>
                 <div class="chart mt">
                     <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[{{ $StrsicharEbay }}]"><canvas width="358" height="75" style="display: inline-block; width: 358px; height: 75px; vertical-align: top;"></canvas></div>
@@ -89,8 +89,19 @@
     </div>
     <div class="row mt" >
         <div class="col-md-12">
+
             <div class="content-panel" style="border-radius: 10px;background: rgba(255, 255, 255, 0.842)" >
                 <h4><i class="fa fa-angle-right"></i> ODER MANAGER  </h4><hr><table class="table table-striped table-advance table-hover">
+                    <div class="col-lg-3">
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <label class="sr-only" for="exampleInputEmail2">    </label>
+                                <input type="text" class="form-control" name="keyword1" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword1 }}" placeholder="ESTY (m/d)">
+                                <input type="text" class="form-control" name="keyword2" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword2 }}" placeholder="Ebay (mar-dd)">
+                                <button type="submit" class="btn btn-theme"><i class="fa-solid fa-magnifying-glass">tim kiem</i></button>
+                            </div>
+                        </form>
+                    </div>
                     <thead>
                     <tr>
                         <th><i class="fa fa-bullhorn"></i> NAME SALLER</th>
@@ -106,13 +117,13 @@
                         <td><a href="">{{ $show->name?? null }}</a></td>
                         <td> {{ $show->Number_Items?? null }} </td>
                         <td>${{ $show->order_Total?? null }} </td>
-                        <td><span class="label label-success label-mini">ESTY</span></td>
+                        <td><img src="https://s.yimg.com/ny/api/res/1.2/EW1Z5anjtiAbyW5Uj3SOQQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM1Mg--/https://s.yimg.com/uu/api/res/1.2/1ZQYMuRNeUzhz_it7cpN6g--~B/aD00MDA7dz03Mjg7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/investorplace_417/9f93c2cee41c63e47e3ecec6c5ae5275" width="40px"></td>
                         <td>
                             <span class="btn btn-success btn-xs">
-                                <a style="color:white" href="{{null}}">
-                                 Detail
+                                <a style="color:rgb(2, 2, 0)" href="{{route('estydetail',[$show->name])}}">
+                                    <i class="fa-solid fa-user"></i>
                               </a>
-                             </span>
+                            </span>
                         </td>
                     </tr>
                         @endforeach
@@ -121,11 +132,11 @@
                         <td><a href="">{{ $show->name?? null }}</a></td>
                         <td> {{ $show->Number_Items?? null }} </td>
                         <td>${{ $show->order_Total?? null }} </td>
-                        <td><span class="label label-warning label-mini">EBAY</span></td>
+                        <td><img src="https://payload.cargocollective.com/1/3/121291/4281202/ebay%20logo%20new2_1_o.jpg" width="40px"></td>
                         <td>
                             <span class="btn btn-success btn-xs">
-                                <a style="color:white" href="{{null}}">
-                                 Detail
+                                <a style="color:rgb(0, 31, 37)" href="{{route('ebaydetail',[$show->name])}}">
+                                    <i class="fa-solid fa-user"></i>
                               </a>
                              </span>
                         </td>
