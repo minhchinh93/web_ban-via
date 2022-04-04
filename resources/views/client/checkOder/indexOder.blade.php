@@ -37,7 +37,7 @@
                 {{ csrf_field() }}
                 <div class="form-group" style="display:flex">
                 <input type='file' name='file' >
-                <input type='submit' name='submit' value='Import Ebay'>
+                <input type='submit' name='submit' value='Import  Amazon'>
                 </div>
               </form>
             </div><!-- /form-panel -->
