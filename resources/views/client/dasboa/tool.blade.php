@@ -78,7 +78,7 @@
             </div><!-- /col-lg-12 -->
         </div>
      <hr>
-        {{-- <div class="row mt" >
+        <div class="row mt" >
             <div class="col-md-12" >
                 <div class="content-panel"  style=" border-radius: 20px;">
                     <h4><i class="fa fa-angle-right"></i>  Bảng Báo Cáo</h4>
@@ -313,7 +313,7 @@
                 </div><!-- /content-panel -->
             </div><!-- /col-md-12 -->
             {{ $reports->links() }}
-        </div> --}}
+        </div>
     </section>
 </section>
 
