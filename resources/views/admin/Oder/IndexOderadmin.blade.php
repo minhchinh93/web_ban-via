@@ -26,8 +26,8 @@
             <div class="col-md-3 col-sm-3 box0">
                 <div class="box1" style="background-image: linear-gradient(90deg, #fe6c7d, rgba(37, 8, 168, 0.829));  border-radius: 20px;">
                     <span class="li_news" style="color:rgb(250, 245, 247)"></span>
-                    <h5 style="color:rgb(247, 245, 246)">TOTAL ODER  :</h5>
-                    <h5 style="color:rgb(247, 245, 246)">TOTAL MONEY :</h5>
+                    <h5 style="color:rgb(247, 245, 246)">TOTAL ODER  : {{ $totalItemAmz }}</h5>
+                    <h5 style="color:rgb(247, 245, 246)">TOTAL MONEY :{{ $totalPriceEAmz }}</h5>
                     <h4><b style="color:rgb(248, 245, 246)">{{ null }} </b></h4>
                 </div>
                 <a style="color:rgb(0, 60, 255)" href="{{ route('totalall') }}"><p>see more AMAZON !</p></a>
@@ -81,9 +81,9 @@
                     <h5>AMAZON</h5>
                 </div>
                 <div class="chart mt">
-                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[0]"><canvas width="358" height="75" style="display: inline-block; width: 358px; height: 75px; vertical-align: top;"></canvas></div>
+                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[{{ $totalsicharAmz }}]"><canvas width="358" height="75" style="display: inline-block; width: 358px; height: 75px; vertical-align: top;"></canvas></div>
                 </div>
-                <p class="mt" ><b >$ 17,980</b><br>Month Income</p>
+                <p class="mt" ><b >$ {{ $totolAmz }}</b><br>Total 30 Day</p>
             </div>
         </div>
     </div>
@@ -97,7 +97,8 @@
                             <div class="form-group">
                                 <label class="sr-only" for="exampleInputEmail2">    </label>
                                 <input type="text" class="form-control" name="keyword1" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword1 }}" placeholder="ESTY (m/d)">
-                                <input type="text" class="form-control" name="keyword2" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword2 }}" placeholder="Ebay (mar-dd)">
+                                <input type="text" class="form-control" name="keyword2" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword2 }}" placeholder="EBAY (mar-dd)">
+                                <input type="text" class="form-control" name="keyword3" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword3 }}" placeholder="AMZ (dd-mm)">
                                 <button type="submit" class="btn btn-theme"><i class="fa-solid fa-magnifying-glass">tim kiem</i></button>
                             </div>
                         </form>
@@ -136,6 +137,21 @@
                         <td>
                             <span class="btn btn-success btn-xs">
                                 <a style="color:rgb(0, 31, 37)" href="{{route('ebaydetail',[$show->name])}}">
+                                    <i class="fa-solid fa-user"></i>
+                              </a>
+                             </span>
+                        </td>
+                    </tr>
+                        @endforeach
+                        @foreach ($Amz as $show)
+                    <tr>
+                        <td><a href="">{{ $show->name?? null }}</a></td>
+                        <td> {{ $show->Number_Items?? null }} </td>
+                        <td>${{ $show->order_Total?? null }} </td>
+                        <td><img src="https://images-na.ssl-images-amazon.com/images/G/01/gc/designs/livepreview/amazon_dkblue_noto_email_v2016_us-main._CB468775337_.png" width="40px"></td>
+                        <td>
+                            <span class="btn btn-success btn-xs">
+                                <a style="color:rgb(0, 31, 37)" href="#">
                                     <i class="fa-solid fa-user"></i>
                               </a>
                              </span>
