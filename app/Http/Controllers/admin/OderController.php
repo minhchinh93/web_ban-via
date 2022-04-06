@@ -92,7 +92,7 @@ class OderController extends Controller
         ))
             ->groupBy('Sale_Date')
             ->paginate(30);
-        foreach ($totalsicharEbay as $totalsichar) {
+        foreach ($totalsicharAmz as $totalsichar) {
             $sicharAmz[] = $totalsichar->order_Total;
         }
         $totolEsty = array_sum($sicharEsty);

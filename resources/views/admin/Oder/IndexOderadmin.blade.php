@@ -78,7 +78,7 @@
             <!-- REVENUE PANEL -->
             <div class="darkblue-panel pn">
                 <div class="darkblue-header">
-                    <h5>AMAZON</h5>
+                    <td><img src="https://images-na.ssl-images-amazon.com/images/G/01/gc/designs/livepreview/amazon_dkblue_noto_email_v2016_us-main._CB468775337_.png" width="40px"></td>
                 </div>
                 <div class="chart mt">
                     <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[{{ $totalsicharAmz }}]"><canvas width="358" height="75" style="display: inline-block; width: 358px; height: 75px; vertical-align: top;"></canvas></div>
