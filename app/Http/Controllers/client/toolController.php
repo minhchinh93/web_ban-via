@@ -177,7 +177,7 @@ class toolController extends Controller
     {
         $product = Product::find($id);
         $product->cornerstones()->attach($request->cornerstone);
-        return redirect()->route('home');
+        return redirect()->back();
     }
     public function cornerstoneadd(Request $request)
     {

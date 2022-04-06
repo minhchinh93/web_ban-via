@@ -11,10 +11,10 @@
                 <div class="content-panel">
                     <h4><i class="fa fa-angle-right"></i>  Bảng Báo Cáo</h4>
                     <div class="col-lg-4">
-                        <h4 style="margin-left: 2%;" class="category"><a style="color: gray" href="#"> Hoàn thành ({{ $totalDone ?? null}}) </a>
-                             | <a  style="color: rgb(13, 182, 36)" href="#">chờ duyệt ({{ $totalPending ?? null}})</a>
-                             | <a style="color:red" href="#">chưa nhận ({{ $totalNotReceived ?? null}})</a>
-                             | <a style="color:red" href="#"> tất cả ({{ $totalallidea ?? null}})</a>
+                        <h4 style="margin-left: 2%;" class="category"><a style="color: gray" href="{{ route('totalDone') }}"> Hoàn thành ({{ $totalDone ?? null}}) </a>
+                             | <a  style="color: rgb(13, 182, 36)" href="{{ route('totalPending') }}">chờ duyệt ({{ $totalPending ?? null}})</a>
+                             | <a style="color:red" href="{{ route('totalNotReceived') }}">chưa nhận ({{ $totalNotReceived ?? null}})</a>
+                             | <a style="color:red" href="{{ route('totalall') }}"> tất cả ({{ $totalallidea ?? null}})</a>
 
                             </h4>
                     </div><!-- /col-lg-12 -->
@@ -69,9 +69,22 @@
                                 <td><a href="#">{{$report->user->name ?? null }}</a></td>
                                 <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
                                 <td  style=" max-width: 200px;"><b>{{ $report->title ?? null }}</b></td>
-                                <td  style=" max-width: 100px;"><b>@foreach ($report->cornerstones as $cornerstone)
+                                {{-- <td  style=" max-width: 100px;"><b>@foreach ($report->cornerstones as $cornerstone)
                                     <span class="label label-info label-mini">{{ $cornerstone->name}}</span>
-                                    @endforeach</b></td>
+                                    @endforeach</b></td> --}}
+                                    <td  style=" max-width: 200px;"><b>
+                                        @foreach ($report->cornerstones as $cornerstone)
+                                        <span class="label label-info label-mini">{{ $cornerstone->name}}</span>
+                                        @endforeach
+                                        <form class="form-inline" action="{{ route('cornerstoneProduct',[$report->id]) }}" method="post">
+                                        @csrf
+                                        <select name="cornerstone" id="cars" style="border-radius: 15px;" class="form-control">
+                                        @foreach ($showcornerstones as $show)
+                                            <option value="{{ $show->id }}">{{  $show->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <button type="submit" style="border-radius: 10px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
+                                </form></b></td>
                                 <td class="hidden-phone"
                                 style=" max-width: 400px;
                                 color:black;

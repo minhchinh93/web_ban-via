@@ -231,6 +231,10 @@ Route::middleware(['checkAdmin', 'veryMail'])->prefix('admin')->group(function (
     Route::get('DetailDesigner/{id}', [DetailController::class, 'DetailDesigner'])->name('DetailDesigner');
     Route::get('DetailIdea/{id}', [DetailController::class, 'DetailIdea'])->name('DetailIdea');
 
+    //show tinh tracing
+    Route::get('totalDone', [totalController::class, 'totalDone'])->name('totalDone');
+    Route::get('totalPending', [totalController::class, 'totalPending'])->name('totalPending');
+    Route::get('totalNotReceived', [totalController::class, 'totalNotReceived'])->name('totalNotReceived');
     //=========khoi categoru============//
     //show list ctegori
     // Route::get('categoriesList', [typeProductController::class, 'categoriesList'])->name('categoriesList');
