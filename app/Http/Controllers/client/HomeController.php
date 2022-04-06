@@ -21,6 +21,7 @@ class HomeController extends Controller
     //
     public function home(Request $request)
     {
+        // dd($request->type);
         Carbon::setLocale('vi');
         $designer = User::get()->where('role', 1);
         $type_product = type_product::get();
@@ -30,7 +31,7 @@ class HomeController extends Controller
         if ($request->type != null) {
             $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
                 ->Where('status', '<>', "5")
-                ->Where('id_type', 'like', "%{$request->type}%")
+                ->Where('id_type', $request->type)
                 ->Where('title', 'like', "%{$keyword}%")
                 ->paginate(10000);
         } else {
@@ -90,7 +91,7 @@ class HomeController extends Controller
         //     ->paginate(10);
         if ($request->type != null) {
             $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
-                ->Where('id_type', 'like', "%{$request->type}%")
+                ->Where('id_type', $request->type)
                 ->Where('title', 'like', "%{$keyword}%")
                 ->paginate(10000);
         } else {
@@ -191,7 +192,7 @@ class HomeController extends Controller
         if ($request->type != null) {
             $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
                 ->where('status', 5)
-                ->Where('id_type', 'like', "%{$request->type}%")
+                ->Where('id_type', $request->type)
                 ->Where('title', 'like', "%{$keyword}%")
                 ->paginate(10000);
         } else {
