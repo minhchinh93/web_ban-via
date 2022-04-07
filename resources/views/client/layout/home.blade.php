@@ -387,7 +387,7 @@ $(document).ready(function(){
     var loaiSP = $(this).val();
     // alert(loaiSP);
     $.get("ajax/"+loaiSP, function(data){
-        // console.log(data);
+        console.log(data);
       $("#size").html(data);
     });
   });

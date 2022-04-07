@@ -301,13 +301,13 @@ class HomeController extends Controller
             ];
             // dd($request->id);
             $productDtail = Product::create($data);
-            $id = $productDtail->id;
-            $names = $productDtail->type_product->name;
-            $name = substr($names, 0, 3);
-            $sku = $name . $id;
-            product::where('id', $id)->update([
-                'Sku' => $sku,
-            ]);
+            // $id = $productDtail->id;
+            // $names = $productDtail->type_product->name;
+            // $name = substr($names, 0, 3);
+            // $sku = $name . $id;
+            // product::where('id', $id)->update([
+            //     'Sku' => $sku,
+            // ]);
             foreach ($request->file('image') as $image) {
                 $dataImage = [
                     'product_id' => $productDtail->id,
@@ -328,13 +328,13 @@ class HomeController extends Controller
             ];
 
             $productDtail = Product::create($data);
-            $id = $productDtail->id;
-            $names = $productDtail->type_product->name;
-            $name = substr($names, 0, 3);
-            $sku = $name . $id;
-            product::where('id', $id)->update([
-                'Sku' => $sku,
-            ]);
+            // $id = $productDtail->id;
+            // $names = $productDtail->type_product->name;
+            // $name = substr($names, 0, 3);
+            // $sku = $name . $id;
+            // product::where('id', $id)->update([
+            //     'Sku' => $sku,
+            // ]);
         }
 
         return redirect()->back();
@@ -342,7 +342,7 @@ class HomeController extends Controller
     public function success($id)
     {
         Product::where('id', $id)->update(['status' => 5]);
-        return redirect()->route('done');
+        return redirect()->back();
 
     }
     public function approvalShow($id)
@@ -454,10 +454,8 @@ class HomeController extends Controller
     public function ajax($id)
     {
         $sizes = size::where('id_types', $id)->get();
-        // dd($sizes);
         foreach ($sizes as $size) {
             echo "<option value='" . $size->id . "'>" . $size->name . "</option>";
-
         }
 
     }
