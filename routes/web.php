@@ -286,6 +286,9 @@ Route::middleware(['checkAdmin', 'veryMail'])->prefix('admin')->group(function (
 
     Route::get('EditShow/ajax/{id}', [totalController::class, 'EditShowajax'])->name('EditShowajax');
 
+    Route::get('detailUser/{id}', [UserController::class, 'detailUser'])->name('detailUser');
+    Route::get('detailUserIdea/{id}', [UserController::class, 'detailUserIdea'])->name('detailUserIdea');
+
 });
 
 //=========khôi client===========//

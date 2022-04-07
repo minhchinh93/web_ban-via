@@ -73,8 +73,18 @@
                 <tr>
                     <td ><input type="checkbox" name="checkbox[]"  value="{{ $show->id ?? null }}"></td>
                     <td>{{ $i }}</td>
-                    <td class="hidden-phone">{{ $show->name?? null }}</td>
-                    <td class="hidden-phone">{{ $show->email ?? null}}</td>
+                    @if($show->role ==1)
+                    <td class="hidden-phone"><a href="{{route('detailUser',[$show->id])}}">{{ $show->name?? null }}</a></td>
+                    <td class="hidden-phone"><a href="{{route('detailUser',[$show->id])}}">{{ $show->email ?? null}}</a></td>
+                    @elseif ($show->role ==2)
+                    <td class="hidden-phone"><a href="{{route('detailUserIdea',[$show->id])}}">{{ $show->name?? null }}</a></td>
+                    <td class="hidden-phone"><a href="{{route('detailUserIdea',[$show->id])}}">{{ $show->email ?? null}}</a></td>
+                    @else
+                    <td class="hidden-phone"><a href="#">{{ $show->name?? null }}</a></td>
+                    <td class="hidden-phone"><a href="#">{{ $show->email ?? null}}</a></td>
+                    @endif
+
+
                     @if($show->role ==1)
                     <td><span class="label label-info label-mini">DESIGNER</span></td>
                     @elseif ($show->role ==2)
