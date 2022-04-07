@@ -75,30 +75,30 @@
               	  {{-- <p class="centered"><a href="profile.html"><img src="http://hblmedia.online/admin/img/Logo.png" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">Chào Mừng Admin !</h5>--}}
 
-                 <li class="mt">
-                      <a class="{{ (request()->is('admin/AadminHome')) ? 'active' : 'sub-menu' }}" href="{{ route('AadminHome') }}">
+                 <li class="mt" title="DASHBOARD">
+                      <a  class="{{ (request()->is('admin/AadminHome')) ? 'active' : 'sub-menu' }}" href="{{ route('AadminHome') }}">
                           <i class="fa fa-dashboard"></i>
 
                       </a>
                   </li>
-                  <li class="sub-menu">
+                  <li class="sub-menu" title="STATIC">
                       <a class="{{ (request()->is('admin/showList/dasboa')) ? 'active' : 'sub-menu' }}" href="{{ route('showdasboa') }}">
                           <i class="fa fa-cogs"></i>
                       </a>
                   </li>
 
-                  <li class="sub-menu">
+                  <li class="sub-menu" title="USERS">
                       <a 	class="{{ (request()->is('admin/showList/User')) ? 'active' : 'sub-menu' }}"
                         href="{{ route('showUser') }}" >
                           <i class="fa fa-desktop"></i>
                       </a>
                   </li>
-                  <li class="sub-menu">
+                  <li class="sub-menu" title="DOCUMENTS">
                     <a class="{{ (request()->is('/showDoc')) ? 'active' : 'sub-menu' }}" href="{{ route('showDoc') }}" >
                         <i class="fa fa-th"></i>
                     </a>
                 </li>
-                  <li class="sub-menu">
+                  <li class="sub-menu" title="ODER DETAIL">
                     <a class="{{ (request()->is('admin/OderAdmin')) ? 'active' : 'sub-menu' }}" href="{{ route('OderAdmin') }}" >
                         <i class="fa-solid fa-money-bill-1-wave"></i>
                     </a>

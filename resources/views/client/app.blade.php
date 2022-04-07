@@ -110,13 +110,13 @@
       <aside>
           <div id="sidebar"  class="nav-collapse " style="background:#373a36;max-width:70px">
               <ul class="sidebar-menu" id="nav-accordion">
-                  <li class="mt">
+                  <li class="mt" title="DASHBOARD">
                       <a class="{{ (request()->is('/dasboa')) ? 'active' : 'sub-menu' }}" href="{{ route('dasboa') }}">
                           <i class="fa fa-dashboard"></i>
                       </a>
                   </li>
                      @if (Auth::user()->role==2)
-                     <li class="sub-menu">
+                     <li class="sub-menu" title="IDEA">
                         <a 	class="{{ (request()->is('/home')) ? 'active' : 'sub-menu' }}"
                           href="{{ route('home') }}" >
                             <i class="fa fa-desktop"></i>
@@ -124,28 +124,28 @@
                     </li>
                      @endif
                      @if (Auth::user()->role==1)
-                     <li class="sub-menu">
+                     <li class="sub-menu" title="DESIGNER">
                         <a class="{{ (request()->is('/Dashboard')) ? 'active' : 'sub-menu' }}" href="{{ route('Dashboard') }}" >
                             <i class="fa fa-cogs"></i>
                         </a>
                     </li>
                      @endif
-                  <li class="sub-menu">
+                  <li class="sub-menu" title="TOOL">
                       <a class="{{ (request()->is('/showTool')) ? 'active' : 'sub-menu' }}" href="{{ route('showtool') }}" >
                           <i class="fa fa-book"></i>
                       </a>
                   </li>
-                  <li class="sub-menu">
+                  <li class="sub-menu" title="DOCUMENT">
                     <a class="{{ (request()->is('/showDoc')) ? 'active' : 'sub-menu' }}" href="{{ route('showDoc') }}" >
                         <i class="fa fa-th"></i>
                     </a>
                 </li>
-                  <li class="sub-menu">
+                  <li class="sub-menu" title="FIND PNG">
                     <a class="{{ (request()->is('/findPNG')) ? 'active' : 'sub-menu' }}" href="{{ route('findPNG') }}" >
                         <i class="fa fa-tasks"></i>
                     </a>
                 </li>
-                  <li class="sub-menu">
+                  <li class="sub-menu" title="IMPORT CSV">
                     <a class="{{ (request()->is('/importCsv')) ? 'active' : 'sub-menu' }}" href="{{ route('importCsv') }}" >
                         <i class="fa fa-tasks"></i>
                     </a>
