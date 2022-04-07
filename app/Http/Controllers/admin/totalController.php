@@ -118,7 +118,7 @@ class totalController extends Controller
         $now = Carbon::now('Asia/Ho_Chi_Minh');
         $show = cornerstone::all();
         $times = $now->toDateString();
-        $designer = User::get()->where('role', 2);
+        $designer = User::get()->where('role', 1);
         $type_product = type_product::get();
         $size = size::get();
         $keyword = $request->keyword;
@@ -500,6 +500,16 @@ class totalController extends Controller
                 'shows' => $show,
                 'showcornerstones' => $showcornerstone,
             ]);
+    }
+    public function EditShowajax($id)
+    {
+        $sizes = size::where('id_types', $id)->get();
+        // dd($sizes);
+        foreach ($sizes as $size) {
+            echo "<option value='" . $size->id . "'>" . $size->name . "</option>";
+
+        }
+
     }
 
 }

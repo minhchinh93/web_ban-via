@@ -78,12 +78,10 @@ Route::middleware(['CheckIdea', 'veryMail'])->group(function () {
     Route::get('Pending', [HomeController::class, 'Pending'])->name('Pending');
     Route::get('allidea', [HomeController::class, 'allidea'])->name('allidea');
     Route::get('NotReceived', [HomeController::class, 'NotReceived'])->name('NotReceived');
-    Route::get('success/{id}', [HomeController::class, 'success'])->name('success');
+
     Route::get('warning/{id}', [HomeController::class, 'warning'])->name('warning');
-    Route::get('delete/{id}', [HomeController::class, 'delete'])->name('delete');
     Route::get('EditShow/{id}', [HomeController::class, 'EditShow'])->name('EditShow');
     Route::post('Edit/{id}', [HomeController::class, 'Edit'])->name('Edit');
-    Route::post('addIdea', [HomeController::class, 'addIdea'])->name('addIdea');
     Route::get('approvalShow/{id}', [HomeController::class, 'approvalShow'])->name('approvalShow');
     Route::post('approval/{id}', [HomeController::class, 'approval'])->name('approval');
     Route::get('important/{id}', [HomeController::class, 'important'])->name('important');
@@ -91,9 +89,6 @@ Route::middleware(['CheckIdea', 'veryMail'])->group(function () {
     Route::post('showimage', [HomeController::class, 'showimage'])->name('showimage');
     Route::post('comment/{id}', [HomeController::class, 'comment'])->name('comment');
     Route::get('find', [HomeController::class, 'find'])->name('find');
-
-    Route::get('ajax/{id}', [HomeController::class, 'ajax'])->name('ajax');
-    Route::get('EditShow/ajax/{id}', [HomeController::class, 'EditShowajax'])->name('EditShowajax');
 
     Route::get('deleteImage/{id}', [HomeController::class, 'deleteImage'])->name('deleteImage');
     Route::post('addImage/{id}', [HomeController::class, 'addImage'])->name('addImage');
@@ -136,6 +131,11 @@ Route::middleware(['auth', 'veryMail'])->group(function () {
 
     Route::get('dowloadURL/{id}', [DesignerController::class, 'dowloadURL'])->name('dowloadURL');
     Route::get('dowloadMocupURL/{id}', [DesignerController::class, 'dowloadMocupURL'])->name('dowloadMocupURL');
+
+    Route::post('addIdea', [HomeController::class, 'addIdea'])->name('addIdea');
+    Route::get('success/{id}', [HomeController::class, 'success'])->name('success');
+    Route::get('delete/{id}', [HomeController::class, 'delete'])->name('delete');
+    Route::get('ajax/{id}', [HomeController::class, 'ajax'])->name('ajax');
 
 });
 Route::get('detailAccountHistory/{id}', [AccountHistoryController::class, 'detailAccountHistory'])->middleware('auth')->name('detailAccountHistory');
@@ -283,6 +283,8 @@ Route::middleware(['checkAdmin', 'veryMail'])->prefix('admin')->group(function (
 
     Route::get('estydetail/{name}', [detailOderController::class, 'estydetail'])->name('estydetail');
     Route::get('ebaydetail/{name}', [detailOderController::class, 'ebaydetail'])->name('ebaydetail');
+
+    Route::get('EditShow/ajax/{id}', [totalController::class, 'EditShowajax'])->name('EditShowajax');
 
 });
 
