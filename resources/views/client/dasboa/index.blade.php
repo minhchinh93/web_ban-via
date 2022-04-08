@@ -217,7 +217,7 @@
                                                 <div style="display: flex;flex-direction: space-between;">
                                                 <button class="label label-danger label-mini" onclick="deletePng({{ $rep->id }})">xoa</button>
                                                 <span class="label label-info label-mini"><h5>{{ $rep->Sku}}</h5></span>
-                                                <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$report->id]) }}">
+                                                <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$rep->id]) }}">
                                                     <i class="fa-solid fa-circle-down"></i>
                                                 </a>
                                                 </div>
