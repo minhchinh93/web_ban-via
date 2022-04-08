@@ -195,7 +195,6 @@ class DesignerController extends Controller
             foreach ($userIdeas as $userIdea) {
                 $name[] = $userIdea;
             }
-
         } else {
             $name = "";
         }
@@ -300,6 +299,8 @@ class DesignerController extends Controller
 
         foreach ($file as $image) {
             $str = $image->getClientOriginalName();
+            // $strs = $image->getClientOriginalExtension();
+
             $filename = str_replace(' ', '-', $str);
             $dataImage = [
                 'product_id' => $id,
