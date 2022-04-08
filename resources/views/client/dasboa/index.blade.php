@@ -214,7 +214,7 @@
                                           @foreach ($report->ProductPngDetails as $rep)
 
                                           @php
-                                          $url='http://hblmedia.online/storage/'.$rep->ImagePngDetail
+                                          $url="'http://hblmedia.online/storage/'.$rep->ImagePngDetail"
                                           $test = getimagesize($url);
                                           @endphp
                                           <div class="post-Png-{{ $rep->id  }}">
