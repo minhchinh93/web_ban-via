@@ -191,10 +191,14 @@
                                         </div>
 
                                           @foreach ($report->ProductPngDetails as $rep)
+                                          @php
+                                            $test = getimagesize({{asset('/storage/'.$rep->ImagePngDetail)}});
+                                          @endphp
                                           <div class="project-wrapper">
                                             <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$rep->id]) }}">
                                                 <i class="fa-solid fa-circle-down"></i>
                                             </a>
+                                            <h6>{{ $test[3] }}</h6>
                                             <div class="project">
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
