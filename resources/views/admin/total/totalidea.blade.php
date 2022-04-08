@@ -221,6 +221,9 @@
                                           @foreach ($report->mocups as $rep)
                                           <div class="project-wrapper">
                                             <div class="project">
+                                                <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$rep->id]) }}">
+                                                    <i class="fa-solid fa-circle-down"></i>
+                                                </a>
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
@@ -264,6 +267,9 @@
                                                 <div style="display: flex;flex-direction: space-between;">
                                                     <span style="margin-right:5px" class="label label-info label-mini"><h5>{{ $rep->Sku}}</h5></span>
                                                     <h5> <a href="#">{{$rep->ImagePngDetail}}</a></h5>
+                                                    <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$rep->id]) }}">
+                                                        <i class="fa-solid fa-circle-down"></i>
+                                                    </a>
                                                 </div>
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
