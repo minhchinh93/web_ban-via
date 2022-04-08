@@ -212,9 +212,8 @@
                                         </div>
 
                                           @foreach ($report->ProductPngDetails as $rep)
-
                                           {{-- @php
-                                          $url="'http://hblmedia.online/storage/'.$rep->ImagePngDetail"
+                                          $url="http://hblmedia.online/storage/images/1648695736e70472c8eae3e1b029890e3ebc7e990a---Copy---Copy---Copy.jpg"
                                           $test = getimagesize($url);
                                           @endphp --}}
                                           <div class="post-Png-{{ $rep->id  }}">
@@ -225,7 +224,7 @@
                                                 <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$rep->id]) }}">
                                                     <i class="fa-solid fa-circle-down"></i>
                                                 </a>
-                                                {{-- <h6>{{ $test[3] }}</h6> --}}
+                                                <h6>{{ getimagesize(asset('/storage/'.$rep->ImagePngDetail))[3] }}</h6>
                                                 </div>
                                                 <h5> <a href="#">{{$rep->ImagePngDetail}}</a></h5>
                                                 {{-- <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}
