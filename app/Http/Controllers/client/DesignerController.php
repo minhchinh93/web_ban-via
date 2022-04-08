@@ -358,7 +358,7 @@ class DesignerController extends Controller
         return redirect()->back();
 
     }
-    public function dowloadURL(Request $request, $id)
+    public function dowloadURL($id)
     {
         $datapngs = ProductPngDetails::where('id', $id)->get();
         foreach ($datapngs as $datapng) {
@@ -372,10 +372,9 @@ class DesignerController extends Controller
         }
         return redirect()->back();
     }
-    public function dowloadMocupURL(Request $request, $id)
+    public function dowloadMocupURL($id)
     {
         $datapngs = mocupProduct::where('id', $id)->get();
-        // dd($datapngs);
         foreach ($datapngs as $datapng) {
             $image = $datapng->mocup;
             $filename = str_replace('images/', '', $image);
