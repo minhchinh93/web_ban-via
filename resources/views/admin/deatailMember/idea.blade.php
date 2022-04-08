@@ -61,9 +61,19 @@
                                 <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
                                 <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
                                 <td  style=" max-width:150px;"><b>{{ $report->title  ?? null }}</b></td>
-                                <td  style=" max-width: 100px;"><b>@foreach ($report->cornerstones as $cornerstone)
+                                <td  style=" max-width: 200px;"><b>
+                                    @foreach ($report->cornerstones as $cornerstone)
                                     <span class="label label-info label-mini">{{ $cornerstone->name}}</span>
-                                    @endforeach</b></td>
+                                    @endforeach
+                                    <form class="form-inline" action="{{ route('cornerstoneProduct',[$report->id]) }}" method="post">
+                                    @csrf
+                                    <select name="cornerstone" id="cars" style="border-radius: 15px;" class="form-control">
+                                    @foreach ($showcornerstones as $show)
+                                        <option value="{{ $show->id }}">{{  $show->name }}</option>
+                                    @endforeach
+                                </select>
+                                <button type="submit" style="border-radius: 10px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
+                            </form></b></td>
                                 <td class="hidden-phone"
                                 style=" max-width: 300px;
                                 color:black;

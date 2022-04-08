@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\cornerstone;
 use App\Models\Product;
 use App\Models\size;
 use App\Models\type_product;
@@ -141,7 +142,7 @@ class UserController extends Controller
         $totalNotSeen = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 1)->count();
         $totalNotReceived = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('action', 2)->where('status', '<>', 5)->count();
         $totalPendingDS = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 3)->count();
-
+        $showcornerstone = cornerstone::all();
         if ($report->total() > 0) {
             foreach ($report as $rep) {
                 $userIdeas[] = User::where('id', $rep->id_idea)->get();
@@ -162,6 +163,7 @@ class UserController extends Controller
                 'totalprioritize' => $totalNotReceived,
                 'totalPendingDS' => $totalPendingDS,
                 'name' => $name,
+                'showcornerstones' => $showcornerstone,
             ]);
     }
     public function detailUserIdea(Request $request, $id)
@@ -192,7 +194,7 @@ class UserController extends Controller
         }
         // dd($report[0]->mocups);
         // dd(count($report[0]->mocups));
-
+        $showcornerstone = cornerstone::all();
         $totalDone = Product::orderBy('id', 'desc')->where('id_idea', $id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('id_idea', $id)->where('status', 3)->count();
         $totalNotReceived = Product::orderBy('id', 'desc')->where('id_idea', $id)->where('status', 1)->count();
@@ -207,6 +209,7 @@ class UserController extends Controller
                 'totalallidea' => $totalallidea,
                 'times' => $time,
                 'sizes' => $size,
+                'showcornerstones' => $showcornerstone,
             ]);
     }
 }
