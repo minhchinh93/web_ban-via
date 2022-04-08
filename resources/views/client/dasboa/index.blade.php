@@ -148,6 +148,9 @@
                                             <div class="project" >
                                                 <button onclick="deleteComment({{ $rep->id }})">xoa</button>
                                                 <h5>{{ $rep->mocup }} </h5>
+                                                <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$rep->id]) }}">
+                                                    <i class="fa-solid fa-circle-down"></i>
+                                                </a>
                                                  {{-- <a href="{{ route('deletemocups',[$rep->id]) }}"><span onclick="deletemocups({{ $rep->id }})" class="label label-info label-mini">xoa</span></a> --}}
                                                 <div class="photo-wrapper" data-dismiss="modal">
                                                     <div >
@@ -214,6 +217,9 @@
                                                 <div style="display: flex;flex-direction: space-between;">
                                                 <button class="label label-danger label-mini" onclick="deletePng({{ $rep->id }})">xoa</button>
                                                 <span class="label label-info label-mini"><h5>{{ $rep->Sku}}</h5></span>
+                                                <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$report->id]) }}">
+                                                    <i class="fa-solid fa-circle-down"></i>
+                                                </a>
                                                 </div>
                                                 <h5> <a href="#">{{$rep->ImagePngDetail}}</a></h5>
                                                 {{-- <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}

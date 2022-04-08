@@ -303,7 +303,7 @@ class DesignerController extends Controller
             $filename = str_replace(' ', '-', $str);
             $dataImage = [
                 'product_id' => $id,
-                'ImagePngDetail' => $image->storeas('images', time() . $filename),
+                'ImagePngDetail' => $image->storeas('images', $filename),
             ];
             $datapng = ProductPngDetails::where('id', $id)->create($dataImage);
             $idPNG = $datapng->id;
@@ -328,7 +328,7 @@ class DesignerController extends Controller
             $filename = str_replace(' ', '-', $str);
             $dataImage = [
                 'product_id' => $id,
-                'mocup' => $image->storeAs('images', time() . $filename),
+                'mocup' => $image->storeAs('images', $filename),
             ];
             mocupProduct::where('id', $id)->create($dataImage);
         }
@@ -358,10 +358,9 @@ class DesignerController extends Controller
         return redirect()->back();
 
     }
-    public function dowloaddURL(Request $request, $id)
+    public function dowloadURL(Request $request, $id)
     {
-        $datapngs = ProductPngDetails::where('product_id', $id)->get();
-
+        $datapngs = ProductPngDetails::where('id', $id)->get();
         foreach ($datapngs as $datapng) {
             $image = $datapng->ImagePngDetail;
             $filename = str_replace('images/', '', $image);
@@ -375,16 +374,15 @@ class DesignerController extends Controller
     }
     public function dowloadMocupURL(Request $request, $id)
     {
-        $datapngs = mocupProduct::where('product_id', $id)->get();
-
+        $datapngs = mocupProduct::where('id', $id)->get();
+        // dd($datapngs);
         foreach ($datapngs as $datapng) {
-            $image = $datapng->ImagePngDetail;
+            $image = $datapng->mocup;
             $filename = str_replace('images/', '', $image);
             $UrlImage = url('/storage/' . $image);
             $tempImage = tempnam(sys_get_temp_dir(), $filename);
             copy($UrlImage, $tempImage);
             return (response()->download($tempImage, $filename));
-
         }
         return redirect()->back();
     }
