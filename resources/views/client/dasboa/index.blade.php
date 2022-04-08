@@ -224,7 +224,8 @@
                                                 <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$rep->id]) }}">
                                                     <i class="fa-solid fa-circle-down"></i>
                                                 </a>
-                                                <h6>{{ getimagesize(asset('/storage/'.$rep->ImagePngDetail))[3] }}</h6>
+
+                                                {{-- <h6>{{ getimagesize(asset('/storage/'.$rep->ImagePngDetail))[3] }}</h6> --}}
                                                 </div>
                                                 <h5> <a href="#">{{$rep->ImagePngDetail}}</a></h5>
                                                 {{-- <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}
