@@ -103,6 +103,7 @@
                     <table class="table table-striped table-advance table-hover">
                         <thead>
                         <tr>
+                            <th><i class="fa fa-bullhorn"></i> checkbox</th>
                             <th><i class="fa fa-bullhorn"></i> Designer</th>
                             <th><i class="fa fa-bullhorn"></i> Category(size)</th>
                             <th><i class="fa fa-bullhorn"></i> Title</th>
@@ -122,6 +123,7 @@
                         <tbody>
                             @foreach ($reports as  $report)
                             <tr>
+                                <td ><input type="checkbox" name="checkbox[]"  value="{{ $report->id ?? null }}"></td>
                                 <td><a href="#">{{$report->user->name ?? null }}</a></td>
                                 <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
                                 <td  style=" max-width: 200px;"><b>{{ $report->title ?? null }}</b></td>
@@ -213,11 +215,12 @@
                                         <section class="wrapper">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
+                                        <div class="modal-header" style="display: flex; align-items: center;">
+                                        {{-- <span class="badge bg-info"></span> --}}
+                                          <button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button>
+
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
                                         </div>
 
                                           @foreach ($report->mocups as $rep)
@@ -238,6 +241,8 @@
                                         </div>
                                           @endforeach
                                         <div class="modal-footer">
+                                            <button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button>
+
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                       </div>
@@ -260,10 +265,9 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
                                         <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
+                                            <button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button>
+
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
 
                                           @foreach ($report->ProductPngDetails as $rep)
@@ -287,8 +291,9 @@
                                         </div>
                                           @endforeach
                                         <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button>
 
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                       </div>
                                     </div>

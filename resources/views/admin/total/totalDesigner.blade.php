@@ -17,6 +17,8 @@
 
                         <thead>
                         <tr>
+
+                            <th><i class="fa fa-bullhorn"></i>checkbox</th>
                             <th><i class="fa fa-bullhorn"></i>Idea</th>
                             <th><i class="fa fa-bullhorn"></i> categories(size)</th>
                             <th><i class="fa fa-bullhorn"></i> Title</th>
@@ -37,6 +39,7 @@
                             @endphp
                             @foreach ($reports as  $report)
                             <tr>
+                                <td ><input type="checkbox" name="checkbox[]"  value="{{ $report->id ?? null }}"></td>
                                 <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
                                 <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}({{ $report->size->name ?? null  }})</a></td>
                                 <td  style=" max-width: 200px;"><b>{{ $report->title ?? null }}</b></td>

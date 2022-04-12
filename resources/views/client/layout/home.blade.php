@@ -111,6 +111,7 @@
                         <table class="table table-striped table-advance table-hover">
                             <thead>
                             <tr>
+                                <th><i class="fa fa-bullhorn"></i> Checkbox</th>
                                 <th><i class="fa fa-bullhorn"></i> Designer</th>
                                 <th><i class="fa fa-bullhorn"></i> Category(size)</th>
                                 <th><i class="fa fa-bullhorn"></i> Title</th>
@@ -130,6 +131,7 @@
                             <tbody>
                                 @foreach ($reports as  $report)
                                 <tr>
+                                    <td ><input type="checkbox" name="checkbox[]"  value="{{ $report->id ?? null }}"></td>
                                     <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
                                     <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
                                     <td  style=" max-width: 200px;"><b>{{ $report->title ?? null }}</b></td>
