@@ -189,11 +189,11 @@
                                           <div class="project-wrapper">
                                             <div class="project">
                                                 <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
-                                                <h5> <a href="{{ route('dowloadURL',[$rep->id]) }}">{{$rep->mocup}}</a></h5>
+                                                <h5> <a href="{{ route('dowloadURL',[$rep->id]) }}">{{$rep->ImagePngDetail}}</a></h5>
                                                 {{-- <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$rep->id]) }}">
                                                     <i class="fa-solid fa-circle-down"></i>
                                                 </a> --}}
-                                                 <span class="label label-default">{{ getimagesize(asset('/storage/'.$rep->ProductPngDetails))[3] }}</span>
+                                                 <span class="label label-default">{{ getimagesize(asset('/storage/'.$rep->ImagePngDetail))[3] }}</span>
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
