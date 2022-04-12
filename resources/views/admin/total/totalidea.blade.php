@@ -221,9 +221,10 @@
                                           @foreach ($report->mocups as $rep)
                                           <div class="project-wrapper">
                                             <div class="project">
-                                                <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$rep->id]) }}">
+                                                <h5> <a href="{{ route('dowloadMocupURL',[$rep->id]) }}">{{$rep->mocup}}</a></h5>
+                                                {{-- <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$rep->id]) }}">
                                                     <i class="fa-solid fa-circle-down"></i>
-                                                </a>
+                                                </a> --}}
                                                  <span class="label label-default">{{ getimagesize(asset('/storage/'.$rep->mocup))[3] }}</span>
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
@@ -267,10 +268,10 @@
                                             <div class="project">
                                                 <div style="display: flex;flex-direction: space-between;">
                                                     <span style="margin-right:5px" class="label label-info label-mini"><h5>{{ $rep->Sku}}</h5></span>
-                                                    <h5> <a href="#">{{$rep->ImagePngDetail}}</a></h5>
-                                                    <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$rep->id]) }}">
+                                                    <h5> <a href="{{ route('dowloadURL',[$rep->id]) }}">{{$rep->ImagePngDetail}}</a></h5>
+                                                    {{-- <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$rep->id]) }}">
                                                         <i class="fa-solid fa-circle-down"></i>
-                                                    </a>
+                                                    </a> --}}
                                                     <span class="label label-default">{{ getimagesize(asset('/storage/'.$rep->ImagePngDetail))[3] }}</span>
                                                 </div>
                                                 <div class="photo-wrapper">

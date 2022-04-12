@@ -83,8 +83,6 @@
                     <td class="hidden-phone"><a href="#">{{ $show->name?? null }}</a></td>
                     <td class="hidden-phone"><a href="#">{{ $show->email ?? null}}</a></td>
                     @endif
-
-
                     @if($show->role ==1)
                     <td><span class="label label-info label-mini">DESIGNER</span></td>
                     @elseif ($show->role ==2)
