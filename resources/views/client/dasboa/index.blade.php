@@ -31,6 +31,7 @@
                         </div>
                         <thead>
                         <tr>
+                            <th><i class="fa fa-bullhorn"></i>Checkbox</th>
                             <th><i class="fa fa-bullhorn"></i>Idea</th>
                             <th><i class="fa fa-bullhorn"></i> Categories(size)</th>
                             <th><i class="fa fa-bullhorn"></i> Title</th>
@@ -50,6 +51,7 @@
                             @endphp
                             @foreach ($reports as  $report)
                             <tr>
+                                <td ><input type="checkbox" name="checkbox[]"  value="{{ $report->id ?? null }}"></td>
                                 <td><a href="basic_table.html#">{{$name[$i++][0]->name?? null }}</a></td>
                                 <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}({{ $report->size->name ?? null  }})</a></td>
                                 <td  style=" max-width: 200px;"><b>{{ $report->title ." ". $report->Sku ?? null }}</b></td>
