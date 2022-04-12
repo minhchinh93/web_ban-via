@@ -223,6 +223,7 @@
                                           @foreach ($report->mocups as $rep)
                                           <div class="project-wrapper">
                                             <div class="project">
+                                                <input type="checkbox" name="checkbox[]"  value="{{ $rep->id ?? null }}">
                                                 <h5> <a href="{{ route('dowloadMocupURL',[$rep->id]) }}">{{$rep->mocup}}</a></h5>
                                                 {{-- <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$rep->id]) }}">
                                                     <i class="fa-solid fa-circle-down"></i>
@@ -269,6 +270,7 @@
                                           <div class="project-wrapper">
                                             <div class="project">
                                                 <div style="display: flex;flex-direction: space-between;">
+                                                    <input type="checkbox" name="checkbox[]"  value="{{ $rep->id ?? null }}">
                                                     <span style="margin-right:5px" class="label label-info label-mini"><h5>{{ $rep->Sku}}</h5></span>
                                                     <h5> <a href="{{ route('dowloadURL',[$rep->id]) }}">{{$rep->ImagePngDetail}}</a></h5>
                                                     {{-- <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$rep->id]) }}">
