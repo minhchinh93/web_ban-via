@@ -93,7 +93,6 @@
                                             <span aria-hidden="true">&times;</span>
                                           </button>
                                         </div>
-
                                           @foreach ($report->product_details as $rep)
                                           <div class="project-wrapper">
                                             <div class="project">
