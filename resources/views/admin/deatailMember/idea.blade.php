@@ -133,7 +133,8 @@
                                   </div>
                                   @if (count($report->mocups)!=0)
                                   <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" ></td>
-                                    @else
+                                  <span class="badge bg-info">{{ count($report->mocups) }}</span>
+                                  @else
                                     <td data-toggle="modal" data-target="#c{{$report->id}}"></td>
                                    @endif
                                 <div class="modal fade" id="c{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -156,7 +157,7 @@
                                                 {{-- <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$rep->id]) }}">
                                                     <i class="fa-solid fa-circle-down"></i>
                                                 </a> --}}
-                                                 <span class="label label-default">{{ getimagesize(asset('/storage/'.$rep->mocup))[3] }}</span>
+                                                 <span class="label label-default">{{ dd(getimagesize(asset('/storage/'.$rep->mocup))[3] ) ?? null }}</span>
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
@@ -176,6 +177,7 @@
                                 <td data-toggle="modal" data-target="#b{{$report->id}}">
                                     @if (count($report->ProductPngDetails)!=0)
                                     <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail ) ?? null }}" style="border-radius: 5%;width: 150px; height :150px"  >
+                                    <span class="badge bg-info">{{ count($report->ProductPngDetails) }}</span>
                                     @endif
                                     {{-- <span type="button" class="label label-success" data-toggle="modal" data-target="#b{{$report->id}}">
                                         xem anh designer
