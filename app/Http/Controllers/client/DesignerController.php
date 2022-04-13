@@ -7,7 +7,6 @@ use App\Models\mocupProduct;
 use App\Models\Product;
 use App\Models\ProductPngDetails;
 use App\Models\User;
-use Carbon\Carbon;
 use File;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
@@ -407,10 +406,9 @@ class DesignerController extends Controller
     public function dowloadMocupAll($id)
     {
         $datapngs = mocupProduct::where('product_id', $id)->get();
-        $fileName = Carbon::now()->toDateString() . 'invoices.zip';
-        $zip = new \ZipArchive();
-        // dd($zip->open(public_path($fileName), \ZipArchive::CREATE | \ZipArchive::OVERWRITE));
-        if ($zip->open(public_path($fileName), \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === true) {
+        $fileName = 'invoices.zip';
+        $zip = new ZipArchive;
+        if ($zip->open(public_path($fileName), \ZipArchive::CREATE) === true) {
             $files = [];
             foreach ($datapngs as $i => $value) {
                 // $files = (public_path('file\images/') . basename($value));
