@@ -7,6 +7,7 @@ use App\Models\mocupProduct;
 use App\Models\Product;
 use App\Models\ProductPngDetails;
 use App\Models\User;
+use Carbon\Carbon;
 use File;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
@@ -306,7 +307,7 @@ class DesignerController extends Controller
             $filename = str_replace(' ', '-', $str);
             $dataImage = [
                 'product_id' => $id,
-                'ImagePngDetail' => $image->storeas('images', $filename),
+                'ImagePngDetail' => $image->storeas('images', time() . $filename),
             ];
             $datapng = ProductPngDetails::where('id', $id)->create($dataImage);
             $idPNG = $datapng->id;
@@ -329,7 +330,7 @@ class DesignerController extends Controller
             $filename = str_replace(' ', '-', $str);
             $dataImage = [
                 'product_id' => $id,
-                'mocup' => $image->storeAs('images', $filename),
+                'mocup' => $image->storeAs('images', time() . $filename),
             ];
             mocupProduct::where('id', $id)->create($dataImage);
         }
@@ -406,25 +407,23 @@ class DesignerController extends Controller
     public function dowloadMocupAll($id)
     {
         $datapngs = mocupProduct::where('product_id', $id)->get();
-        $datapngs = ['http://hblmedia.online/storage/images/1649307097Accessory-Pouch.jpg',
-            'http://hblmedia.online/storage/images/1649307097Custom-Pin-Buttons.jpg',
-            'http://hblmedia.online/storage/images/1649307097Tote-Bag-Model-2.jpg'];
+        $fileName = Carbon::now()->toDateString() . 'invoices.zip';
+        $zip = new \ZipArchive();
+        // dd($zip->open(public_path($fileName), \ZipArchive::CREATE | \ZipArchive::OVERWRITE));
+        if ($zip->open(public_path($fileName), \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === true) {
+            $files = [];
+            foreach ($datapngs as $i => $value) {
+                // $files = (public_path('file\images/') . basename($value));
+                $files[$i] = (public_path('\\storage\\images\\') . basename($value));
+            }
 
-        $zip = new ZipArchive;
-        $fileName = 'zipFileName.zip';
-        $tempImage = tempnam(sys_get_temp_dir(), $fileName);
-        // $tempImage = public_path($fileName);
-        dd($zip->open($tempImage, ZipArchive::CREATE));
-        if ($zip->open($tempImage, ZipArchive::CREATE) === true) {
-            foreach ($datapngs as $val) {
-                $relativeNameInZipFile = basename($val);
-                $zip->addFile($val, $relativeNameInZipFile);
-            //    dd(copy($val, $tempImage));
-
+            foreach ($files as $file) {
+                $relativeNameInZipFile = basename($file);
+                $zip->addFile($file, $relativeNameInZipFile);
             }
             $zip->close();
         }
 
-        return response()->download($tempImage, $fileName);
+        return response()->download($fileName);
     }
 }
