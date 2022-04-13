@@ -114,8 +114,9 @@
                                   </div>
                                   @if (count($report->mocups)!=0)
                                   <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
-                                    <span class="badge bg-info">{{ count($report->mocups) }}</span><td>
+                                    <span class="badge bg-info">{{ count($report->mocups) }}</span>
                                     @else
+                                    <td data-toggle="modal" data-target="#c{{$report->id}}">
                                 @endif
                             </td>
                                 <div class="modal fade" id="c{{$report->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
