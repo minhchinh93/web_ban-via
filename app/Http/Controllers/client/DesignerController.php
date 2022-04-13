@@ -7,18 +7,19 @@ use App\Models\mocupProduct;
 use App\Models\Product;
 use App\Models\ProductPngDetails;
 use App\Models\User;
+use File;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
+use ZipArchive;
 
 class DesignerController extends Controller
 {
     //
     public function Dashboard(Request $request)
     {
-
         $keyword = $request->keyword;
         $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->paginate(10);
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
@@ -34,12 +35,12 @@ class DesignerController extends Controller
             foreach ($userIdeas as $userIdea) {
                 $name[] = $userIdea;
             }
-
         } else {
             $name = "";
         }
         // dd($name[1][0]->name);
-        return view('client.dasboa.index',
+        return view(
+            'client.dasboa.index',
             ['reports' => $report,
                 'totalPending' => $totalPending,
                 'totalDone' => $totalDone,
@@ -47,7 +48,8 @@ class DesignerController extends Controller
                 'totalprioritize' => $totalNotReceived,
                 'totalPendingDS' => $totalPendingDS,
                 'name' => $name,
-            ]);
+            ]
+        );
     }
     public function complete(Request $request)
     {
@@ -66,11 +68,11 @@ class DesignerController extends Controller
             foreach ($userIdeas as $userIdea) {
                 $name[] = $userIdea;
             }
-
         } else {
             $name = "";
         }
-        return view('client.dasboa.index',
+        return view(
+            'client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
                 'totalPending' => $totalPending,
@@ -79,7 +81,8 @@ class DesignerController extends Controller
                 'totalprioritize' => $totalNotReceived,
                 'totalPendingDS' => $totalPendingDS,
                 'name' => $name,
-            ]);
+            ]
+        );
     }
     public function replay(Request $request)
     {
@@ -98,11 +101,11 @@ class DesignerController extends Controller
             foreach ($userIdeas as $userIdea) {
                 $name[] = $userIdea;
             }
-
         } else {
             $name = "";
         }
-        return view('client.dasboa.index',
+        return view(
+            'client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
                 'totalPending' => $totalPending,
@@ -112,7 +115,8 @@ class DesignerController extends Controller
                 'totalPendingDS' => $totalPendingDS,
                 'name' => $name,
 
-            ]);
+            ]
+        );
     }
     public function NotSeen(Request $request)
     {
@@ -131,11 +135,11 @@ class DesignerController extends Controller
             foreach ($userIdeas as $userIdea) {
                 $name[] = $userIdea;
             }
-
         } else {
             $name = "";
         }
-        return view('client.dasboa.index',
+        return view(
+            'client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
                 'totalPending' => $totalPending,
@@ -144,7 +148,8 @@ class DesignerController extends Controller
                 'totalprioritize' => $totalNotReceived,
                 'totalPendingDS' => $totalPendingDS,
                 'name' => $name,
-            ]);
+            ]
+        );
     }
     public function prioritize(Request $request)
     {
@@ -163,11 +168,11 @@ class DesignerController extends Controller
             foreach ($userIdeas as $userIdea) {
                 $name[] = $userIdea;
             }
-
         } else {
             $name = "";
         }
-        return view('client.dasboa.index',
+        return view(
+            'client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
                 'totalPending' => $totalPending,
@@ -176,7 +181,8 @@ class DesignerController extends Controller
                 'totalprioritize' => $totalNotReceived,
                 'totalPendingDS' => $totalPendingDS,
                 'name' => $name,
-            ]);
+            ]
+        );
     }
     public function PendingDS(Request $request)
     {
@@ -198,7 +204,8 @@ class DesignerController extends Controller
         } else {
             $name = "";
         }
-        return view('client.dasboa.index',
+        return view(
+            'client.dasboa.index',
             ['designers' => $designer,
                 'reports' => $report,
                 'totalPending' => $totalPending,
@@ -207,7 +214,8 @@ class DesignerController extends Controller
                 'totalprioritize' => $totalNotReceived,
                 'totalPendingDS' => $totalPendingDS,
                 'name' => $name,
-            ]);
+            ]
+        );
     }
     public function Detail($id)
     {
@@ -235,7 +243,6 @@ class DesignerController extends Controller
         ]);
         mocupProduct::where('product_id', $id)->delete();
         foreach ($request->file('mocup') as $mocup) {
-
             $mocup = [
                 'product_id' => $id,
                 'mocup' => $mocup->store('images'),
@@ -275,21 +282,16 @@ class DesignerController extends Controller
         Product::find($id)->update(['description' => $description . "</br> <b style= 'color:blue'>" . $name . "</b>:" . $approval,
         ]);
         return redirect()->back();
-
     }
     public function deleteProductPngDetails($id)
     {
-
         ProductPngDetails::where('id', $id)->delete();
         return response()->json(null);
-
     }
     public function deletemocups($id)
     {
-
         mocupProduct::where('id', $id)->delete();
         return response()->json(null);
-
     }
     public function addPngDetails(Request $request, $id)
     {
@@ -314,11 +316,9 @@ class DesignerController extends Controller
             ProductPngDetails::where('id', $idPNG)->update([
                 'Sku' => $sku,
             ]);
-
         }
         Product::where('id', $id)->update(['status' => 3]);
         return redirect()->route('PendingDS');
-
     }
     public function addmocups(Request $request, $id)
     {
@@ -335,19 +335,16 @@ class DesignerController extends Controller
         }
         Product::where('id', $id)->update(['status' => 3]);
         return redirect()->route('PendingDS');
-
     }
     public function deleteMocupAll(Request $request, $id)
     {
         mocupProduct::where('product_id', $id)->delete();
         return redirect()->back();
-
     }
     public function deletePngAll(Request $request, $id)
     {
         ProductPngDetails::where('product_id', $id)->delete();
         return redirect()->back();
-
     }
     public function dasboa()
     {
@@ -357,7 +354,6 @@ class DesignerController extends Controller
     {
         Product::where('id', $id)->delete();
         return redirect()->back();
-
     }
     public function dowloadURL($id)
     {
@@ -369,7 +365,6 @@ class DesignerController extends Controller
             $tempImage = tempnam(sys_get_temp_dir(), $filename);
             copy($UrlImage, $tempImage);
             return response()->download($tempImage, $filename);
-
         }
         return redirect()->back();
     }
@@ -385,5 +380,51 @@ class DesignerController extends Controller
             return (response()->download($tempImage, $filename));
         }
         return redirect()->back();
+    }
+    // public function dowloadMocupAll($id)
+    // {
+
+    //     $datapngs = mocupProduct::where('product_id', $id)->get();
+    //     $datapngs = ['http://127.0.0.1:8000/storage/images/256322309_175393874806328_262495665778240080_n.jpg',
+    //         'http://127.0.0.1:8000/storage/images/hinh-nen-lien-quan-may-tinh-Airi---Copy.jpg',
+    //         'http://127.0.0.1:8000/storage/images/r3mnSfKKjg5lJTuM9GYIEXQOqpEWsxk3kjr8ZcKC.jpg'];
+
+    //     foreach ($datapngs as $datapng) {
+    //         // $image = $datapng->mocup;
+    //         // $filename = str_replace('images/', '', $image);
+    //         $filename = basename($datapng);
+    //         // $UrlImage = url('/storage/' . $image);
+    //         // $urlUrlImage= $
+    //         dd($datapng);
+    //         $tempImage = tempnam(sys_get_temp_dir(), $filename);
+    //         copy($datapng, $tempImage);
+
+    //         download($tempImage, $filename);
+    //     }
+    //     return redirect()->back();
+    // }
+    public function dowloadMocupAll($id)
+    {
+        $datapngs = mocupProduct::where('product_id', $id)->get();
+        $datapngs = ['http://hblmedia.online/storage/images/1649307097Accessory-Pouch.jpg',
+            'http://hblmedia.online/storage/images/1649307097Custom-Pin-Buttons.jpg',
+            'http://hblmedia.online/storage/images/1649307097Tote-Bag-Model-2.jpg'];
+
+        $zip = new ZipArchive;
+        $fileName = 'zipFileName.zip';
+        $tempImage = tempnam(sys_get_temp_dir(), $fileName);
+        // $tempImage = public_path($fileName);
+        dd($zip->open($tempImage, ZipArchive::CREATE));
+        if ($zip->open($tempImage, ZipArchive::CREATE) === true) {
+            foreach ($datapngs as $val) {
+                $relativeNameInZipFile = basename($val);
+                $zip->addFile($val, $relativeNameInZipFile);
+            //    dd(copy($val, $tempImage));
+
+            }
+            $zip->close();
+        }
+
+        return response()->download($tempImage, $fileName);
     }
 }
