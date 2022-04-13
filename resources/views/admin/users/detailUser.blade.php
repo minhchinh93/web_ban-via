@@ -114,7 +114,8 @@
                                   </div>
                                   @if (count($report->mocups)!=0)
                                   <td data-toggle="modal" data-target="#c{{$report->id}}"><img src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; height :150px;  border-radius: 5%;" >
-                                  @else
+                                    <span class="badge bg-info">{{ count($report->mocups) }}</span>
+                                    @else
                                    <td>
                                 @endif
                             </td>
@@ -167,6 +168,7 @@
                                     @if (count($report->ProductPngDetails)!=0)
                                     <td data-toggle="modal" data-target="#b{{$report->id}}">
                                     <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="border-radius: 5%;width: 150px; height :150px"  >
+                                    <span class="badge bg-info">{{ count($report->ProductPngDetails) }}</span>
                                 </td>
                                     @else
                                     <td>
