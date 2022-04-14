@@ -217,7 +217,7 @@
                                       <div class="modal-content">
                                         <div class="modal-header" style="display: flex; align-items: center;">
                                         {{-- <span class="badge bg-info"></span> --}}
-                                          <button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button>
+                                        <a href="{{ route('dowloadMocupAll',[$report->id]) }}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button></a>
 
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
