@@ -7,11 +7,11 @@ use App\Models\mocupProduct;
 use App\Models\Product;
 use App\Models\ProductPngDetails;
 use App\Models\User;
-use File;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use ZipArchive;
 
@@ -428,6 +428,7 @@ class DesignerController extends Controller
         $datapngs = ProductPngDetails::where('product_id', $id)->get();
         $fileName = time() . 'ProductPngDetails.zip';
         $zip = new ZipArchive;
+        Storage::put($fileName, 'storage/');
         if ($zip->open($fileName, ZipArchive::CREATE) === true) {
             $files = [];
             foreach ($datapngs as $i => $value) {
