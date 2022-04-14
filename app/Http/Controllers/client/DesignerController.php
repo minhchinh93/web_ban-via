@@ -411,7 +411,7 @@ class DesignerController extends Controller
             $files = [];
             foreach ($datapngs as $i => $value) {
                 // $files = (public_path('file\images/') . basename($value));
-                $files[$i] = (public_path('\\storage\\images\\') . basename($value->mocup));
+                $files[$i] = (public_path('storage/images/') . basename($value->mocup));
             }
             // dd($files[1]);
             foreach ($files as $file) {
