@@ -11,7 +11,6 @@ use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use ZipArchive;
 
@@ -428,14 +427,14 @@ class DesignerController extends Controller
         $datapngs = ProductPngDetails::where('product_id', $id)->get();
         $fileName = time() . 'ProductPngDetails.zip';
         $zip = new ZipArchive;
-        Storage::put($fileName, 'storage/');
+        // Storage::put($fileName, 'storage/');
         if ($zip->open($fileName, ZipArchive::CREATE) === true) {
             $files = [];
             foreach ($datapngs as $i => $value) {
                 // $files = (public_path('file\images/') . basename($value));
-                $files[$i] = (public_path('\\storage\\images\\') . basename($value->ImagePngDetail));
+                $files[$i] = (public_path('storage/images/') . basename($value->ImagePngDetail));
             }
-            dd($files);
+            // dd($files);
             foreach ($files as $file) {
                 $relativeNameInZipFile = basename($file);
                 $zip->addFile($file, $relativeNameInZipFile);
