@@ -406,22 +406,41 @@ class DesignerController extends Controller
     public function dowloadMocupAll($id)
     {
         $datapngs = mocupProduct::where('product_id', $id)->get();
-        $fileName = 'invoices.zip';
+        $fileName = time() . 'dowloadMockupAll.zip';
         $zip = new ZipArchive;
-        if ($zip->open(public_path($fileName), \ZipArchive::CREATE) === true) {
+        if ($zip->open($fileName, ZipArchive::CREATE) === true) {
             $files = [];
             foreach ($datapngs as $i => $value) {
                 // $files = (public_path('file\images/') . basename($value));
-                $files[$i] = (public_path('\\storage\\images\\') . basename($value));
+                $files[$i] = (public_path('\\storage\\images\\') . basename($value->mocup));
             }
-
+            // dd($files[1]);
             foreach ($files as $file) {
                 $relativeNameInZipFile = basename($file);
                 $zip->addFile($file, $relativeNameInZipFile);
             }
             $zip->close();
         }
-
+        return response()->download($fileName);
+    }
+    public function dowloadPNGAll($id)
+    {
+        $datapngs = ProductPngDetails::where('product_id', $id)->get();
+        $fileName = time() . 'ProductPngDetails.zip';
+        $zip = new ZipArchive;
+        if ($zip->open($fileName, ZipArchive::CREATE) === true) {
+            $files = [];
+            foreach ($datapngs as $i => $value) {
+                // $files = (public_path('file\images/') . basename($value));
+                $files[$i] = (public_path('\\storage\\images\\') . basename($value->ImagePngDetail));
+            }
+            // dd($files[1]);
+            foreach ($files as $file) {
+                $relativeNameInZipFile = basename($file);
+                $zip->addFile($file, $relativeNameInZipFile);
+            }
+            $zip->close();
+        }
         return response()->download($fileName);
     }
 }

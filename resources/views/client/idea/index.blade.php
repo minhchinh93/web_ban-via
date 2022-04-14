@@ -9,7 +9,7 @@
                 <div class="col-lg-9 main-chart">
                     <div class="row mtbox" style="background:#070706; color:white">
                         <div class="row" style="text-align: center;">
-                            <a href="{{ route('showIdeaa') }}"><span class="label label-info">Idea</span></a>  <a  href="{{ route('showPNGG') }}"><span class="label label-warning">PNG</span></a><a href="{{ route('showMockup') }}">  <span class="label label-success">Mockup</span></a>
+                            <a href="{{ route('showIdeaa') }}"><span class="label label-info">Idea</span></a>  <a  href="{{ route('showPNGG') }}"><span class="label label-warning">PNG</span></a>
                         </div>
                         @if($users[0]->payment==1)
                         <div class="border-head">
@@ -52,7 +52,7 @@
                             </div>
                             @endforeach
                         </div>
-                        @else
+                        {{-- @else
                         <div class="border-head">
                             <h3 style="color: #9ff06a;">MOCKUP TABLE</h3>
                         </div>
@@ -71,7 +71,7 @@
                                 <div class="value tooltips" data-original-title="{{ $show->value }}" data-toggle="tooltip" data-placement="top">{{ $show->value }}%</div>
                             </div>
                             @endforeach
-                        </div>
+                        </div> --}}
                         @endif
 
                     </div>

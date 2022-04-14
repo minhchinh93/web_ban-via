@@ -132,8 +132,9 @@ Route::middleware(['auth', 'veryMail'])->group(function () {
     Route::get('dowloadURL/{id}', [DesignerController::class, 'dowloadURL'])->name('dowloadURL');
     Route::get('dowloadMocupURL/{id}', [DesignerController::class, 'dowloadMocupURL'])->name('dowloadMocupURL');
 
-
     Route::get('dowloadMocupAll/{id}', [DesignerController::class, 'dowloadMocupAll'])->name('dowloadMocupAll');
+
+    Route::get('dowloadPNGAll/{id}', [DesignerController::class, 'dowloadPNGAll'])->name('dowloadPNGAll');
 
     Route::post('addIdea', [HomeController::class, 'addIdea'])->name('addIdea');
     Route::get('success/{id}', [HomeController::class, 'success'])->name('success');

@@ -265,7 +265,7 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button>
+                                          <a href="{{ route('dowloadPNGAll',[$report->id]) }}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button></a>
 
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
