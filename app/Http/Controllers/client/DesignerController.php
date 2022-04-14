@@ -434,7 +434,7 @@ class DesignerController extends Controller
                 // $files = (public_path('file\images/') . basename($value));
                 $files[$i] = (public_path('\\storage\\images\\') . basename($value->ImagePngDetail));
             }
-            dd($files[1]);
+            dd($files[]);
             foreach ($files as $file) {
                 $relativeNameInZipFile = basename($file);
                 $zip->addFile($file, $relativeNameInZipFile);
