@@ -141,9 +141,8 @@
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
-                                          <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupAll',[$report->id]) }}">
-                                            <i class="fa-solid fa-circle-down"></i>
-                                        </a>
+                                        <a href="{{ route('dowloadMocupAll',[$report->id]) }}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button></a>
+
                                         </div>
                                           @foreach ($report->mocups as $rep)
                                           <div class="post-content-{{ $rep->id  }}">
@@ -208,9 +207,7 @@
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
-                                          <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$report->id]) }}">
-                                            <i class="fa-solid fa-circle-down"></i>
-                                        </a>
+                                          <a href="{{ route('dowloadPNGAll',[$report->id]) }}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button></a>
                                         </div>
 
                                           @foreach ($report->ProductPngDetails as $rep)

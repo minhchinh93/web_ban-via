@@ -9,7 +9,7 @@
                 <div class="col-lg-9 main-chart">
                     <br /><br /><br /><br />
                     <div class="row" style="text-align: center;">
-                        <a href="{{ route('showIdea') }}"><span class="label label-info">Idea</span></a>  <a  href="{{ route('showPNG') }}"><span class="label label-warning">PNG</span></a><a href="{{ route('showMockup') }}">  <span class="label label-success">Mockup</span></a>
+                        <a href="{{ route('showIdea') }}"><span class="label label-info">Idea</span></a>  <a  href="{{ route('showPNG') }}"><span class="label label-warning">PNG</span></a>
                     </div><br /><br /><br /><br />
                     <div  class="row" style="background:#373a36; color:white">
                         @if($users[0]->payment==1)
@@ -53,8 +53,8 @@
                             </div>
                             @endforeach
                         </div>
-                        @else
-                        <div class="border-head">
+
+                        {{-- <div class="border-head">
                             <h3 style="color: #abff5c;">MOCKUP TABLE</h3>
                         </div>
                         <div class="custom-bar-chart">
@@ -72,7 +72,7 @@
                                 <div class="value tooltips" data-original-title="{{ $show->value }}" data-toggle="tooltip" data-placement="top">{{ $show->value }}%</div>
                             </div>
                             @endforeach
-                        </div>
+                        </div> --}}
                         @endif
 
                     </div>
