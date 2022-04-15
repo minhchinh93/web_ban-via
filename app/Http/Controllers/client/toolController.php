@@ -224,5 +224,17 @@ class toolController extends Controller
         }
         return redirect()->back();
     }
+    public function deleteplasform(Request $request)
+    {
+        // dd($request->all());
+
+        if ($request->check_box) {
+            $products = Product::whereIn('id', $request->check_box)->get();
+            foreach ($products as $product) {
+                $product->cornerstones()->detach($request->plasform);
+            }
+        }
+        return redirect()->back();
+    }
 
 }
