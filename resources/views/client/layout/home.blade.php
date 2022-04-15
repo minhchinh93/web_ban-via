@@ -102,7 +102,7 @@
                                 <div class="col-lg-4">
                                     <form class="form-inline" action="{{ route('addplasform') }}" role="form" >
                                         @csrf
-                                        <select name="plasform" id="cars" style="border-radius: 5px;" class="form-control">
+                                        <select name="plasform" id="cars" style="border-radius: 5px;"  class="form-control ">
                                         @foreach ($showcornerstones as $show)
                                             <option value="{{ $show->id }}">{{  $show->name }}</option>
                                         @endforeach
