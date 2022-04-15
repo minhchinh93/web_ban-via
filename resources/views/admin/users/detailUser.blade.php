@@ -18,13 +18,15 @@
                                     | <a style="color:red" href="#">ưu tiên ({{ $totalprioritize ?? null}})</a></h4>
                             </div>
                             <div class="col-lg-4">
-                                <form class="form-inline" action="{{ route('addplasform') }}" role="form" >
-                                    @csrf
+                                <div class="form-panel">
+                                    <h4 class="mb"><i class="fa fa-angle-right"></i>Add Cornerstones</h4>
+                                    <form class="form-inline" action="{{ route('addplasform') }}" role="form" >
+                                        @csrf
                                     <select name="plasform" id="cars" style="border-radius: 5px;"  class="form-control ">
-                                    @foreach ($showcornerstones as $show)
-                                        <option value="{{ $show->id }}">{{  $show->name }}</option>
-                                    @endforeach
-                                </select>
+                                        @foreach ($showcornerstones as $show)
+                                            <option value="{{ $show->id }}">{{  $show->name }}</option>
+                                        @endforeach
+                                    </select>
                                 <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
                             </div>
                             <div class="col-lg-2"></div>
