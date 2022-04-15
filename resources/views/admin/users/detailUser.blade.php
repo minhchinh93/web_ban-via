@@ -29,7 +29,6 @@
                                     </select>
                                 <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
                             </div>
-                            <div class="col-lg-3">
                                 <div class="col-lg-3">
                                     <div class="form-panel">
                                         <h4 class="mb"><i class="fa fa-angle-right"></i>delete Cornerstones</h4>
@@ -42,7 +41,6 @@
                                         </select>
                                     <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
                                 </div>
-                            </div>
                         </div>
                         <thead>
                         <tr>
