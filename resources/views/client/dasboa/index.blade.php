@@ -63,7 +63,6 @@
                                word-wrap: break-word;">{!!  $report->description ?? null !!}
                                     <form class="form-inline" action="{{ route('componentDesigner',[$report->id]) }}" method="post">
                                         @csrf
-                                         {{-- <input type="hidden" name="_token" value="7dGnLGxMMAmFtuyXszFeLyDNQ3XNu1GxyYOkRDUQ"> --}}
                                           <div class="form-group">
                                                   <input style="border-radius: 15px; "  type="text" class="form-control" id="exampleInputEmail2" name="comment" placeholder="comment">
                                               </div>
@@ -73,7 +72,7 @@
                                 <td data-toggle="modal" data-target="#a{{$report->id}}" >
                                     @if  (count($report->product_details)!=0)
                                    <img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px;  border-radius: 5%;" >
-                                      @endif
+                                    @endif
                                 </td>
                                 {{-- @php
                                 $i++
@@ -142,15 +141,14 @@
                                             <span aria-hidden="true">&times;</span>
                                           </button>
                                         <a href="{{ route('dowloadMocupAll',[$report->id]) }}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button></a>
-
                                         </div>
                                           @foreach ($report->mocups as $rep)
                                           <div class="post-content-{{ $rep->id  }}">
                                             <div class="project" >
                                                 <button onclick="deleteComment({{ $rep->id }})">xoa</button>
-                                                <h5>{{ $rep->mocup }} </h5>
+
                                                 <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$rep->id]) }}">
-                                                    <i class="fa-solid fa-circle-down"></i>
+                                                    <h5>{{ $rep->mocup }} </h5>
                                                 </a>
                                                  {{-- <a href="{{ route('deletemocups',[$rep->id]) }}"><span onclick="deletemocups({{ $rep->id }})" class="label label-info label-mini">xoa</span></a> --}}
                                                 <div class="photo-wrapper" data-dismiss="modal">
@@ -221,12 +219,12 @@
                                                 <button class="label label-danger label-mini" onclick="deletePng({{ $rep->id }})">xoa</button>
                                                 <span class="label label-info label-mini"><h5>{{ $rep->Sku}}</h5></span>
                                                 <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$rep->id]) }}">
-                                                    <i class="fa-solid fa-circle-down"></i>
+                                                    <h5> {{$rep->ImagePngDetail}}</h5>
                                                 </a>
 
                                                 {{-- <h6>{{ getimagesize(asset('/storage/'.$rep->ImagePngDetail))[3] }}</h6> --}}
                                                 </div>
-                                                <h5> <a href="#">{{$rep->ImagePngDetail}}</a></h5>
+
                                                 {{-- <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}
                                                 <div class="photo-wrapper" data-dismiss="modal">
                                                     <div>
