@@ -18,7 +18,7 @@
                     </div><!-- /col-lg-12 -->
                     <div class="col-lg-7">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <form class="form-inline" role="form">
                                     <div class="form-group">
                                         <label class="sr-only" for="exampleInputEmail2">tim kiem</label>
@@ -27,9 +27,17 @@
                                     <button type="submit" class="btn btn-theme">tim kiem</button>
                                 </form>
                             </div>
+                            <div class="col-lg-6">
+                                <form class="form-inline" action="{{ route('addplasform') }}" role="form" >
+                                    @csrf
+                                    <select name="plasform" id="cars" style="border-radius: 5px;"  class="form-control ">
+                                    @foreach ($showcornerstones as $show)
+                                        <option value="{{ $show->id }}">{{  $show->name }}</option>
+                                    @endforeach
+                                </select>
+                                <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
                         </div>
-
-
         </div><!-- /col-lg-12 -->
         <div class="col-lg-1">
                 <button  type="button" class="btn btn-primary"><a style="color:white" href="{{ route('home') }}">refresh trang</a></button>
@@ -39,6 +47,7 @@
                     <table class="table table-striped table-advance table-hover">
                         <thead>
                         <tr>
+                            <th><input type="checkbox" name="checkall" value=""></th>
                             <th><i class="fa fa-bullhorn"></i> Designer</th>
                             <th><i class="fa fa-bullhorn"></i> Category(size)</th>
                             <th><i class="fa fa-bullhorn"></i> Title</th>
@@ -58,6 +67,7 @@
                         <tbody>
                             @foreach ($reports as  $report)
                             <tr>
+                                <td ><input type="checkbox" name="check_box[]"  value="{{ $report->id }}"></td>
                                 <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
                                 <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
                                 <td  style=" max-width:150px;"><b>{{ $report->title  ?? null }}</b></td>
@@ -65,7 +75,7 @@
                                     @foreach ($report->cornerstones as $cornerstone)
                                     <span class="label label-info label-mini">{{ $cornerstone->name}}</span>
                                     @endforeach
-                                    <form class="form-inline" action="{{ route('cornerstoneProduct',[$report->id]) }}" method="post">
+                                    {{-- <form class="form-inline" action="{{ route('cornerstoneProduct',[$report->id]) }}" method="post">
                                     @csrf
                                     <select name="cornerstone" id="cars" style="border-radius: 15px;" class="form-control">
                                     @foreach ($showcornerstones as $show)
@@ -73,20 +83,21 @@
                                     @endforeach
                                 </select>
                                 <button type="submit" style="border-radius: 10px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
-                            </form></b></td>
+                            </form> --}}
+                        </b></td>
                                 <td class="hidden-phone"
                                 style=" max-width: 300px;
                                 color:black;
                                 overflow: hidden;
                                 text-overflow: ellipsis;
                                word-wrap: break-word;">{!!  $report->description ?? null !!}
-                                    <form class="form-inline" action="{{ route('comment',[$report->id]) }}" method="post">
+                                    {{-- <form class="form-inline" action="{{ route('comment',[$report->id]) }}" method="post">
                                   @csrf
                                       <div class="form-group">
                                             <input type="text" class="form-control" id="exampleInputEmail2" name="comment" placeholder="comment">
                                         </div>
                                         <button type="submit" class="btn btn-theme">gửi</button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                                 <td><a href="basic_table.html#">{{ $times[$i++] ?? null }}</a></td>
                                 @if(count($report->product_details)!=0)
@@ -119,11 +130,11 @@
                                         </div>
                                           @endforeach
                                         <div class="modal-footer">
-                                          <form class="form-inline" action="{{ route('addImage',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                          {{-- <form class="form-inline" action="{{ route('addImage',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <input name="image[]"  type="file" multiple required>
                                           <button type="submit" class="btn btn-primary" >Add Image Idea</button>
-                                        </form>
+                                        </form> --}}
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                       </div>
@@ -211,7 +222,6 @@
                                           @endforeach
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
                                         </div>
                                       </div>
                                     </div>
