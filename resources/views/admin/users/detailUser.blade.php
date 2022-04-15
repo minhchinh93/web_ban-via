@@ -20,11 +20,13 @@
                             <div class="col-lg-4">
                                 <form class="form-inline" action="{{ route('addplasform') }}" role="form" >
                                     @csrf
+                                    <div class="form-group">
                                     <select name="plasform" id="cars" style="border-radius: 5px;" class="form-control">
                                     @foreach ($showcornerstones as $show)
                                         <option value="{{ $show->id }}">{{  $show->name }}</option>
                                     @endforeach
-                                </select>
+                                    </select>
+                                    </div>
                                 <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
                             </div>
                             <div class="col-lg-2"></div>
