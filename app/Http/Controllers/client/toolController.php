@@ -212,5 +212,12 @@ class toolController extends Controller
         User::find(1)->update(['payment' => 3]);
         return redirect()->back();
     }
+    public function addplasform(Request $request)
+    {
+        dd($request->all());
+        $checklis = $request->checkbox;
+        $action = $request->action;
+        return redirect()->back();
+    }
 
 }
