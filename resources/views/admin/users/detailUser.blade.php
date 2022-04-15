@@ -17,9 +17,8 @@
                                     | <a style="color:rgb(225, 0, 255)" href="#">Đang làm ({{ $totalPendingDS ?? null}})</a>
                                     | <a style="color:red" href="#">ưu tiên ({{ $totalprioritize ?? null}})</a></h4>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <form class="form-inline" action="{{ route('addplasform') }}" role="form" >
-                                {{-- <form class="form-inline" action="{{ route('addplasform') }}" > --}}
                                     @csrf
                                     <select name="plasform" id="cars" style="border-radius: 5px;" class="form-control">
                                     @foreach ($showcornerstones as $show)
@@ -28,6 +27,7 @@
                                 </select>
                                 <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
                             </div>
+                            <div class="col-lg-2"></div>
                         </div>
                         <thead>
                         <tr>
