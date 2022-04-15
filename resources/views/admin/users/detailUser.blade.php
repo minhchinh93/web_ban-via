@@ -14,9 +14,20 @@
                             | <a style="color:orange" href="#">chưa nhận ({{ $totalNotSeen ?? null}})</a>
                             | <a style="color:rgb(225, 0, 255)" href="#">Đang làm ({{ $totalPendingDS ?? null}})</a>
                             | <a style="color:red" href="#">ưu tiên ({{ $totalprioritize ?? null}})</a></h4>
-
+                            <div class="col-lg-4">
+                                <form class="form-inline" action="{{ route('addplasform') }}" role="form" >
+                                {{-- <form class="form-inline" action="{{ route('addplasform') }}" > --}}
+                                    @csrf
+                                    <select name="plasform" id="cars" style="border-radius: 5px;" class="form-control">
+                                    @foreach ($showcornerstones as $show)
+                                        <option value="{{ $show->id }}">{{  $show->name }}</option>
+                                    @endforeach
+                                </select>
+                                <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
                         <thead>
                         <tr>
+                            <th><input type="checkbox" name="checkall" value=""></th>
                             <th><i class="fa fa-bullhorn"></i>Idea</th>
                             <th><i class="fa fa-bullhorn"></i> Categories(size)</th>
                             <th><i class="fa fa-bullhorn"></i> Title</th>
@@ -37,6 +48,7 @@
                             @endphp
                             @foreach ($reports as  $report)
                             <tr>
+                                <td ><input type="checkbox" name="check_box[]"  value="{{ $report->id }}"></td>
                                 <td><a href="basic_table.html#">{{$name[$i++][0]->name?? null }}</a></td>
                                 <td><a href="basic_table.html#">{{ $report->type_product->name ?? null }}({{ $report->size->name ?? null  }})</a></td>
                                 <td  style=" max-width: 200px;"><b>{{ $report->title ?? null }}</b></td>
@@ -44,7 +56,7 @@
                                     @foreach ($report->cornerstones as $cornerstone)
                                     <span class="label label-info label-mini">{{ $cornerstone->name}}</span>
                                     @endforeach
-                                    <form class="form-inline" action="{{ route('cornerstoneProduct',[$report->id]) }}" method="post">
+                                     {{-- <form class="form-inline" action="{{ route('cornerstoneProduct',[$report->id]) }}" method="post">
                                     @csrf
                                     <select name="cornerstone" id="cars" style="border-radius: 15px;" class="form-control">
                                     @foreach ($showcornerstones as $show)
@@ -52,7 +64,8 @@
                                     @endforeach
                                 </select>
                                 <button type="submit" style="border-radius: 10px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
-                            </form></b></td>
+                            </form> --}}
+                        </b></td>
                                 @if (count($report->mocups)!=0)
                                     <td class="hidden-phone">{{  $report->mocups[0]->updated_at ?? null }}
                                     @elseif(count($report->ProductPngDetails)!=0)
@@ -65,14 +78,13 @@
                                 overflow: hidden;
                                 text-overflow: ellipsis;
                                word-wrap: break-word;">{!!  $report->description ?? null !!}
-                                    <form class="form-inline" action="{{ route('componentDesigner',[$report->id]) }}" method="post">
+                                    {{-- <form class="form-inline" action="{{ route('componentDesigner',[$report->id]) }}" method="post">
                                         @csrf
-                                         {{-- <input type="hidden" name="_token" value="7dGnLGxMMAmFtuyXszFeLyDNQ3XNu1GxyYOkRDUQ"> --}}
                                           <div class="form-group">
                                                   <input type="text" class="form-control" id="exampleInputEmail2" name="comment" placeholder="comment">
                                               </div>
                                               <button type="submit" class="btn btn-theme">gửi</button>
-                                          </form>
+                                          </form> --}}
                                 </td>
                                 <td data-toggle="modal" data-target="#a{{$report->id}}">
                                     @if  (count($report->product_details)!=0)
@@ -149,12 +161,12 @@
                                         </div>
                                           @endforeach
                                         <div class="modal-footer">
-                                            <form class="form-inline" action="{{ route('addmocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                            {{-- <form class="form-inline" action="{{ route('addmocups',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <input name="image[]"  type="file" multiple required>
                                               <button type="submit" class="btn btn-primary" >Add Image Idea</button>
-                                            </form>
-                                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </form> --}}
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                       </div>
                                     </div>
@@ -201,11 +213,11 @@
                                         </div>
                                           @endforeach
                                         <div class="modal-footer">
-                                            <form class="form-inline" action="{{ route('addPngDetails',[$report->id]) }}" method="post" enctype="multipart/form-data">
+                                            {{-- <form class="form-inline" action="{{ route('addPngDetails',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <input name="image[]"  type="file" multiple required>
                                               <button type="submit" class="btn btn-primary" >Add Image Idea</button>
-                                            </form>
+                                            </form> --}}
                                             <a class=" w-75 " style="color:white" href="{{ null }}">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">DELETE ALL</button>
                                             </a>
@@ -247,6 +259,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                </form>
                     <button type="button" class="btn btn-primary"><a style="color:white" href="{{ route('Dashboard') }}">refresh trang</a></button>
 
                 </div><!-- /content-panel -->

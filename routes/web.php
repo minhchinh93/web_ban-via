@@ -112,6 +112,8 @@ Route::middleware(['auth', 'veryMail'])->group(function () {
     Route::post('cornerstoneadd', [toolController::class, 'cornerstoneadd'])->name('cornerstoneadd');
     Route::post('cornerstonedele', [toolController::class, 'cornerstonedele'])->name('cornerstonedele');
 
+    Route::get('addplasform', [toolController::class, 'addplasform'])->name('addplasform');
+
     Route::get('showIdeaa', [toolController::class, 'showIdeaa'])->name('showIdeaa');
     Route::get('showPNGG', [toolController::class, 'showPNGG'])->name('showPNGG');
     Route::get('showMockup', [toolController::class, 'showMockup'])->name('showMockup');

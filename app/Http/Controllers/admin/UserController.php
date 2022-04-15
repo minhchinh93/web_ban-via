@@ -107,6 +107,7 @@ class UserController extends Controller
     }
     public function action(Request $request)
     {
+        dd($request->all());
         $checklis = $request->checkbox;
         $action = $request->action;
         if ($checklis) {

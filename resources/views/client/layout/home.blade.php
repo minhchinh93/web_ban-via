@@ -77,7 +77,7 @@
                         </div><!-- /col-lg-12 -->
                         <div class="col-lg-7">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     {{-- <form action="{{ route('find') }}" class="form-inline"role="form" method="GET"> --}}
                                     <form  class="form-inline"role="form" >
                                       @csrf
@@ -88,9 +88,9 @@
                                             @endforeach
                                           </select>
                                           <button type="submit" class="btn btn-theme "><i class="fa-solid fa-magnifying-glass"></i> </button>
-                                    </form>
+                                        </form>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <form class="form-inline" role="form">
                                         <div class="form-group">
                                             <label class="sr-only" for="exampleInputEmail2">tim kiem</label>
@@ -99,19 +99,27 @@
                                         <button type="submit" class="btn btn-theme"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     </form>
                                 </div>
+                                <div class="col-lg-4">
+                                    <form class="form-inline" action="{{ route('addplasform') }}" role="form" >
+                                    <form class="form-inline" action="{{ route('addplasform') }}" >
+                                        @csrf
+                                        <select name="plasform" id="cars" style="border-radius: 5px;" class="form-control">
+                                        @foreach ($showcornerstones as $show)
+                                            <option value="{{ $show->id }}">{{  $show->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
+                                </div>
                             </div>
-
-
             </div><!-- /col-lg-12 -->
             <div class="col-lg-1">
                     <button  type="button" class="btn btn-primary"><a style="color:white" href="{{ route('home') }}">refresh trang</a></button>
                 </div><!-- /col-lg-12 -->
-
                         <hr>
                         <table class="table table-striped table-advance table-hover">
                             <thead>
                             <tr>
-                                <th><i class="fa fa-bullhorn"></i> Checkbox</th>
+                                <th><input type="checkbox" name="checkall" value=""></th>
                                 <th><i class="fa fa-bullhorn"></i> Designer</th>
                                 <th><i class="fa fa-bullhorn"></i> Category(size)</th>
                                 <th><i class="fa fa-bullhorn"></i> Title</th>
@@ -131,7 +139,7 @@
                             <tbody>
                                 @foreach ($reports as  $report)
                                 <tr>
-                                    <td ><input type="checkbox" name="checkbox[]"  value="{{ $report->id ?? null }}"></td>
+                                    <td ><input type="checkbox" name="check_box[]"  value="{{ $report->id }}"></td>
                                     <td><a href="basic_table.html#">{{ $report->User->name ?? null }}</a></td>
                                     <td>{{ $report->type_product->name ?? null }}<b>({{ $report->size->name ?? null  }})</b></td>
                                     <td  style=" max-width: 200px;"><b>{{ $report->title ?? null }}</b></td>
@@ -139,15 +147,17 @@
                                         @foreach ($report->cornerstones as $cornerstone)
                                         <span class="label label-info label-mini">{{ $cornerstone->name}}</span>
                                         @endforeach
-                                        <form class="form-inline" action="{{ route('cornerstoneProduct',[$report->id]) }}" method="post">
+                                    <form class="form-inline" action="{{ route('cornerstoneProduct',[$report->id]) }}" method="post">
                                         @csrf
-                                        <select name="cornerstone" id="cars" style="border-radius: 15px;" class="form-control">
+                                    <select name="cornerstone" id="cars" style="border-radius: 15px;" class="form-control">
                                         @foreach ($showcornerstones as $show)
                                             <option value="{{ $show->id }}">{{  $show->name }}</option>
                                         @endforeach
                                     </select>
                                     <button type="submit" style="border-radius: 10px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
-                                </form></b></td>
+                                     </form>
+                                        </b>
+                                    </td>
                                     <td class="hidden-phone" style=" max-width: 300px;
                                     overflow: hidden;
                                     text-overflow: ellipsis;
@@ -351,9 +361,12 @@
                                 </tr>
                                 @endforeach
                             </tbody>
+                        </form>
                         </table>
+
                     </div><!-- /content-panel -->
                 </div><!-- /col-md-12 -->
+
                 {{ $reports->links() }}
             </div>
              <!-- Modal -->
