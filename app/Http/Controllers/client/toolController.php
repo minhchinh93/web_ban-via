@@ -214,9 +214,14 @@ class toolController extends Controller
     }
     public function addplasform(Request $request)
     {
-        dd($request->all());
-        $checklis = $request->checkbox;
-        $action = $request->action;
+        // dd($request->all());
+
+        if ($request->check_box) {
+            $products = Product::whereIn('id', $request->check_box)->get();
+            foreach ($products as $product) {
+                $product->cornerstones()->attach($request->plasform);
+            }
+        }
         return redirect()->back();
     }
 
