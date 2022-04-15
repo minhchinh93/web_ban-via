@@ -30,7 +30,7 @@
                                 <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
                             </div>
                         </div>
-                            <div class="col-lg-3">
+                            {{-- <div class="col-lg-3">
                                     <div class="form-panel">
                                         <h4 class="mb"><i class="fa fa-angle-right"></i>delete Cornerstones</h4>
                                         <form class="form-inline" action="{{ route('deleteplasform') }}" role="form" >
@@ -41,7 +41,7 @@
                                             @endforeach
                                         </select>
                                     <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
-                            </div>
+                            </div> --}}
                         </div>
                         <thead>
                         <tr>
