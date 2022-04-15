@@ -99,7 +99,7 @@
                                         <button type="submit" class="btn btn-theme"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     </form>
                                 </div>
-                                {{-- <div class="col-lg-4">
+                                <div class="col-lg-4">
                                     <form class="form-inline" action="{{ route('addplasform') }}" role="form" >
                                         @csrf
                                         <select name="plasform" id="cars" style="border-radius: 5px;"  class="form-control ">
@@ -108,7 +108,7 @@
                                         @endforeach
                                     </select>
                                     <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
-                                </div> --}}
+                                </div>
                             </div>
             </div><!-- /col-lg-12 -->
             <div class="col-lg-1">
