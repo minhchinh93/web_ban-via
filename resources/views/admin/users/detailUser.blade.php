@@ -10,7 +10,6 @@
                     <h4><i class="fa fa-angle-right"></i>Nhận việc</h4><hr>
                     <table class="table table-striped table-advance table-hover">
                         <div class="row">
-                            <div class="col-md-12">
                             <div class="col-lg-6">
                                 <h4 style="margin-left: 2%;" class="category"><a style="color: rgb(13, 182, 36)" href="#">Hoàn thành ({{ $totalDone ?? null}}) </a>
                                     | <a  style="color: rgb(79, 76, 230)" href="#">làm lại ({{ $totalPending ?? null}})</a>
@@ -30,6 +29,7 @@
                                     </select>
                                 <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
                             </div>
+                        </div>
                             <div class="col-lg-3">
                                     <div class="form-panel">
                                         <h4 class="mb"><i class="fa fa-angle-right"></i>delete Cornerstones</h4>
@@ -43,7 +43,6 @@
                                     <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
                             </div>
                         </div>
-                    </div>
                         <thead>
                         <tr>
                             <th><input type="checkbox" name="checkall" value=""></th>
