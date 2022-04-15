@@ -8,30 +8,20 @@
             <div class="col-md-12">
                 <div class="content-panel" style = "background: rgba(255, 255, 255, 0.842)" >
                     <h4><i class="fa fa-angle-right"></i>Nhận việc</h4><hr>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <h4 style="margin-left: 2%;" class="category"><a style="color: rgb(13, 182, 36)" href="#">Hoàn thành ({{ $totalDone ?? null}}) </a>
-                                | <a  style="color: rgb(79, 76, 230)" href="#">làm lại ({{ $totalPending ?? null}})</a>
-                                | <a style="color:orange" href="#">chưa nhận ({{ $totalNotSeen ?? null}})</a>
-                                | <a style="color:rgb(225, 0, 255)" href="#">Đang làm ({{ $totalPendingDS ?? null}})</a>
-                                | <a style="color:red" href="#">ưu tiên ({{ $totalprioritize ?? null}})</a></h4>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-panel">
-                                <h4 class="mb"><i class="fa fa-angle-right"></i>Add Cornerstones</h4>
-                                <form class="form-inline" action="{{ route('addplasform') }}" role="form" >
-                                    @csrf
-                                <select name="plasform" id="cars" style="border-radius: 5px;"  class="form-control ">
-                                    @foreach ($showcornerstones as $show)
-                                        <option value="{{ $show->id }}">{{  $show->name }}</option>
-                                    @endforeach
-                                </select>
-                            <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
-                        </div>
-                        <div class="col-lg-3">
+                    <table class="table table-striped table-advance table-hover">
+                        <div class="row">
+                            <div class="col-md-12">
+                            <div class="col-lg-6">
+                                <h4 style="margin-left: 2%;" class="category"><a style="color: rgb(13, 182, 36)" href="#">Hoàn thành ({{ $totalDone ?? null}}) </a>
+                                    | <a  style="color: rgb(79, 76, 230)" href="#">làm lại ({{ $totalPending ?? null}})</a>
+                                    | <a style="color:orange" href="#">chưa nhận ({{ $totalNotSeen ?? null}})</a>
+                                    | <a style="color:rgb(225, 0, 255)" href="#">Đang làm ({{ $totalPendingDS ?? null}})</a>
+                                    | <a style="color:red" href="#">ưu tiên ({{ $totalprioritize ?? null}})</a></h4>
+                            </div>
+                            <div class="col-lg-3">
                                 <div class="form-panel">
-                                    <h4 class="mb"><i class="fa fa-angle-right"></i>delete Cornerstones</h4>
-                                    <form class="form-inline" action="{{ route('deleteplasform') }}" role="form" >
+                                    <h4 class="mb"><i class="fa fa-angle-right"></i>Add Cornerstones</h4>
+                                    <form class="form-inline" action="{{ route('addplasform') }}" role="form" >
                                         @csrf
                                     <select name="plasform" id="cars" style="border-radius: 5px;"  class="form-control ">
                                         @foreach ($showcornerstones as $show)
@@ -39,10 +29,21 @@
                                         @endforeach
                                     </select>
                                 <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                            <div class="col-lg-3">
+                                    <div class="form-panel">
+                                        <h4 class="mb"><i class="fa fa-angle-right"></i>delete Cornerstones</h4>
+                                        <form class="form-inline" action="{{ route('deleteplasform') }}" role="form" >
+                                            @csrf
+                                        <select name="plasform" id="cars" style="border-radius: 5px;"  class="form-control ">
+                                            @foreach ($showcornerstones as $show)
+                                                <option value="{{ $show->id }}">{{  $show->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-advance table-hover">
-
                         <thead>
                         <tr>
                             <th><input type="checkbox" name="checkall" value=""></th>
