@@ -296,6 +296,11 @@ Route::middleware(['checkAdmin', 'veryMail'])->prefix('admin')->group(function (
     Route::get('detailUser/{id}', [UserController::class, 'detailUser'])->name('detailUser');
     Route::get('detailUserIdea/{id}', [UserController::class, 'detailUserIdea'])->name('detailUserIdea');
 
+    Route::get('detailUserdone/{id}', [UserController::class, 'detailUserdone'])->name('detailUserdone');
+    Route::get('detailUserPending/{id}', [UserController::class, 'detailUserPending'])->name('detailUserPending');
+    Route::get('detailUserIdeaDone/{id}', [UserController::class, 'detailUserIdeaDone'])->name('detailUserIdeaDone');
+    Route::get('detailUserIdeaPending/{id}', [UserController::class, 'detailUserIdeaPending'])->name('detailUserIdeaPending');
+
 });
 
 //=========khôi client===========//

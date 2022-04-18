@@ -212,6 +212,7 @@
 
     <script type="text/javascript" src="{{ asset('admin/js/gritter/js/jquery.gritter.js') }}"></script>
     <script type="text/javascript" src="{{ asset('admin//js/gritter-conf.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
     <!--script for this page-->
     @stack('scripts')
@@ -248,6 +249,13 @@
             var to = $("#" + id).data("to");
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
+        // $('#sidebar').hover(function() {
+        //     if ($("#sidebar").first().is(":hidden")) {
+        //         $("#sidebar").toggle("slow").show();
+        //     } else {
+        //         $("#sidebar").hide();
+        //     }
+        // });
     </script>
 
   </body>
