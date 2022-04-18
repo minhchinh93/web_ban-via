@@ -165,7 +165,7 @@ class UserController extends Controller
                 'totalPendingDS' => $totalPendingDS,
                 'name' => $name,
                 'showcornerstones' => $showcornerstone,
-                'id'=>$id
+                'id' => $id,
             ]);
     }
     public function detailUserdone($id)
@@ -199,6 +199,7 @@ class UserController extends Controller
                 'totalPendingDS' => $totalPendingDS,
                 'name' => $name,
                 'showcornerstones' => $showcornerstone,
+                'id' => $id,
             ]);
     }
     public function detailUserPending($id)
@@ -232,6 +233,7 @@ class UserController extends Controller
                 'totalPendingDS' => $totalPendingDS,
                 'name' => $name,
                 'showcornerstones' => $showcornerstone,
+                'id' => $id,
             ]);
     }
     public function detailUserIdea(Request $request, $id)
