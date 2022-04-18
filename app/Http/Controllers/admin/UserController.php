@@ -328,6 +328,7 @@ class UserController extends Controller
                 'times' => $time,
                 'sizes' => $size,
                 'showcornerstones' => $showcornerstone,
+                'id' => $id,
             ]);
     }
     public function detailUserIdeaPending(Request $request, $id)
@@ -375,6 +376,7 @@ class UserController extends Controller
                 'times' => $time,
                 'sizes' => $size,
                 'showcornerstones' => $showcornerstone,
+                'id' => $id,
             ]);
     }
 }
