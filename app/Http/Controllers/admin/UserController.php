@@ -204,7 +204,7 @@ class UserController extends Controller
     }
     public function detailUserPending($id)
     {
-        // dd($id);
+        dd($id);
         $report = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 4)->paginate(10);
         $totalPending = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 4)->count();
         $totalDone = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 5)->count();
@@ -280,6 +280,7 @@ class UserController extends Controller
                 'times' => $time,
                 'sizes' => $size,
                 'showcornerstones' => $showcornerstone,
+                'id' => $id,
             ]);
     }
     public function detailUserIdeaDone(Request $request, $id)
