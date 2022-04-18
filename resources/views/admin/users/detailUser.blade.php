@@ -14,7 +14,7 @@
                                 <h4 style="margin-left: 2%;" class="category"><a style="color: rgb(13, 182, 36)" href="{{ route('detailUserdone',[$id]) }}">Hoàn thành ({{ $totalDone ?? null}}) </a>
                                     | <a  style="color: rgb(79, 76, 230)" href="#">làm lại ({{ $totalPending ?? null}})</a>
                                     | <a style="color:orange" href="#">chưa nhận ({{ $totalNotSeen ?? null}})</a>
-                                    | <a style="color:rgb(225, 0, 255)" href="{{ route('detailUserIdeaPending',[$id]) }}">Đang làm ({{ $totalPendingDS ?? null}})</a>
+                                    | <a style="color:rgb(225, 0, 255)" href="{{ route('detailUserIdeaPending',[$id])}}">Đang làm ({{ $totalPendingDS ?? null}})</a>
                                     | <a style="color:red" href="#">ưu tiên ({{ $totalprioritize ?? null}})</a></h4>
                             </div>
                             <div class="col-lg-3">
