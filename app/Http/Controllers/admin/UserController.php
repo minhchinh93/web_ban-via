@@ -165,6 +165,7 @@ class UserController extends Controller
                 'totalPendingDS' => $totalPendingDS,
                 'name' => $name,
                 'showcornerstones' => $showcornerstone,
+                'id'=>$id
             ]);
     }
     public function detailUserdone($id)
