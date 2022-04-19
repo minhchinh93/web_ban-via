@@ -158,7 +158,7 @@
                              @else
                              <td><h4>0</h4></td>
                              @endif --}}
-                             @endif
+                          
                             <td>
                                 @if (  $show->deleted_at ==  null)
                                 <span class="label label-info label-mini">active</span></td>
