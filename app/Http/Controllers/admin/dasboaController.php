@@ -61,8 +61,8 @@ class dasboaController extends Controller
             $keyword1 = $request->keyword1;
             $keyword2 = $request->keyword2;
         } else {
-            $keyword1 = $time;
-            $keyword2 = $time;
+            $keyword1 = $yesterday;
+            $keyword2 = $yesterday;
         }
 
         $mocup = User::join('products', 'products.User_id', '=', 'users.id')
