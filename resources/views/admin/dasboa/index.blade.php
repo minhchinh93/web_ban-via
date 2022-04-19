@@ -119,7 +119,6 @@
                             <th><i class="fa fa-bullhorn"></i> EMAIL</th>
                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> ROLE</th>
                             <th><i class="fa fa-bookmark"></i> PNG/YES</th>
-                            <th><i class="fa fa-bookmark"></i> MOCKUP/YES</th>
                             <th><i class=" fa fa-edit"></i> STATUS</th>
                             <th></th>
                         </tr>
