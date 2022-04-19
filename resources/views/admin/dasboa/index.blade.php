@@ -142,7 +142,7 @@
                             <td><span class="label label-success label-mini">ADMIN</span></td>
                             @endif
                              <td><h4>{{$show->product_png_details ?? null }}</h4></td>
-                            @if(count($mocup) > 1)
+                            {{-- @if(count($mocup) > 1)
                              @if($show->name == "Trần Huy")
                              <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
                              @elseif ($show->name == "pioxhung design")
@@ -154,10 +154,10 @@
                             @if($show->name == $mocup[0]->name)
                              <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
                              {{-- @elseif ($show->name == "pioxhung design")
-                             <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td> --}}
+                             <td><h4>{{$mocup[0]->mocup_products ?? null }}</h4></td>
                              @else
                              <td><h4>0</h4></td>
-                             @endif
+                             @endif --}}
                              @endif
                             <td>
                                 @if (  $show->deleted_at ==  null)
@@ -178,7 +178,7 @@
                             </td>
                         </tr>
                         @endforeach
-                       @elseif (count($mocup) >= 1 && count($designer) >= 0 )
+                       {{-- @elseif (count($mocup) >= 1 && count($designer) >= 0 )
                          @foreach ($mocup as $show)
                         <tr>
                             <td><a href="{{ route('DetailDesigner',[$show->id]) }}">{{ $show->name?? null }}</a></td>
@@ -224,10 +224,10 @@
                                 {{-- <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button> --}}
                                 {{-- <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>--}}
                                 {{-- <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button> --}}
-                            </td>
+                          {{--  </td>
                         </tr>
                         @endforeach
-                         @endif
+                         @endif --}}
                         </tbody>
                     </table>
                 </div><!-- /content-panel -->
