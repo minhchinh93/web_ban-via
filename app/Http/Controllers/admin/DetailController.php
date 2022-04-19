@@ -93,6 +93,7 @@ class DetailController extends Controller
                 'times' => $time,
                 'sizes' => $size,
                 'showcornerstones' => $showcornerstone,
+                'id' => $id,
             ]);
     }
 
