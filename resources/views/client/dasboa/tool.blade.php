@@ -189,6 +189,7 @@
                                           @foreach ($report->product_details as $rep)
                                           <div class="project-wrapper">
                                             <div class="project">
+                                                {{ route('dowloadMocupURL',[$rep->id]) }}
                                                 <a href="{{ route('deleteImage',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
@@ -225,7 +226,7 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
                                         <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                            <a href="{{ route('dowloadMocupAll',[$report->id]) }}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button></a>
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
@@ -233,6 +234,7 @@
 
                                           @foreach ($report->mocups as $rep)
                                           <div class="project-wrapper">
+                                            <h5> <a href="{{ route('dowloadMocupURL',[$rep->id]) }}">{{$rep->mocups}}</a></h5>
                                             <div class="project">
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
@@ -267,13 +269,13 @@
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
+                                          <a href="{{ route('dowloadPNGAll',[$report->id]) }}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button></a>
                                         </div>
-
                                           @foreach ($report->ProductPngDetails as $rep)
                                           <div class="project-wrapper">
                                             <div style="display: flex;flex-direction: space-between;">
                                                 <span style="margin-right:5px" class="label label-info label-mini"><h5>{{ $rep->Sku}}</h5></span>
-                                                <h5> <a href="#">{{$rep->ImagePngDetail}}</a></h5>
+                                                <h5> <a href="{{ route('dowloadURL',[$rep->id]) }}">{{$rep->ImagePngDetail}}</a></h5>
                                                 </div>
                                             <div class="project">
                                                 <div class="photo-wrapper">
