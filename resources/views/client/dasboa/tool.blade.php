@@ -234,7 +234,7 @@
 
                                           @foreach ($report->mocups as $rep)
                                           <div class="project-wrapper">
-                                            <h5> <a href="{{ route('dowloadMocupURL',[$rep->id]) }}">{{$rep->mocups}}</a></h5>
+                                            <h5> <a href="{{ route('dowloadMocupURL',[$rep->id]) }}">{{$rep->mocup}}</a></h5>
                                             <div class="project">
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
