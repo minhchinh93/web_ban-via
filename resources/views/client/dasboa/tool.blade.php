@@ -82,6 +82,11 @@
             <div class="col-md-12" >
                 <div class="content-panel"  style=" border-radius: 20px;">
                     <h4><i class="fa fa-angle-right"></i>  Bảng Báo Cáo</h4>
+                    @if(Auth::user()->role == 3)
+                    <a href="{{ route('AadminHome') }}">
+                        <button type="button" class="btn btn-theme02"><i class="fa fa-check"></i> Back to admin</button>
+                    </a>
+                    @endif
                     <div class="col-lg-4">
                         <h4 style="margin-left: 2%;" class="category"><a style="color: gray" href="#"> Hoàn thành ({{ $totalDone ?? null}}) </a>
                              | <a  style="color: rgb(13, 182, 36)" href="#">chờ duyệt ({{ $totalPending ?? null}})</a>
