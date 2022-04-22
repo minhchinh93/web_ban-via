@@ -48,13 +48,10 @@
                     <h6>Order_Total: ${{     $show->Order_Total }}</h6>
                     <h6>Sale_Date: {{ $show->Sale_Date }}</h6>
                     <h6>Date_Shipped: {{ $show->Date_Shipped}}</h6>
-                    {{-- @foreach ($show->id->cornerstones as $cornerstone)
-                    <span class="label label-info label-mini">{{ $cornerstone->name}}</span>
-                    @endforeach --}}
                 </div>
                 </div>
             </div><!-- --/panel ---->
-        
+
         @endforeach
 </div>
 

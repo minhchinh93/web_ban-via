@@ -140,14 +140,14 @@
                         <i class="fa fa-th"></i>
                     </a>
                 </li>
-                  <li class="sub-menu" title="FIND PNG">
+                  <li class="sub-menu" title="Search PNG">
                     <a class="{{ (request()->is('/findPNG')) ? 'active' : 'sub-menu' }}" href="{{ route('findPNG') }}" >
-                        <i class="fa fa-tasks"></i>
+                        <i class="fa-solid fa-file-image"></i>
                     </a>
                 </li>
                   <li class="sub-menu" title="IMPORT CSV">
                     <a class="{{ (request()->is('/importCsv')) ? 'active' : 'sub-menu' }}" href="{{ route('importCsv') }}" >
-                        <i class="fa fa-tasks"></i>
+                        <i class="fa-solid fa-file-import"></i>
                     </a>
                 </li>
               </ul>
