@@ -29,7 +29,7 @@ class sellerwixController extends Controller
             $data = null;
         }
         // total=response['data']['getPaginationOrders']['orders']
-        return view('admin.sellerwix.index',
+        return view('admin.Sellerwix.index',
             ['total' => $total,
                 'datas' => $data,
             ]);
@@ -48,7 +48,7 @@ class sellerwixController extends Controller
             $data = null;
         }
 
-        return view('admin.sellerwix.getIdStore',
+        return view('admin.Sellerwix.getIdStore',
             ['total' => $total,
                 'datas' => $data,
             ]);
@@ -69,7 +69,7 @@ class sellerwixController extends Controller
             $data = null;
         }
         // dd('ok');
-        return view('admin.sellerwix.translation',
+        return view('admin.Sellerwix.translation',
             ['total' => $total,
                 'datas' => $data,
             ]);
