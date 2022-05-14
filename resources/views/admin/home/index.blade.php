@@ -498,7 +498,7 @@
 
                     <!-- USERS ONLINE SECTION -->
                     <h3>TEAM MEMBERS</h3>
-                    <!-- First Member -->
+                    <!-- First Member --> 
                     @foreach ($users as $user)
                     <div class="desc">
                         <div class="thumb">

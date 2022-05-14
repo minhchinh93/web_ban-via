@@ -176,6 +176,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\SellerwixServiceProvider::class,
 
     ],
 
@@ -233,6 +234,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'SellerWix' => App\Helpers\SellerWix::class,
 
     ],
 

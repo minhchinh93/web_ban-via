@@ -132,12 +132,13 @@
                      @endif
                   <li class="sub-menu" title="TOOL">
                       <a class="{{ (request()->is('/showTool')) ? 'active' : 'sub-menu' }}" href="{{ route('showtool') }}" >
-                          <i class="fa fa-book"></i>
+                        <i class="fa fa-th"></i>
                       </a>
                   </li>
                   <li class="sub-menu" title="DOCUMENT">
                     <a class="{{ (request()->is('/showDoc')) ? 'active' : 'sub-menu' }}" href="{{ route('showDoc') }}" >
-                        <i class="fa fa-th"></i>
+                        <i class="fa fa-book"></i>
+
                     </a>
                 </li>
                   <li class="sub-menu" title="Search PNG">
