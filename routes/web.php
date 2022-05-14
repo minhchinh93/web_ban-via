@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\DetailController;
 use App\Http\Controllers\admin\detailOderController;
 use App\Http\Controllers\admin\OderController;
 use App\Http\Controllers\admin\productController;
+use App\Http\Controllers\admin\sellerwixController;
 use App\Http\Controllers\admin\totalController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\auth\cfController;
@@ -149,6 +150,9 @@ Route::get('detailAccountHistory/{id}', [AccountHistoryController::class, 'detai
 Route::get('RechargeHistory', [HomeController::class, 'RechargeHistory'])->name('RechargeHistory');
 Route::post('postcheckout/{id}', [HomeController::class, 'postcheckout'])->middleware('auth')->name('postcheckout');
 Route::post('RechargeHistory', [RechargeHistoryController::class, 'RechargeHistory'])->name('RechargeHistory');
+Route::get('sellerwix', [sellerwixController::class, 'index'])->name('sellerwix');
+Route::get('transactions', [sellerwixController::class, 'transactions'])->name('transactions');
+Route::get('getIdStore', [sellerwixController::class, 'getIdStore'])->name('getIdStore');
 
 //============Auth==========//
 
@@ -243,37 +247,7 @@ Route::middleware(['checkAdmin', 'veryMail'])->prefix('admin')->group(function (
     Route::get('totalPending', [totalController::class, 'totalPending'])->name('totalPending');
     Route::get('totalNotReceived', [totalController::class, 'totalNotReceived'])->name('totalNotReceived');
     //=========khoi categoru============//
-    //show list ctegori
-    // Route::get('categoriesList', [typeProductController::class, 'categoriesList'])->name('categoriesList');
-    // //show index add
-    // Route::get('addCategory', [typeProductController::class, 'addCategory'])->name('addCategory');
-    // // show add post
-    // Route::post('postCategory', [typeProductController::class, 'postCategory'])->name('postCategory');
-    // // show index update
-    // Route::get('updatetemplateCategory/{id}', [typeProductController::class, 'updatetemplateCategory'])->name('updatetemplateCategory');
-    // Route::post('updateCategory/{id}', [typeProductController::class, 'updateCategory'])->name('updateCategory');
-    // // delete categori
-    // Route::get('deleteCategory/{id}', [typeProductController::class, 'deleteCategory'])->name('deleteCategory');
-    // // show trackuser
-    // Route::get('trackCategory', [typeProductController::class, 'trackCategory'])->name('trackCategory');
-    // //show activeruser
-    // Route::get('activerCategory', [typeProductController::class, 'activerCategory'])->name('activerCategory');
-    // // khoi phuc thung rac
-    // Route::get('restoreCategory/{id}', [typeProductController::class, 'restoreCategory'])->name('restoreCategory');
-    // // thực hiện tác vụ
-    // Route::get('categoryaction', [typeProductController::class, 'action'])->name('categoryaction');
 
-    // Route::get('categoriesDetail/{id}', [typeProductController::class, 'categoriesDetail'])->name('categoriesDetail');
-
-    //=====khoi product===========//
-    //show index add
-    // show add post
-    // show index update
-    // delete categori
-    // show trackuser
-    //show activeruser
-    // khoi phuc thung rac
-    // thực hiện tac vụ
     Route::get('productaction', [productController::class, 'action'])->name('productaction');
 
     Route::post('jobPublic', [craterJobController::class, 'jobPublic'])->name('jobPublic');
