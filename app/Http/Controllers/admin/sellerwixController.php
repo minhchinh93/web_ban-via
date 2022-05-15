@@ -60,6 +60,7 @@ class sellerwixController extends Controller
         // $idNameStore = $translation->findNameStore();
         $token = $selerwix->getToken();
         $translation = $selerwix->transaction($token, $request->time1, $request->time2);
+
         if ($translation['data']) {
             $total = count($translation['data']['getTransactionHistory']['logs']);
             $data = $translation['data']['getTransactionHistory']['logs'];
