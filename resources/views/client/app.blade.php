@@ -151,6 +151,17 @@
                         <i class="fa-solid fa-file-import"></i>
                     </a>
                 </li>
+
+                <li class="sub-menu" title="SELLERWIX-ODER">
+                    <a class="{{ (request()->is('sellerwix')) ? 'active' : 'sub-menu' }}" href="{{ route('sellerwix') }}" >
+                        <i class="fa-solid fa-fire"></i>
+                    </a>
+                </li>
+                <li class="sub-menu" title="SELLERWIX-transaction">
+                    <a class="{{ (request()->is('transactions')) ? 'active' : 'sub-menu' }}" href="{{ route('transactions') }}" >
+                        <i class="fa-solid fa-wallet"></i>
+                     </a>
+                </li>
               </ul>
               <!-- sidebar menu end-->
           </div>
