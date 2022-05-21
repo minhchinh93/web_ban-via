@@ -9,7 +9,7 @@
         <div class="col-lg-12">
             <div class="form-panel">
               <h4 class="mb"><i class="fa fa-angle-right"></i> tìm kiếm</h4>
-              <h4 class="mb"><a href={{ route('getIdStore') }}> get ID_Store</a></h4>
+              <h4 class="mb" ><a target="_blank" href={{ route('getIdStore') }}> get ID_Store</a></h4>
             <form class="form-inline" role="form">
                 <div class="form-group">
                     <label class="sr-only" for="exampleInputEmail2">Store ID</label>
