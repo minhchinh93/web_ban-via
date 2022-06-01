@@ -148,7 +148,7 @@ Route::middleware(['auth', 'veryMail'])->group(function () {
 
 });
 Route::get('detailAccountHistory/{id}', [AccountHistoryController::class, 'detailAccountHistory'])->middleware('auth')->name('detailAccountHistory');
-Route::get('RechargeHistory', [HomeController::class, 'RechargeHistory'])->name('RechargeHistory');
+// Route::get('RechargeHistory', [HomeController::class, 'RechargeHistory'])->name('RechargeHistory');
 Route::post('postcheckout/{id}', [HomeController::class, 'postcheckout'])->middleware('auth')->name('postcheckout');
 Route::post('RechargeHistory', [RechargeHistoryController::class, 'RechargeHistory'])->name('RechargeHistory');
 Route::get('sellerwix', [sellerwixController::class, 'index'])->name('sellerwix');
