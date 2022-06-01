@@ -44,6 +44,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(bill::class, 'id_User', 'id');
     }
+    public function user()
+    {
+        return $this->hasMany(checkDowload::class, 'id_User', 'id');
+    }
 
     public function products()
     {

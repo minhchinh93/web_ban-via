@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\checkDowload;
 use App\Models\mocupProduct;
 use App\Models\Product;
 use App\Models\ProductPngDetails;
@@ -357,6 +358,11 @@ class DesignerController extends Controller
     public function dowloadURL($id)
     {
         $datapngs = ProductPngDetails::where('id', $id)->get();
+        $datadowload = [
+            'User_id' => auth::user()->id,
+            'statusAbsolute' => "tải 1 ảnh PNG",
+        ];
+        checkDowload::create($datadowload);
         foreach ($datapngs as $datapng) {
             $image = $datapng->ImagePngDetail;
             $filename = str_replace('images/', '', $image);
@@ -365,11 +371,16 @@ class DesignerController extends Controller
             copy($UrlImage, $tempImage);
             return response()->download($tempImage, $filename);
         }
-        return redirect()->back();
+
     }
     public function dowloadMocupURL($id)
     {
         $datapngs = mocupProduct::where('id', $id)->get();
+        $datadowload = [
+            'User_id' => auth::user()->id,
+            'statusAbsolute' => "tải 1 ảnh Mockup",
+        ];
+        checkDowload::create($datadowload);
         foreach ($datapngs as $datapng) {
             $image = $datapng->mocup;
             $filename = str_replace('images/', '', $image);
@@ -378,39 +389,22 @@ class DesignerController extends Controller
             copy($UrlImage, $tempImage);
             return (response()->download($tempImage, $filename));
         }
-        return redirect()->back();
+
     }
-    // public function dowloadMocupAll($id)
-    // {
 
-    //     $datapngs = mocupProduct::where('product_id', $id)->get();
-    //     $datapngs = ['http://127.0.0.1:8000/storage/images/256322309_175393874806328_262495665778240080_n.jpg',
-    //         'http://127.0.0.1:8000/storage/images/hinh-nen-lien-quan-may-tinh-Airi---Copy.jpg',
-    //         'http://127.0.0.1:8000/storage/images/r3mnSfKKjg5lJTuM9GYIEXQOqpEWsxk3kjr8ZcKC.jpg'];
-
-    //     foreach ($datapngs as $datapng) {
-    //         // $image = $datapng->mocup;
-    //         // $filename = str_replace('images/', '', $image);
-    //         $filename = basename($datapng);
-    //         // $UrlImage = url('/storage/' . $image);
-    //         // $urlUrlImage= $
-    //         dd($datapng);
-    //         $tempImage = tempnam(sys_get_temp_dir(), $filename);
-    //         copy($datapng, $tempImage);
-
-    //         download($tempImage, $filename);
-    //     }
-    //     return redirect()->back();
-    // }
     public function dowloadMocupAll($id)
     {
         $datapngs = mocupProduct::where('product_id', $id)->get();
+        $datadowload = [
+            'User_id' => auth::user()->id,
+            'statusAbsolute' => "tải file Mockup",
+        ];
+        checkDowload::create($datadowload);
         $fileName = time() . 'dowloadMockupAll.zip';
         $zip = new ZipArchive;
         if ($zip->open($fileName, ZipArchive::CREATE) === true) {
             $files = [];
             foreach ($datapngs as $i => $value) {
-                // $files = (public_path('file\images/') . basename($value));
                 $files[$i] = (public_path('storage/images/') . basename($value->mocup));
             }
             // dd($files[1]);
@@ -425,16 +419,18 @@ class DesignerController extends Controller
     public function dowloadPNGAll($id)
     {
         $datapngs = ProductPngDetails::where('product_id', $id)->get();
+        $datadowload = [
+            'User_id' => auth::user()->id,
+            'statusAbsolute' => "tải file PNG",
+        ];
+        checkDowload::create($datadowload);
         $fileName = time() . 'ProductPngDetails.zip';
         $zip = new ZipArchive;
-        // Storage::put($fileName, 'storage/');
         if ($zip->open($fileName, ZipArchive::CREATE) === true) {
             $files = [];
             foreach ($datapngs as $i => $value) {
-                // $files = (public_path('file\images/') . basename($value));
                 $files[$i] = (public_path('storage/images/') . basename($value->ImagePngDetail));
             }
-            // dd($files);
             foreach ($files as $file) {
                 $relativeNameInZipFile = basename($file);
                 $zip->addFile($file, $relativeNameInZipFile);
