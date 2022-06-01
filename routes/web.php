@@ -2,6 +2,7 @@
 
 //admin
 use App\Http\Controllers\admin\adminHomeController;
+use App\Http\Controllers\admin\checkDownloadController;
 use App\Http\Controllers\admin\craterJobController;
 use App\Http\Controllers\admin\dasboaController;
 use App\Http\Controllers\admin\DetailController;
@@ -274,6 +275,7 @@ Route::middleware(['checkAdmin', 'veryMail'])->prefix('admin')->group(function (
     Route::get('detailUserPending/{id}', [UserController::class, 'detailUserPending'])->name('detailUserPending');
     Route::get('detailUserIdeaDone/{id}', [UserController::class, 'detailUserIdeaDone'])->name('detailUserIdeaDone');
     Route::get('detailUserIdeaPending/{id}', [UserController::class, 'detailUserIdeaPending'])->name('detailUserIdeaPending');
+    Route::get('checkDownload', [checkDownloadController::class, 'checkDownload'])->name('checkDownload');
 
 });
 
