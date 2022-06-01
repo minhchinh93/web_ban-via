@@ -14,5 +14,6 @@ class checkDownloadController extends Controller
         return view('admin\checkDowload\index', [
             'datas' => $datas,
         ]);
+
     }
 }
