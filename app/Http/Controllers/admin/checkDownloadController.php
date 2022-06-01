@@ -11,7 +11,7 @@ class checkDownloadController extends Controller
     public function checkDownload()
     {
         $datas = checkDowload::paginate(30);
-        return view('admin\checkDowload\index', [
+        return view('admin/checkDowload/index', [
             'datas' => $datas,
         ]);
 
