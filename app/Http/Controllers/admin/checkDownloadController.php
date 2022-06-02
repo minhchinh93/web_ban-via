@@ -10,10 +10,35 @@ class checkDownloadController extends Controller
 
     public function checkDownload()
     {
-        $datas = checkDowload::paginate(30);
+        $datas = checkDowload::orderBy('created_at', 'DESC')->paginate(30);
         return view('admin/checkDowload/index', [
             'datas' => $datas,
         ]);
 
+    }
+
+    public function checkdownloadClick($id)
+    {
+        if ($id == 1) {
+            $data = [
+                'User_id' => auth()->user()->id,
+                'statusRelative' => 'click vao 1 anh idea',
+            ];
+
+        } elseif ($id == 2) {
+            $data = [
+                'User_id' => auth()->user()->id,
+                'statusRelative' => 'click vao 1 anh Mockup',
+            ];
+
+        } else {
+            $data = [
+                'User_id' => auth()->user()->id,
+                'statusRelative' => 'click vao 1 anh PNG',
+            ];
+
+        }
+        checkDowload::create($data);
+        return $data;
     }
 }

@@ -197,7 +197,7 @@
                                                 {{ route('dowloadMocupURL',[$rep->id]) }}
                                                 <a href="{{ route('deleteImage',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
                                                 <div class="photo-wrapper">
-                                                    <div class="photo">
+                                                    <div class="photo" onclick="photoClick({{ $rep->id }})">
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImageDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImageDetail)}}"  width="100%"></a>
                                                     </div>
                                                 </div>
@@ -242,7 +242,7 @@
                                             <h5> <a href="{{ route('dowloadMocupURL',[$rep->id]) }}">{{$rep->mocup}}</a></h5>
                                             <div class="project">
                                                 <div class="photo-wrapper">
-                                                    <div class="photo">
+                                                    <div class="photo" onclick="photoMocups({{ $rep->id }})">
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
                                                     </div>
                                                 </div>
@@ -284,7 +284,7 @@
                                                 </div>
                                             <div class="project">
                                                 <div class="photo-wrapper">
-                                                    <div class="photo">
+                                                    <div class="photo" onclick="photoPng({{ $rep->id }})">
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
                                                     </div>
                                                 </div>
@@ -327,3 +327,98 @@
 @endsection
 
 
+@push('scripts')
+<script>
+var imageAPI='/deleteImage'
+//api xoa api
+function deleteImage(id) {
+      var option = {
+          method: 'GET', // *GET, POST, PUT, DELETE, etc.
+          headers: {
+              'Content-Type': 'application/json'
+                  // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+      }
+      alert
+      fetch(imageAPI + '/' + id, option)
+          .then(function(response) {
+              console.log(response);
+              return response.json();
+          })
+          .then(function() {
+                  var xoaHtml = document.querySelector('.post-Image-' + id)
+                  if (xoaHtml) {
+                      xoaHtml.remove();
+              };
+          });
+  }
+  //ket thuc
+$(document).ready(function(){
+
+  $("#loaiSP").change(function(){
+    var loaiSP = $(this).val();
+    // alert(loaiSP);
+    $.get("ajax/"+loaiSP, function(data){
+        console.log(data);
+      $("#size").html(data);
+    });
+  });
+});
+
+function photoClick(id) {
+    var text = "1"
+    $.get("checkdownloadClick/"+text);
+    return text
+}
+function photoMocups(id) {
+    var text = "2"
+    $.get("checkdownloadClick/"+text);
+    return text
+}
+function photoPng(id) {
+    var text = "3"
+    $.get("checkdownloadClick/"+text);
+    return text
+}
+</script>
+<script language="JavaScript">
+    window.onload = function() {
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+        }, false);
+        document.addEventListener("keydown", function(e) {
+            //document.onkeydown = function(e) {
+            // "I" key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                disabledEvent(e);
+            }
+            // "J" key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+                disabledEvent(e);
+            }
+            // "S" key + macOS
+            if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+                disabledEvent(e);
+            }
+            // "U" key
+            if (e.ctrlKey && e.keyCode == 85) {
+                disabledEvent(e);
+            }
+            // "F12" key
+            if (event.keyCode == 123) {
+                disabledEvent(e);
+            }
+        }, false);
+
+        function disabledEvent(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            } else if (window.event) {
+                window.event.cancelBubble = true;
+            }
+            e.preventDefault();
+            return false;
+        }
+    };
+</script>
+@endpush

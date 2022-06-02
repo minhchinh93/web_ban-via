@@ -8,29 +8,27 @@
                 <h4><i class="fa fa-angle-right"></i> Check Download</h4><hr><table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>stt</th>
                         <th>Name</th>
                         <th>acction</th>
                         <th>tải vào lúc</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @php
-                            $i=0
-                        @endphp
+
                         @foreach ($datas as $data)
 
                     <tr>
-                        <td>{{ $i++ }}</td>
                         <td>{{ $data->checkDowload->name }}</td>
                         @if($data->statusAbsolute!= null)
                         <td>{{ $data->statusAbsolute }}</td>
+                        <td>{{ $data->created_at }}</td>
                         <td><span class="label label-info label-mini">Absolute</span></td>
                         @else
                         <td>{{ $data->statusRelative }}</td>
+                        <td>{{ $data->created_at }}</td>
                         <td><span class="label label-warning label-mini">Relative</span></td>
                         @endif
-                        <td>{{ $data->created_at }}</td>
+
                     </tr>
                     @endforeach
 

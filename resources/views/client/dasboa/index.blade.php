@@ -92,8 +92,8 @@
                                           @foreach ($report->product_details as $rep)
                                           <div class="project-wrapper">
                                             <h5>{{ $rep->ImageDetail }} </h5>
-                                            <div class="project">
-                                                <div class="photo-wrapper"  data-dismiss="modal">
+                                            <div class="project" id="projectClick">
+                                                <div class="photo-wrapper"  data-dismiss="modal" onclick="photoClick({{ $rep->id }})">
                                                     <div >
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImageDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImageDetail)}}"  width="100%"></a>
                                                     </div>
@@ -144,7 +144,7 @@
                                         </div>
                                           @foreach ($report->mocups as $rep)
                                           <div class="post-content-{{ $rep->id  }}">
-                                            <div class="project" >
+                                            <div class="project" id="projectMocups">
                                                 <button onclick="deleteComment({{ $rep->id }})">xoa</button>
 
                                                 <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$rep->id]) }}">
@@ -152,7 +152,7 @@
                                                 </a>
                                                  {{-- <a href="{{ route('deletemocups',[$rep->id]) }}"><span onclick="deletemocups({{ $rep->id }})" class="label label-info label-mini">xoa</span></a> --}}
                                                 <div class="photo-wrapper" data-dismiss="modal">
-                                                    <div >
+                                                    <div onclick="photoMocups({{ $rep->id }})" >
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
                                                     </div>
                                                 </div>
@@ -209,12 +209,9 @@
                                         </div>
 
                                           @foreach ($report->ProductPngDetails as $rep)
-                                          {{-- @php
-                                          $url="http://hblmedia.online/storage/images/1648695736e70472c8eae3e1b029890e3ebc7e990a---Copy---Copy---Copy.jpg"
-                                          $test = getimagesize($url);
-                                          @endphp --}}
+
                                           <div class="post-Png-{{ $rep->id  }}">
-                                            <div class="project " >
+                                            <div class="project" id="projectPng">
                                                 <div style="display: flex;flex-direction: space-between;">
                                                 <button class="label label-danger label-mini" onclick="deletePng({{ $rep->id }})">xoa</button>
                                                 <span class="label label-info label-mini"><h5>{{ $rep->Sku}}</h5></span>
@@ -222,12 +219,10 @@
                                                     <h5> {{$rep->ImagePngDetail}}</h5>
                                                 </a>
 
-                                                {{-- <h6>{{ getimagesize(asset('/storage/'.$rep->ImagePngDetail))[3] }}</h6> --}}
                                                 </div>
 
-                                                {{-- <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}
                                                 <div class="photo-wrapper" data-dismiss="modal">
-                                                    <div>
+                                                    <div onclick="photoPng({{ $rep->id }})">
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
                                                     </div>
                                                 </div>
@@ -279,7 +274,7 @@
 
 @endsection
 
-@push('scripts') --}}
+@push('scripts')
  <script>
  var deletemocupApi = "/deletemocups"
  var deletePngApi = "/deleteProductPngDetails"
@@ -350,5 +345,64 @@ function deleteComment(id) {
     })
 
 
+
+
+function photoClick(id) {
+    var text = "1"
+    $.get("checkdownloadClick/"+text);
+    return text
+}
+function photoMocups(id) {
+    var text = "2"
+    $.get("checkdownloadClick/"+text);
+    return text
+}
+function photoPng(id) {
+    var text = "3"
+    $.get("checkdownloadClick/"+text);
+    return text
+}
+
+
+</script>
+<script language="JavaScript">
+    window.onload = function() {
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+        }, false);
+        document.addEventListener("keydown", function(e) {
+            //document.onkeydown = function(e) {
+            // "I" key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                disabledEvent(e);
+            }
+            // "J" key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+                disabledEvent(e);
+            }
+            // "S" key + macOS
+            if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+                disabledEvent(e);
+            }
+            // "U" key
+            if (e.ctrlKey && e.keyCode == 85) {
+                disabledEvent(e);
+            }
+            // "F12" key
+            if (event.keyCode == 123) {
+                disabledEvent(e);
+            }
+        }, false);
+
+        function disabledEvent(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            } else if (window.event) {
+                window.event.cancelBubble = true;
+            }
+            e.preventDefault();
+            return false;
+        }
+    };
 </script>
 @endpush
