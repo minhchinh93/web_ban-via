@@ -114,6 +114,11 @@
                         <i class="fa-solid fa-wallet"></i>
                      </a>
                 </li>
+                <li class="sub-menu" title="Check Download">
+                    <a class="{{ (request()->is('admin/checkDownload')) ? 'active' : 'sub-menu' }}" href="{{ route('checkDownload') }}" >
+                        <i class="fa-solid fa-eye"></i>
+                     </a>
+                </li>
               </ul>
               <!-- sidebar menu end-->
           </div>
