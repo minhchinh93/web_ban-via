@@ -145,6 +145,7 @@ Route::middleware(['auth', 'veryMail'])->group(function () {
     Route::get('success/{id}', [HomeController::class, 'success'])->name('success');
     Route::get('delete/{id}', [HomeController::class, 'delete'])->name('delete');
     Route::get('ajax/{id}', [HomeController::class, 'ajax'])->name('ajax');
+    Route::get('checkdownloadClick/{id}', [checkDownloadController::class, 'checkdownloadClick'])->name('checkdownloadClick');
 
 });
 Route::get('detailAccountHistory/{id}', [AccountHistoryController::class, 'detailAccountHistory'])->middleware('auth')->name('detailAccountHistory');

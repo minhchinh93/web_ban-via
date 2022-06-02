@@ -194,13 +194,13 @@
                                             </div>
                                               @foreach ($report->product_details as $rep)
                                               <div  class="post-Image-{{ $rep->id  }}">
-                                                <div class="project">
+                                                <div class="project" id="projectClick" >
                                                     <button onclick="deleteImage({{ $rep->id }})">xoa</button>
                                                     <h5> {{$rep->ImageDetail}} </h5>
 
                                                     {{-- <a href="{{ route('deleteImage',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}
                                                     <div class="photo-wrapper" >
-                                                        <div class="photo">
+                                                        <div class="photo" onclick="photoClick({{ $rep->id }})">
                                                             <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImageDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImageDetail)}}"  width="100%"></a>
                                                         </div>
                                                     </div>
@@ -245,9 +245,9 @@
                                                 <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$rep->id]) }}">
                                                     <i class="fa-solid fa-circle-down"></i>
                                                 </a>
-                                                <div class="project">
+                                                <div class="project" id='projectMocups'>
                                                     <div class="photo-wrapper">
-                                                        <div class="photo">
+                                                        <div class="photo" onclick="photoMocups({{ $rep->id }})" >
                                                             <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
                                                         </div>
                                                     </div>
@@ -299,9 +299,9 @@
                                                         <i class="fa-solid fa-circle-down"></i>
                                                     </a>
                                                     </div>
-                                                <div class="project">
+                                                <div class="project" id="projectPng">
                                                     <div class="photo-wrapper">
-                                                        <div class="photo">
+                                                        <div class="photo" id="photoPng" onclick="photoPng({{ $rep->id }})">
                                                             <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
                                                         </div>
                                                     </div>
@@ -414,7 +414,60 @@ $(document).ready(function(){
   });
 });
 
+function photoClick(id) {
+    var text = "1"
+    $.get("checkdownloadClick/"+text);
+    return text
+}
+function photoMocups(id) {
+    var text = "2"
+    $.get("checkdownloadClick/"+text);
+    return text
+}
+function photoPng(id) {
+    var text = "3"
+    $.get("checkdownloadClick/"+text);
+    return text
+}
+</script>
+<script language="JavaScript">
+    window.onload = function() {
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+        }, false);
+        document.addEventListener("keydown", function(e) {
+            //document.onkeydown = function(e) {
+            // "I" key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                disabledEvent(e);
+            }
+            // "J" key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+                disabledEvent(e);
+            }
+            // "S" key + macOS
+            if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+                disabledEvent(e);
+            }
+            // "U" key
+            if (e.ctrlKey && e.keyCode == 85) {
+                disabledEvent(e);
+            }
+            // "F12" key
+            if (event.keyCode == 123) {
+                disabledEvent(e);
+            }
+        }, false);
 
-
+        function disabledEvent(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            } else if (window.event) {
+                window.event.cancelBubble = true;
+            }
+            e.preventDefault();
+            return false;
+        }
+    };
 </script>
 @endpush
