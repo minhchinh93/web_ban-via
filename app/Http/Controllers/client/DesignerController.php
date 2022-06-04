@@ -21,7 +21,15 @@ class DesignerController extends Controller
     public function Dashboard(Request $request)
     {
         $keyword = $request->keyword;
-        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->paginate(10);
+
+        if ($keyword != "") {
+
+            $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->paginate(10);
+            $report->appends(['keyword' => $keyword]);
+        } else {
+            $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->paginate(10);
+        }
+
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
@@ -54,8 +62,13 @@ class DesignerController extends Controller
     public function complete(Request $request)
     {
         $keyword = $request->keyword;
+        if ($keyword != "") {
+            $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->where('status', 5)->paginate(10);
+            $report->appends(['keyword' => $keyword]);
+        } else {
+            $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->paginate(10);
+        }
         $designer = User::get()->where('role', 1);
-        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->where('status', 5)->paginate(5);
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();
