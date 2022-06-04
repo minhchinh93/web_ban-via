@@ -44,7 +44,11 @@
       <!--header start-->
       <header class="header black-bg" style="background-color: #ff865c;">
               <div class="sidebar-toggle-box">
-                <div data-placement="right" > <a href="{{ route('dasboa') }}"><img  src="http://hblmedia.online/admin/img/Logo.png" width="55"style="margin-top:-15px;border-radius:30%" class=" fa fa-bars tooltips"></a></div>
+                <div data-placement="right" >
+                    {{-- <a href="{{ route('AadminHome') }}"> --}}
+                    <img  src="http://hblmedia.online/admin/img/Logo.png" width="55"style="margin-top:-15px;border-radius:30%" class=" fa fa-bars tooltips">
+                </a>
+            </div>
               </div>
             <!--logo start-->
             <a href="index.html" class="logo"><b>MEDIA - System Mr.Hải</b></a>

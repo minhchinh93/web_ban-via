@@ -57,13 +57,18 @@ class totalController extends Controller
         $designer = User::get()->where('role', 2);
         $type_product = type_product::get();
         $size = size::get();
-        $keyword = $request->keyword;
         $showcornerstone = cornerstone::all();
-        // dd($size[1]);
-        $report = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')
-            ->Where('title', 'like', "%{$keyword}%")
-            ->Where('description', 'like', "%{$keyword}%")
-            ->paginate(10);
+        $keyword = $request->keyword;
+
+        if ($keyword != "") {
+            $report = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')
+                ->Where('title', 'like', "%{$keyword}%")
+                ->Where('description', 'like', "%{$keyword}%")
+                ->paginate(10);
+            $report->appends(['keyword' => $keyword]);
+        } else {
+            $report = Product::orderBy('id', 'desc')->where('created_at', 'LIKE', '%' . $times . '%')
+                ->paginate(10);}
 
         if ($report->total() > 0) {
             foreach ($report as $rep) {
