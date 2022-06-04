@@ -31,8 +31,10 @@ class toolController extends Controller
         $keyword = $request->keyword;
 
         if ($request->cornerstone != null) {
-            $report = Product::join('product_cornerstone', 'product_cornerstone.id_product', '=', 'products.id')
-                ->select(DB::raw('
+            if ($keyword != "") {
+
+                $report = Product::join('product_cornerstone', 'product_cornerstone.id_product', '=', 'products.id')
+                    ->select(DB::raw('
         COUNT(product_cornerstone.cornerstones_id),
         products.id as "id",
         products.id_type as "id_type",
@@ -47,26 +49,52 @@ class toolController extends Controller
         products.created_at as "created_at",
         products.updated_at as "updated_at"
         '
-                ))
-                ->groupBy('products.id')
-                ->Where('status', "5")
-                ->Where('product_cornerstone.cornerstones_id', $request->cornerstone)
-            // ->Where('title', 'like', "%{$keyword}%")
-                ->paginate(1000);
+                    ))
+                    ->groupBy('products.id')
+                    ->Where('status', "5")
+                    ->Where('product_cornerstone.cornerstones_id', $request->cornerstone)
+                    ->Where('title', 'like', "%{$keyword}%")
+                    ->paginate(10);
+                $report->appends(['keyword' => $keyword, 'cornerstone' => $request->cornerstone]);
+            } else {
+                $report = Product::join('product_cornerstone', 'product_cornerstone.id_product', '=', 'products.id')
+                    ->select(DB::raw('
+        COUNT(product_cornerstone.cornerstones_id),
+        products.id as "id",
+        products.id_type as "id_type",
+        products.User_id as "User_id",
+        products.id_idea as "id_idea",
+        products.size_id as "size_id",
+        products.title as "title",
+        products.description as "description",
+        products.ImagePNG as "ImagePNG",
+        products.status as "status",
+        products.action as "action",
+        products.created_at as "created_at",
+        products.updated_at as "updated_at"
+        '
+                    ))
+                    ->groupBy('products.id')
+                    ->Where('status', "5")
+                    ->Where('product_cornerstone.cornerstones_id', $request->cornerstone)
+                // ->Where('title', 'like', "%{$keyword}%")
+                    ->paginate(10);
+            }
 
         } else {
-            $report = Product::orderBy('updated_at', 'desc')
-                ->Where('status', "5")
-                ->Where('title', 'like', "%{$keyword}%")
-                ->paginate(10);
+            if ($keyword != "") {
+
+                $report = Product::orderBy('updated_at', 'desc')
+                    ->Where('status', "5")
+                    ->Where('title', 'like', "%{$keyword}%")
+                    ->paginate(10);
+                $report->appends(['keyword' => $keyword]);
+            } else {
+                $report = Product::orderBy('updated_at', 'desc')
+                    ->Where('status', "5")
+                    ->paginate(10);}
+
         }
-
-        // foreach ($report as $rep) {
-        //     foreach ($rep->cornerstones as $corner) {
-        //         $name[] = $corner->name;
-        //     }
-        // }
-
         {
             if ($report->total() > 0) {
                 foreach ($report as $rep) {
@@ -94,8 +122,6 @@ class toolController extends Controller
             $time = '';
 
         }
-        // dd($time[4]);
-        // dd(count($report[0]->mocups));
 
         $totalDone = Product::orderBy('id', 'desc')->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('status', 3)->count();
