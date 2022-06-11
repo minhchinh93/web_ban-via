@@ -208,7 +208,7 @@
                     <div class="row" >
                     <section class="task-panel tasks-widget" style="background-color:#fafeff;">
                         <div class="panel-heading" style="background-color:#54bae6;">
-                            <div class="pull-left"><h5 style = "color:white; margin-top: 1%;" class="category""><i class="fa fa-tasks"></i> Todo List - Sortable Style</h5></div>
+                            <div class="pull-left"><h5 style = "color:white; margin-top: 1%;" class="category"><i class="fa fa-tasks"></i> Todo List - Sortable Style</h5></div>
                             <br>
                          </div>
                           <div class="panel-body">
@@ -498,7 +498,7 @@
 
                     <!-- USERS ONLINE SECTION -->
                     <h3>TEAM MEMBERS</h3>
-                    <!-- First Member --> 
+                    <!-- First Member -->
                     @foreach ($users as $user)
                     <div class="desc">
                         <div class="thumb">

@@ -8,19 +8,12 @@ use Illuminate\Http\Request;
 
 class sellerwixController extends Controller
 {
-    //
-    // public function index()
-    // {
-    //     return view('admin.sellerwix.index');
-    // }
 
-    //
     public function index(Request $request)
     {
         $selerwix = new SellerWix;
         $token = $selerwix->getToken();
         $result = $selerwix->get_dataStore($token, $request->Store_ID, $request->time1, $request->time2);
-        // dump(count($result));
         if (count($result) < 2) {
             $total = $result['data']['getPaginationOrders']['pageInfo']['total'];
             $data = $result['data']['getPaginationOrders']['orders'];
@@ -32,6 +25,7 @@ class sellerwixController extends Controller
         return view('admin.Sellerwix.index',
             ['total' => $total,
                 'datas' => $data,
+                'id' => $request->id,
             ]);
 
     }

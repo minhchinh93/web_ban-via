@@ -1,5 +1,6 @@
 @extends('admin.app')
 @section ('content')
+d
 <section id="main-content">
     <section class="wrapper"  style="color:black; font-family:Roboto,sans-serif; background-image: url('https://allimages.sgp1.digitaloceanspaces.com/wikilaptopcom/2021/01/Background-tim-cuc-dep.png');background-size: cover;">
         <div claa='row'>
@@ -14,7 +15,7 @@
                     </tr>
                     </thead>
                     <tbody>
-
+                  
                         @foreach ($datas as $data)
 
                     <tr>

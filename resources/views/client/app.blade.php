@@ -153,7 +153,7 @@
                 </li>
 
                 <li class="sub-menu" title="SELLERWIX-ODER">
-                    <a class="{{ (request()->is('sellerwix')) ? 'active' : 'sub-menu' }}" href="{{ route('sellerwix') }}" >
+                    <a class="{{ (request()->is('getIdStore')) ? 'active' : 'sub-menu' }}" href="{{ route('getIdStore') }}" >
                         <i class="fa-solid fa-fire"></i>
                     </a>
                 </li>
