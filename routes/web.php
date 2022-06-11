@@ -152,7 +152,7 @@ Route::get('detailAccountHistory/{id}', [AccountHistoryController::class, 'detai
 // Route::get('RechargeHistory', [HomeController::class, 'RechargeHistory'])->name('RechargeHistory');
 Route::post('postcheckout/{id}', [HomeController::class, 'postcheckout'])->middleware('auth')->name('postcheckout');
 Route::post('RechargeHistory', [RechargeHistoryController::class, 'RechargeHistory'])->name('RechargeHistory');
-Route::get('sellerwix', [sellerwixController::class, 'index'])->name('sellerwix');
+Route::get('sellerwix/{id}', [sellerwixController::class, 'index'])->name('sellerwix');
 Route::get('transactions', [sellerwixController::class, 'transactions'])->name('transactions');
 Route::get('getIdStore', [sellerwixController::class, 'getIdStore'])->name('getIdStore');
 

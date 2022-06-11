@@ -9,8 +9,6 @@
         <div class="col-lg-12">
                 <div class="content-panel">
                     <h4><i class="fa fa-angle-right"></i> Total Store : {{ $total }}</h4>
-                    <h4 class="mb"><a href={{ route('sellerwix') }}> Check Oder Store</a></h4>
-
                     <section id="no-more-tables">
                         <table class="table table-bordered table-striped table-condensed cf">
                             <thead class="cf">
@@ -31,7 +29,7 @@
                                 <tr>
                                     <td data-title="Code">{{ $i++ }}</td>
                                     <td data-title="Code">{{ $data['name'] }}</td>
-                                    <td data-title="Code">{{ $data['id'] }}</td>
+                                    <td data-title="Code" ><a target="_blank" href={{ route('sellerwix',['id'=>$data['id']]) ?? null }}>{{ $data['id'] }}</a></td>
                                     <td data-title="Code">{{ $data['shop_status'] }}</td>
                                     <td data-title="Code">{{ $data['type'] }}</td>
                                 </tr>
