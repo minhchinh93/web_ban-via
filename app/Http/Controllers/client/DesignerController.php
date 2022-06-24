@@ -371,11 +371,14 @@ class DesignerController extends Controller
     public function dowloadURL($id)
     {
         $datapngs = ProductPngDetails::where('id', $id)->get();
-        $datadowload = [
-            'User_id' => auth::user()->id,
-            'statusAbsolute' => "tải 1 ảnh PNG",
-        ];
-        checkDowload::create($datadowload);
+        $admin = auth()->user()->id;
+        if ($admin != 1) {
+            $datadowload = [
+                'User_id' => auth::user()->id,
+                'statusAbsolute' => "tải 1 ảnh PNG",
+            ];
+            checkDowload::create($datadowload);
+        }
         foreach ($datapngs as $datapng) {
             $image = $datapng->ImagePngDetail;
             $filename = str_replace('images/', '', $image);
