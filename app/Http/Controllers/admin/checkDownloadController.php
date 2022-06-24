@@ -20,7 +20,7 @@ class checkDownloadController extends Controller
 
     public function checkdownloadClick($id)
     {
-        $admin = User::where('id', auth()->user()->id)->first();
+        $admin = auth()->user()->id;
         if ($admin->id != 1) {
             if ($id == 1) {
                 $data = [
@@ -42,7 +42,6 @@ class checkDownloadController extends Controller
 
             }
             checkDowload::create($data);
-
         }
     }
 }
