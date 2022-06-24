@@ -21,7 +21,7 @@ class checkDownloadController extends Controller
     public function checkdownloadClick($id)
     {
         $admin = auth()->user()->id;
-        if ($admin->id != 1) {
+        if ($admin != 1) {
             if ($id == 1) {
                 $data = [
                     'User_id' => auth()->user()->id,
