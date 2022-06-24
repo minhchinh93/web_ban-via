@@ -4,13 +4,14 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\checkDowload;
+use App\Models\User;
 
 class checkDownloadController extends Controller
 {
 
     public function checkDownload()
     {
-        $datas = checkDowload::orderBy('created_at', 'DESC')->paginate(30);
+        $datas = checkDowload::orderBy('created_at', 'DESC')->paginate(100);
         return view('admin/checkDowload/index', [
             'datas' => $datas,
         ]);
@@ -19,26 +20,29 @@ class checkDownloadController extends Controller
 
     public function checkdownloadClick($id)
     {
-        if ($id == 1) {
-            $data = [
-                'User_id' => auth()->user()->id,
-                'statusRelative' => 'click vao 1 anh idea',
-            ];
+        $admin = User::where('id', auth()->user()->id)->first();
+        if ($admin != 1) {
+            if ($id == 1) {
+                $data = [
+                    'User_id' => auth()->user()->id,
+                    'statusRelative' => 'click vao 1 anh idea',
+                ];
 
-        } elseif ($id == 2) {
-            $data = [
-                'User_id' => auth()->user()->id,
-                'statusRelative' => 'click vao 1 anh Mockup',
-            ];
+            } elseif ($id == 2) {
+                $data = [
+                    'User_id' => auth()->user()->id,
+                    'statusRelative' => 'click vao 1 anh Mockup',
+                ];
 
-        } else {
-            $data = [
-                'User_id' => auth()->user()->id,
-                'statusRelative' => 'click vao 1 anh PNG',
-            ];
+            } else {
+                $data = [
+                    'User_id' => auth()->user()->id,
+                    'statusRelative' => 'click vao 1 anh PNG',
+                ];
+
+            }
+            checkDowload::create($data);
 
         }
-        checkDowload::create($data);
-        return $data;
     }
 }
