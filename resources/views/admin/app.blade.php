@@ -102,11 +102,11 @@
                         <i class="fa fa-th"></i>
                     </a>
                 </li>
-                  <li class="sub-menu" title="ODER DETAIL">
+                  {{-- <li class="sub-menu" title="ODER DETAIL">
                     <a class="{{ (request()->is('admin/OderAdmin')) ? 'active' : 'sub-menu' }}" href="{{ route('OderAdmin') }}" >
                         <i class="fa-solid fa-money-bill-1-wave"></i>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="sub-menu" title="SELLERWIX-ODER">
                     <a class="{{ (request()->is('getIdStore')) ? 'active' : 'sub-menu' }}" href="{{ route('getIdStore') }}" >
