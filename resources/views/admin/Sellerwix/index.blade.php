@@ -9,7 +9,7 @@
         <div class="col-lg-12">
             <div class="form-panel">
               <h4 class="mb"><i class="fa fa-angle-right"></i> tìm kiếm</h4>
-              <h4 class="mb" ><a href={{ route('getIdStore') }}> get ID_Store</a></h4>
+              <h4 class="mb" ><a href={{ route('getIdStore') }}> Trở Lại</a></h4>
             <form class="form-inline" role="form">
                 <div class="form-group">
                     <label class="sr-only" for="exampleInputEmail2">Store ID</label>
@@ -29,7 +29,17 @@
     <div class="row mt">
         <div class="col-lg-12">
                 <div class="content-panel">
-                    <h4><i class="fa fa-angle-right"></i> Iteam: {{ $total ?? 0}}</h4>
+                    <div class="row">
+                        <div class="col-lg-11">
+                            <h4><i class="fa fa-angle-right"></i> <span class="badge bg-primary"> total_Order : {{ $total ?? 0}}</span> | <span class="badge bg-important">total_prices : {{ 0 }} $</span> | <span class="badge bg-success">total_shipping_prices : {{ 0 }} </span> | <span class="badge bg-inverse">total_sw_prices : {{ 0 }}</span> </h4>
+                        </div>
+
+                        <div  class="col-lg-1" >
+                            <a href="#" class="btn btn-" style="font-size: 40px; color: blue;">
+                                <i class="fa-solid fa-file-arrow-down"></i></a>
+                        </div>
+                    </div>
+
                     <section id="no-more-tables">
                         <table class="table table-bordered table-striped table-condensed cf">
                             <thead class="cf">
@@ -45,7 +55,7 @@
                                 <th class="numeric">sw_prices </th>
                                 <th class="numeric">discount_prices</th>
                             </tr>
-                           {{-- {{  dump(request()->all()) }} --}}
+
                             </thead>
                             <tbody>
                                 @php
