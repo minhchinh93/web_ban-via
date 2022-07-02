@@ -17,9 +17,9 @@
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="exampleInputPassword2">thời gian đầu</label>
-                    <input type="time1" name="time1" class="form-control" id="exampleInputPassword2" placeholder="time1">
+                    <input type="time1" name="time1" class="form-control" id="exampleInputPassword2" value="{{ request()->time1}}" placeholder="time1">
                     <label class="sr-only" for="exampleInputPassword2">thời gian cuối</label>
-                    <input type="time2"  name= "time2" class="form-control" id="exampleInputPassword2" placeholder="time2">
+                    <input type="time2"  name= "time2" class="form-control" id="exampleInputPassword2" value="{{ request()->time2}}" placeholder="time2">
                 </div>
                 <button type="submit" class="btn btn-theme">Search</button>
             </form>
