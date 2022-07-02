@@ -91,10 +91,9 @@ class sellerwixController extends Controller
             ]);
     }
 
-    public function exportUsers(Request $request)
+    public function exportUsers($id, $time1, $time2)
     {
-        $database = new ExportSw;
-        return Excel::download($database->sw(), 'ExportSw1.xlsx');
+        return Excel::download(new ExportSw($id, $time1, $time2), 'ExportSw1.xlsx');
     }
 
 }

@@ -35,7 +35,11 @@
                         </div>
 
                         <div  class="col-lg-1" >
-                            <a href="#" class="btn btn-" style="font-size: 40px; color: blue;">
+                            @if(request()->time1)
+                                <a href="{{ route('export-users',[$id, request()->time1, request()->time2 ]) ?? null}} "  style="font-size: 40px; color: blue;">
+                          @else
+                          <a href="#"  style="font-size: 40px; color: rgb(238, 255, 0);">
+                          @endif
                                 <i class="fa-solid fa-file-arrow-down"></i></a>
                         </div>
                     </div>

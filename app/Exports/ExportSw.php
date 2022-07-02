@@ -3,7 +3,7 @@
 namespace App\Exports;
 
 use App\Helpers\SellerWix;
-use App\Models\User;
+use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class ExportSw implements FromCollection
@@ -11,43 +11,61 @@ class ExportSw implements FromCollection
     /**
      * @return \Illuminate\Support\Collection
      */
+    private $id;
+    private $time1;
+    private $time2;
+    public function __construct($id, $time1, $time2)
+    {
+        $this->id = $id;
+        $this->time1 = $time1;
+        $this->time2 = $time2;
+
+    }
+    public function headings(): array
+    {
+        return [
+            'Name',
+            'order_from',
+            'store',
+            'order_status',
+            'fulfill_status',
+            'total_price',
+            'shipping_price',
+            'sw_prices',
+            'discount_price',
+        ];
+    }
+
     public function collection()
     {
+        $id = $this->id;
+        $time1 = $this->time1;
+        $time2 = $this->time2;
 
-        return User::select('name', 'email')->get();
-    }
-    public function sw()
-    {
         $selerwix = new SellerWix;
         $token = $selerwix->getToken();
-        $result = $selerwix->get_dataStore($token, '7e2b7f88-09de-4d6e-9a18-7a466ee9a9d9', '04-01', '05-01');
-        if (count($result) < 2) {
-            $datas = $result['data']['getPaginationOrders']['orders'];
+        $results = $selerwix->get_dataStore($token, $id, $time1, $time2);
+        if (count($results) < 2) {
+            $datas = $results['data']['getPaginationOrders']['orders'];
+            foreach ($datas as $data) {
+                if (count($data['order_supplier']) > 0) {
+                    $result[] = [
+                        $data['name'],
+                        $data['order_from'],
+                        $data['store']['name'],
+                        $data['order_status'],
+                        $data['order_supplier'][0]['fulfill_status'],
+                        $data['order_supplier'][0]['total_price'],
+                        $data['order_supplier'][0]['shipping_price'],
+                        $data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'],
+                        $data['order_supplier'][0]['discount_price'],
+                    ];
+                }
+            }
         } else {
-            $total = 0;
             $datas = null;
         }
-
-        foreach ($datas as $data) {
-            if (count($data['order_supplier']) > 0) {
-                $result[] = [
-                    $data['name'],
-                    $data['order_from'],
-                    $data['store']['name'],
-                    $data['order_status'],
-                    $data['order_supplier'][0]['fulfill_status'],
-                    $data['order_supplier'][0]['total_price'],
-                    $data['order_supplier'][0]['shipping_price'],
-                    $data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'],
-                    $data['order_supplier'][0]['discount_price'],
-                ];
-            }
-        }
-        // dd($result);
-        return
-            [
-            'datas' => $result,
-        ];
+        return collect($result);
 
     }
 }
