@@ -35,9 +35,9 @@ class sellerwixController extends Controller
             ['total' => $total,
                 'datas' => $datas,
                 'id' => $request->id,
-                'total_price' => array_sum($total_price),
-                'sw_prices' => array_sum($sw_prices),
-                'shipping_price' => array_sum($shipping_price),
+                'totalpPrice' => array_sum($total_price),
+                'swPrices' => array_sum($sw_prices),
+                'shippingPrice' => array_sum($shipping_price),
             ]);
 
     }
