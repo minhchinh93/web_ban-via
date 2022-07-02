@@ -21,7 +21,7 @@ class sellerwixController extends Controller
             $datas = $result['data']['getPaginationOrders']['orders'];
             foreach ($datas as $data) {
                 if (count($data['order_supplier']) > 0) {
-                    $total_price[] = $data['order_supplier'][0]['total_price'];
+                    $totalpPrice[] = $data['order_supplier'][0]['total_price'];
                     $sw_prices[] = $data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'];
                     $shipping_price[] = $data['order_supplier'][0]['shipping_price'];
                 }
@@ -35,7 +35,7 @@ class sellerwixController extends Controller
             ['total' => $total,
                 'datas' => $datas,
                 'id' => $request->id,
-                'totalpPrice' => array_sum($total_price),
+                'totalpPrice' => array_sum($totalpPrice),
                 'swPrices' => array_sum($sw_prices),
                 'shippingPrice' => array_sum($shipping_price),
             ]);
