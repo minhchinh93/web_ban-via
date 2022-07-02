@@ -8,7 +8,7 @@
     <div class="row mt">
         <div class="col-lg-12">
                 <div class="content-panel">
-                    <h4><i class="fa fa-angle-right"></i> Total Store : {{ $total }}</h4>
+                    <h4><i class="fa fa-angle-right"></i> Total Store : {{ $total }} </h4>
                     <section id="no-more-tables">
                         <table class="table table-bordered table-striped table-condensed cf">
                             <thead class="cf">
