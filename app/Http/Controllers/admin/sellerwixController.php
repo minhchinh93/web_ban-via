@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Exports\ExportSw;
 use App\Helpers\SellerWix;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class sellerwixController extends Controller
 {
@@ -16,16 +18,26 @@ class sellerwixController extends Controller
         $result = $selerwix->get_dataStore($token, $request->Store_ID, $request->time1, $request->time2);
         if (count($result) < 2) {
             $total = $result['data']['getPaginationOrders']['pageInfo']['total'];
-            $data = $result['data']['getPaginationOrders']['orders'];
+            $datas = $result['data']['getPaginationOrders']['orders'];
+            foreach ($datas as $data) {
+                if (count($data['order_supplier']) > 0) {
+                    $total_price[] = $data['order_supplier'][0]['total_price'];
+                    $sw_prices[] = $data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'];
+                    $shipping_price[] = $data['order_supplier'][0]['shipping_price'];
+                }
+            }
         } else {
             $total = 0;
-            $data = null;
+            $datas = null;
         }
-        // total=response['data']['getPaginationOrders']['orders']
+
         return view('admin.Sellerwix.index',
             ['total' => $total,
-                'datas' => $data,
+                'datas' => $datas,
                 'id' => $request->id,
+                'total_price' => array_sum($total_price),
+                'sw_prices' => array_sum($sw_prices),
+                'shipping_price' => array_sum($shipping_price),
             ]);
 
     }
@@ -68,6 +80,12 @@ class sellerwixController extends Controller
             ['total' => $total,
                 'datas' => $data,
             ]);
+    }
+
+    public function exportUsers(Request $request)
+    {
+        $database = new ExportSw;
+        return Excel::download($database->sw(), 'ExportSw1.xlsx');
     }
 
 }
