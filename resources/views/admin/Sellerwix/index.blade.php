@@ -31,7 +31,7 @@
                 <div class="content-panel">
                     <div class="row">
                         <div class="col-lg-11">
-                            <h4><i class="fa fa-angle-right"></i> <span class="badge bg-primary"> total_Order : {{ $total ?? 0}}</span> | <span class="badge bg-important">total_prices : {{ $totalpPrice ?? 0 }} $</span> | <span class="badge bg-success">total_shipping_prices : {{ $shippingPrice ?? 0  }}  $</span> | <span class="badge bg-inverse">total_sw_prices : {{ $swPrices ?? 0 }}  $</span> </h4>
+                            <h4><i class="fa fa-angle-right"></i> <span class="badge bg-primary"> total_Order : {{ $total ?? 0}}</span> | <span class="badge bg-important">total_prices : {{ $total_price ?? null }} $</span> | <span class="badge bg-success">total_shipping_prices : {{ $shipping_price ?? 0  }}  $</span> | <span class="badge bg-inverse">total_sw_prices : {{ $sw_prices ?? 0 }}</span> </h4>
                         </div>
 
                         <div  class="col-lg-1" >
