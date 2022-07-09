@@ -43,7 +43,7 @@
         <select class="col-lg-4 form-control "  id="cars" name="action">
             <option >chon</option>
             <option value="disabled">disabled</option>
-            <option value="restore">restore</option> 
+            <option value="restore">restore</option>
             <option value="delete">delete</option>
           </select> <br /><br /><br />
           <button type="submit" class="btn btn-theme mt-1">Submit</button>
@@ -74,31 +74,31 @@
                     <td ><input type="checkbox" name="checkbox[]"  value="{{ $show->id ?? null }}"></td>
                     <td>{{ $i }}</td>
                     @if($show->role ==1)
-                    <td class="hidden-phone"><a href="{{route('detailUser',[$show->id])}}">{{ $show->name?? null }}</a></td>
-                    <td class="hidden-phone"><a href="{{route('detailUser',[$show->id])}}">{{ $show->email ?? null}}</a></td>
+                    <td ><a href="{{route('detailUser',[$show->id])}}">{{ $show->name?? null }}</a></td>
+                    <td ><a href="{{route('detailUser',[$show->id])}}">{{ $show->email ?? null}}</a></td>
                     @elseif ($show->role ==2)
-                    <td class="hidden-phone"><a href="{{route('detailUserIdea',[$show->id])}}">{{ $show->name?? null }}</a></td>
-                    <td class="hidden-phone"><a href="{{route('detailUserIdea',[$show->id])}}">{{ $show->email ?? null}}</a></td>
+                    <td ><a href="{{route('detailUserIdea',[$show->id])}}">{{ $show->name?? null }}</a></td>
+                    <td ><a href="{{route('detailUserIdea',[$show->id])}}">{{ $show->email ?? null}}</a></td>
                     @else
-                    <td class="hidden-phone"><a href="#">{{ $show->name?? null }}</a></td>
-                    <td class="hidden-phone"><a href="#">{{ $show->email ?? null}}</a></td>
+                    <td ><a href="#">{{ $show->name?? null }}</a></td>
+                    <td><a href="#">{{ $show->email ?? null}}</a></td>
                     @endif
                     @if($show->role ==1)
-                    <td><span class="label label-info label-mini">DESIGNER</span></td>
+                    <td  class="hidden-phone" ><span class="label label-info label-mini">DESIGNER</span></td>
                     @elseif ($show->role ==2)
-                    <td><span class="label label-warning label-mini">IDEA</span></td>
+                    <td  class="hidden-phone"><span class="label label-warning label-mini">IDEA</span></td>
                     @elseif ($show->role ==0)
-                    <td><span class="label label-danger label-mini">Chưa cấp quyền</span></td>
+                    <td  class="hidden-phone"><span class="label label-danger label-mini">Chưa cấp quyền</span></td>
                     @else
-                    <td><span class="label label-success label-mini">ADMIN</span></td>
+                    <td  class="hidden-phone"><span class="label label-success label-mini">ADMIN</span></td>
                     @endif
-                    <td>
+                    <td  class="hidden-phone">
                         @if (  $show->deleted_at ==  null)
                         <span class="label label-info label-mini">active</span></td>
                         @else
                         <span class="label label-danger">disabled</span>
                         @endif
-                    <td>
+                    <td >
                             @if ( $show->deleted_at != null)
                             <span class="btn btn-success btn-xs">
                                 <a style="color:white" href="{{ route('restoreUser',[$show->id]) }}">
