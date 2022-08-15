@@ -3,10 +3,9 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Http\Request;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Http\Request;
 
 class sendmail extends Mailable
 {
@@ -32,8 +31,8 @@ class sendmail extends Mailable
     public function build(Request $request)
     {
         return $this->view('mail')
-        ->from('teamAmato@gmail.com','nguyen minh chinh')
-        ->subject('[code] thư xác nhận tài khoản' )
-        ->with($this->input);
+            ->from('teamAmato@gmail.com', 'hrhblmedia')
+            ->subject('[hrhblmedia] thư xác nhận tài khoản')
+            ->with($this->input);
     }
 }
