@@ -130,18 +130,18 @@
                         </a>
                     </li>
                      @endif
-                  <li class="sub-menu" title="TOOL">
+                  {{-- <li class="sub-menu" title="TOOL">
                       <a class="{{ (request()->is('/showTool')) ? 'active' : 'sub-menu' }}" href="{{ route('showtool') }}" >
                         <i class="fa fa-th"></i>
                       </a>
-                  </li>
+                  </li> --}}
                   <li class="sub-menu" title="DOCUMENT">
                     <a class="{{ (request()->is('/showDoc')) ? 'active' : 'sub-menu' }}" href="{{ route('showDoc') }}" >
                         <i class="fa fa-book"></i>
 
                     </a>
                 </li>
-                  <li class="sub-menu" title="Search PNG">
+                  {{-- <li class="sub-menu" title="Search PNG">
                     <a class="{{ (request()->is('/findPNG')) ? 'active' : 'sub-menu' }}" href="{{ route('findPNG') }}" >
                         <i class="fa-solid fa-file-image"></i>
                     </a>
@@ -150,9 +150,9 @@
                     <a class="{{ (request()->is('/importCsv')) ? 'active' : 'sub-menu' }}" href="{{ route('importCsv') }}" >
                         <i class="fa-solid fa-file-import"></i>
                     </a>
-                </li>
+                </li> --}}
 
-                <li class="sub-menu" title="SELLERWIX-ODER">
+                {{-- <li class="sub-menu" title="SELLERWIX-ODER">
                     <a class="{{ (request()->is('getIdStore')) ? 'active' : 'sub-menu' }}" href="{{ route('getIdStore') }}" >
                         <i class="fa-solid fa-fire"></i>
                     </a>
@@ -161,7 +161,7 @@
                     <a class="{{ (request()->is('transactions')) ? 'active' : 'sub-menu' }}" href="{{ route('transactions') }}" >
                         <i class="fa-solid fa-wallet"></i>
                      </a>
-                </li>
+                </li> --}}
               </ul>
               <!-- sidebar menu end-->
           </div>
