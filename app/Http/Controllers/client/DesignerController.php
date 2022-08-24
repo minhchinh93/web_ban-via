@@ -12,7 +12,6 @@ use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Str;
 use ZipArchive;
 
 class DesignerController extends Controller
@@ -232,54 +231,11 @@ class DesignerController extends Controller
     }
     public function Detail($id)
     {
-        // dd($id);
+
         $ids = Product::find($id);
         return view('client.dasboa.Detail', ['id' => $ids]);
     }
-    public function acceptDetail(Request $request, $id)
-    {
-        // dd($request->all());
-        $image = "";
-        if ($request->ImagePNG) {
-            $image = $request->file('ImagePNG')[0];
-        } else {
-            $image = Product::find($id)->ImagePNG;
-        }
-        $approval = $request->approval;
-        $ids = Product::find($id);
-        $description = $ids->description;
-        $name = $ids->user->name;
-        Product::where('id', $id)->update([
-            'ImagePNG' => $image->store('images'),
-            'status' => 3,
-            'description' => $description . "</br> <b style= 'color:blue'>" . $name . "</b>:" . $approval,
-        ]);
-        mocupProduct::where('product_id', $id)->delete();
-        foreach ($request->file('mocup') as $mocup) {
-            $mocup = [
-                'product_id' => $id,
-                'mocup' => $mocup->store('images'),
-            ];
-            mocupProduct::create($mocup);
-        }
-        ProductPngDetails::where('product_id', $id)->delete();
-        foreach ($request->file('ImagePNG') as $image) {
-            $dataImage = [
-                'product_id' => $id,
-                'ImagePngDetail' => $image->store('images'),
-            ];
 
-            $datapng = ProductPngDetails::create($dataImage);
-            $id = $datapng->id;
-            $name = strtoupper(Str::random(4));
-            $sku = $name . "-" . $id;
-
-            ProductPngDetails::where('id', $id)->update([
-                'Sku' => $sku,
-            ]);
-        }
-        return redirect()->back();
-    }
     public function accept($id)
     {
         Product::where('id', $id)->update(['status' => 2]);
@@ -295,43 +251,6 @@ class DesignerController extends Controller
         Product::find($id)->update(['description' => $description . "</br> <b style= 'color:blue'>" . $name . "</b>:" . $approval,
         ]);
         return redirect()->back();
-    }
-    public function deleteProductPngDetails($id)
-    {
-        ProductPngDetails::where('id', $id)->delete();
-        return response()->json(null);
-    }
-    public function deletemocups($id)
-    {
-        mocupProduct::where('id', $id)->delete();
-        return response()->json(null);
-    }
-    public function addPngDetails(Request $request, $id)
-    {
-
-        // dd($request->file('image'));
-        $file = $request->file('image');
-
-        foreach ($file as $image) {
-            $str = $image->getClientOriginalName();
-            // $strs = $image->getClientOriginalExtension();
-
-            $filename = str_replace(' ', '-', $str);
-            $dataImage = [
-                'product_id' => $id,
-                'ImagePngDetail' => $image->storeas('images', time() . $filename),
-            ];
-            $datapng = ProductPngDetails::where('id', $id)->create($dataImage);
-            $idPNG = $datapng->id;
-            $name = strtoupper(Str::random(4));
-            $sku = $name . "-" . $idPNG;
-
-            ProductPngDetails::where('id', $idPNG)->update([
-                'Sku' => $sku,
-            ]);
-        }
-        Product::where('id', $id)->update(['status' => 3]);
-        return redirect()->route('PendingDS');
     }
     public function addmocups(Request $request, $id)
     {
@@ -349,25 +268,11 @@ class DesignerController extends Controller
         Product::where('id', $id)->update(['status' => 3]);
         return redirect()->route('PendingDS');
     }
-    public function deleteMocupAll(Request $request, $id)
-    {
-        mocupProduct::where('product_id', $id)->delete();
-        return redirect()->back();
-    }
-    public function deletePngAll(Request $request, $id)
-    {
-        ProductPngDetails::where('product_id', $id)->delete();
-        return redirect()->back();
-    }
     public function dasboa()
     {
         return view('client.idea.index');
     }
-    public function deleteds($id)
-    {
-        Product::where('id', $id)->delete();
-        return redirect()->back();
-    }
+
     public function dowloadURL($id)
     {
         $datapngs = ProductPngDetails::where('id', $id)->get();
@@ -382,7 +287,7 @@ class DesignerController extends Controller
         foreach ($datapngs as $datapng) {
             $image = $datapng->ImagePngDetail;
             $filename = str_replace('images/', '', $image);
-            $UrlImage = url('/storage/' . $image);
+            $UrlImage = 'https://hblmedia.s3.ap-southeast-1.amazonaws.com/' . $image;
             $tempImage = tempnam(sys_get_temp_dir(), $filename);
             copy($UrlImage, $tempImage);
             return response()->download($tempImage, $filename);
@@ -400,7 +305,7 @@ class DesignerController extends Controller
         foreach ($datapngs as $datapng) {
             $image = $datapng->mocup;
             $filename = str_replace('images/', '', $image);
-            $UrlImage = url('/storage/' . $image);
+            $UrlImage = 'https://hblmedia.s3.ap-southeast-1.amazonaws.com/' . $image;
             $tempImage = tempnam(sys_get_temp_dir(), $filename);
             copy($UrlImage, $tempImage);
             return (response()->download($tempImage, $filename));
@@ -421,7 +326,7 @@ class DesignerController extends Controller
         if ($zip->open($fileName, ZipArchive::CREATE) === true) {
             $files = [];
             foreach ($datapngs as $i => $value) {
-                $files[$i] = (public_path('storage/images/') . basename($value->mocup));
+                $files[$i] = ('https://hblmedia.s3.ap-southeast-1.amazonaws.com/' . basename($value->mocup));
             }
             // dd($files[1]);
             foreach ($files as $file) {
@@ -441,11 +346,13 @@ class DesignerController extends Controller
         ];
         checkDowload::create($datadowload);
         $fileName = time() . 'ProductPngDetails.zip';
+
         $zip = new ZipArchive;
+
         if ($zip->open($fileName, ZipArchive::CREATE) === true) {
             $files = [];
             foreach ($datapngs as $i => $value) {
-                $files[$i] = (public_path('storage/images/') . basename($value->ImagePngDetail));
+                $files[$i] = ('https://hblmedia.s3.ap-southeast-1.amazonaws.com/' . basename($value->ImagePngDetail));
             }
             foreach ($files as $file) {
                 $relativeNameInZipFile = basename($file);
