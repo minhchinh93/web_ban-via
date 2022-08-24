@@ -392,7 +392,7 @@ function photoPng(id) {
 
 
 </script>
-<script language="JavaScript">
+{{-- <script language="JavaScript">
     window.onload = function() {
         document.addEventListener("contextmenu", function(e) {
             e.preventDefault();
@@ -431,5 +431,5 @@ function photoPng(id) {
             return false;
         }
     };
-</script>
+</script> --}}
 @endpush
