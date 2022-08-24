@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
 
 class s3Controller extends Controller
 {
-    //
+    //D:\laragon\www\hệt hông test\public\storage\images\0d2t3q0fsvOdLA6yVr6xjsBj2xeUlTTcuybyZxZk.jpg
 
     public function shows3()
     {
@@ -24,6 +24,9 @@ class s3Controller extends Controller
     public function postUpload(Request $request)
     {
 
+        //
+
+        // $path = Storage::disk('s3')->put('images/originals', $request->file, 'public');
         $path = Storage::disk('s3')->put('images', $request->file('image'));
 
         $request->merge([
@@ -32,8 +35,10 @@ class s3Controller extends Controller
         ]);
         ProductDetails::create($request->only('ImageDetail', 'product_id'));
         // $this->image->create($request->only('path', 'title', 'size'));
-
-        return '<th><img src="https://hblmedia.s3.ap-southeast-1.amazonaws.com/' . $path . '"></th>';
+        if (Storage::exists('$images\0d2t3q0fsvOdLA6yVr6xjsBj2xeUlTTcuybyZxZk.jpg') == 1) {
+            return '<th><img src="https://hblmedia.s3.ap-southeast-1.amazonaws.com/images\0d2t3q0fsvOdLA6yVr6xjsBj2xeUlTTcuybyZxZk.jpg"></th>';
+        }
+        return '<th><img src="http://127.0.0.1:8000/storage/images\0d2t3q0fsvOdLA6yVr6xjsBj2xeUlTTcuybyZxZk.jpg"></th>';
     }
 
     public function addImage(Request $request, $id)
