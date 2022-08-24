@@ -71,7 +71,11 @@
                                 </td>
                                 <td data-toggle="modal" data-target="#a{{$report->id}}" >
                                     @if  (count($report->product_details)!=0)
-                                   <img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px;  border-radius: 5%;" >
+                                    @if(Storage::exists($report->product_details[0]->ImageDetail) == 1)
+                                    <img src="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$report->product_details[0]->ImageDetail}}" style="width: 150px; border-radius: 5%;" >
+                                    @else
+                                    <img src="{{asset('/storage/'.$report->product_details[0]->ImageDetail)}}" style="width: 150px; border-radius: 5%;" >
+                                @endif
                                     @endif
                                 </td>
                                 {{-- @php
@@ -95,7 +99,11 @@
                                             <div class="project" id="projectClick">
                                                 <div class="photo-wrapper"  data-dismiss="modal" onclick="photoClick({{ $rep->id }})">
                                                     <div >
-                                                        <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImageDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImageDetail)}}"  width="100%"></a>
+                                                        @if(Storage::exists($rep->ImageDetail) == 1)
+                                                        <a class="fancybox" target="_blank" href="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->ImageDetail}}" alt="" ><img src="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->ImageDetail}}"  width="100%"></a>
+                                                    @else
+                                                    <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImageDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImageDetail)}}"  width="100%"></a>
+                                                    @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -110,7 +118,13 @@
                                 </section>
                                   </div>
                                   @if (count($report->mocups)!=0)
-                                  <td style=" max-width: 250px;"><img  data-toggle="modal" data-target="#c{{$report->id}}" src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px; border-radius: 5%;" >
+                                  <td style=" max-width: 250px;">
+                                    @if(Storage::exists($report->mocups[0]->mocup) == 1)
+                                         <img  data-toggle="modal" data-target="#c{{$report->id}}" src="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$report->mocups[0]->mocup}}" style="width: 150px; border-radius: 5%;" >
+
+                                         @else
+                                         <img data-toggle="modal" data-target="#c{{$report->id}}" src="{{asset('/storage/'.$report->mocups[0]->mocup)}}" style="width: 150px;  border-radius: 5%;" >
+                                      @endif
                                     <span class="badge bg-info">{{ count($report->mocups) }}</span>
                                     <a class=" w-75 " style="color:white" href="{{ route('deleteMocupAll',[$report->id]) }}">
                                         <span type="button" class="btn btn-danger" data-dismiss="modal">&times;</span>
@@ -140,7 +154,7 @@
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
-                                        <a href="{{ route('dowloadMocupAll',[$report->id]) }}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button></a>
+                                        {{-- <a href="{{ route('dowloadMocupAll',[$report->id]) }}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button></a> --}}
                                         </div>
                                           @foreach ($report->mocups as $rep)
                                           <div class="post-content-{{ $rep->id  }}">
@@ -153,7 +167,11 @@
                                                  {{-- <a href="{{ route('deletemocups',[$rep->id]) }}"><span onclick="deletemocups({{ $rep->id }})" class="label label-info label-mini">xoa</span></a> --}}
                                                 <div class="photo-wrapper" data-dismiss="modal">
                                                     <div onclick="photoMocups({{ $rep->id }})" >
-                                                        <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
+                                                        @if(Storage::exists($rep->mocup) == 1)
+                                                        <a class="fancybox" target="_blank" href="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->mocup}}" alt="" ><img src="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->mocup}}"  width="100%"></a>
+                                                    @else
+                                                    <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->mocup)}}" alt="" ><img src="{{asset('/storage/'.$rep->mocup)}}"  width="100%"></a>
+                                                     @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -174,8 +192,12 @@
                                   </div>
 
                                     @if (count($report->ProductPngDetails)!=0)
-                                    <td >
-                                    <img  data-toggle="modal" data-target="#b{{$report->id}}" src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="border-radius: 5%;width: 150px;"  >
+                                    <td data-toggle="modal" data-target="#b{{$report->id}}" >
+                                        @if(Storage::exists($report->ProductPngDetails[0]->ImagePngDetail) == 1)
+                                        <img src="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$report->ProductPngDetails[0]->ImagePngDetail  ?? null }}" style="border-radius: 5%;width: 150px;"  >
+                                        @else
+                                        <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="width: 150px; border-radius: 5%;" >
+                                        @endif
                                     <span class="badge bg-info">{{ count($report->ProductPngDetails) }}</span>
                                     <a class=" w-75 " style="color:white" href="{{ route('deletePngAll',[$report->id]) }}">
                                         <button type="button" class="btn btn-danger" >&times;</button>
@@ -205,7 +227,7 @@
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
-                                          <a href="{{ route('dowloadPNGAll',[$report->id]) }}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button></a>
+                                          {{-- <a href="{{ route('dowloadPNGAll',[$report->id]) }}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button></a> --}}
                                         </div>
 
                                           @foreach ($report->ProductPngDetails as $rep)
@@ -223,7 +245,12 @@
 
                                                 <div class="photo-wrapper" data-dismiss="modal">
                                                     <div onclick="photoPng({{ $rep->id }})">
-                                                        <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
+
+                                                        @if(Storage::exists($rep->ImagePngDetail) == 1)
+                                                        <a class="fancybox" target="_blank" href="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->ImagePngDetail}}" alt="" ><img src="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->ImagePngDetail}}"  width="100%"></a>
+                                                    @else
+                                                    <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
+                                                    @endif
                                                     </div>
                                                 </div>
                                             </div>

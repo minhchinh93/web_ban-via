@@ -5,8 +5,6 @@ namespace App\Http\Controllers\client;
 use App\Http\Controllers\Controller;
 use App\Models\cornerstone;
 use App\Models\Product;
-use App\Models\ProductDetails;
-use App\Models\ProductPngDetails;
 use App\Models\size;
 use App\Models\type_product;
 use App\Models\User;
@@ -14,7 +12,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -272,71 +269,6 @@ class HomeController extends Controller
             ]);
     }
 
-    public function addIdea(Request $request)
-    {
-
-        if ($request->size != "") {
-            $size = $request->size;
-        } else {
-            $size = null;
-        }
-        $images = "";
-        if ($request->image) {
-            $images = $request->file('image');
-            // if ($request->type_id == "chon") {
-            //     dd('ok');
-            //     $id_type = 0;
-            // }
-            // $id_type = $request->type_id;
-            $data = [
-                'id_type' => $request->type_id,
-                'User_id' => $request->User_id,
-                'id_idea' => Auth::user()->id,
-                'size_id' => $size,
-                'image' => $images[0]->store('images'),
-                'description' => $request->description,
-                'title' => $request->title,
-            ];
-            // dd($request->id);
-            $productDtail = Product::create($data);
-            // $id = $productDtail->id;
-            // $names = $productDtail->type_product->name;
-            // $name = substr($names, 0, 3);
-            // $sku = $name . $id;
-            // product::where('id', $id)->update([
-            //     'Sku' => $sku,
-            // ]);
-            foreach ($request->file('image') as $image) {
-                $dataImage = [
-                    'product_id' => $productDtail->id,
-                    'ImageDetail' => $image->store('images'),
-                ];
-                ProductDetails::create($dataImage);
-            }
-        } else {
-            $data = [
-                'id_type' => $request->type_id,
-                'User_id' => $request->User_id,
-                'id_idea' => Auth::user()->id,
-                'size_id' => $size,
-                // 'image' => $images[0]->store('images'),
-                'description' => $request->description,
-                'title' => $request->title,
-
-            ];
-
-            $productDtail = Product::create($data);
-            // $id = $productDtail->id;
-            // $names = $productDtail->type_product->name;
-            // $name = substr($names, 0, 3);
-            // $sku = $name . $id;
-            // product::where('id', $id)->update([
-            //     'Sku' => $sku,
-            // ]);
-        }
-
-        return redirect()->back();
-    }
     public function success($id)
     {
         Product::where('id', $id)->update(['status' => 5]);
@@ -361,12 +293,7 @@ class HomeController extends Controller
         return redirect()->back();
 
     }
-    public function delete($id)
-    {
-        Product::where('id', $id)->delete();
-        return redirect()->back();
 
-    }
     public function important($id)
     {
         Product::where('id', $id)->update(['action' => 2]);
@@ -394,48 +321,6 @@ class HomeController extends Controller
                 'sizes' => $size,
             ]);
 
-    }
-    public function Edit(Request $request, $id)
-    {
-        if ($request->size != "") {
-            $size = $request->size;
-        } else {
-            $size = null;
-        }
-        $images = "";
-        if ($request->image) {
-            $images = $request->file('image');
-            $data = [
-                'id_type' => $request->type_id,
-                'User_id' => $request->User_id,
-                'id_idea' => Auth::user()->id,
-                'image' => $request->file('image')[0]->store('images'),
-                'title' => $request->title,
-                'size_id' => $size,
-                'description' => $request->description,
-            ];
-            Product::where('id', $id)->update($data);
-            ProductDetails::where('product_id', $id)->delete();
-            foreach ($request->file('image') as $image) {
-                $dataImage = [
-                    'product_id' => $id,
-                    'ImageDetail' => $image->store('images'),
-                ];
-                ProductDetails::create($dataImage);
-            }
-        } else {
-            $data = [
-                'id_type' => $request->type_id,
-                'User_id' => $request->User_id,
-                'id_idea' => Auth::user()->id,
-                // 'image' => $request->file('image')[0]->store('images'),
-                'title' => $request->title,
-                'size_id' => $size,
-                'description' => $request->description,
-            ];
-            Product::where('id', $id)->update($data);
-        }
-        return redirect()->back();
     }
     public function comment(Request $request, $id)
     {
@@ -468,27 +353,6 @@ class HomeController extends Controller
 
     }
 
-    public function deleteImage($id)
-    {
-
-        ProductDetails::where('id', $id)->delete();
-        return response()->json(null);
-
-    }
-    public function addImage(Request $request, $id)
-    {
-
-        foreach ($request->file('image') as $image) {
-            $dataImage = [
-                'product_id' => $id,
-                'ImageDetail' => $image->store('images'),
-            ];
-            ProductDetails::where('id', $id)->create($dataImage);
-        }
-        return redirect()->back();
-
-    }
-
     public function dasboa()
     {
         if (Auth::check()) {
@@ -496,31 +360,5 @@ class HomeController extends Controller
         } else {
             return redirect()->route('login');
         }
-    }
-    public function addPngDetailsIdea(Request $request, $id)
-    {
-
-        // dd($request->file('image'));
-        $file = $request->file('image');
-
-        foreach ($file as $image) {
-            $str = $image->getClientOriginalName();
-            $filename = str_replace(' ', '-', $str);
-            $dataImage = [
-                'product_id' => $id,
-                'ImagePngDetail' => $image->storeas('images', time() . $filename),
-            ];
-            $datapng = ProductPngDetails::where('id', $id)->create($dataImage);
-            $idPNG = $datapng->id;
-            $name = strtoupper(Str::random(4));
-            $sku = $name . "-" . $idPNG;
-
-            ProductPngDetails::where('id', $idPNG)->update([
-                'Sku' => $sku,
-            ]);
-        }
-        Product::where('id', $id)->update(['status' => 5]);
-        return redirect()->back();
-
     }
 }

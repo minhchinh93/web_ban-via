@@ -27,6 +27,8 @@ use App\Http\Controllers\client\indexController;
 use App\Http\Controllers\client\RechargeHistoryController;
 use App\Http\Controllers\client\toolController;
 //clients
+use App\Http\Controllers\S3\s3Controller;
+use App\Http\Controllers\S3\s3DesignerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,7 +48,7 @@ Route::get('/chinh', function () {
 Route::middleware(['CheckDesinger', 'veryMail'])->group(function () {
     Route::get('Dashboard', [DesignerController::class, 'Dashboard'])->name('Dashboard');
     Route::get('Detail/{id}', [DesignerController::class, 'Detail'])->name('Detail');
-    Route::post('acceptDetail/{id}', [DesignerController::class, 'acceptDetail'])->name('acceptDetail');
+    // Route::post('acceptDetail/{id}', [DesignerController::class, 'acceptDetail'])->name('acceptDetail');
     Route::get('accept/{id}', [DesignerController::class, 'accept'])->name('accept');
     Route::get('complete', [DesignerController::class, 'complete'])->name('complete');
     Route::get('PendingDS', [DesignerController::class, 'PendingDS'])->name('PendingDS');
@@ -55,13 +57,7 @@ Route::middleware(['CheckDesinger', 'veryMail'])->group(function () {
     Route::get('prioritize', [DesignerController::class, 'prioritize'])->name('prioritize');
     Route::post('componentDesigner/{id}', [DesignerController::class, 'componentDesigner'])->name('componentDesigner');
 
-    Route::get('deleteProductPngDetails/{id}', [DesignerController::class, 'deleteProductPngDetails'])->name('deleteProductPngDetails');
-    Route::post('addPngDetails/{id}', [DesignerController::class, 'addPngDetails'])->name('addPngDetails');
-
-    Route::get('deletemocups/{id}', [DesignerController::class, 'deletemocups'])->name('deletemocups');
     Route::post('addmocups/{id}', [DesignerController::class, 'addmocups'])->name('addmocups');
-    Route::get('deleteMocupAll/{id}', [DesignerController::class, 'deleteMocupAll'])->name('deleteMocupAll');
-    Route::get('deletePngAll/{id}', [DesignerController::class, 'deletePngAll'])->name('deletePngAll');
 
     Route::get('deleteds/{id}', [DesignerController::class, 'deleteds'])->name('deleteds');
 
@@ -70,11 +66,7 @@ Route::get('dasboa', [indexController::class, 'dasboa'])->name('dasboa');
 
 Route::middleware(['CheckIdea', 'veryMail'])->group(function () {
 
-    // Route::get('/chinh', function () {
-    //     return view('client.test');
-    // });
     Route::get('/', [HomeController::class, 'home'])->name('home');
-    // Route::get('dasboa', [HomeController::class, 'dasboa'])->name('dasboa');
 
     Route::get('done', [HomeController::class, 'done'])->name('done');
     Route::get('Pending', [HomeController::class, 'Pending'])->name('Pending');
@@ -83,22 +75,16 @@ Route::middleware(['CheckIdea', 'veryMail'])->group(function () {
 
     Route::get('warning/{id}', [HomeController::class, 'warning'])->name('warning');
     Route::get('EditShow/{id}', [HomeController::class, 'EditShow'])->name('EditShow');
-    Route::post('Edit/{id}', [HomeController::class, 'Edit'])->name('Edit');
     Route::get('approvalShow/{id}', [HomeController::class, 'approvalShow'])->name('approvalShow');
     Route::post('approval/{id}', [HomeController::class, 'approval'])->name('approval');
     Route::get('important/{id}', [HomeController::class, 'important'])->name('important');
-    // Route::get('showimage/{id}', [HomeController::class, 'showimage'])->name('showimage');
     Route::post('showimage', [HomeController::class, 'showimage'])->name('showimage');
     Route::post('comment/{id}', [HomeController::class, 'comment'])->name('comment');
     Route::get('find', [HomeController::class, 'find'])->name('find');
 
-    Route::get('deleteImage/{id}', [HomeController::class, 'deleteImage'])->name('deleteImage');
-    Route::post('addImage/{id}', [HomeController::class, 'addImage'])->name('addImage');
-
     Route::get('showdetail/{key1}/{key2}', [detailIdeaController::class, 'showdetail'])->name('showdetail');
 
     // find PNG
-    Route::post('addPngDetailsIdea/{id}', [HomeController::class, 'addPngDetailsIdea'])->name('addPngDetailsIdea');
 
 });
 
@@ -121,7 +107,6 @@ Route::middleware(['auth', 'veryMail'])->group(function () {
     Route::get('showPNGG', [toolController::class, 'showPNGG'])->name('showPNGG');
     Route::get('showMockup', [toolController::class, 'showMockup'])->name('showMockup');
     Route::get('Sku', [toolController::class, 'Sku'])->name('Sku');
-    // Route::get('Dashboard', [HomeController::class, 'Dashboard'])->name('Dashboard');
     Route::get('findPNG', [finePngController::class, 'findPNG'])->name('findPNG');
     //import CSV
 
@@ -137,19 +122,28 @@ Route::middleware(['auth', 'veryMail'])->group(function () {
     Route::get('dowloadURL/{id}', [DesignerController::class, 'dowloadURL'])->name('dowloadURL');
     Route::get('dowloadMocupURL/{id}', [DesignerController::class, 'dowloadMocupURL'])->name('dowloadMocupURL');
 
-    Route::get('dowloadMocupAll/{id}', [DesignerController::class, 'dowloadMocupAll'])->name('dowloadMocupAll');
-
-    Route::get('dowloadPNGAll/{id}', [DesignerController::class, 'dowloadPNGAll'])->name('dowloadPNGAll');
-
-    Route::post('addIdea', [HomeController::class, 'addIdea'])->name('addIdea');
     Route::get('success/{id}', [HomeController::class, 'success'])->name('success');
-    Route::get('delete/{id}', [HomeController::class, 'delete'])->name('delete');
     Route::get('ajax/{id}', [HomeController::class, 'ajax'])->name('ajax');
     Route::get('checkdownloadClick/{id}', [checkDownloadController::class, 'checkdownloadClick'])->name('checkdownloadClick');
 
+    //s3
+    Route::post('addImage/{id}', [s3Controller::class, 'addImage'])->name('addImage');
+    Route::post('addPngDetailsIdea/{id}', [s3Controller::class, 'addPngDetailsIdea'])->name('addPngDetailsIdea');
+    Route::get('deleteImage/{id}', [s3Controller::class, 'deleteImage'])->name('deleteImage');
+    Route::post('Edit/{id}', [s3Controller::class, 'Edit'])->name('Edit');
+    Route::post('addIdea', [s3Controller::class, 'addIdea'])->name('addIdea');
+    Route::get('delete/{id}', [s3Controller::class, 'delete'])->name('delete');
+
+    Route::post('acceptDetail/{id}', [s3DesignerController::class, 'acceptDetail'])->name('acceptDetail');
+    Route::post('addPngDetails/{id}', [s3DesignerController::class, 'addPngDetails'])->name('addPngDetails');
+    Route::get('deleteMocupAll/{id}', [s3DesignerController::class, 'deleteMocupAll'])->name('deleteMocupAll');
+    Route::get('deletePngAll/{id}', [s3DesignerController::class, 'deletePngAll'])->name('deletePngAll');
+    Route::get('deletemocups/{id}', [s3DesignerController::class, 'deletemocups'])->name('deletemocups');
+    Route::get('deleteProductPngDetails/{id}', [s3DesignerController::class, 'deleteProductPngDetails'])->name('deleteProductPngDetails');
+    Route::get('deleteds/{id}', [s3DesignerController::class, 'deleteds'])->name('deleteds');
+
 });
 Route::get('detailAccountHistory/{id}', [AccountHistoryController::class, 'detailAccountHistory'])->middleware('auth')->name('detailAccountHistory');
-// Route::get('RechargeHistory', [HomeController::class, 'RechargeHistory'])->name('RechargeHistory');
 Route::post('postcheckout/{id}', [HomeController::class, 'postcheckout'])->middleware('auth')->name('postcheckout');
 Route::post('RechargeHistory', [RechargeHistoryController::class, 'RechargeHistory'])->name('RechargeHistory');
 Route::get('sellerwix/{id}', [sellerwixController::class, 'index'])->name('sellerwix');
@@ -303,6 +297,8 @@ Route::prefix('client')->group(function () {
     //show checkout
     Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout');
     //show checkout
-    // Route::post('postcheckout',[HomeController::class,'postcheckout'])->name('postcheckout');
 
 });
+Route::get('shows3', [s3Controller::class, 'shows3'])->name('shows3');
+
+Route::post('/postUpload', [s3Controller::class, 'postUpload'])->name('postUpload');
