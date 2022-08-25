@@ -17,30 +17,6 @@ class s3Controller extends Controller
 {
     //D:\laragon\www\hệt hông test\public\storage\images\0d2t3q0fsvOdLA6yVr6xjsBj2xeUlTTcuybyZxZk.jpg
 
-    public function shows3()
-    {
-        return view('client.layout.showimage  ');
-    }
-    public function postUpload(Request $request)
-    {
-
-        //
-
-        // $path = Storage::disk('s3')->put('images/originals', $request->file, 'public');
-        $path = Storage::disk('s3')->put('images', $request->file('image'));
-
-        $request->merge([
-            'product_id' => 1,
-            'ImageDetail' => $path,
-        ]);
-        ProductDetails::create($request->only('ImageDetail', 'product_id'));
-        // $this->image->create($request->only('path', 'title', 'size'));
-        if (Storage::exists('$images\0d2t3q0fsvOdLA6yVr6xjsBj2xeUlTTcuybyZxZk.jpg') == 1) {
-            return '<th><img src="https://hblmedia.s3.ap-southeast-1.amazonaws.com/images\0d2t3q0fsvOdLA6yVr6xjsBj2xeUlTTcuybyZxZk.jpg"></th>';
-        }
-        return '<th><img src="http://127.0.0.1:8000/storage/images\0d2t3q0fsvOdLA6yVr6xjsBj2xeUlTTcuybyZxZk.jpg"></th>';
-    }
-
     public function addImage(Request $request, $id)
     {
 
@@ -159,11 +135,6 @@ class s3Controller extends Controller
         $images = "";
         if ($request->image) {
             $images = $request->file('image');
-            // if ($request->type_id == "chon") {
-            //     dd('ok');
-            //     $id_type = 0;
-            // }
-            // $id_type = $request->type_id;
             $data = [
                 'id_type' => $request->type_id,
                 'User_id' => $request->User_id,
@@ -173,15 +144,7 @@ class s3Controller extends Controller
                 'description' => $request->description,
                 'title' => $request->title,
             ];
-            // dd($request->id);
             $productDtail = Product::create($data);
-            // $id = $productDtail->id;
-            // $names = $productDtail->type_product->name;
-            // $name = substr($names, 0, 3);
-            // $sku = $name . $id;
-            // product::where('id', $id)->update([
-            //     'Sku' => $sku,
-            // ]);
             foreach ($request->file('image') as $image) {
                 $dataImage = [
                     'product_id' => $productDtail->id,
@@ -195,20 +158,12 @@ class s3Controller extends Controller
                 'User_id' => $request->User_id,
                 'id_idea' => Auth::user()->id,
                 'size_id' => $size,
-                // 'image' => $images[0]->store('images'),
                 'description' => $request->description,
                 'title' => $request->title,
 
             ];
 
             $productDtail = Product::create($data);
-            // $id = $productDtail->id;
-            // $names = $productDtail->type_product->name;
-            // $name = substr($names, 0, 3);
-            // $sku = $name . $id;
-            // product::where('id', $id)->update([
-            //     'Sku' => $sku,
-            // ]);
         }
 
         return redirect()->back();
