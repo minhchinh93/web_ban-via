@@ -290,7 +290,6 @@
                                         <img src="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$report->ProductPngDetails[0]->ImagePngDetail  ?? null }}" style="border-radius: 5%;width: 150px;"  >
                                         @else
                                         <img src="{{asset('/storage/'.$report->ProductPngDetails[0]->ImagePngDetail)}}" style="width: 150px; border-radius: 5%;" >
-
                                     @endif
                                     </td>
                                         @else
@@ -327,8 +326,8 @@
                                                 <div class="project" id="projectPng">
                                                     <div class="photo-wrapper">
                                                         <div class="photo" id="photoPng" onclick="photoPng({{ $rep->id }})">
-                                                            @if(Storage::exists($rep->ImagePngDetail) == 1)
-                                                            <a class="fancybox" target="_blank" href="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->ImagePngDetail}}" alt="" ><img src="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->ImagePngDetail}}"  width="100%"></a>
+                                                        @if(Storage::exists($rep->ImagePngDetail) == 1)
+                                                        <a class="fancybox" target="_blank" href="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->ImagePngDetail}}" alt="" ><img src="{{'https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->ImagePngDetail}}"  width="100%"></a>
                                                         @else
                                                         <a class="fancybox" target="_blank" href="{{asset('/storage/'.$rep->ImagePngDetail)}}" alt="" ><img src="{{asset('/storage/'.$rep->ImagePngDetail)}}"  width="100%"></a>
                                                         @endif
@@ -461,7 +460,7 @@ function photoPng(id) {
     return text
 }
 </script>
-{{-- <script language="JavaScript">
+<script language="JavaScript">
     window.onload = function() {
         document.addEventListener("contextmenu", function(e) {
             e.preventDefault();
@@ -500,5 +499,5 @@ function photoPng(id) {
             return false;
         }
     };
-</script> --}}
+</script>
 @endpush

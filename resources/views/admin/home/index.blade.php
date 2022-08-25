@@ -54,25 +54,7 @@
                             @endforeach
                         </div>
 
-                        {{-- <div class="border-head">
-                            <h3 style="color: #abff5c;">MOCKUP TABLE</h3>
-                        </div>
-                        <div class="custom-bar-chart">
-                            <ul class="y-axis">
-                                <li><span>100</span></li>
-                                <li><span>80</span></li>
-                                <li><span>60</span></li>
-                                <li><span>40</span></li>
-                                <li><span>20</span></li>
-                                <li><span>0</span></li>
-                            </ul>
-                            @foreach ($totalMockup as $show)
-                            <div class="bar">
-                                <div class="title">{{  $show->date }}</div>
-                                <div class="value tooltips" data-original-title="{{ $show->value }}" data-toggle="tooltip" data-placement="top">{{ $show->value }}%</div>
-                            </div>
-                            @endforeach
-                        </div> --}}
+
                         @endif
 
                     </div>
@@ -279,69 +261,6 @@
                                     </li>
                                     @endif
                                       @endforeach
-
-
-                                      {{-- <li class="list-danger">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-checkbox">
-                                              <input type="checkbox" class="list-child" value="">
-                                          </div>
-                                          <div class="task-title">
-                                              <span class="task-title-sp">Extensive collection of plugins</span>
-                                              <span class="badge bg-warning">Cool</span>
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
-                                              </div>
-                                          </div>
-                                      </li>
-                                      <li class="list-success">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-checkbox">
-                                              <input type="checkbox" class="list-child" value="">
-                                          </div>
-                                          <div class="task-title">
-                                              <span class="task-title-sp">Free updates always, no extra fees.</span>
-                                              <span class="badge bg-success">2 Days</span>
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
-                                              </div>
-                                          </div>
-                                      </li>
-                                      <li class="list-warning">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-checkbox">
-                                              <input type="checkbox" class="list-child" value="">
-                                          </div>
-                                          <div class="task-title">
-                                              <span class="task-title-sp">More features coming soon</span>
-                                              <span class="badge bg-info">Tomorrow</span>
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
-                                              </div>
-                                          </div>
-                                      </li>
-                                      <li class="list-info">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-checkbox">
-                                              <input type="checkbox" class="list-child" value="">
-                                          </div>
-                                          <div class="task-title">
-                                              <span class="task-title-sp">Hey, seriously, you should buy this Dashboard</span>
-                                              <span class="badge bg-important">Now</span>
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
-                                              </div>
-                                          </div>
-                                      </li> --}}
-
                                   </ul>
                                   {{ $jobs->links() }}
                               </div>
@@ -420,53 +339,6 @@
                     <!-- /row -->
                     </div>
 
-                        <!--CUSTOM CHART START -->
-                        {{-- <div class="row" style="text-align: center;">
-                            <a href="{{ route('showIdea') }}"><span class="label label-info">Idea</span></a>|<a  href="{{ route('showPNG') }}"><span class="label label-warning">PNG</span></a>
-                        </div>
-                        @if($users[0]->payment==1)
-                        <div class="border-head">
-                            <h3>IDEA TABLE</h3>
-                        </div>
-                        <div class="custom-bar-chart">
-                            <ul class="y-axis">
-                                <li><span>100</span></li>
-                                <li><span>80</span></li>
-                                <li><span>60</span></li>
-                                <li><span>40</span></li>
-                                <li><span>20</span></li>
-                                <li><span>0</span></li>
-                            </ul>
-                            @foreach ($totalidea as $show)
-                            <div class="bar">
-                                <div class="title">{{  $show->date }}</div>
-                                <div class="value tooltips" data-original-title="{{ $show->value }}" data-toggle="tooltip" data-placement="top">{{ $show->value }}%</div>
-                            </div>
-                            @endforeach
-                        </div>
-                        <!--custom chart end-->
-                        @else
-                        <div class="border-head">
-                            <h3>PNG TABLE</h3>
-                        </div>
-                        <div class="custom-bar-chart">
-                            <ul class="y-axis">
-                                <li><span>100</span></li>
-                                <li><span>80</span></li>
-                                <li><span>60</span></li>
-                                <li><span>40</span></li>
-                                <li><span>20</span></li>
-                                <li><span>0</span></li>
-                            </ul>
-                            @foreach ($totalPNG as $show)
-                            <div class="bar">
-                                <div class="title">{{  $show->date }}</div>
-                                <div class="value tooltips" data-original-title="{{ $show->value }}" data-toggle="tooltip" data-placement="top">{{ $show->value }}%</div>
-                            </div>
-                            @endforeach
-                        </div>
-                        @endif --}}
-                    <!-- /row -->
                 </div>
                 <!-- /col-lg-9 END SECTION MIDDLE -->
 
@@ -520,19 +392,6 @@
                     <!-- Second Member -->
                     {{ $users->links() }}
 
-                    <!-- CALENDAR-->
-                    {{-- <div id="calendar" class="mb">
-                        <div class="panel green-panel no-margin">
-                            <div class="panel-body">
-                                <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                                    <div class="arrow"></div>
-                                    <h3 class="popover-title" style="disadding: none;"></h3>
-                                    <div id="date-popover-content" class="popover-content"></div>
-                                </div>
-                                <div id="my-calendar"></div>
-                            </div>
-                        </div>
-                    </div> --}}
                     <!-- / calendar -->
 
                 </div>
