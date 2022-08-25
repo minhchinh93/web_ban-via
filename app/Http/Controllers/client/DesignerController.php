@@ -12,6 +12,7 @@ use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use ZipArchive;
 
 class DesignerController extends Controller
@@ -287,7 +288,12 @@ class DesignerController extends Controller
         foreach ($datapngs as $datapng) {
             $image = $datapng->ImagePngDetail;
             $filename = str_replace('images/', '', $image);
-            $UrlImage = 'https://hblmedia.s3.ap-southeast-1.amazonaws.com/' . $image;
+            if (Storage::exists($image)) {
+                $UrlImage = 'https://hblmedia.s3.ap-southeast-1.amazonaws.com/' . $image;
+            } else {
+                $UrlImage = asset('/storage/' . $image);
+
+            }
             $tempImage = tempnam(sys_get_temp_dir(), $filename);
             copy($UrlImage, $tempImage);
             return response()->download($tempImage, $filename);
@@ -305,8 +311,14 @@ class DesignerController extends Controller
         foreach ($datapngs as $datapng) {
             $image = $datapng->mocup;
             $filename = str_replace('images/', '', $image);
-            $UrlImage = 'https://hblmedia.s3.ap-southeast-1.amazonaws.com/' . $image;
+            if (Storage::exists($image)) {
+                $UrlImage = 'https://hblmedia.s3.ap-southeast-1.amazonaws.com/' . $image;
+            } else {
+                $UrlImage = asset('/storage/' . $image);
+
+            }
             $tempImage = tempnam(sys_get_temp_dir(), $filename);
+
             copy($UrlImage, $tempImage);
             return (response()->download($tempImage, $filename));
         }
