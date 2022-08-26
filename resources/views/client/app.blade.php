@@ -157,6 +157,7 @@
                         <i class="fa-solid fa-fire"></i>
                     </a>
                 </li>
+                @endif
               {{--   <li class="sub-menu" title="SELLERWIX-transaction">
                     <a class="{{ (request()->is('transactions')) ? 'active' : 'sub-menu' }}" href="{{ route('transactions') }}" >
                         <i class="fa-solid fa-wallet"></i>
