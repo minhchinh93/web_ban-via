@@ -151,13 +151,13 @@
                         <i class="fa-solid fa-file-import"></i>
                     </a>
                 </li> --}}
-
-                {{-- <li class="sub-menu" title="SELLERWIX-ODER">
+                @if (Auth::user()->id==69)
+                <li class="sub-menu" title="SELLERWIX-ODER">
                     <a class="{{ (request()->is('getIdStore')) ? 'active' : 'sub-menu' }}" href="{{ route('getIdStore') }}" >
                         <i class="fa-solid fa-fire"></i>
                     </a>
                 </li>
-                <li class="sub-menu" title="SELLERWIX-transaction">
+              {{--   <li class="sub-menu" title="SELLERWIX-transaction">
                     <a class="{{ (request()->is('transactions')) ? 'active' : 'sub-menu' }}" href="{{ route('transactions') }}" >
                         <i class="fa-solid fa-wallet"></i>
                      </a>
