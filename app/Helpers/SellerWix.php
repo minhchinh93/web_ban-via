@@ -22,7 +22,7 @@ class SellerWix
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => '{"email":"haihotan290@gmail.com","password":"@@290Hohailong"}',
+            CURLOPT_POSTFIELDS => '{"email":"haihotan290@gmail.com","password":"Haiholong290@@#"}',
             CURLOPT_HTTPHEADER => array(
                 'authority: api.sellerwix.com',
                 'accept: application/json, text/plain, */*',
