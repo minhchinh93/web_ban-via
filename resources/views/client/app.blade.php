@@ -106,6 +106,7 @@
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
       <!--sidebar start-->
+      {{-- {{ dd(Auth::user()->id); }} --}}
       @if(Auth::user()->role!=0)
       <aside>
           <div id="sidebar"  class="nav-collapse " style="background:#373a36;max-width:70px">

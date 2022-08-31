@@ -18,6 +18,7 @@ class sellerwixController extends Controller
         if ($request->time1 != null) {
             $result = $selerwix->get_dataStore($token, $request->Store_ID, $request->time1, $request->time2);
             if (count($result) < 2) {
+                // dd('ok2');
                 $total = $result['data']['getPaginationOrders']['pageInfo']['total'];
                 $datas = $result['data']['getPaginationOrders']['orders'];
                 foreach ($datas as $data) {
@@ -26,20 +27,24 @@ class sellerwixController extends Controller
                         $sw_prices[] = $data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'];
                         $shipping_price[] = $data['order_supplier'][0]['shipping_price'];
                     } else {
-                        $total_price[] = 0;
-                        $sw_prices[] = 0;
-                        $shipping_price[] = 0;
+                        $total_price[] = 1;
+                        $sw_prices[] = 1;
+                        $shipping_price[] = 1;
                     }
                 }
+            } else {
+                $total_price[] = 1;
+                $sw_prices[] = 1;
+                $shipping_price[] = 1;
             }
         } else {
             $total = 0;
             $datas = null;
-            $total_price[] = 0;
-            $sw_prices[] = 0;
-            $shipping_price[] = 0;
+            $total_price[] = 1;
+            $sw_prices[] = 1;
+            $shipping_price[] = 1;
         }
-        // dump(array_sum($total_price));
+
         return view('admin.Sellerwix.index',
             ['total' => $total,
                 'datas' => $datas,
