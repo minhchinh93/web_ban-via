@@ -57,33 +57,24 @@ class DetailController extends Controller
         $size = size::get();
         $keyword = $request->keyword;
         // dd($size[1]);
-        if ($id != 50) {
-            $report = Product::orderBy('id', 'desc')->where('id_idea', $id)
-            // ->Where('Sku', 'like', "%{$keyword}%")
-            // ->Where('description', 'like', "%{$keyword}%")
-            // ->orWhere('updated_at', 'like', "%{$keyword}%")
-                ->paginate(5);
-        } else {
-            $report = 0;
-        }
-        if ($report != 0) {
 
-            if ($report->total() != 0) {
-                foreach ($report as $billdd) {
-                    $dt[] = Carbon::create($billdd->created_at);
-                }
+        $report = Product::orderBy('id', 'desc')->where('id_idea', $id)
+        // ->Where('Sku', 'like', "%{$keyword}%")
+        // ->Where('description', 'like', "%{$keyword}%")
+        // ->orWhere('updated_at', 'like', "%{$keyword}%")
+            ->paginate(5);
+        if ($report->total() != 0) {
+            foreach ($report as $billdd) {
+                $dt[] = Carbon::create($billdd->created_at);
+            }
 
-                foreach ($dt as $key) {
-                    $now = Carbon::now();
-                    $time[] = $key->diffForHumans($now);
-                }
-            } else {
-                $time = '';
-
+            foreach ($dt as $key) {
+                $now = Carbon::now();
+                $time[] = $key->diffForHumans($now);
             }
         } else {
-            $report = 0;
             $time = '';
+
         }
         // dd($report[0]->mocups);
         // dd(count($report[0]->mocups));

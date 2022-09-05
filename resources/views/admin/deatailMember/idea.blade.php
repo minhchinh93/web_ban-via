@@ -65,7 +65,6 @@
                           $i=0
                         @endphp
                         <tbody>
-                        @if($reports != 0)
                             @foreach ($reports as  $report)
                             <tr>
                                 <td ><input type="checkbox" name="check_box[]"  value="{{ $report->id }}"></td>
@@ -125,7 +124,6 @@
                                             </div>
                                         </div>
                                           @endforeach
-
                                         <div class="modal-footer">
                                           {{-- <form class="form-inline" action="{{ route('addImage',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                             @csrf
@@ -167,13 +165,13 @@
                                             <div class="project">
                                                 <a href="{{ route('deletemocups',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
                                                 <h5> <a href="{{ route('dowloadMocupURL',[$rep->id]) }}">{{$rep->mocup}}</a></h5>
-                                             @if(Auth::user()->id != 50 )
+
                                                 @if(Storage::exists($rep->mocup) == 1)
-                                                    <span class="label label-default">{{ getimagesize('https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->mocup)[3] ?? null }}</span>
-                                                    @else
-                                                    <span class="label label-default">{{ getimagesize(asset('/storage/'.$rep->mocup))[3] ?? null }}</span>
-                                                @endif
+                                             <span class="label label-default">{{ getimagesize('https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->mocup)[3] ?? null }}</span>
+                                             @else
+                                             <span class="label label-default">{{ getimagesize(asset('/storage/'.$rep->mocup))[3] ?? null }}</span>
                                              @endif
+
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
                                                         @if(Storage::exists($rep->mocup) == 1)
@@ -223,13 +221,13 @@
                                           <div class="project-wrapper">
                                             <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
                                             <h5> <a href="{{ route('dowloadURL',[$rep->id]) }}">{{$rep->ImagePngDetail}}</a></h5>
-                                            @if(Auth::user()->id != 50 )
-                                                @if(Storage::exists($rep->ImagePngDetail) == 1)
-                                                    <span class="label label-default">{{ getimagesize('https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->ImagePngDetail)[3] ?? null}}</span>
-                                                    @else
-                                                    <span class="label label-default">{{ getimagesize(asset('/storage/'.$rep->ImagePngDetail))[3] ?? null}}</span>
-                                                @endif
+                                            
+                                            @if(Storage::exists($rep->ImagePngDetail) == 1)
+                                            <span class="label label-default">{{ getimagesize('https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->ImagePngDetail)[3] ?? null}}</span>
+                                            @else
+                                            <span class="label label-default">{{ getimagesize(asset('/storage/'.$rep->ImagePngDetail))[3] ?? null}}</span>
                                             @endif
+
                                             <div class="project">
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
@@ -293,17 +291,14 @@
                                 </td>
                             </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div><!-- /content-panel -->
             </div><!-- /col-md-12 -->
             {{ $reports->links() }}
-            @endif
         </div>
 
 
     </section><!-- --/wrapper ---->
 </section>
 @endsection
-
