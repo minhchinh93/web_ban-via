@@ -57,11 +57,16 @@ class DetailController extends Controller
         $size = size::get();
         $keyword = $request->keyword;
         // dd($size[1]);
-        $report = Product::orderBy('id', 'desc')->where('id_idea', $id)
-        // ->Where('Sku', 'like', "%{$keyword}%")
-        // ->Where('description', 'like', "%{$keyword}%")
-        // ->orWhere('updated_at', 'like', "%{$keyword}%")
-            ->paginate(10);
+        if ($id != 50) {
+            $report = Product::orderBy('id', 'desc')->where('id_idea', $id)
+            // ->Where('Sku', 'like', "%{$keyword}%")
+            // ->Where('description', 'like', "%{$keyword}%")
+            // ->orWhere('updated_at', 'like', "%{$keyword}%")
+                ->paginate(5);
+        } else {
+            $report = null;
+        }
+
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
