@@ -83,6 +83,7 @@ class DetailController extends Controller
             }
         } else {
             $report = 0;
+            $time = '';
         }
         // dd($report[0]->mocups);
         // dd(count($report[0]->mocups));
