@@ -107,7 +107,6 @@ class UserController extends Controller
     }
     public function action(Request $request)
     {
-        dd($request->all());
         $checklis = $request->checkbox;
         $action = $request->action;
         if ($checklis) {
@@ -248,7 +247,7 @@ class UserController extends Controller
         $report = Product::orderBy('id', 'desc')->where('id_idea', $id)
             ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
-            ->paginate(10);
+            ->paginate(5);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
@@ -296,7 +295,7 @@ class UserController extends Controller
             ->Where('description', 'like', "%{$keyword}%")
             ->where('status', 5)
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
-            ->paginate(10);
+            ->paginate(5);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
@@ -344,7 +343,7 @@ class UserController extends Controller
             ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->where('status', 3)
-            ->paginate(10);
+            ->paginate(5);
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
