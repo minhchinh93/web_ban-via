@@ -64,7 +64,7 @@ class DetailController extends Controller
             // ->orWhere('updated_at', 'like', "%{$keyword}%")
                 ->paginate(5);
         } else {
-            $report = null;
+            $report = 0;
         }
 
         if ($report->total() != 0) {
