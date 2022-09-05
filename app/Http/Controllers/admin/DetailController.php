@@ -17,7 +17,7 @@ class DetailController extends Controller
     public function DetailDesigner($id)
     {
         // dd($id);
-        $report = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->paginate(10);
+        $report = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->paginate(5);
         $totalPending = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 4)->count();
         $totalDone = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 5)->count();
         $totalNotSeen = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 1)->count();
