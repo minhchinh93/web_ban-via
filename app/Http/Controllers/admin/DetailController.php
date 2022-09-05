@@ -66,19 +66,23 @@ class DetailController extends Controller
         } else {
             $report = 0;
         }
+        if ($report != 0) {
 
-        if ($report->total() != 0) {
-            foreach ($report as $billdd) {
-                $dt[] = Carbon::create($billdd->created_at);
-            }
+            if ($report->total() != 0) {
+                foreach ($report as $billdd) {
+                    $dt[] = Carbon::create($billdd->created_at);
+                }
 
-            foreach ($dt as $key) {
-                $now = Carbon::now();
-                $time[] = $key->diffForHumans($now);
+                foreach ($dt as $key) {
+                    $now = Carbon::now();
+                    $time[] = $key->diffForHumans($now);
+                }
+            } else {
+                $time = '';
+
             }
         } else {
-            $time = '';
-
+            $report = 0;
         }
         // dd($report[0]->mocups);
         // dd(count($report[0]->mocups));
