@@ -65,6 +65,7 @@
                           $i=0
                         @endphp
                         <tbody>
+                        @if($reports != 0)
                             @foreach ($reports as  $report)
                             <tr>
                                 <td ><input type="checkbox" name="check_box[]"  value="{{ $report->id }}"></td>
@@ -124,6 +125,7 @@
                                             </div>
                                         </div>
                                           @endforeach
+
                                         <div class="modal-footer">
                                           {{-- <form class="form-inline" action="{{ route('addImage',[$report->id]) }}" method="post" enctype="multipart/form-data">
                                             @csrf
@@ -291,6 +293,7 @@
                                 </td>
                             </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div><!-- /content-panel -->
