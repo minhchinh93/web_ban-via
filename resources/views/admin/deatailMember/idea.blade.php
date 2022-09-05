@@ -293,15 +293,17 @@
                                 </td>
                             </tr>
                             @endforeach
-                            @endif
+
                         </tbody>
                     </table>
                 </div><!-- /content-panel -->
             </div><!-- /col-md-12 -->
             {{ $reports->links() }}
+            @endif
         </div>
 
 
     </section><!-- --/wrapper ---->
 </section>
 @endsection
+
