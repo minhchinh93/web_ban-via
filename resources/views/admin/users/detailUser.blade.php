@@ -182,10 +182,12 @@
                                                 {{-- <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$rep->id]) }}">
                                                     <i class="fa-solid fa-circle-down"></i>
                                                 </a> --}}
+                                                @if(Auth::user()->id !== 50 )
                                                 @if(Storage::exists($rep->mocup) == 1)
                                                 <span class="label label-default">{{ getimagesize('https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->mocup)[3] ?? null }}</span>
                                                 @else
                                                 <span class="label label-default">{{ getimagesize(asset('/storage/'.$rep->mocup))[3] ?? null }}</span>
+                                                @endif
                                                 @endif
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
