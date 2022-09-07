@@ -159,6 +159,13 @@
                     </a>
                 </li>
                 @endif
+                @if (Auth::user()->id==45)
+                <li class="sub-menu" title="SELLERWIX-ODER">
+                    <a class="{{ (request()->is('sellerwix/b96cab72-5c7a-4e7d-9dcf-4011293b295b')) ? 'active' : 'sub-menu' }}" href="{{ route('sellerwix',["b96cab72-5c7a-4e7d-9dcf-4011293b295b"]) }}" >
+                        <i class="fa-solid fa-fire"></i>
+                    </a>
+                </li>
+                @endif
               {{--   <li class="sub-menu" title="SELLERWIX-transaction">
                     <a class="{{ (request()->is('transactions')) ? 'active' : 'sub-menu' }}" href="{{ route('transactions') }}" >
                         <i class="fa-solid fa-wallet"></i>
