@@ -32,7 +32,7 @@ class HomeController extends Controller
                     ->Where('id_type', $request->type)
                     ->Where('title', 'like', "%{$keyword}%")
                     ->paginate(5);
-                $report->appends(['keyword' => $keyword]);
+                $report->appends(['keyword' => $keyword, 'type' => $request->type]);
             } else {
                 $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
                     ->Where('status', '<>', "5")
@@ -46,7 +46,8 @@ class HomeController extends Controller
                     ->Where('status', '<>', "5")
                     ->Where('title', 'like', "%{$keyword}%")
                     ->paginate(5);
-                $report->appends(['keyword' => $keyword]);
+                // $report->appends(['keyword' => $keyword]);
+                $report->appends(['keyword' => $keyword, 'type' => $request->type]);
             } else {
                 $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
                     ->Where('status', '<>', "5")
