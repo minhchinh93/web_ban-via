@@ -24,7 +24,7 @@ class DesignerController extends Controller
 
         if ($keyword != "") {
 
-            $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->paginate(10);
+            $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->paginate(5);
             $report->appends(['keyword' => $keyword]);
         } else {
             $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->paginate(10);
@@ -63,7 +63,7 @@ class DesignerController extends Controller
     {
         $keyword = $request->keyword;
         if ($keyword != "") {
-            $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->where('status', 5)->paginate(10);
+            $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->where('status', 5)->paginate(5);
             $report->appends(['keyword' => $keyword]);
         } else {
             $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->paginate(10);
@@ -201,7 +201,7 @@ class DesignerController extends Controller
     {
         $keyword = $request->keyword;
         $designer = User::get()->where('role', 1);
-        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->where('status', 3)->paginate(10);
+        $report = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->Where('title', 'like', "%{$keyword}%")->where('status', 3)->paginate(5);
         $totalDone = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 5)->count();
         $totalPending = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 4)->count();
         $totalNotSeen = Product::orderBy('id', 'desc')->where('User_id', Auth::user()->id)->where('status', 1)->count();

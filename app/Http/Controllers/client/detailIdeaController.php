@@ -14,7 +14,7 @@ class detailIdeaController extends Controller
     {
         $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
             ->whereBetween('updated_at', [$key1 . ' 00:00:00', $key2 . ' 23:59:59'])
-            ->paginate(10000);
+            ->paginate(5);
         $showcornerstone = cornerstone::all();
         return view('client.detail.indexIdea',
             [

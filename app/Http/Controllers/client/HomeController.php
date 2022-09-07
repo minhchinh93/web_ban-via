@@ -172,13 +172,13 @@ class HomeController extends Controller
                 $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
                     ->where('status', 5)
                     ->Where('id_type', $request->type)
-                    ->paginate(10000);
+                    ->paginate(5);
                 $report->appends(['keyword' => $keyword]);
             } else {
                 $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
                     ->where('status', 5)
                     ->Where('id_type', $request->type)
-                    ->paginate(10000);
+                    ->paginate(5);
             }
 
         } else {
