@@ -31,7 +31,7 @@ documents.status as "status"
             ->Where('user_doccument.User_id', Auth::id())
         // ->Where('product_cornerstone.cornerstones_id', $request->cornerstone)
         // ->Where('title', 'like', "%{$keyword}%")
-            ->paginate(1000);
+            ->paginate(5);
         // $show = Document::all();
         $user = User::all();
         return view('client.document.index', [
