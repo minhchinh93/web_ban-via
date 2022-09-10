@@ -151,6 +151,7 @@ Route::get('transactions', [sellerwixController::class, 'transactions'])->name('
 Route::get('getIdStore', [sellerwixController::class, 'getIdStore'])->name('getIdStore');
 
 Route::get('/export-users/{id}/{time1}/{time2}', [sellerwixController::class, 'exportUsers'])->name('export-users');
+Route::get('exportslw/{time1}', [sellerwixController::class, 'exportslw'])->name('exportslw');
 
 //============Auth==========//
 
