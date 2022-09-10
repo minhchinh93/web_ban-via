@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Exports\ExportSw;
+use App\Exports\SlwExport;
 use App\Helpers\SellerWix;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -77,28 +78,54 @@ class sellerwixController extends Controller
     {
 
         $selerwix = new SellerWix;
-        // $idNameStore = $translation->findNameStore();
         $token = $selerwix->getToken();
-        $translation = $selerwix->transaction($token, $request->time1, $request->time2);
+        $time1 = $request->time1;
+        $translations = $selerwix->transaction($token, $time1);
+        if ($translations['data']['getTransactionHistory']['logs'] != []) {
+            $total = count($translations['data']['getTransactionHistory']['logs']);
+            $datas = $translations['data']['getTransactionHistory']['logs'];
+            foreach ($datas as $data) {
+                $amount = $data['amount'];
+                $transaction_type = $data['transaction_type'];
+                $description = $data['description'];
+                $createdAt = $data['createdAt'];
+                if ($transaction_type == "Cash") {
+                    $pattern = '/.* order: (.*?) \(/m';
+                } else {
+                    $patterns = '/.* refund for order (.*?) \(/m';
+                    if (preg_match($patterns, $description) == 0) {
+                        $pattern = '/.* refund for order (.*?) because/';
+                    } else {
+                        $pattern = '/.* refund for order (.*?) \(/m';
+                    }
+                }
 
-        if ($translation['data']) {
-            $total = count($translation['data']['getTransactionHistory']['logs']);
-            $data = $translation['data']['getTransactionHistory']['logs'];
+                preg_match($pattern, $description, $matches);
 
+                $idNameStore = $selerwix->findNameStore($token, $matches[1]);
+
+                $str = ($amount . ',' . $transaction_type . ',' . $createdAt . ',' . $matches[1] . ',' . $idNameStore);
+
+                $response[] = explode(",", $str);
+
+            }
         } else {
             $total = 0;
-            $data = null;
+            $response = null;
         }
-        // dd('ok');
+
         return view('admin.Sellerwix.translation',
             ['total' => $total,
-                'datas' => $data,
+                'datas' => $response,
             ]);
     }
 
     public function exportUsers($id, $time1, $time2)
     {
         return Excel::download(new ExportSw($id, $time1, $time2), 'ExportSw1.xlsx');
+    }public function exportslw($time1)
+    {
+        return Excel::download(new SlwExport($time1), "{$time1}.xlsx");
     }
 
 }
