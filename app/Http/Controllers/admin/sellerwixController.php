@@ -19,31 +19,38 @@ class sellerwixController extends Controller
         if ($request->time1 != null) {
             $result = $selerwix->get_dataStore($token, $request->Store_ID, $request->time1, $request->time2);
             if (count($result) < 2) {
-                // dd('ok2');
+
                 $total = $result['data']['getPaginationOrders']['pageInfo']['total'];
                 $datas = $result['data']['getPaginationOrders']['orders'];
-                foreach ($datas as $data) {
-                    if (count($data['order_supplier']) > 0) {
-                        $total_price[] = $data['order_supplier'][0]['total_price'];
-                        $sw_prices[] = $data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'];
-                        $shipping_price[] = $data['order_supplier'][0]['shipping_price'];
-                    } else {
-                        $total_price[] = 1;
-                        $sw_prices[] = 1;
-                        $shipping_price[] = 1;
+                if ($datas != []) {
+                    foreach ($datas as $data) {
+                        if (count($data['order_supplier']) > 0) {
+                            $total_price[] = $data['order_supplier'][0]['total_price'];
+                            $sw_prices[] = $data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'];
+                            $shipping_price[] = $data['order_supplier'][0]['shipping_price'];
+                        } else {
+                            $total_price[] = 0;
+                            $sw_prices[] = 0;
+                            $shipping_price[] = 0;
+                        }
                     }
+                } else {
+                    $total_price[] = 0;
+                    $sw_prices[] = 0;
+                    $shipping_price[] = 0;
                 }
+
             } else {
-                $total_price[] = 1;
-                $sw_prices[] = 1;
-                $shipping_price[] = 1;
+                $total_price[] = 0;
+                $sw_prices[] = 0;
+                $shipping_price[] = 0;
             }
         } else {
             $total = 0;
             $datas = null;
-            $total_price[] = 1;
-            $sw_prices[] = 1;
-            $shipping_price[] = 1;
+            $total_price[] = 0;
+            $sw_prices[] = 0;
+            $shipping_price[] = 0;
         }
 
         return view('admin.Sellerwix.index',
