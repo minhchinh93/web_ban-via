@@ -67,7 +67,7 @@
                                 @php
                                     $i=1
                                 @endphp
-                                 @if($datas != null)
+                                 @if($response != [])
                                 @foreach ($response as $data)
                                 <tr>
                                     <td data-title="Code">{{ $i++ ?? null}}</td>

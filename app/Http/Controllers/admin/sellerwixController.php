@@ -54,18 +54,23 @@ class sellerwixController extends Controller
                             $total_price[] = 0;
                             $sw_prices[] = 0;
                             $shipping_price[] = 0;
+                            $response = null;
                         }
                     }
                 } else {
                     $total_price[] = 0;
                     $sw_prices[] = 0;
                     $shipping_price[] = 0;
+                    $response = null;
+
                 }
 
             } else {
                 $total_price[] = 0;
                 $sw_prices[] = 0;
                 $shipping_price[] = 0;
+                $response = null;
+
             }
         } else {
             $total = 0;
@@ -73,6 +78,8 @@ class sellerwixController extends Controller
             $total_price[] = 0;
             $sw_prices[] = 0;
             $shipping_price[] = 0;
+            $response = null;
+
         }
         // dd($response);
         return view('admin.Sellerwix.index',
