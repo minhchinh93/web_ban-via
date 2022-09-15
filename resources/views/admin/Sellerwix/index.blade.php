@@ -55,7 +55,6 @@
                                 <th class="numeric">order_status</th>
                                 <th class="numeric">purchase_date</th>
                                 <th class="numeric">latest_ship_date</th>
-                                <th class="numeric">fulfill_status</th>
                                 <th class="numeric">total_prices</th>
                                 <th class="numeric">shipping_prices </th>
                                 <th class="numeric">sw_prices </th>
@@ -82,7 +81,6 @@
                                     <td data-title="Code">{{ $data['purchase_date'] ?? null}}</td>
                                     <td data-title="Code">{{ $data['latest_ship_date'] ?? null}}</td>
                                      @if($data['order_supplier'] != [])
-                                   <td data-title="Code">{{ $data['order_supplier'][0]['fulfill_status'] ?? null}}</td>
                                    <td data-title="Code">{{ $data['order_supplier'][0]['total_price'] ?? null}}$</td>
                                    <td data-title="Code">{{ $data['order_supplier'][0]['shipping_price'] }}$</td>
                                    <td data-title="Code">{{ $data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'] ?? null}}$</td>
