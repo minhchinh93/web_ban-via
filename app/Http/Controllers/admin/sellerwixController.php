@@ -28,7 +28,28 @@ class sellerwixController extends Controller
                             $total_price[] = $data['order_supplier'][0]['total_price'];
                             $sw_prices[] = $data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'];
                             $shipping_price[] = $data['order_supplier'][0]['shipping_price'];
-                            // $tracking_url[] = $data['order_supplier'][0]['tracking_url'];
+                            $id = $data['order_supplier'][0]['tracking_id'];
+                            $tracking_id = $selerwix->gettracking($id);
+                            // dd($tracking_id);
+                            // dd($tracking_id['trackDetails'][0]['progressBarType']);
+                            if ($tracking_id['trackDetails'] != null) {
+                                $tracking_id['trackDetails'][0]['progressBarType'];
+                            }
+                            $response[] = [
+                                $data['name'],
+                                $data['order_from'],
+                                $data['store']['name'],
+                                $data['order_status'],
+                                $data['purchase_date'],
+                                $data['latest_ship_date'],
+                                $tracking_id['trackDetails'][0]['progressBarType'] ?? null,
+                                $data['order_supplier'][0]['tracking_url'],
+                                $data['order_supplier'][0]['tracking_id'],
+                                $data['order_supplier'][0]['fulfill_status'],
+                                $data['order_supplier'][0]['method_fulfill'],
+                                $data['order_supplier'][0]['lasted_tracking_supplier_name'],
+                            ];
+
                         } else {
                             $total_price[] = 0;
                             $sw_prices[] = 0;
@@ -53,7 +74,7 @@ class sellerwixController extends Controller
             $sw_prices[] = 0;
             $shipping_price[] = 0;
         }
-
+        // dd($response);
         return view('admin.Sellerwix.index',
             ['total' => $total,
                 'datas' => $datas,
@@ -61,6 +82,7 @@ class sellerwixController extends Controller
                 'total_price' => array_sum($total_price),
                 'sw_prices' => array_sum($sw_prices),
                 'shipping_price' => array_sum($shipping_price),
+                'response' => $response,
             ]);
 
     }
