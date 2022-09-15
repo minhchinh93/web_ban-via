@@ -152,7 +152,7 @@
                         <i class="fa-solid fa-file-import"></i>
                     </a>
                 </li> --}}
-                @if (Auth::user()->id==69)
+                @if (Auth::user()->id==69 or Auth::user()->id==31)
                 <li class="sub-menu" title="SELLERWIX-ODER">
                     <a class="{{ (request()->is('getIdStore')) ? 'active' : 'sub-menu' }}" href="{{ route('getIdStore') }}" >
                         <i class="fa-solid fa-fire"></i>
