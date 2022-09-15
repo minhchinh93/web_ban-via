@@ -53,11 +53,17 @@
                                 <th class="numeric">order_froms</th>
                                 <th class="numeric">stores </th>
                                 <th class="numeric">order_status</th>
+                                <th class="numeric">purchase_date</th>
+                                <th class="numeric">latest_ship_date</th>
                                 <th class="numeric">fulfill_status</th>
                                 <th class="numeric">total_prices</th>
                                 <th class="numeric">shipping_prices </th>
                                 <th class="numeric">sw_prices </th>
                                 <th class="numeric">discount_prices</th>
+                                <th class="numeric">tracking_url</th>
+                                <th class="numeric">fulfill_status</th>
+                                <th class="numeric">method_fulfill</th>
+                                <th class="numeric">supplier_name</th>
                             </tr>
 
                             </thead>
@@ -73,14 +79,22 @@
                                     <td data-title="Code">{{ $data['order_from'] ?? null}}</td>
                                     <td data-title="Code">{{ $data['store']['name'] ?? null}}</td>
                                     <td data-title="Code">{{ $data['order_status'] ?? null}}</td>
-                                     @if(count($data['order_supplier']) ?? null)
+                                    <td data-title="Code">{{ $data['purchase_date'] ?? null}}</td>
+                                    <td data-title="Code">{{ $data['latest_ship_date'] ?? null}}</td>
+                                     @if($data['order_supplier'] != [])
                                    <td data-title="Code">{{ $data['order_supplier'][0]['fulfill_status'] ?? null}}</td>
                                    <td data-title="Code">{{ $data['order_supplier'][0]['total_price'] ?? null}}$</td>
                                    <td data-title="Code">{{ $data['order_supplier'][0]['shipping_price'] }}$</td>
                                    <td data-title="Code">{{ $data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'] ?? null}}$</td>
                                    <td data-title="Code">{{ $data['order_supplier'][0]['discount_price'] ?? null}}$</td>
+                                   <td data-title="Code"><a  target="_blank" href="{{ $data['order_supplier'][0]['tracking_url'] ?? null}}">{{ $data['order_supplier'][0]['tracking_id'] ?? null}}</a></td>
+                                   <td data-title="Code">{{ $data['order_supplier'][0]['fulfill_status'] ?? null}}</td>
+                                   <td data-title="Code">{{ $data['order_supplier'][0]['method_fulfill'] ?? null}}</td>
+                                   <td data-title="Code">{{ $data['order_supplier'][0]['lasted_tracking_supplier_name'] ?? null}}</td>
                                    @else
                                    <td data-title="Code">MissingSupplier</td>
+                                   <td data-title="Code">0</td>
+                                   <td data-title="Code">0</td>
                                    <td data-title="Code">0</td>
                                    <td data-title="Code">0</td>
                                    <td data-title="Code">0</td>
