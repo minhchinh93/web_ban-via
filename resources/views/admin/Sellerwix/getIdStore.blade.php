@@ -15,7 +15,8 @@
                             <tr>
                                 <th>stt</th>
                                 <th>names</th>
-                                <th class="numeric">Store_ID</th>
+                                <th class="numeric">Kế Toán</th>
+                                <th class="numeric">Saller</th>
                                 <th class="numeric">shop_status </th>
                                 <th class="numeric">type</th>
                             </tr>
@@ -29,7 +30,8 @@
                                 <tr>
                                     <td data-title="Code">{{ $i++ }}</td>
                                     <td data-title="Code">{{ $data['name'] }}</td>
-                                    <td data-title="Code" ><a target="_blank" href={{ route('sellerwix',['id'=>$data['id']]) ?? null }}>{{ $data['id'] }}</a></td>
+                                    <td data-title="Code" ><a target="_blank" href={{ route('sellerwix',['id'=>$data['id']]) ?? null }}><span class="label label-warning">click</span></a></td>
+                                    <td data-title="Code" ><a target="_blank" href={{ route('sellerwixKetoan',['id'=>$data['id']]) ?? null }}><span class="label label-danger">click</span></a></td>
                                     <td data-title="Code">{{ $data['shop_status'] }}</td>
                                     <td data-title="Code">{{ $data['type'] }}</td>
                                 </tr>
