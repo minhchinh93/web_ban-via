@@ -15,8 +15,8 @@
                             <tr>
                                 <th>stt</th>
                                 <th>names</th>
-                                <th class="numeric">Kế Toán</th>
                                 <th class="numeric">Saller</th>
+                                <th class="numeric">Kế Toán</th>
                                 <th class="numeric">shop_status </th>
                                 <th class="numeric">type</th>
                             </tr>

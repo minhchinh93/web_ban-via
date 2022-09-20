@@ -77,7 +77,7 @@
                                     <td data-title="Code">{{ $data['purchase_date'] ?? null}}</td>
                                     <td data-title="Code">{{ $data['order_supplier'][0]['total_price'] ?? null}}</td>
                                    <td data-title="Code">{{ $data['order_supplier'][0]['shipping_price'] ?? null}}</td>
-                                   <td data-title="Code">{{$data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'] ?? null}}</td>
+                                   {{-- <td data-title="Code">{{$data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'] ?? null}}</td> --}}
                                    <td data-title="Code">{{ $data['total_price_amount'] ?? null}}</td>
                                    <td data-title="Code">{{ $data['order_supplier'][0]['supplier_status']  ?? null}}</td>
                                 </tr>
