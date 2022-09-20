@@ -82,7 +82,7 @@
                                     @elseif($data[6] === 'Delivered')
                                         <td> <span class="label label-success">Delivered</span></td>
                                     @elseif($data[6] === 'InTransit')
-                                        <td> <span class="label label label-primary">đang sip</span></td>
+                                        <td> <span class="label label label-primary">đang ship</span></td>
                                     @else
                                         <td> <span class="label label-danger">Danger</span></td>
 
