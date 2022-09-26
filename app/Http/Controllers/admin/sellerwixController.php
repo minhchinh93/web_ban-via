@@ -29,12 +29,21 @@ class sellerwixController extends Controller
                             $sw_prices[] = $data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'];
                             $shipping_price[] = $data['order_supplier'][0]['shipping_price'];
                             $id = $data['order_supplier'][0]['tracking_id'];
-                            $tracking_id = $selerwix->gettracking($id);
-                            // dd($tracking_id);
-                            // dd($tracking_id['trackDetails'][0]['progressBarType']);
-                            if ($tracking_id['trackDetails'] != null) {
-                                $tracking_id['trackDetails'][0]['progressBarType'];
+                            if ($id != null) {
+                                $tracking_url = $data['order_supplier'][0]['tracking_url'];
+                                $tracking_id = $selerwix->gettracking($id);
+                                if ($tracking_id['trackDetails'] != null) {
+                                    if ($tracking_id['trackDetails'][0]['errorCode'] != '504') {
+                                        $progressBarType = $tracking_id['trackDetails'][0]['progressBarType'];
+                                    } else {
+                                        $progressBarType = 'tracking khac';
+                                    }
+                                }
+                            } else {
+                                $tracking_url = 'n0 fullfill';
+                                $progressBarType = 'n0 fullfill';
                             }
+
                             $response[] = [
                                 $data['name'],
                                 $data['order_from'],
@@ -42,8 +51,8 @@ class sellerwixController extends Controller
                                 $data['order_status'],
                                 $data['purchase_date'],
                                 $data['latest_ship_date'],
-                                $tracking_id['trackDetails'][0]['progressBarType'] ?? null,
-                                $data['order_supplier'][0]['tracking_url'],
+                                $progressBarType ?? null,
+                                $tracking_url,
                                 $data['order_supplier'][0]['tracking_id'],
                                 $data['order_supplier'][0]['fulfill_status'],
                                 $data['order_supplier'][0]['method_fulfill'],
@@ -236,7 +245,8 @@ class sellerwixController extends Controller
     public function exportUsers($id, $time1, $time2)
     {
         return Excel::download(new ExportSw($id, $time1, $time2), 'ExportSw1.xlsx');
-    }public function exportslw($time1)
+    }
+    public function exportslw($time1)
     {
         return Excel::download(new SlwExport($time1), "{$time1}.xlsx");
     }
