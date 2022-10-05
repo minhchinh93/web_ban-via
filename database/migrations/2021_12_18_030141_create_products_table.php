@@ -32,6 +32,10 @@ class CreateProductsTable extends Migration
             $table->softDeletes(); // add
 
         });
+        Schema::table('products', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_idea')->index();
+            $table->unsignedBigInteger('User_id')->index();
+        });
     }
 
     /**
