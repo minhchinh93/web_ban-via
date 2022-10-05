@@ -166,11 +166,11 @@
                                                 <a href="{{ route('deletemocups',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
                                                 <h5> <a href="{{ route('dowloadMocupURL',[$rep->id]) }}">{{$rep->mocup}}</a></h5>
 
-                                                @if(Storage::exists($rep->mocup) == 1)
+                                                {{-- @if(Storage::exists($rep->mocup) == 1)
                                              <span class="label label-default">{{ getimagesize('https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->mocup)[3] ?? null }}</span>
                                              @else
                                              <span class="label label-default">{{ getimagesize(asset('/storage/'.$rep->mocup))[3] ?? null }}</span>
-                                             @endif
+                                             @endif --}}
 
                                                 <div class="photo-wrapper">
                                                     <div class="photo">
@@ -221,12 +221,12 @@
                                           <div class="project-wrapper">
                                             <a href="{{ route('deleteProductPngDetails',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a>
                                             <h5> <a href="{{ route('dowloadURL',[$rep->id]) }}">{{$rep->ImagePngDetail}}</a></h5>
-                                            
+{{-- 
                                             @if(Storage::exists($rep->ImagePngDetail) == 1)
                                             <span class="label label-default">{{ getimagesize('https://hblmedia.s3.ap-southeast-1.amazonaws.com/'.$rep->ImagePngDetail)[3] ?? null}}</span>
                                             @else
                                             <span class="label label-default">{{ getimagesize(asset('/storage/'.$rep->ImagePngDetail))[3] ?? null}}</span>
-                                            @endif
+                                            @endif --}}
 
                                             <div class="project">
                                                 <div class="photo-wrapper">

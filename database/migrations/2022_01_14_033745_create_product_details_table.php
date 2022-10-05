@@ -22,7 +22,9 @@ class CreateProductDetailsTable extends Migration
             $table->timestamps();
 
         });
-
+        Schema::table('products', function (Blueprint $table) {
+            $table->unsignedBigInteger('product_id')->index();
+        });
     }
 
     /**
