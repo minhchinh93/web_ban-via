@@ -78,11 +78,11 @@
                                     <td data-title="Code">{{ $data[4] ?? null}}</td>
                                     <td data-title="Code">{{ $data[5] ?? null}}</td>
                                     @if($data[6] === 'ManifestUpload')
-                                        <td>  <span class="label label-warning">chưa ship</span></td>
+                                        <td>  <span class="label label-danger">chưa ship</span></td>
                                     @elseif($data[6] === 'Delivered')
                                         <td> <span class="label label-success">Delivered</span></td>
                                     @elseif($data[6] === 'InTransit')
-                                        <td> <span class="label label label-primary">đang ship</span></td>
+                                        <td> <span class="label label label-danger">đang ship</span></td>
                                     @else
                                         <td> <span class="label label-danger">Danger</span></td>
 
