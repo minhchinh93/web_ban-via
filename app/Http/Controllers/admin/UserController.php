@@ -137,6 +137,7 @@ class UserController extends Controller
     {
         // dd($id);
         $report = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->paginate(5);
+
         $totalPending = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 4)->count();
         $totalDone = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 5)->count();
         $totalNotSeen = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 1)->count();
@@ -248,6 +249,8 @@ class UserController extends Controller
             ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->paginate(5);
+        $report->appends(['keyword' => $keyword]);
+
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
@@ -296,6 +299,8 @@ class UserController extends Controller
             ->where('status', 5)
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->paginate(5);
+        $report->appends(['keyword' => $keyword]);
+
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
@@ -344,6 +349,8 @@ class UserController extends Controller
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->where('status', 3)
             ->paginate(5);
+        $report->appends(['keyword' => $keyword]);
+
         if ($report->total() != 0) {
             foreach ($report as $billdd) {
                 $dt[] = Carbon::create($billdd->created_at);
