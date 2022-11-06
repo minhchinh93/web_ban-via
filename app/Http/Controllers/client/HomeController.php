@@ -169,19 +169,11 @@ class HomeController extends Controller
         $report = Product::orderBy('updated_at', 'desc')->Where('title', 'like', "%{$keyword}%")
             ->where('id_idea', Auth::user()->id)->where('status', 5)->paginate(5);
         if ($request->type != null) {
-            if ($keyword != "") {
-                $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
-                    ->where('status', 5)
-                    ->Where('id_type', $request->type)
-                    ->paginate(5);
-                $report->appends(['keyword' => $keyword]);
-            } else {
-                $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
-                    ->where('status', 5)
-                    ->Where('id_type', $request->type)
-                    ->paginate(5);
-            }
-
+            $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
+                ->where('status', 5)
+                ->Where('id_type', $request->type)
+                ->paginate(5);
+            $report->appends(['type' => $request->type]);
         } else {
             if ($keyword != "") {
                 $report = Product::orderBy('updated_at', 'desc')->Where('title', 'like', "%{$keyword}%")
