@@ -295,6 +295,8 @@ class SellerWix
             } else {
                 $progressBarType = 'tracking khac';
             }
+        } else {
+            $progressBarType = 'n0 fullfill';
         }
         return $progressBarType;
     }
@@ -340,6 +342,8 @@ class SellerWix
             } else {
                 $progressBarType = 'tracking khac';
             }
+        } else {
+            $progressBarType = 'n0 fullfill';
         }
         return $progressBarType;
     }
