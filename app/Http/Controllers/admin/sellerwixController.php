@@ -18,6 +18,7 @@ class sellerwixController extends Controller
         $token = $selerwix->getToken();
         if ($request->time1 != null) {
             $result = $selerwix->get_dataStore($token, $request->Store_ID, $request->time1, $request->time2);
+            // dump($result);
             if (count($result) < 2) {
 
                 $total = $result['data']['getPaginationOrders']['pageInfo']['total'];
@@ -31,14 +32,12 @@ class sellerwixController extends Controller
                             $id = $data['order_supplier'][0]['tracking_id'];
                             if ($id != null) {
                                 $tracking_url = $data['order_supplier'][0]['tracking_url'];
-                                $tracking_id = $selerwix->gettracking($id);
-                                if ($tracking_id['trackDetails'] != null) {
-                                    if ($tracking_id['trackDetails'][0]['errorCode'] != '504') {
-                                        $progressBarType = $tracking_id['trackDetails'][0]['progressBarType'];
-                                    } else {
-                                        $progressBarType = 'tracking khac';
-                                    }
+                                if ($data['order_supplier'][0]['carrier_code'] == 'DHLECS') {
+                                    $progressBarType = $selerwix->gettrackDhl($id);
+                                } else {
+                                    $progressBarType = $selerwix->gettracking($id);
                                 }
+
                             } else {
                                 $tracking_url = 'n0 fullfill';
                                 $progressBarType = 'n0 fullfill';

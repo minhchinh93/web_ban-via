@@ -289,7 +289,58 @@ class SellerWix
 
         curl_close($curl);
         $tracking_id = json_decode($response, true);
+        if ($tracking_id['trackDetails'] != null) {
+            if ($tracking_id['trackDetails'][0]['errorCode'] != '504') {
+                $progressBarType = $tracking_id['trackDetails'][0]['progressBarType'];
+            } else {
+                $progressBarType = 'tracking khac';
+            }
+        }
+        return $progressBarType;
+    }
+    public function gettrackDhl($id)
+    {
 
-        return $tracking_id;
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.dhlecs.com/webtrack/v4/tracking',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => '{"trackedValue":"' . $id . '","offset":0,"locale":"en-US","googleRecaptchaResponse":"03AEkXODCIYe1-8rI1ZQKe5AAU8fWT4zqHVNYRBsRd04PdAXvaJE15ZwVJ3nwvJCUO34r3yECbLshrHCszPtf_8eUbLbj4K5BkEvs5IcDQ5P4rG6q8cQgUPsb1tZku2vDb-r5ynlUNqd3sE01mtJ8mAPBELmtErbR8-BFGOz-QE2ZGi7zhH7cHegRynBP61K4Zl7AX5A-cGetBOuIAm6YAPcRZtCszEFtkkvfX6Z7KSPRzEZqJI1wv6wjqlfjNrhnAyCFjjR61CwBq4LIF0X81gAUs30pIvRtgZp-iQAHni7xmZqOIIlE799QSadvFVPvflk_Z_H57GXOmcjQp6yrKm0huMEYjRAzjELPsbi8dCmVyl5xn7xNvEJ_Qj7uTYm7zDZPTZftbtQ7XZ13lM1c2jvWeNH2EAkR6u-xJykoQMeryo3YfzUDPJ1fJOxVjPT3xGQCTnhj5oHjkkNMXjfO2YQFNCnQqWuVQ7hOzO4NJx5CoJl0N3UNgMg18P_aLZGcH6xjRlB18sn5HWoGvst2NTaqXdYJvKKjBrg"}',
+            CURLOPT_HTTPHEADER => array(
+                'Accept: application/json',
+                'Accept-Language: vi-VN,vi;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-US;q=0.6,en;q=0.5',
+                'Connection: keep-alive',
+                'Content-Type: application/json',
+                'Origin: https://webtrack.dhlglobalmail.com',
+                'Referer: https://webtrack.dhlglobalmail.com/',
+                'Sec-Fetch-Dest: empty',
+                'Sec-Fetch-Mode: cors',
+                'Sec-Fetch-Site: cross-site',
+                'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
+                'sec-ch-ua: "Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"',
+                'sec-ch-ua-mobile: ?0',
+                'sec-ch-ua-platform: "Windows"',
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        $tracking_id = json_decode($response, true);
+        if ($tracking_id['total'] == 1) {
+            if ($tracking_id['packages'] != '') {
+                $progressBarType = $tracking_id['packages'][0]['status'];
+            } else {
+                $progressBarType = 'tracking khac';
+            }
+        }
+        return $progressBarType;
     }
 }
