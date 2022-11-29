@@ -75,9 +75,17 @@
                                     <td data-title="Code">{{ $data['store']['name'] ?? null}}</td>
                                     <td data-title="Code">{{ $data['order_status'] ?? null}}</td>
                                     <td data-title="Code">{{ $data['purchase_date'] ?? null}}</td>
+
+                                    @if ($data['order_supplier'])
                                     <td data-title="Code">{{ $data['order_supplier'][0]['total_price'] ?? null}}</td>
-                                   <td data-title="Code">{{ $data['order_supplier'][0]['shipping_price'] ?? null}}</td>
-                                   <td data-title="Code">{{$data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'] ?? null}}</td>
+                                    <td data-title="Code">{{ $data['order_supplier'][0]['shipping_price'] ?? null}}</td>
+                                    <td data-title="Code">{{$data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'] ?? null}}</td>
+                                    @else
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    @endif
+
                                    <td data-title="Code">{{ $data['total_price_amount'] ?? null}}</td>
                                    <td data-title="Code">{{ $data['order_supplier'][0]['supplier_status']  ?? null}}</td>
                                 </tr>
