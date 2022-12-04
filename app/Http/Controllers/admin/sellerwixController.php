@@ -22,6 +22,7 @@ class sellerwixController extends Controller
             if (count($result) < 2) {
 
                 $total = $result['data']['getPaginationOrders']['pageInfo']['total'];
+
                 $datas = $result['data']['getPaginationOrders']['orders'];
                 if ($datas != []) {
                     foreach ($datas as $data) {
@@ -108,8 +109,9 @@ class sellerwixController extends Controller
         if ($request->time1 != null) {
             $result = $selerwix->get_dataStore($token, $request->Store_ID, $request->time1, $request->time2);
             if (count($result) < 2) {
-
-                $total = $result['data']['getPaginationOrders']['pageInfo']['total'];
+                $total = count($result['data']['getPaginationOrders']['orders']);
+                // $total = $result['data']['getPaginationOrders']['pageInfo']['total'];
+                // dd($total);
                 $datas = $result['data']['getPaginationOrders']['orders'];
                 if ($datas != []) {
                     foreach ($datas as $data) {
