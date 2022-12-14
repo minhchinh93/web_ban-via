@@ -59,7 +59,7 @@
                                 <th class="numeric">tracking_url</th>
                                 <th class="numeric">fulfill_status</th>
                                 <th class="numeric">method_fulfill</th>
-                                <th class="numeric">supplier_name</th>
+                                {{-- <th class="numeric">supplier_name</th> --}}
                             </tr>
 
                             </thead>
