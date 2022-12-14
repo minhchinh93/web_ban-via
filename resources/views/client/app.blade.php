@@ -42,7 +42,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>DASHGUM FREE</b></a>
+            <a href="{{ route('home') }}" class="logo"><b>AUTOCOM</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -187,9 +187,9 @@
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
                     @if(Auth::check())
-                    <li><a class="logout" href="{{ route('logout') }}">Logout</a></li>
+                    <li><a class="logout" href="{{ route('logout') }}">ĐĂNG XUẤT</a></li>
                     @else
-                    <li><a class="logout" href="{{ route('login') }}">Đăng Nhập</a></li>
+                    <li><a class="logout" href="{{ route('login') }}">ĐĂNG NHẬP</a></li>
                     @endif
             	</ul>
             </div>
@@ -205,19 +205,22 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 
-              	  <p class="centered"><a href="profile.html"><img src="{{ asset('admin/img/ui-sam.jpg') }}" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Marcel Newman</h5>
-
+              	  <p class="centered"><a href="#"><img src="{{ asset('admin/img/ui-sam.jpg') }}" class="img-circle" width="60"></a></p>
+                   @if(Auth::check())
+              	  <h5 class="centered">Chào mừng {{ Auth::user()->name }}</h5>
+                @else
+                <h5 class="centered">AUTOCOM</h5>
+                @endif
                   <li class="mt">
-                      <a class="{{ (request()->is('admin/showList/dasboa')) ? 'active' : 'sub-menu' }}" href="{{ route('showdasboa') }}">
+                      <a class="{{ (request()->is('/home')) ? 'active' : 'sub-menu' }}" href="{{ route('showdasboa') }}">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a 	class="{{ (request()->is('admin/showList/User')) ? 'active' : 'sub-menu' }}"
-                        href="{{ route('showUser') }}" >
+                      <a 	class="{{ (request()->is('/AccountHistory')) ? 'active' : 'sub-menu' }}"
+                        href="{{ route('AccountHistory') }}" >
                           <i class="fa fa-desktop"></i>
                           <span>via đã mua</span>
                       </a>
@@ -227,7 +230,7 @@
                       </ul>
                   </li>
                   <li class="sub-menu">
-                      <a class="{{ (request()->is('admin/categoriesList')) ? 'active' : 'sub-menu' }}" href="{{ route('categoriesList') }}" >
+                      <a class="{{ (request()->is('/RechargeHistory')) ? 'active' : 'sub-menu' }}" href="{{ route('RechargeHistory') }}" >
                           <i class="fa fa-cogs"></i>
                           <span>Nạp tiền, Lịch sử nạp tiền</span>
                       </a>

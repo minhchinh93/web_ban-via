@@ -39,6 +39,7 @@
                     <th>ID</th>
                     <th><i class="fa fa-bullhorn"></i> sad</th>
                     <th><i class="fa fa-bullhorn"></i> EMAIL</th>
+                    <th><i class="fa fa-bullhorn"></i> payment</th>
                     <th class="hidden-phone"><i class="fa fa-question-circle"></i> ROLE</th>
                     <th><i class=" fa fa-edit"></i> Status</th>
                     <th></th>
@@ -57,7 +58,8 @@
                     <td>{{ $i }}</td>
                     <td class="hidden-phone">{{ $show->name?? null }}</td>
                     <td class="hidden-phone">{{ $show->email ?? null}}</td>
-                    <td>{{ $show->role ==1 ? 'editer' : 'admin' }}</td>
+                    <td class="hidden-phone"><span class="label label-success">{{ $show->payment ?? null}}</span></td>
+                    <td>{{ $show->role ==1 ? 'member' : 'admin' }}</td>
                     <td>
                         @if (  $show->deleted_at ==  null)
                         <span class="label label-info label-mini">active</span></td>

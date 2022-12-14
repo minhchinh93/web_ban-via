@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBillsTable extends Migration
+class CreatePurchasedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateBillsTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('bills');
-        Schema::create('bills', function (Blueprint $table) {
-            $table->id();
+        Schema::dropIfExists('purchaseds');
+        Schema::create('purchaseds', function (Blueprint $table) {
             $table->unsignedBigInteger('id_User');
             $table->foreign('id_User')->references('id')->on('users')->onDelete('cascade');
-            $table->string('date_order');
-            $table->double('total', 12, 2);
-            $table->string('payment');
+            $table->unsignedBigInteger('id_product');
+            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateBillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bills');
+        Schema::dropIfExists('purchaseds');
     }
 }

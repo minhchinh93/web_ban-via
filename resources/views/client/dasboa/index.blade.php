@@ -3,8 +3,8 @@
 
 @section ('content')
 
-<section id="main-content">
-    <section class="wrapper">
+<section id="main-content" style="max-width:100%;color:black; font-family:Roboto,sans-serif;">
+    <section class="wrapper" style="max-width:100%;color:black; font-family:Roboto,sans-serif;">
         <div class="row">
                 <div class="row mtbox">
                     <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
@@ -49,12 +49,9 @@
 
 
 
-              <div class="row mt">
                 <div class="col-md-12">
                     <div class="content-panel">
                         <h4><i class="fa fa-angle-right"></i> Advanced Table</h4><hr><table class="table table-striped table-advance table-hover">
-
-
                             <thead>
                             <tr>
                                 <th><input type="checkbox"  name="checkbox" ></th>
@@ -70,32 +67,38 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <form method="post" action="{{ route('postcheckout') }}">
-                                    @csrf
-                                @foreach ( $carts as $cart )
-                                <th><input type="checkbox"  name="checkbox" ></th>
-                                <td class="hidden-phone" name="name" value="{{ $cart->id}}">{{ $cart->name }}</td>
-                                <td> 2018 </td>
-                                <td><a href="basic_table.html#">DSFD|SFDF|DSFD|****</a></td>
-                                <td class="hidden-phone">CÓ</td>
-                                <td>
-                                    <input class="minus is-form" type="button" value="-">
-                                    <input aria-label="quantity" class="input-qty " max="10" min="1" name="qty" type="number" value="1" readonly>
-                                    <input class="plus is-form" type="button" value="+">
-                                </td>
-                                <td><input style="font-size:10px" class="label label-info label-mini" id='price' name="price" value="{{ $cart->price }}" >{{ $cart->price }}</input> Ucoi</td>
-                                <td><span style="font-size:12px" class="label label-warning label-mini" id='total' name="total"  >{{ $cart->price }}</span> Ucoi</td>
-                                <td>
-                                    <button class="btn btn-success btn-xs" type="submit"><i class="fa fa-shopping-cart"></i></i></button>
-                                </td>
-                                @endforeach
-                                </form>
+                            @if(isset($count))
+                            @foreach ( $carts as $cart )
+                            <form method="post" action="{{ route('postcheckout',[$cart->id]) }}">
+                                @csrf
+                            <th><input type="checkbox"  name="checkbox" ></th>
+                            <td class="hidden-phone" name="name" value="{{ $cart->id}}">{{ $cart->name }}</td>
+                            <td> 2018 </td>
+                            <td><a href="basic_table.html#">DSFD|SFDF|DSFD|****</a></td>
+                            <td class="hidden-phone">CÓ</td>
+                            <td>
+                                <input class="minus is-form" type="button" value="-">
+                                <input aria-label="quantity" class="input-qty " max="10" min="1" name="qty" type="number" value="1" readonly>
+                                <input class="plus is-form" type="button" value="+">
+                            </td>
+                            <td><input style="font-size:10px" class="label label-info label-mini" id='price' name="price" value="{{ $cart->price }}" >{{ $cart->price }}</input> Ucoi</td>
+                            <td><span style="font-size:12px" class="label label-warning label-mini" id='total' name="total"  >{{ $cart->price }}</span> Ucoi</td>
+                            <td>
+                                <button class="btn btn-success btn-xs" type="submit"><i class="fa fa-shopping-cart"></i></i></button>
+                            </td>
+
+                            </form>
+                            @endforeach
+                            @endif
+                                <td>không có đơn hàng</td>
+                            @endif
                             </tr>
                             </tbody>
                         </table>
                     </div><!-- /content-panel -->
                 </div><!-- /col-md-12 -->
-            </div><!-- /row -->
+                {{-- {{ $carts->links() }} --}}
+            <!-- /row -->
             </div><!-- /col-lg-9 END SECTION MIDDLE -->
 
 

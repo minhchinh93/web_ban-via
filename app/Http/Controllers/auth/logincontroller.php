@@ -5,30 +5,31 @@ namespace App\Http\Controllers\auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use Gloudemans\Shoppingcart\Facades\cart;
 
 class logincontroller extends Controller
 {
     //
-    public function index() {
+    public function index()
+    {
         return view('client.auth.login');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
         // dd($request->all());
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return 'ok';
-        } else{
-            return 'no';
+            return redirect()->route('categoriesList');
+        } else {
+            return redirect()->back();
         }
     }
 
-    public function logout(){
+    public function logout()
+    {
 
-        if(Auth::check()){
+        if (Auth::check()) {
             Auth::logout();
             return redirect()->route('login');
         }

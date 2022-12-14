@@ -11,6 +11,7 @@
                         <thead>
                             <tr>
                                 <th>stt</th>
+                                <th><i class="fa fa-bullhorn"></i>người mua</th>
                                 <th><i class="fa fa-bullhorn"></i>tên sản phẩm</th>
                                 <th><i class="fa fa-bullhorn"></i> số lượng </th>
                                 <th><i class="fa fa-bullhorn"></i> giá </th>
@@ -32,10 +33,11 @@
                         @endphp
                         <tr>
                             <td>{{ $t }}</td>
-                            <td>{{ $table->name_product }}</td>
+                            <td>{{ $table->name }}</td>
+                            <td>{{ $table->names }}</td>
                             <td> {{ $table->quantity }}</td>
-                            <td> {{ $table->unit_price }}</td>
-                            <td><img src="{{asset('/storage/images/'.$table->image)}}" style="width: 100px;" ></td>
+                            <td> {{ $table->price }}</td>
+                            <td><img src="{{asset('/storage/'.$table->image)}}" style="width: 100px;" ></td>
                             <td> {{ $table->date_order }}</td>
                         </tr>
                         @endforeach

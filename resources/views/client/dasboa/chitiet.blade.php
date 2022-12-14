@@ -2,8 +2,8 @@
 
 
 @section ('content')
-<section id="main-content">
-    <section class="wrapper">
+<section id="main-content" style="max-width:100%;color:black; font-family:Roboto,sans-serif;">
+    <section class="wrapper" style="max-width:100%;color:black; font-family:Roboto,sans-serif;">
         <div class="row mt">
             <div class="col-md-12 mt">
                 <div class="content-panel">
@@ -35,7 +35,7 @@
                             <td>{{ $table->name_product }}</td>
                             <td> {{ $table->quantity }}</td>
                             <td> {{ $table->unit_price }}</td>
-                            <td><img src="{{asset('/storage/images/'.$table->image)}}" style="width: 100px;" ></td>
+                            <td style="width: 100px; height : 100px"><img src="{{asset('/storage/images/'.$table->image)}}"  ></td>
                             <td> {{ $table->date_order }}</td>
                         </tr>
                         @endforeach

@@ -19,6 +19,8 @@ class CreateTypeProductsTable extends Migration
             $table->longText('description');
             $table->string('image');
             $table->float('price');
+            $table->unsignedBigInteger('User_id');
+            $table->foreign('User_id')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes(); // add
         });
@@ -31,6 +33,7 @@ class CreateTypeProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_products');
+        // Schema::dropIfExists('type_products');
+        Schema::drop('type_products');
     }
 }

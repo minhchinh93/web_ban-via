@@ -13,21 +13,24 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-            Schema::create('products', function (Blueprint $table) {
-                $table->id();
-                $table->string('IdFB')->nullable();
-                $table->unsignedBigInteger('id_type');
-                $table->foreign('id_type')->references('id')->on('type_products')->onDelete('cascade');
-                $table->longText('pasword')->nullable();
-                $table->string('email')->nullable();
-                $table->string('passmail')->nullable();
-                $table->string('fa')->nullable();
-                $table->string('status')->default('live')->nullable();
-                $table->string('new')->nullable();
-                $table->timestamps();
-                $table->softDeletes(); // add
+        Schema::dropIfExists('products');
 
-            });
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('IdFB')->nullable();
+            $table->unsignedBigInteger('id_type');
+            $table->foreign('id_type')->references('id')->on('type_products')->onDelete('cascade');
+            $table->longText('password')->nullable();
+            $table->string('email')->nullable();
+            $table->string('passmail')->nullable();
+            $table->string('fa')->nullable();
+            $table->string('status')->default(null)->nullable();
+            $table->boolean('backup')->default(1)->nullable();
+            $table->boolean('change')->default(1)->nullable();
+            $table->timestamps();
+            $table->softDeletes(); // add
+
+        });
 
     }
 

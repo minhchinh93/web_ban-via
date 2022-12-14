@@ -3,8 +3,8 @@
 
 @section ('content')
 
-<section id="main-content">
-    <section class="wrapper">
+<section id="main-content" style="max-width:100%;color:black; font-family:Roboto,sans-serif;">
+    <section class="wrapper" style="max-width:100%;color:black; font-family:Roboto,sans-serif;">
         <div class="row mt">
             <div class="col-lg-12">
             <div class="form-panel">
@@ -27,7 +27,7 @@
                         <label class="col-sm-2 col-sm-2 control-label">image</label>
                         <div class="col-sm-10">
                             <input type="file" class="form-control" name="image" >
-                         
+
                         </div>
                     </div>
                     <div class="form-group">

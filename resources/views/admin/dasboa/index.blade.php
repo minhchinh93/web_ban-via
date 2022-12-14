@@ -61,9 +61,6 @@
                                 <th><i class=" fa fa-edit"></i> số lượng</th>
                                 <th><i class=" fa fa-edit"></i>thời gian </th>
                                 <th><i class=" fa fa-edit"></i> giá trị</th>
-                                <th><i class="fa fa-bullhorn"></i> địa chỉ</th>
-                                <th><i class="fa fa-bullhorn"></i> lưu ý</th>
-                                <th><i class="fa fa-bullhorn"></i> sô điệnt hoại khách hang</th>
                                 <th><i class=" fa fa-edit"></i> trạng thái</th>
                                 <th><i class=" fa fa-edit"></i> chi tiết</th>
                                 <th></th>
@@ -85,9 +82,7 @@
                                     <td class="hidden-phone">{{ $table->so_luong }}</td>
                                     <td class="hidden-phone">{{ $table->date_order }}</td>
                                     <td>{{ $table->total }}</td>
-                                    <td> {{ $table->address }}</td>
-                                    <td> {{ $table->note }}</td>
-                                    <td> {{ $table->phone }}</td>
+           
                                     @if( $table->payment == 'COD')
                                     <td><span class="label label-info label-mini">COD</span></td>
                                     @else

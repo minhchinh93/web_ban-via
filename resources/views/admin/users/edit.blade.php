@@ -24,17 +24,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">password</label>
+                        <label class="col-sm-2 col-sm-2 control-label">+ payment</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" name="password" value="{{ $shows->password }}">
+                            <input type="payment" class="form-control" name="payment" value="{{ $shows->payment }}">
                         </div>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">role</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="role" value="{{ $shows->role }}">
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <div class="col-sm-10">
                             <button type="submit" class="btn btn-success">submit</button>
