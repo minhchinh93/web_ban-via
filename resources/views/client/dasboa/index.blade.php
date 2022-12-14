@@ -89,7 +89,6 @@
 
                             </form>
                             @endforeach
-                            @endif
                                 <td>không có đơn hàng</td>
                             @endif
                             </tr>
