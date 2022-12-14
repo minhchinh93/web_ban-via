@@ -56,7 +56,7 @@ class sellerwixController extends Controller
                                 $data['order_supplier'][0]['tracking_id'],
                                 $data['order_supplier'][0]['fulfill_status'],
                                 $data['order_supplier'][0]['method_fulfill'],
-                                $data['order_supplier'][0]['lasted_tracking_supplier_name'],
+                                // $data['order_supplier'][0]['lasted_tracking_supplier_name'],
                             ];
 
                         } else {
