@@ -37,7 +37,7 @@ class finePngController extends Controller
             ))
             ->Where('product_png_details.Sku', 'like', "%{$keyword}%")
             ->orWhere('title', 'like', "%{$keyword}%")
-            ->orderBy('products.id', 'ASC')
+            ->orderBy('product_png_details.id', 'DESC')
             ->paginate(32);
 
         return view('client.findPNG.indexPNG', ['shows' => $show,
