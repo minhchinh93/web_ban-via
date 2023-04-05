@@ -136,7 +136,7 @@ class UserController extends Controller
     public function detailUser($id)
     {
         // dd($id);
-        $report = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->paginate(5);
+        $report = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->paginate(15);
 
         $totalPending = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 4)->count();
         $totalDone = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 5)->count();
@@ -171,7 +171,7 @@ class UserController extends Controller
     public function detailUserdone($id)
     {
         // dd($id);
-        $report = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 5)->paginate(5);
+        $report = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 5)->paginate(15);
         $totalPending = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 4)->count();
         $totalDone = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 5)->count();
         $totalNotSeen = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 1)->count();
@@ -205,7 +205,7 @@ class UserController extends Controller
     public function detailUserPending($id)
     {
 
-        $report = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 3)->paginate(5);
+        $report = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 3)->paginate(15);
         $totalPending = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 4)->count();
         $totalDone = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 5)->count();
         $totalNotSeen = Product::orderBy('updated_at', 'desc')->where('User_id', $id)->where('status', 1)->count();
@@ -348,7 +348,7 @@ class UserController extends Controller
             ->Where('description', 'like', "%{$keyword}%")
         // ->orWhere('updated_at', 'like', "%{$keyword}%")
             ->where('status', 3)
-            ->paginate(5);
+            ->paginate(15);
         $report->appends(['keyword' => $keyword]);
 
         if ($report->total() != 0) {

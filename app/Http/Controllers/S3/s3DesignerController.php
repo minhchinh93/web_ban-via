@@ -17,7 +17,6 @@ class s3DesignerController extends Controller
     //
     public function acceptDetail(Request $request, $id)
     {
-        // dd($request->all());
         $image = "";
         if ($request->ImagePNG) {
             $image = $request->file('ImagePNG')[0];
@@ -62,25 +61,22 @@ class s3DesignerController extends Controller
     public function addPngDetails(Request $request, $id)
     {
 
-        // dd($request->file('image'));
         $file = $request->file('image');
 
         foreach ($file as $image) {
             $str = $image->getClientOriginalName();
-            // $strs = $image->getClientOriginalExtension();
-
+            $filename = str_replace(' ', '-', $str);
+            $name = strtoupper(Str::random(8));
             $filename = str_replace(' ', '-', $str);
             $dataImage = [
                 'product_id' => $id,
-                'ImagePngDetail' => Storage::disk('s3')->put('images', $image),
+                'ImagePngDetail' => $image->storeAs('images', $name . '-' . $filename),
             ];
             $datapng = ProductPngDetails::where('id', $id)->create($dataImage);
             $idPNG = $datapng->id;
-            $name = strtoupper(Str::random(4));
-            $sku = $name . "-" . $idPNG;
 
             ProductPngDetails::where('id', $idPNG)->update([
-                'Sku' => $sku,
+                'Sku' => $name,
             ]);
         }
         Product::where('id', $id)->update(['status' => 3]);

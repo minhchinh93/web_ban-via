@@ -66,6 +66,6 @@ class ExportSw implements FromCollection
             $datas = null;
         }
         return collect($result);
-
     }
+
 }

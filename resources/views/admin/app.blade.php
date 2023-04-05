@@ -107,6 +107,16 @@
                         <i class="fa-solid fa-money-bill-1-wave"></i>
                     </a>
                 </li> --}}
+                <li class="sub-menu" title="Search PNG">
+                    <a class="{{ (request()->is('/findPNG')) ? 'active' : 'sub-menu' }}" href="{{ route('findPNG') }}" >
+                        <i class="fa-solid fa-file-image"></i>
+                    </a>
+                </li>
+                  <li class="sub-menu" title="IMPORT CSV">
+                    <a class="{{ (request()->is('/importCsv')) ? 'active' : 'sub-menu' }}" href="{{ route('importCsv') }}" >
+                        <i class="fa-solid fa-file-import"></i>
+                    </a>
+                </li>
 
                 <li class="sub-menu" title="SELLERWIX-ODER">
                     <a class="{{ (request()->is('getIdStore')) ? 'active' : 'sub-menu' }}" href="{{ route('getIdStore') }}" >

@@ -8,7 +8,7 @@
         <div class="row mt" >
             <div class="col-md-12">
                 <div class="content-panel" style=" border-radius: 20px;background: rgba(236, 240, 240, 0.876)">
-                    <h4><i class="fa fa-angle-right"></i>Nhận việc</h4><hr>
+                    <h4><i class="fa fa-angle-right"></i> Nhận việc</h4><hr>
 
                     <table class="table table-striped table-advance table-hover">
                         <div class="row">
@@ -271,15 +271,15 @@
                                   </div>
 
                                 @if ($report->status == 1)
-                                <td><span class="label label-warning label-mini"><a style="color:white" href="{{route('accept',[$report->id])}}">Nhận việc</a></span></td>
+                                <td><span class="label label-warning label-mini"><a style="color:white" href="{{route('accept',[$report->id])}}">Get job</a></span></td>
                                 @elseif ( $report->status == 2)
-                                <td><span class="label label-info label-mini">đã nhận</span></td>
+                                <td><span class="label label-info label-mini">Accept</span></td>
                                 @elseif ( $report->status == 3)
-                                <td><span class="label label-info label-mini">chờ duyệt</span></td>
+                                <td><span class="label label-info label-mini">Pending</span></td>
                                 @elseif ( $report->status == 4)
-                                <td><span class="label label-warning label-mini">Làm lại</span></td>
+                                <td><span class="label label-warning label-mini">Remake</span></td>
                                 @else
-                                <td><span class="label label-success label-mini">hoàn thành</span></td>
+                                <td><span class="label label-success label-mini">Finish</span></td>
                                 @endif
                                 <td> <span class="btn btn-danger btn-xs">
                                     <a class=" w-75 " style="color:white" href="{{ route('deleteds',[$report->id]) }}"><i class="fa fa-trash-o"></i></a>
@@ -290,7 +290,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-primary"><a style="color:white" href="{{ route('Dashboard') }}">refresh trang</a></button>
+                    <button type="button" class="btn btn-primary"><a style="color:white" href="{{ route('Dashboard') }}">refresh</a></button>
 
                 </div><!-- /content-panel -->
             </div><!-- /col-md-12 -->

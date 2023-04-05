@@ -26,6 +26,7 @@ use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\indexController;
 use App\Http\Controllers\client\RechargeHistoryController;
 use App\Http\Controllers\client\toolController;
+use App\Http\Controllers\excel\exportAmzController;
 //clients
 use App\Http\Controllers\S3\s3Controller;
 use App\Http\Controllers\S3\s3DesignerController;
@@ -153,6 +154,8 @@ Route::get('getIdStore', [sellerwixController::class, 'getIdStore'])->name('getI
 
 Route::get('/export-users/{id}/{time1}/{time2}', [sellerwixController::class, 'exportUsers'])->name('export-users');
 Route::get('exportslw/{time1}', [sellerwixController::class, 'exportslw'])->name('exportslw');
+
+Route::get('exportsamz/{id}', [exportAmzController::class, 'exportsamz'])->name('exportsamz');
 
 //============Auth==========//
 

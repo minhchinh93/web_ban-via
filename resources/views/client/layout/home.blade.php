@@ -8,7 +8,7 @@
 
         <div class="col-lg-12">
             <div class="form-panel" style=" border-radius: 15px;">
-                  <h4 class="mb"><i class="fa fa-angle-right"></i>Giao Việc</h4>
+                  <h4 class="mb"><i class="fa fa-angle-right"></i> Assign</h4>
                 <form class="form-horizontal style-form"action="{{ route('addIdea') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -27,7 +27,6 @@
                         <label class="col-sm-2 col-sm-2 control-label">Image</label>
                         <div class="col-sm-10">
                             <input name="image[]"  type="file" multiple >
-                            <span class="help-block">kèm theo Image để Designer được rõ hơn</span>
                         </div>
                     </div>
            <div class="row">
@@ -66,12 +65,12 @@
             <div class="row mt">
                 <div class="col-md-12">
                     <div class="content-panel"  style=" border-radius: 15px;background: rgba(255, 255, 255, 0.842)">
-                        <h4><i class="fa fa-angle-right"></i>  Bảng Báo Cáo</h4>
+                        <h4><i class="fa fa-angle-right"></i> work presentation </h4>
                         <div class="col-lg-4">
-                            <h5 style="margin-left: 2%;" class="category"><a style="color: gray" href="{{ route('done') }}"> Hoàn thành ({{ $totalDone ?? null}}) </a>
-                                 | <a  style="color: rgb(13, 182, 36)" href="{{ route('Pending') }}">chờ duyệt ({{ $totalPending ?? null}})</a>
-                                 | <a style="color:red" href="{{ route('NotReceived') }}">chưa nhận ({{ $totalNotReceived ?? null}})</a>
-                                 | <a style="color:red" href="{{ route('allidea') }}"> tất cả ({{ $totalallidea ?? null}})</a>
+                            <h5 style="margin-left: 2%;" class="category"><a style="color: gray" href="{{ route('done') }}"> Finish ({{ $totalDone ?? null}}) </a>
+                                 | <a  style="color: rgb(13, 182, 36)" href="{{ route('Pending') }}"> Pending ({{ $totalPending ?? null}})</a>
+                                 | <a style="color:red" href="{{ route('NotReceived') }}">Not Received ({{ $totalNotReceived ?? null}})</a>
+                                 | <a style="color:red" href="{{ route('allidea') }}"> All ({{ $totalallidea ?? null}})</a>
 
                                 </h5>
                         </div><!-- /col-lg-12 -->
@@ -82,7 +81,7 @@
                                     <form  class="form-inline"role="form" >
                                       @csrf
                                         <select class="form-control "  id="cars" name="type" >
-                                            <option value=" ">Tìm Kiếm loại</option>
+                                            <option value=" ">Search by type</option>
                                             @foreach ($type_products as $type_product)
                                             <option value="{{$type_product->id}}">{{  $type_product->name }}</option>
                                             @endforeach
@@ -94,7 +93,7 @@
                                     <form class="form-inline" role="form">
                                         <div class="form-group">
                                             <label class="sr-only" for="exampleInputEmail2">tim kiem</label>
-                                            <input type="text" class="form-control" name="keyword" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword }}" placeholder="tim kiem">
+                                            <input type="text" class="form-control" name="keyword" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword }}" placeholder="Search">
                                         </div>
                                         <button type="submit" class="btn btn-theme"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     </form>
@@ -201,7 +200,7 @@
                                               @foreach ($report->product_details as $rep)
                                               <div  class="post-Image-{{ $rep->id  }}">
                                                 <div class="project" id="projectClick" >
-                                                    <button onclick="deleteImage({{ $rep->id }})">xoa</button>
+                                                    <button onclick="deleteImage({{ $rep->id }})">Delete</button>
                                                     <h5> {{$rep->ImageDetail}} </h5>
 
                                                     {{-- <a href="{{ route('deleteImage',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}
@@ -349,15 +348,15 @@
 
 
                                     @if ($report->status == 1)
-                                    <td><span class="label label-warning label-mini">chưa nhận</span></td>
+                                    <td><span class="label label-warning label-mini">Not Received</span></td>
                                     @elseif ( $report->status == 2)
-                                    <td><span class="label label-info label-mini">đã nhận</span></td>
+                                    <td><span class="label label-info label-mini">Accept</span></td>
                                     @elseif ( $report->status == 3)
-                                    <td><span class="label label-info label-mini">chờ duyệt</span></td>
+                                    <td><span class="label label-info label-mini">Pending</span></td>
                                     @elseif ( $report->status == 4)
-                                    <td><span class="label label-warning label-mini">làm lại</span></td>
+                                    <td><span class="label label-warning label-mini">Remake</span></td>
                                     @else
-                                    <td><span class="label label-success label-mini">hoàn thành</span></td>
+                                    <td><span class="label label-success label-mini">Finish</span></td>
                                     @endif
                                     <td>
                                         <span class="btn btn-success btn-xs" alt="chi tiết">
@@ -379,12 +378,17 @@
                                                 <a class=" w-75 " style="color:white" href="{{ route('delete',[$report->id]) }}"><i class="fa fa-trash-o"></i></a>
                                               </a>
                                              </span>
+                                             <span class="btn btn-success btn-xs">
+                                                <a class=" w-75 " style="color:white" href="{{ route('exportsamz',[$report->id]) }}"><i class="fa-solid fa-circle-down"></i></a>
+                                              </a>
+                                             </span>
                                              @if($report->action== 1 &&  $report->status != 5)
-                                             <span class="btn btn-danger btn-xs">
-                                                <a class=" w-75 " style="color:white" href="{{ route('important',[$report->id]) }}">ưu tiên</a>
+                                             <span class="label label-warning btn-xs">
+                                                <a class=" w-75 " style="color:white" href="{{ route('important',[$report->id]) }}">Impor</a>
                                               </a>
                                              </span>
                                              @endif
+
                                     </td>
                                 </tr>
                                 @endforeach
