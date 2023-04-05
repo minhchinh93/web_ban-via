@@ -38,19 +38,18 @@ class s3Controller extends Controller
         $file = $request->file('image');
 
         foreach ($file as $image) {
-            $str = $image->getClientOriginalName();
-            $filename = str_replace(' ', '-', $str);
+            // $str = $image->getClientOriginalName();
+            // $filename = str_replace(' ', '-', $str);
+            $name = strtoupper(Str::random(8));
             $dataImage = [
                 'product_id' => $id,
-                'ImagePngDetail' => Storage::disk('s3')->put('images', $image),
+                // 'ImagePngDetail' => Storage::disk('s3')->put('images', $name . '-' . $image),
+                'ImagePngDetail' => $image->storeAs('images', $name . '-' . $image),
             ];
             $datapng = ProductPngDetails::where('id', $id)->create($dataImage);
             $idPNG = $datapng->id;
-            $name = strtoupper(Str::random(4));
-            $sku = $name . "-" . $idPNG;
-
             ProductPngDetails::where('id', $idPNG)->update([
-                'Sku' => $sku,
+                'Sku' => $name,
             ]);
         }
         Product::where('id', $id)->update(['status' => 5]);

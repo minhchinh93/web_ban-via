@@ -8,7 +8,7 @@
 
         <div class="row mt">
             <div class="col-lg-12">
-                    <button  type="button" class="btn btn-primary"><a style="color:white" href="{{ route('home') }}">refresh trang</a></button>
+                    <button  type="button" class="btn btn-primary"><a style="color:white" href="{{ route('home') }}">refresh</a></button>
 
             </div><!-- /col-lg-12 -->
             <div class="row mt">
@@ -194,15 +194,15 @@
 
 
                                     @if ($report->status == 1)
-                                    <td><span class="label label-warning label-mini">chưa nhận</span></td>
+                                    <td><span class="label label-warning label-mini">Not Received</span></td>
                                     @elseif ( $report->status == 2)
-                                    <td><span class="label label-info label-mini">đã nhận</span></td>
+                                    <td><span class="label label-info label-mini">Accept</span></td>
                                     @elseif ( $report->status == 3)
-                                    <td><span class="label label-info label-mini">chờ duyệt</span></td>
+                                    <td><span class="label label-info label-mini">Pending</span></td>
                                     @elseif ( $report->status == 4)
-                                    <td><span class="label label-warning label-mini">làm lại</span></td>
+                                    <td><span class="label label-warning label-mini">remake</span></td>
                                     @else
-                                    <td><span class="label label-success label-mini">hoàn thành</span></td>
+                                    <td><span class="label label-success label-mini">finish</span></td>
                                     @endif
                                     <td>
                                         <span class="btn btn-success btn-xs" alt="chi tiết">
@@ -226,7 +226,7 @@
                                              </span>
                                              @if($report->action== 1 &&  $report->status != 5)
                                              <span class="btn btn-danger btn-xs">
-                                                <a class=" w-75 " style="color:white" href="{{ route('important',[$report->id]) }}">ưu tiên</a>
+                                                <a class=" w-75 " style="color:white" href="{{ route('important',[$report->id]) }}"><span class="label label-warning">Important</span></a>
                                               </a>
                                              </span>
                                              @endif
