@@ -30,9 +30,10 @@ class regiterController extends Controller
         ];
 
         // send mail queue job
-        $emailJob = (new NewJob($request->email, $input))->delay(now()->addSecond(2));
+        $emailJob = (new NewJob($request->email, $input))->delay(now()->addSecond(0));
         dispatch($emailJob);
         User::create($data);
+        dd($emailJob);
         return redirect()->route('alert')->with('success', 'Bạn đăng ký thanh công, kiểm tra mail để verry tài khoản');
     }
 }

@@ -8,22 +8,22 @@
         <div class="row mt" >
             <div class="col-md-12">
                 <div class="content-panel" style=" border-radius: 20px;background: rgba(236, 240, 240, 0.876)">
-                    <h4><i class="fa fa-angle-right"></i> Nhận việc</h4><hr>
+                    <h4><i class="fa fa-angle-right"></i> Daily Work </h4><hr>
 
                     <table class="table table-striped table-advance table-hover">
                         <div class="row">
                             <div class="col-lg-9">
-                        <h5 style="margin-left: 2%;" class="category"><a style="color: rgb(13, 182, 36)" href="{{ route('complete') }}">Hoàn thành ({{ $totalDone ?? null}}) </a>
-                            | <a  style="color: rgb(79, 76, 230)" href="{{ route('replay') }}">làm lại ({{ $totalPending ?? null}})</a>
-                            | <a style="color:orange" href="{{ route('NotSeen') }}">chưa nhận ({{ $totalNotSeen ?? null}})</a>
-                            | <a style="color:rgb(225, 0, 255)" href="{{ route('PendingDS') }}">Đang làm ({{ $totalPendingDS ?? null}})</a>
-                            | <a style="color:red" href="{{ route('prioritize') }}">ưu tiên ({{ $totalprioritize ?? null}})</a></h5>
+                        <h5 style="margin-left: 2%;" class="category"><a style="color: rgb(13, 182, 36)" href="{{ route('complete') }}">Finish ({{ $totalDone ?? null}}) </a>
+                            | <a  style="color: rgb(79, 76, 230)" href="{{ route('replay') }}">Remake ({{ $totalPending ?? null}})</a>
+                            | <a style="color:orange" href="{{ route('NotSeen') }}">Not Received ({{ $totalNotSeen ?? null}})</a>
+                            | <a style="color:rgb(225, 0, 255)" href="{{ route('PendingDS') }}">Pending ({{ $totalPendingDS ?? null}})</a>
+                            | <a style="color:red" href="{{ route('prioritize') }}">Important ({{ $totalprioritize ?? null}})</a></h5>
                         </div>
                             <div class="col-lg-3">
                                 <form class="form-group" role="form">
                                     <div class="form-group">
                                         <label class="sr-only" for="exampleInputEmail2">tim kiem</label>
-                                        <input type="text" class="form-group" name="keyword" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword }}" placeholder="tim kiem">
+                                        <input type="text" class="form-group" name="keyword" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword }}" placeholder="Search">
                                     <button type="submit" class="btn btn-theme"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     </div>
                                 </form>
@@ -159,7 +159,7 @@
                                           @foreach ($report->mocups as $rep)
                                           <div class="post-content-{{ $rep->id  }}">
                                             <div class="project" id="projectMocups">
-                                                <button onclick="deleteComment({{ $rep->id }})">xoa</button>
+                                                <button onclick="deleteComment({{ $rep->id }})">del</button>
 
                                                 <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$rep->id]) }}">
                                                     <h5>{{ $rep->mocup }} </h5>
@@ -235,7 +235,7 @@
                                           <div class="post-Png-{{ $rep->id  }}">
                                             <div class="project" id="projectPng">
                                                 <div style="display: flex;flex-direction: space-between;">
-                                                <button class="label label-danger label-mini" onclick="deletePng({{ $rep->id }})">xoa</button>
+                                                <button class="label label-danger label-mini" onclick="deletePng({{ $rep->id }})">del</button>
                                                 <span class="label label-info label-mini"><h5>{{ $rep->Sku}}</h5></span>
                                                 <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$rep->id]) }}">
                                                     <h5> {{$rep->ImagePngDetail}}</h5>

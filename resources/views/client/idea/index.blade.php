@@ -157,7 +157,7 @@
 
                                 <div class="row data">
 									<div class="col-sm-6 col-xs-6 goleft">
-										<h4><b>ngày nghỉ </b></h4>
+										<h4><b>Day Off </b></h4>
 									</div>
 								</div>
                                 @endif
@@ -197,7 +197,7 @@
                                 @else
                                 <div class="row data">
 									<div class="col-sm-6 col-xs-6 goleft">
-										<h4><b>ngày nghỉ </b></h4>
+										<h4><b>Day Off</b></h4>
 									</div>
 								</div>
                                 @endif
@@ -210,7 +210,7 @@
                     <!-- /row -->
                     <section class="task-panel tasks-widget" style="background:#ebebe3">
                         <div class="panel-heading" style="background-color:#54bae6;">
-                            <div class="pull-left"><h5 style = "color:white; margin-top: 1%;" class="category""><i class="fa fa-tasks"></i> Todo List - Notification</h5></div>
+                            <div class="pull-left"><h5 style = "color:white; margin-top: 1%;" class="category"><i class="fa fa-tasks"></i> Todo List - Notification</h5></div>
                             <br>
                          </div>
                           <div class="panel-body">
@@ -231,9 +231,9 @@
                                     <span class="task-title-sp">{{ $job->Conten }}</span>
                                     <span class="badge bg-info"> Public</span>
                                     @if($job->action==2)
-                                    <span class="badge bg-important" value="{{ $job->action}}">Quan trọng</span>
+                                    <span class="badge bg-important" value="{{ $job->action}}">Important</span>
                                     @else
-                                    <span class="badge bg-warning" value="{{ $job->action}}">Chú ý</span>
+                                    <span class="badge bg-warning" value="{{ $job->action}}">Mindful</span>
                                     @endif
                                     <div class="pull-right hidden-phone">
                                         <button class="btn btn-success btn-xs fa fa-check"></button>
@@ -253,9 +253,9 @@
                                     <span class="task-title-sp">{{ $job->Conten }}</span>
                                     <span class="badge bg-success"> Private</span>
                                     @if($job->action==2)
-                                    <span class="badge bg-important" value="{{ $job->action}}">Quan trọng</span>
+                                    <span class="badge bg-important" value="{{ $job->action}}">Important</span>
                                     @else
-                                    <span class="badge bg-warning" value="{{ $job->action}}">Chú ý</span>
+                                    <span class="badge bg-warning" value="{{ $job->action}}">Mindful</span>
                                     @endif
                                     <div class="pull-right hidden-phone">
                                         <button class="btn btn-success btn-xs fa fa-check"></button>
@@ -332,7 +332,7 @@
                                     </tr>
                                     @endforeach
                                     @else
-                                        <h2 class="label label-warning label-mini">ngày nghỉ</h2>
+                                        <h2 class="label label-warning label-mini">Day Off</h2>
                                     @endif
                                     </tbody>
                                 </table>
