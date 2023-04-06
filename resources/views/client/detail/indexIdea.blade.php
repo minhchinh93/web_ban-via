@@ -89,7 +89,7 @@
                                               @foreach ($report->product_details as $rep)
                                               <div  class="post-Image-{{ $rep->id  }}">
                                                 <div class="project">
-                                                    <button onclick="deleteImage({{ $rep->id }})">xoa</button>
+                                                    <button onclick="deleteImage({{ $rep->id }})">Delete</button>
                                                     <h5> {{$rep->ImageDetail}} </h5>
                                                     {{-- <a href="{{ route('deleteImage',[$rep->id]) }}"><span class="label label-info label-mini">xoa</span></a> --}}
                                                     <div class="photo-wrapper" >

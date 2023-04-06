@@ -48,6 +48,7 @@
         </form>
         <form class="form-login" action="{{ route('postregiter') }}" method="POST">
             <!-- Modal -->
+            @csrf
             <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
