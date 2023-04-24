@@ -22,10 +22,12 @@ class sellerwixController extends Controller
             if (count($result) < 2) {
 
                 $total = $result['data']['getPaginationOrders']['pageInfo']['total'];
-
                 $datas = $result['data']['getPaginationOrders']['orders'];
+
                 if ($datas != []) {
+                    // dump($datas);
                     foreach ($datas as $data) {
+
                         if ($data['order_supplier'] != []) {
                             $total_price[] = $data['order_supplier'][0]['total_price'];
                             $sw_prices[] = $data['order_supplier'][0]['total_price'] - $data['order_supplier'][0]['shipping_price'];
@@ -36,8 +38,8 @@ class sellerwixController extends Controller
                                 if ($data['order_supplier'][0]['carrier_code'] == 'DHLECS') {
                                     $progressBarType = $selerwix->gettrackDhl($id);
                                 } else {
-                                    // $progressBarType = $selerwix->gettracking($id);
-                                    $progressBarType = 'null';
+                                    $progressBarType = $selerwix->gettracking($id);
+                                    // $progressBarType = 'null';
                                 }
 
                             } else {
@@ -93,7 +95,7 @@ class sellerwixController extends Controller
         }
         // dd($response);
         return view('admin.Sellerwix.index',
-            ['total' => $total,
+            ['total' => count($datas),
                 'datas' => $datas,
                 'id' => $request->id,
                 'total_price' => array_sum($total_price),
