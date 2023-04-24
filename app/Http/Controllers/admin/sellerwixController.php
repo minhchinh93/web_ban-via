@@ -36,7 +36,8 @@ class sellerwixController extends Controller
                                 if ($data['order_supplier'][0]['carrier_code'] == 'DHLECS') {
                                     $progressBarType = $selerwix->gettrackDhl($id);
                                 } else {
-                                    $progressBarType = $selerwix->gettracking($id);
+                                    // $progressBarType = $selerwix->gettracking($id);
+                                    $progressBarType = 'null';
                                 }
 
                             } else {
