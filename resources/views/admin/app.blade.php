@@ -46,7 +46,7 @@
               <div class="sidebar-toggle-box">
                 <div data-placement="right" >
                     {{-- <a href="{{ route('AadminHome') }}"> --}}
-                    <img  src="http://hblmedia.online/admin/img/Logo.png" width="55"style="margin-top:-15px;border-radius:30%" class=" fa fa-bars tooltips">
+                    <img  src="https://prpinkrainstore.com/admin/img/Logo.png" width="55"style="margin-top:-15px;border-radius:30%" class=" fa fa-bars tooltips">
                 </a>
             </div>
               </div>
