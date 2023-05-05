@@ -41,7 +41,7 @@
                      <div class="col-lg-4">
                          <label class="">Category :</label>
                         <select class="col-lg-4 form-control " name="type_id" id= "loaiSP" required>
-                            <option value="">Chon</option>
+                            <option value="">Chọn</option>
                             @foreach ($type_products as $type_product)
                             <option value="{{$type_product->id}}" >{{  $type_product->name }}</option>
                             @endforeach
@@ -92,22 +92,30 @@
                                 <div class="col-lg-4">
                                     <form class="form-inline" role="form">
                                         <div class="form-group">
-                                            <label class="sr-only" for="exampleInputEmail2">tim kiem</label>
+                                            <label class="sr-only" for="exampleInputEmail2">Search</label>
                                             <input type="text" class="form-control" name="keyword" aria-label=" Search" id="exampleInputEmail2" value="{{ request()->keyword }}" placeholder="Search">
                                         </div>
                                         <button type="submit" class="btn btn-theme"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     </form>
                                 </div>
                                 <div class="col-lg-4">
-                                    <form class="form-inline" action="{{ route('addplasform') }}" role="form" >
-                                        @csrf
-                                        <select name="plasform" id="cars" style="border-radius: 5px;"  class="form-control ">
-                                        @foreach ($showcornerstones as $show)
-                                            <option value="{{ $show->id }}">{{  $show->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
+                                <div class="row" >
+                                    <div class="col-lg-8">
+                                        <form class="form-inline" action="{{ route('addplasform') }}" role="form" >
+                                            @csrf
+                                            <select name="plasform" id="cars" style="border-radius: 5px;"  class="form-control ">
+                                            @foreach ($showcornerstones as $show)
+                                                <option value="{{ $show->id }}">{{  $show->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <button type="submit" style="border-radius: 5px;" class="btn btn-theme"><i class="fa-solid fa-paper-plane"></i></button>
+
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <span class="btn btn-success btn-xs" alt="acvtiver"><a class=" w-75 " style="color:white" href=" #"><i class="fa fa-check"></i></a></span>
+                                    </div>
                                 </div>
+                                   </div>
                             </div>
             </div><!-- /col-lg-12 -->
             <div class="col-lg-1">
@@ -135,6 +143,7 @@
                               $i=0
                             @endphp
                             <tbody>
+                           
                                 @foreach ($reports as  $report)
                                 <tr>
                                     <td ><input type="checkbox" name="check_box[]"  value="{{ $report->id }}"></td>
