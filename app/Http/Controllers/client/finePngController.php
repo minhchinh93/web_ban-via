@@ -85,7 +85,7 @@ class finePngController extends Controller
 
             $user[] = $User->name;
         }
-        dump($user);
+        // dump($user);
 
         $categories = type_product::get();
         // dd($categories->id);
