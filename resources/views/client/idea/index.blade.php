@@ -113,7 +113,7 @@
                                 @else
 								<div class="row data">
 									<div class="col-sm-6 col-xs-6 goleft">
-										<h4><b>ngày nghỉ </b></h4>
+										<h4><b>Day Off</b></h4>
 									</div>
 								</div>
                                 @endif
