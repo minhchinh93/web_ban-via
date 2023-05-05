@@ -41,7 +41,6 @@
         @php
            $i=0
         @endphp
-        $i=0
         @foreach($shows as $show)
         <div class="col-lg-3 col-md-3 col-sm-3 mb" >
             <div class="content-panel pn "  style="display: flex;flex-direction: space-between;border-radius: 10%; ">
@@ -66,7 +65,7 @@
             </div><!-- --/panel ---->
             {{-- {{ dump($i) }} --}}
 
-            @php    
+            @php
             $i++
             @endphp
         @endforeach
