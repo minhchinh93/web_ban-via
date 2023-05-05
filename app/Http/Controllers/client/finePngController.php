@@ -78,17 +78,16 @@ class finePngController extends Controller
                 ->paginate(24);
             // ->first();
         }
-
-        // dd($show->id_idea->User);
         foreach ($show as $shows) {
             $User = User::where('id', $shows->id_idea)->first();
-
-            $user[] = $User->name;
+            if (empty($User)) {
+                $users = 'idea đã bị xóa';
+            } else {
+                $users = $User->name;
+            }
+            $user[] = $users;
         }
-        // dump($user);
-
         $categories = type_product::get();
-        // dd($categories->id);
         return view('client.findPNG.indexPNG', [
             'shows' => $show,
             'categories' => $categories,
