@@ -12,6 +12,10 @@
               @csrf
                 <select class="form-control "  id="cars" name="type" >
                     <option value=" ">Tìm Kiếm loại</option>
+                    @foreach ($categories as $categorie)
+                    <option value="{{$categorie->id}}" >{{  $categorie->name }}</option>
+                    @endforeach
+
                 </select>
                   <button type="submit" class="btn btn-theme "><i class="fa-solid fa-magnifying-glass"></i> </button>
             </form>
