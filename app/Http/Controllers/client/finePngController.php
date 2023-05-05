@@ -79,7 +79,7 @@ class finePngController extends Controller
                 ->orderBy('product_png_details.created_at', 'DESC')
                 ->paginate(24);
             // ->first();
-            $show->appends(['keyword' => $type]);
+            $show->appends(['type' => $type]);
 
         }
         if ($show->total() > 0) {
