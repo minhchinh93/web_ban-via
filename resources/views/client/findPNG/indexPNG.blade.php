@@ -38,6 +38,10 @@
         </div>
     </div>
     <div class="row mt">
+        @php
+           $i=0
+        @endphp
+        $i=0
         @foreach($shows as $show)
         <div class="col-lg-3 col-md-3 col-sm-3 mb" >
             <div class="content-panel pn "  style="display: flex;flex-direction: space-between;border-radius: 10%; ">
@@ -51,7 +55,7 @@
                 </div>
                 <div class="media-body">
                     <h5 class="mt-0">Designer: {{ $show->name}}</h5>
-                    <h5 class="mt-0">saller: {{ $show->saller ?? NULL}}</h5><hr>
+                    <h5 class="mt-0">saller: {{ $user[$i] ?? NULL}}</h5><hr>
                     <h6>Title: {{ $show->title}}</h6>
                     <h6>solt: {{ $show->Number_Items }} </h6>
                     <h6>Order_Total: ${{     $show->Order_Total }}</h6>
@@ -60,7 +64,11 @@
                 </div>
                 </div>
             </div><!-- --/panel ---->
+            {{-- {{ dump($i) }} --}}
 
+            @php    
+            $i++
+            @endphp
         @endforeach
 </div>
 
