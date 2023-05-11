@@ -69,7 +69,7 @@ class HomeController extends Controller
             $time = '';
 
         }
-        dd($report);
+        // dd($report);
         // $showList = $report->cornerstones;
 
         // dd(count($report[0]->mocups));
