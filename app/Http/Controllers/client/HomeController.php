@@ -69,7 +69,7 @@ class HomeController extends Controller
             $time = '';
 
         }
-
+        dd($report);
         // $showList = $report->cornerstones;
 
         // dd(count($report[0]->mocups));
@@ -98,11 +98,14 @@ class HomeController extends Controller
         $type_product = type_product::get();
         $size = size::get();
         $keyword = $request->keyword;
+
         if ($request->type != null) {
             if ($keyword != "") {
                 $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
                     ->Where('id_type', $request->type)
                     ->Where('title', 'like', "%{$keyword}%")
+                    ->orWhere('Sku', $keyword)
+
                     ->paginate(7);
                 $report->appends(['keyword' => $keyword]);
             } else {
@@ -115,13 +118,15 @@ class HomeController extends Controller
             if ($keyword != "") {
                 $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
                     ->Where('title', 'like', "%{$keyword}%")
+                    ->orWhere('Sku', "$keyword")
+
                     ->paginate(7);
                 $report->appends(['keyword' => $keyword]);
             } else {
                 $report = Product::orderBy('id', 'desc')->where('id_idea', Auth::user()->id)
                     ->paginate(7);
             }
-
+            // dd($report);
         }
         if ($report->total() != 0) {
             foreach ($report as $billdd) {

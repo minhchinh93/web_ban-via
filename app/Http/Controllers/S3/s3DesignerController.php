@@ -62,21 +62,21 @@ class s3DesignerController extends Controller
     {
 
         $file = $request->file('image');
-
+        $name = Product::where('id', $id)->first();
         foreach ($file as $image) {
             $str = $image->getClientOriginalName();
             $filename = str_replace(' ', '-', $str);
-            $name = strtoupper(Str::random(8));
+            // $name = strtoupper(Str::random(8));
             $filename = str_replace(' ', '-', $str);
             $dataImage = [
                 'product_id' => $id,
-                'ImagePngDetail' => $image->storeAs('images', $name . '-' . $filename),
+                'ImagePngDetail' => $image->storeAs('images', $name->Sku . '-' . $filename),
             ];
             $datapng = ProductPngDetails::where('id', $id)->create($dataImage);
             $idPNG = $datapng->id;
 
             ProductPngDetails::where('id', $idPNG)->update([
-                'Sku' => $name,
+                'Sku' => $name->Sku,
             ]);
         }
         Product::where('id', $id)->update(['status' => 3]);
