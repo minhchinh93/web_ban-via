@@ -35,21 +35,25 @@ class s3Controller extends Controller
     {
 
         // dd($request->file('image'));
+
         $file = $request->file('image');
+        $name = Product::where('id', $id)->first();
 
         foreach ($file as $image) {
-            // $str = $image->getClientOriginalName();
+            $str = $image->getClientOriginalName();
+            // dd($str);
             // $filename = str_replace(' ', '-', $str);
-            $name = strtoupper(Str::random(8));
+
             $dataImage = [
                 'product_id' => $id,
                 // 'ImagePngDetail' => Storage::disk('s3')->put('images', $name . '-' . $image),
-                'ImagePngDetail' => $image->storeAs('images', $name . '-' . $image),
+                'ImagePngDetail' => $image->storeAs('images', $name->Sku . '-' . $str),
             ];
-            $datapng = ProductPngDetails::where('id', $id)->create($dataImage);
+            // dd($dataImage);
+            $datapng = ProductPngDetails::where('product_id', $id)->create($dataImage);
             $idPNG = $datapng->id;
             ProductPngDetails::where('id', $idPNG)->update([
-                'Sku' => $name,
+                'Sku' => $name->Sku,
             ]);
         }
         Product::where('id', $id)->update(['status' => 5]);
@@ -99,6 +103,7 @@ class s3Controller extends Controller
                 'title' => $request->title,
                 'size_id' => $size,
                 'description' => $request->description,
+
             ];
             Product::where('id', $id)->update($data);
             ProductDetails::where('product_id', $id)->delete();
@@ -118,6 +123,7 @@ class s3Controller extends Controller
                 'title' => $request->title,
                 'size_id' => $size,
                 'description' => $request->description,
+
             ];
             Product::where('id', $id)->update($data);
         }
@@ -142,6 +148,7 @@ class s3Controller extends Controller
                 'image' => Storage::disk('s3')->put('images', $images[0]),
                 'description' => $request->description,
                 'title' => $request->title,
+                'Sku' => strtoupper(Str::random(12)),
             ];
             $productDtail = Product::create($data);
             foreach ($request->file('image') as $image) {
