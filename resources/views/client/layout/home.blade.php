@@ -143,7 +143,7 @@
                               $i=0
                             @endphp
                             <tbody>
-                           
+
                                 @foreach ($reports as  $report)
                                 <tr>
                                     <td ><input type="checkbox" name="check_box[]"  value="{{ $report->id }}"></td>
@@ -325,9 +325,9 @@
                                               @foreach ($report->ProductPngDetails as $rep)
                                               <div class="project-wrapper">
                                                 <div style="display: flex;flex-direction: space-between;">
-                                                    <span style="margin-right:5px" class="label label-info label-mini"><h5>{{ $rep->Sku}}</h5></span>
-                                                    <h5> <a href="#">{{$rep->ImagePngDetail}}</a></h5>
-                                                    <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$rep->id]) }}">
+                                                    <span style="margin-right:5px" class="label label-info label-mini" id="myInput-{{$rep->id}}" onclick="myFunction({{$rep->id}})" ><h5 >{{$rep->Sku}}</h5></span>
+                                                    <h5 id="myInput1-{{$rep->id}}" onclick="myFunction1({{$rep->id}})"> <a href="#">https://hblmedia.s3.ap-southeast-1.amazonaws.com/{{$rep->ImagePngDetail}}</a></h5>
+                                                    <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$rep->id]) }}" >
                                                         <i class="fa-solid fa-circle-down"></i>
                                                     </a>
                                                     </div>
@@ -419,6 +419,49 @@
 @endsection
 
 @push('scripts')
+
+<script>
+
+    function myFunction(id) {
+
+        // Get the text field
+        var copyText = document.getElementById('myInput-'+id);
+
+        // Select the text field
+        // copyText.select();
+        // alert("Copied the text: " + copyText.innerText);
+
+        // copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.innerText);
+
+
+        // alert("Copied the text: " + copyText.innerText);
+        // Alert the copied text
+
+    }
+
+</script>
+<script>
+        function myFunction1(id) {
+            // Get the text field
+            var copyText = document.getElementById('myInput1-'+id);
+
+            // Select the text field
+            // copyText.select();
+
+            // copyText.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(copyText.innerText);
+
+
+            // alert("Copied the text: " + copyText.innerText);
+// Alert the copied text
+
+}
+</script>
 <script>
 var imageAPI='/deleteImage'
 //api xoa api
@@ -513,4 +556,7 @@ function photoPng(id) {
         }
     };
 </script>
+
+
+
 @endpush
