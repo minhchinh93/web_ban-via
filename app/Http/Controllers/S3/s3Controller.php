@@ -166,6 +166,8 @@ class s3Controller extends Controller
                 'size_id' => $size,
                 'description' => $request->description,
                 'title' => $request->title,
+                'Sku' => strtoupper(Str::random(12)),
+
 
             ];
 
