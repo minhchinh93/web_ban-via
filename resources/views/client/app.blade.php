@@ -131,11 +131,11 @@
                         </a>
                     </li>
                      @endif
-                  {{-- <li class="sub-menu" title="TOOL">
+                  <li class="sub-menu" title="TOOL">
                       <a class="{{ (request()->is('/showTool')) ? 'active' : 'sub-menu' }}" href="{{ route('showtool') }}" >
                         <i class="fa fa-th"></i>
                       </a>
-                  </li> --}}
+                  </li>
                   <li class="sub-menu" title="DOCUMENT">
                     <a class="{{ (request()->is('/showDoc')) ? 'active' : 'sub-menu' }}" href="{{ route('showDoc') }}" >
                         <i class="fa fa-book"></i>
