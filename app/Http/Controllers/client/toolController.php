@@ -11,6 +11,7 @@ use App\Models\type_product;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class toolController extends Controller
