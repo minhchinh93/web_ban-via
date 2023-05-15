@@ -265,7 +265,7 @@
 
                                               @foreach ($report->mocups as $rep)
                                               <div class="project-wrapper">
-                                                <h5>{{ $rep->mocup }} </h5>
+                                                <h5  id="myInputs-{{$rep->id}}" onclick="myFunctions({{$rep->id}})">https://hblmedia.s3.ap-southeast-1.amazonaws.com/{{ $rep->mocup }} </h5>
                                                 <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadMocupURL',[$rep->id]) }}">
                                                     <i class="fa-solid fa-circle-down"></i>
                                                 </a>
@@ -435,7 +435,31 @@
 
         // Copy the text inside the text field
         navigator.clipboard.writeText(copyText.innerText);
+        document.getElementById('myInput-'+id).style.color = "magenta";
 
+        // alert("Copied the text: " + copyText.innerText);
+        // Alert the copied text
+
+    }
+
+</script>
+<script>
+
+    function myFunctions(id) {
+
+        // Get the text field
+        var copyText = document.getElementById('myInputs-'+id);
+
+        // Select the text field
+        // copyText.select();
+        // alert("Copied the text: " + copyText.innerText);
+
+        // copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.innerText);
+
+        document.getElementById('myInputs-'+id).style.color = "magenta";
 
         // alert("Copied the text: " + copyText.innerText);
         // Alert the copied text
@@ -456,6 +480,7 @@
             // Copy the text inside the text field
             navigator.clipboard.writeText(copyText.innerText);
 
+            document.getElementById('myInput1-'+id).style.color = "magenta";
 
             // alert("Copied the text: " + copyText.innerText);
 // Alert the copied text
