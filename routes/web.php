@@ -122,6 +122,7 @@ Route::middleware(['auth', 'veryMail'])->group(function () {
 
     Route::get('dowloadURL/{id}', [DesignerController::class, 'dowloadURL'])->name('dowloadURL');
     Route::get('dowloadMocupURL/{id}', [DesignerController::class, 'dowloadMocupURL'])->name('dowloadMocupURL');
+    Route::get('dowloadMocupAll/{id}', [DesignerController::class, 'dowloadMocupAll'])->name('dowloadMocupAll');
 
     Route::get('success/{id}', [HomeController::class, 'success'])->name('success');
     Route::get('ajax/{id}', [HomeController::class, 'ajax'])->name('ajax');
