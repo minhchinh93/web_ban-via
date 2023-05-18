@@ -11,9 +11,9 @@ use App\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 use ZipArchive;
 
 class DesignerController extends Controller
@@ -334,7 +334,7 @@ class DesignerController extends Controller
             'statusAbsolute' => "tải file Mockup",
         ];
         checkDowload::create($datadowload);
-        $fileZipName = time() . 'dowloadMockupAll.zip';
+        $fileZipName = time() . '.dowloadMockupAll';
 
         // Mảng URL của các ảnh trên S3
         $s3ImageUrls = [];
@@ -358,7 +358,7 @@ class DesignerController extends Controller
         }
 
         // Tạo tệp zip
-        $zipFilePath = storage_path('app/temp/'.$fileZipName.'.zip');
+        $zipFilePath = storage_path('app/temp/' . $fileZipName . '.zip');
         $zip = new ZipArchive();
         if ($zip->open($zipFilePath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
             foreach ($downloadedImages as $imagePath) {
