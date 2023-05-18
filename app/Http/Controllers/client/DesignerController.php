@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use ZipArchive;
 
 class DesignerController extends Controller
@@ -333,21 +334,48 @@ class DesignerController extends Controller
             'statusAbsolute' => "tải file Mockup",
         ];
         checkDowload::create($datadowload);
-        $fileName = time() . 'dowloadMockupAll.zip';
-        $zip = new ZipArchive;
-        if ($zip->open($fileName, ZipArchive::CREATE) === true) {
-            $files = [];
-            foreach ($datapngs as $i => $value) {
-                $files[$i] = ('https://hblmedia.s3.ap-southeast-1.amazonaws.com/' . basename($value->mocup));
-            }
-            // dd($files[1]);
-            foreach ($files as $file) {
-                $relativeNameInZipFile = basename($file);
-                $zip->addFile($file, $relativeNameInZipFile);
+        $fileZipName = time() . 'dowloadMockupAll.zip';
+
+        // Mảng URL của các ảnh trên S3
+        $s3ImageUrls = [];
+        foreach ($datapngs as $i => $value) {
+            $s3ImageUrls[] = ('https://hblmedia.s3.ap-southeast-1.amazonaws.com/images/' . basename($value->mocup));
+        }
+
+        // Tạo thư mục tạm để chứa các ảnh đã tải xuống
+        $tempFolder = storage_path('app/temp');
+        if (!File::exists($tempFolder)) {
+            File::makeDirectory($tempFolder);
+        }
+
+        // Tải xuống và lưu trữ các ảnh tạm thời
+        $downloadedImages = [];
+        foreach ($s3ImageUrls as $url) {
+            $fileName = basename($url);
+            $tempFilePath = $tempFolder . '/' . $fileName;
+            file_put_contents($tempFilePath, file_get_contents($url));
+            $downloadedImages[] = $tempFilePath;
+        }
+
+        // Tạo tệp zip
+        $zipFilePath = storage_path('app/temp/'.$fileZipName.'.zip');
+        $zip = new ZipArchive();
+        if ($zip->open($zipFilePath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
+            foreach ($downloadedImages as $imagePath) {
+                $fileName = basename($imagePath);
+                $zip->addFile($imagePath, $fileName);
             }
             $zip->close();
         }
-        return response()->download($fileName);
+
+        // Xóa các ảnh tạm sau khi đã nén vào tệp zip
+        foreach ($downloadedImages as $imagePath) {
+            File::delete($imagePath);
+        }
+
+        // Trả về liên kết tải xuống tệp zip
+        return response()->download($zipFilePath)->deleteFileAfterSend(true);
+
     }
     public function dowloadPNGAll($id)
     {
