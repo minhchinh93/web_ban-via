@@ -359,4 +359,14 @@ class HomeController extends Controller
             return redirect()->route('login');
         }
     }
+
+    public function addSku(Request $request, $id)
+    {
+        if ($request->Sku) {
+            Product::where('id', $id)->update(['Sku' => $request->Sku]);
+            return redirect()->back();
+        } else {
+            return redirect()->back();
+        }
+    }
 }

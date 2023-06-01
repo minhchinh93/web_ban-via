@@ -82,6 +82,7 @@ Route::middleware(['CheckIdea', 'veryMail'])->group(function () {
     Route::post('showimage', [HomeController::class, 'showimage'])->name('showimage');
     Route::post('comment/{id}', [HomeController::class, 'comment'])->name('comment');
     Route::get('find', [HomeController::class, 'find'])->name('find');
+    Route::get('addSku/{id}', [HomeController::class, 'addSku'])->name('addSku');
 
     Route::get('showdetail/{key1}/{key2}', [detailIdeaController::class, 'showdetail'])->name('showdetail');
 

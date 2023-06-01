@@ -257,7 +257,7 @@
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                           <div class="modal-content">
                                             <div class="modal-header">
-                                                <a href="{{ route('dowloadMocupAll',[$report->id]) }}"><buttontype="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></buttontype=></a>
+                                                <a href="{{ route('dowloadMocupAll',[$report->id]) }}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-cart-arrow-down"></i></button></a>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                               </button>
@@ -325,7 +325,21 @@
                                               @foreach ($report->ProductPngDetails as $rep)
                                               <div class="project-wrapper">
                                                 <div style="display: flex;flex-direction: space-between;">
-                                                    <span style="margin-right:5px" class="label label-info label-mini" id="myInput-{{$rep->id}}" onclick="myFunction({{$rep->id}})" ><h5 >{{$rep->Sku}}</h5></span>
+                                                    @if($report->Sku!=null)
+                                                    <span style="margin-right:5px" class="label label-info label-mini" id="myInput-{{$rep->id}}" onclick="myFunction({{$rep->id}})" ><h5 >{{$report->Sku}}</h5></span>
+                                                    @else
+                                                     <div class="col-lg-12">
+                                                        <div class="form-panel">
+                                                        <form class="form-inline" action="{{ route('addSku',[$report->id]) }}" method="GET" role="form">
+                                                            <div class="form-group">
+                                                                <label class="sr-only" for="exampleInputEmail2">Sku</label>
+                                                                <input type="text" name="Sku" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-theme">Add Sku</button>
+                                                        </form>
+                                                        </div><!-- /form-panel -->
+                                                    </div>
+                                                    @endif
                                                     <h5 id="myInput1-{{$rep->id}}" onclick="myFunction1({{$rep->id}})"> <a href="#">https://hblmedia.s3.ap-southeast-1.amazonaws.com/{{$rep->ImagePngDetail}}</a></h5>
                                                     <a class=" w-75 " style="color:rgb(59, 25, 151)" href="{{ route('dowloadURL',[$rep->id]) }}" >
                                                         <i class="fa-solid fa-circle-down"></i>
